@@ -5,6 +5,12 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
   ],
+  features: {
+    emotionAlias: false,
+  },
+  typescript: {
+    reactDocgen: false,
+  },
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
