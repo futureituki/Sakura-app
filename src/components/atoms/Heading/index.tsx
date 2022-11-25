@@ -1,4 +1,3 @@
-import './index.css'
 import React from 'react'
 type PresenterProps = {
   tag: any
