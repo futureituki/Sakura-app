@@ -1,12 +1,12 @@
-import { createTheme } from "@mui/material"
+import { createTheme } from '@mui/material'
 
 export const colorTheme = createTheme({
   palette: {
-    mainColor:{
+    mainColor: {
       main: '#ff4c90',
     },
-    subColor:{
+    subColor: {
       main: '#bb77ff',
-    }
-  }
+    },
+  },
 })

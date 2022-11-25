@@ -1,11 +1,7 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material'
 
 export const homeFontTheme = createTheme({
   typography: {
-    fontFamily: [
-      '游ゴシック',
-      'Arial',
-      'sans-serif',
-    ].join(','),
-  }
+    fontFamily: ['游ゴシック', 'Arial', 'sans-serif'].join(','),
+  },
 })
