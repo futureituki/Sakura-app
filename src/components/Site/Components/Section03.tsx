@@ -1,4 +1,4 @@
-import { PinningContainer, PinningItemList } from '@/components/PinningScroll/pinning-side-scroll'
+import { PinningContainer, PinningItemList } from '@/components/pinningScroll/pinning-side-scroll'
 import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { memberSrc } from '@/constant/memberSrc'
@@ -14,7 +14,8 @@ export const Section03 = () => {
         <PinningContainer>
           {memberSrc.map((member, index) => (
             <PinningItemList key={index}>
-              <SectionImg src={member.src} alt_name={member.name} width={300} height={350} />
+              <SectionImg src={member.src} alt_name={member.name} width={400} height={450} />
+              <p style={{color:"#fff",marginTop:"20px",fontSize:"1.6rem"}}>{member.name}</p>
             </PinningItemList>
           ))}
         </PinningContainer>

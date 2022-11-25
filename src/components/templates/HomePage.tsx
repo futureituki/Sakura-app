@@ -7,6 +7,7 @@ import { Section03 } from '../Site/Components/Section03'
 import { Section04 } from '../Site/Components/Section04'
 import { SwiperContainer } from '../swiper/SwiperAnimation'
 import styles from '@/styles/Site.module.css'
+import { Section05 } from '../Site/Components/Section05'
 
 export const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ export const HomePage = () => {
         <Section02 />
         <Section03 />
         <Section04 />
+        <Section05 />
       </main>
     </div>
   )
