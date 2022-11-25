@@ -4,11 +4,10 @@
     "plugin:storybook/recommended",
     "plugin:import/recommended",
     "plugin:import/warnings",
-    "plugin:prettier/recommended",
     "prettier"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
+    "react/react-in-jsx-scope":"off",
     "import/order": [
       "error",
       {
@@ -17,15 +16,15 @@
         }
       }
     ],
-    "prettier/prettier": [
+    "prettier/prettier":[
       "error",
       {
-        "trailingComma": "all",
-        "endOfLine": "lf",
-        "semi": false,
-        "pugSingleQuote": "true",
-        "printWidth": 100,
-        "tabWidth": 2
+        "trailingComma":"all",
+        "endOfLine":"lf",
+        "semi":false,
+        "singleQuote":"true",
+        "printWidth":100,
+        "tabWidth":2
       }
     ]
   }
