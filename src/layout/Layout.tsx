@@ -7,8 +7,8 @@ type LayoutProps = Required<{
 }>
 export const Layout = ({ children }: LayoutProps) => (
   <>
-    <HomePageHeader/>
+    <HomePageHeader />
     {children}
-    <Footer/>
+    <Footer />
   </>
 )

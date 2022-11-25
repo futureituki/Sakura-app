@@ -1,5 +1,3 @@
 export const SectionTitle = () => {
-  return (
-    
-  )
+  return <div></div>
 }

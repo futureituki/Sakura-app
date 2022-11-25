@@ -1,7 +1,5 @@
-import { Button, PrimaryButton } from './index'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { ThemeProvider } from '@mui/material/styles'
-import { colorTheme } from '@/config/color'
+import { type ComponentMeta, type ComponentStory } from '@storybook/react'
+import { PrimaryButton } from './index'
 
 // export default {
 //   title: "Atoms/Button",
@@ -16,7 +14,6 @@ import { colorTheme } from '@/config/color'
 // storyはそれぞれ独立しているので、このように中身が同じアロー関数を与えても大丈夫です。（通常は色々なパターンの引数を与えシミュレートします。）
 
 // export const Default = () => <PrimaryButton variant='contained' color='mainColor' label='test'>Click me</PrimaryButton>;
-
 
 // export const Default2 = () => <Button>Click me</Button>;
 
@@ -35,8 +32,8 @@ export default {
       control: { type: 'radio' },
     },
     label: {
-      control: { type: 'text' }
-  },
+      control: { type: 'text' },
+    },
     variant: {
       options: ['outlined', 'contained'],
       control: { type: 'radio' },
@@ -44,13 +41,14 @@ export default {
   },
 } as ComponentMeta<typeof PrimaryButton>
 
-export const Template: ComponentStory<typeof PrimaryButton> = (args) => 
-<PrimaryButton {...args}>Test</PrimaryButton>
+export const Template: ComponentStory<typeof PrimaryButton> = (args) => (
+  <PrimaryButton {...args}>Test</PrimaryButton>
+)
 
 export const Index = Template.bind({})
 Index.args = {
-  color:'#ff4c90',
-  background:'#bb77ff',
+  color: '#ff4c90',
+  background: '#bb77ff',
   label: '',
-  variant:'contained',
+  variant: 'contained',
 }

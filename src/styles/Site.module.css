@@ -371,3 +371,15 @@ transform: translate(0);
   line-height: 1.4;
   margin-bottom: 16px;
 }
+.sec_member {
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+}
+.sec_member_container {
+  width: 80%;
+  max-width: 900px;
+  margin: 60px auto;
+}

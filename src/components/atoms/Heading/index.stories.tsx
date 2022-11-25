@@ -1,7 +1,5 @@
-import  {Heading}  from './index'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { ThemeProvider } from '@mui/material/styles'
-import { colorTheme } from '@/config/color'
+import { type ComponentMeta, type ComponentStory } from '@storybook/react'
+import { Heading } from './index'
 
 // export default {
 //   title: "Atoms/Button",
@@ -17,7 +15,6 @@ import { colorTheme } from '@/config/color'
 
 // export const Default = () => <PrimaryButton variant='contained' color='mainColor' label='test'>Click me</PrimaryButton>;
 
-
 // export const Default2 = () => <Button>Click me</Button>;
 
 // export const Default3 = () => <Button>Click me</Button>;
@@ -26,22 +23,21 @@ export default {
   component: Heading,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    level:{
-      options:[1,2,3,4,5,6],
+    level: {
+      options: [1, 2, 3, 4, 5, 6],
       control: { type: 'radio' },
     },
-    visualLevel:{
-      options:[1,2,3,4,5,6],
+    visualLevel: {
+      options: [1, 2, 3, 4, 5, 6],
       control: { type: 'radio' },
     },
   },
 } as ComponentMeta<typeof Heading>
 
-export const Template: ComponentStory<typeof Heading> = (args) => 
-<Heading {...args}>Test</Heading>
+export const Template: ComponentStory<typeof Heading> = (args) => <Heading {...args}>Test</Heading>
 
 export const Index = Template.bind({})
 Index.args = {
-  level:1,
-  visualLevel:2
+  level: 1,
+  visualLevel: 2,
 }

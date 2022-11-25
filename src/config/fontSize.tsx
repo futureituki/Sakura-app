@@ -1,8 +1,8 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material'
 
 export const typographyTheme = createTheme({
   typography: {
-        fontSize: 14,
+    fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 700,
@@ -16,5 +16,5 @@ export const typographyTheme = createTheme({
     subtitle1: { fontSize: 18 },
     body1: { fontSize: 16 },
     button: { textTransform: 'none' },
-  }
+  },
 })
