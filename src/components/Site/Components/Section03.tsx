@@ -1,8 +1,8 @@
+import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { PinningContainer, PinningItemList } from '@/components/pinningScroll/pinning-side-scroll'
-import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { memberSrc } from '@/constant/memberSrc'
-import styles from '@/styles/Site.module.css';
+import styles from '@/styles/Site.module.css'
 
 export const Section03 = () => {
   return (
@@ -15,7 +15,7 @@ export const Section03 = () => {
           {memberSrc.map((member, index) => (
             <PinningItemList key={index}>
               <SectionImg src={member.src} alt_name={member.name} width={400} height={450} />
-              <p style={{color:"#fff",marginTop:"20px",fontSize:"1.6rem"}}>{member.name}</p>
+              <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
           ))}
         </PinningContainer>
