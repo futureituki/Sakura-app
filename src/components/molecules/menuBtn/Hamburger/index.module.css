@@ -9,6 +9,7 @@
   top: 34px;
   right: 20px;
   pointer-events:visible;
+  z-index:9999;
 }
 
 /*ボタン内側*/

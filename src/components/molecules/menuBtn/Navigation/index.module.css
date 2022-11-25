@@ -1,5 +1,4 @@
 .navigation {
-  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -8,24 +7,23 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 100vh;
   color:#fff;
   background-color: #000;
+  height:100vh;
+  transform-origin:bottom;
+  transform: scale(1, 0);
+  transition: transform .3s;
+}
+.navigation[aria-hidden="false"] {
+  transform: scale(1, 1);
 }
 
-.navigation[aria-hidden="false"] {
-  display: flex;
+.navigation ul {
+  position:relative;
+  top:40%;
 }
-.navigation[aria-hidden="false"] {
-  animation-name: rotate;
-  animation-duration: 0.7s;
-  animation-delay: 2s;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.navigation li {
+  margin:20px 0;
+  font-size:2rem;
+  opacity:0;
 }

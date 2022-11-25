@@ -9,38 +9,45 @@ export const Section02 = () => {
     setupGsap()
   }, [])
   const setupGsap = () => {
-    gsap.to('main', {
+    gsap.to('#overlay-on', {
       scrollTrigger: {
-        trigger: '#overlay-on',
-        start: 'top center',
+        trigger: '#sec_mv',
+        start: 'top+=40%',
+        end:'bottom+=3000',
         scrub: true, 
         onEnter: () => gsap.to('.overlay-cover', {
           opacity: 1,
           visibility:"visible",
-          duration: 1.4
+          duration: .6
         }),
         onLeave: () => gsap.to('.overlay-cover', {
           opacity: 0,
           visibility:"hidden",
-          duration: 1.4
+          duration: .6
         }),
         onEnterBack: () => gsap.to('.overlay-cover', {
           opacity: 1,
           visibility:"visible",
-          duration: 1.4
+          duration: .6
         }),
         onLeaveBack: () => gsap.to('.overlay-cover', {
           opacity: 0,
           visibility:"hidden",
-          duration: 1.4
+          duration: .6
         }),
       },
     })
   }
   return (
-    <section className={styles.sec_cont} id="overlay-on">
+    <section className={styles.sec_rea} id="overlay-on">
       <div className={`overlay-cover ${styles.overlay}`}></div>
-
+      <div className={styles.rea_in}>
+        <div className={styles.rea_case}>
+          <p className={styles.read_tx}>制作理由</p>
+          <p className={styles.tx} id="tx_on">櫻坂46というグループをもっと色々な人に<br/>知ってもらいたかったからです。</p>
+          <p className={styles.tx} id="tx_on">このパフォーマンス力と表現力は目を見張るものがあります。</p>
+        </div>
+      </div>
     </section>
   )
 }
