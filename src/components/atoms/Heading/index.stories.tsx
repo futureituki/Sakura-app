@@ -1,7 +1,5 @@
-import { ThemeProvider } from '@mui/material/styles'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { Heading } from './index'
-import { colorTheme } from '@/config/color'
 
 // export default {
 //   title: "Atoms/Button",

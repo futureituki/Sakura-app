@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { type ComponentStory, type ComponentMeta } from '@storybook/react'
 import { within, userEvent } from '@storybook/testing-library'
 import React from 'react'
 import { Page } from './Page'

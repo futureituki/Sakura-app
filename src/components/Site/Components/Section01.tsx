@@ -16,11 +16,11 @@ export const Section01 = () => {
       let newText = ''
       const text = jsText.textContent
       if (text == null) return
-        const result = text.split('')
-        for (let i = 0; i < result.length; i++) {
-          newText += `<span style='opacity:0'>` + result[i] + '</span>'
-        }
-        jsText.innerHTML = newText
+      const result = text.split('')
+      for (let i = 0; i < result.length; i++) {
+        newText += `<span style='opacity:0'>` + result[i] + '</span>'
+      }
+      jsText.innerHTML = newText
     }
     tl.to(
       '#opening-title span',
