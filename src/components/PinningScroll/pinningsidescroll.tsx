@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import React, { FC, useEffect, useRef } from 'react'
-import styles from '@/components/pinningScroll/index.module.css'
+import styles from '@/components/PinningScroll/index.module.css'
 type ContainerProps = {
   children: React.ReactNode
 }
