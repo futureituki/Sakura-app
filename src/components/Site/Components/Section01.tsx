@@ -1,8 +1,8 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useEffect, useRef } from 'react'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
