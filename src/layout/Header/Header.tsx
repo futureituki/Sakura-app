@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 export const Header = () => {
-  return <header></header>
+
+  return (
+    <header></header>
+  )
 }

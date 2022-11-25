@@ -1,33 +1,33 @@
-import gsap from 'gsap'
-import { FC, useEffect } from 'react'
-import styles from '@/components/molecules/menuBtn/Navigation/index.module.css'
+import { FC, useEffect } from "react";
+import styles from "@/components/molecules/menuBtn/Navigation/index.module.css";
+import gsap from "gsap";
 type Props = {
-  open: boolean
-  id: string
-}
+  open: boolean;
+  id: string;
+};
 
 export const Navigation: FC<Props> = ({ open, id }) => {
   useEffect(() => {
     setupGsap()
   }, [open])
   const setupGsap = () => {
-    if (open === true) {
+    if(open === true) {
       gsap.to('nav ul li', {
-        opacity: 1,
-        y: 0,
+        opacity:1,
+        y:0,
         stagger: {
-          amount: 1,
-          from: 'start',
-        },
+          amount:1,
+          from:"start",
+        }
       })
-    } else {
+    }else {
       gsap.to('nav ul li', {
-        opacity: 0,
-        y: 20,
+        opacity:0,
+        y:20,
         stagger: {
-          amount: 1,
-          from: 'start',
-        },
+          amount:1,
+          from:"start",
+        }
       })
     }
   }
@@ -40,5 +40,5 @@ export const Navigation: FC<Props> = ({ open, id }) => {
         <li>Music List</li>
       </ul>
     </nav>
-  )
-}
+  );
+};
