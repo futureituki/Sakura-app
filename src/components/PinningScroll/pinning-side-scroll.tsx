@@ -49,5 +49,5 @@ type PinningItemProps = {
   children: React.ReactNode
 }
 export const PinningItemList: FC<PinningItemProps> = ({ children }) => {
-  return <li className={styles.slide_scroll_item}>{children}</li>
+  return <li>{children}</li>
 }
