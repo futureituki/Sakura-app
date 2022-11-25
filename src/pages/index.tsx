@@ -8,9 +8,14 @@ import { ThemeProvider } from '@mui/material/styles'
 
 const Home:NextPageWithLayout = () => {
   return (
+    <>
+    <Head>
+      <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet"/>
+    </Head>
     <ThemeProvider theme={homeFontTheme}>
       <HomePage/>
     </ThemeProvider>
+    </>
   )
 }
 Home.getLayout = (page) => <Layout>{page}</Layout>
