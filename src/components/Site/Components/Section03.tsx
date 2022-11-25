@@ -2,7 +2,7 @@ import { PinningContainer, PinningItemList } from '@/components/pinningScroll/pi
 import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { memberSrc } from '@/constant/memberSrc'
-import styles from '@/styles/Site.module.css'
+import styles from '@/styles/Site.module.css';
 
 export const Section03 = () => {
   return (
