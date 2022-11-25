@@ -1,6 +1,6 @@
+import { Heading } from '@/components/atoms/Heading'
 import { PinningContainer, PinningItemList } from '@/components/pinningScroll/pinning-side-scroll'
 import { SectionImg } from '@/components/Site/Components/Section-Img'
-import { Heading } from '@/components/atoms/Heading'
 import { memberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css';
 
