@@ -8,6 +8,7 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import styles from '@/components/swiper/index.module.css'
+
 // export const SwiperItem = () => {
 //   return (
 

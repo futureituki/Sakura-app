@@ -11,7 +11,7 @@ import styles from '@/styles/Site.module.css'
 export const HomePage = () => {
   return (
     <div>
-      <main>
+      <main style={{ background: '#000' }}>
         <Section01 />
         <Section02 />
         <Section03 />
