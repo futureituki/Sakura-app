@@ -12,7 +12,7 @@ export const Section02 = () => {
       scrollTrigger: {
         trigger: '#sec_mv',
         start: 'top+=40%',
-        end: 'bottom+=3000',
+        end: 'bottom+=15000',
         scrub: true,
         onEnter: () =>
           gsap.to('.overlay-cover', {
