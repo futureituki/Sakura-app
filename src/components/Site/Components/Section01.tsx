@@ -48,7 +48,7 @@ export const Section01 = () => {
         4,
       )
       .to('#glitch', {
-        opacity: 0,
+        opacity: 1,
         delay: 0.1,
         width: '100vw',
         transformOrigin: '50% 50%',
