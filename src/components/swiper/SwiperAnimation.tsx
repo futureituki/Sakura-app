@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 // Import Swiper React components
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-fade'
@@ -9,12 +9,10 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import styles from '@/components/swiper/index.module.css'
 
-// export const SwiperItem = () => {
-//   return (
-
-//   )
-// }
-export const SwiperContainer = () => {
+type Children = {
+  children: React.ReactNode
+}
+export const SwiperContainer: FC<Children> = ({ children }) => {
   const ref = useRef<HTMLElement>(null)
   const [currentIndex, setCurrentIndex] = useState<number>()
   const prevRef = useRef<HTMLDivElement>(null)
@@ -30,6 +28,8 @@ export const SwiperContainer = () => {
           prevEl: '#button_prev',
           nextEl: '#button_next',
         }}
+        slidesPerView={1}
+        speed={500}
         autoplay={{
           disableOnInteraction: false,
         }}
@@ -49,19 +49,7 @@ export const SwiperContainer = () => {
         modules={[EffectFade, Navigation, Pagination, Autoplay]}
         className={styles.swiper}
       >
-        <SwiperSlide style={{ width: '100%' }}>
-          <img src='https://swiperjs.com/demos/images/nature-1.jpg' />
-          <span>ああああ</span>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src='https://swiperjs.com/demos/images/nature-2.jpg' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src='https://swiperjs.com/demos/images/nature-3.jpg' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src='https://swiperjs.com/demos/images/nature-4.jpg' />
-        </SwiperSlide>
+        {children}
       </Swiper>
       <div className={styles.navigation}>
         <div className={styles.pagination_button}>
