@@ -26,6 +26,7 @@
 .glitch_red {
   border:1px solid red;
   height: 0%;
+  width:0vh;
   right: 50%;
   opacity: 0;
   position: absolute;
@@ -38,8 +39,9 @@
 .glitch_blue {
   border:1px solid blue;
   height: 0%;
+  width:0vh;
   right: 50%;
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   bottom: 0;
   transform-origin: center;
@@ -50,8 +52,9 @@
 .glitch_green {
   border:1px solid #00FF0B;
   height: 0%;
+  width:0vh;
   right:50%;
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   bottom: 0;
   transform-origin: center;
@@ -62,7 +65,8 @@
   border:1px solid red;
   height: 0%;
   left: 50%;
-  opacity:1;
+  opacity:0;
+  width:0;
   position: absolute;
   top: 0%;
   transform-origin: center;
@@ -75,7 +79,8 @@
   border:1px solid #05FBFF;
   height: 0%;
   left: 50%;
-  opacity: 1;
+  width:0;
+  opacity: 0;
   position: absolute;
   top: 0;
   transform-origin: center;
@@ -87,6 +92,7 @@
 .glitch_green_bottom {
   border:1px solid #00FF0B;
   height: 0%;
+  width:0;
   left: 50%;
   opacity: 0;
   position: absolute;
@@ -101,16 +107,16 @@
 transform: translate(0);
 }
 20% {
-transform: translate(-5px, 5px);
+transform: translate(-10px, 10px);
 }
 40% {
-transform: translate(-5px, -5px);
+transform: translate(-14px, -10px);
 }
 60% {
-transform: translate(5px, 5px);
+transform: translate(17px, 12px);
 }
 80% {
-transform: translate(5px, -5px);
+transform: translate(11px, -10px);
 }
 100% {
 transform: translate(0);
