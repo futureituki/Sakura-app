@@ -6,9 +6,9 @@ import { Section02 } from '../Site/Components/Section02'
 import { Section03 } from '../Site/Components/Section03'
 import { Section04 } from '../Site/Components/Section04'
 import { Section05 } from '../Site/Components/Section05'
+import { Section06 } from '../Site/Components/Section06'
 import { SwiperContainer } from '../swiper/SwiperAnimation'
 import styles from '@/styles/Site.module.css'
-import { Section06 } from '../Site/Components/Section06'
 
 export const HomePage = () => {
   return (

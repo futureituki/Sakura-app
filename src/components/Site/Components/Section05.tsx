@@ -5,9 +5,9 @@ import styles from '@/styles/Site.module.css'
 export const Section05 = () => {
   return (
     <section className={styles.sec_photo}>
-        <Heading level={2} visualLevel={1}>
-          Photo
-        </Heading>
+      <Heading level={2} visualLevel={1}>
+        Photo
+      </Heading>
       {photoSrc.map((photo, index) => (
         <SectionImg key={index} src={photo.src} alt_name={photo.name} width={400} height={250} />
       ))}
