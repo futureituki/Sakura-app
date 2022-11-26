@@ -85,7 +85,7 @@ export const Section01 = () => {
       scrollTrigger: {
         trigger: '#sec_mv',
         start: 'top+=40%',
-        end: 'bottom+=8000 top',
+        end: 'bottom+=20000 top',
         scrub: true,
         onEnter: () =>
           gsap.to('.fadeout', {
@@ -129,9 +129,11 @@ export const Section01 = () => {
           loop
           autoPlay
           muted
-          src='/main.mp4'
+          playsInline
           style={{ opacity: 1 }}
-        ></video>
+        >
+          <source src='/main.mp4' type='video/mp4' />
+        </video>
       </div>
       <div className={styles.mv_in}>
         <div className={`fadeout ${styles.mv_case}`}>
