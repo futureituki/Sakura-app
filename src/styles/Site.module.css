@@ -393,3 +393,16 @@ transform: translate(0);
   padding:100px 0;
   position:relative;
 }
+.swiper_video {
+  position:absolute;
+  minWidth:90%;
+  minHeight:90%;
+  top:50%;
+  left:50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.video_wrapper {
+  position:relative;
+  height:100vh;
+  overflow:hidden
+}
