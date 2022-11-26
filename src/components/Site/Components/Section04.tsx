@@ -12,6 +12,7 @@ export const Section04 = () => {
               <video loop autoPlay muted playsInline className={styles.swiper_video}>
                 <source src={video.src} />
               </video>
+            <p className="swiper-slide">{video.name}</p>
             </div>
           </SwiperSlide>
         ))}

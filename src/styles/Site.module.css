@@ -392,6 +392,9 @@ transform: translate(0);
 .sec_photo {
   padding:100px 0;
   position:relative;
+  width:90%;
+  margin:40px auto;
+  overflow:hidden;
 }
 .swiper_video {
   position:absolute;
@@ -405,4 +408,33 @@ transform: translate(0);
   position:relative;
   height:100vh;
   overflow:hidden
+}
+.sec_sn {
+  width:90%;
+  margin:0 auto;
+  position:relative;
+}
+.sns {
+  width:90%;
+  margin:0 auto;
+}
+.sns_tx {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin:15px 0;
+  color:#fff;
+  font-size:1.6rem;
+  position:relative;
+  overflow:hidden;
+}
+.sns_tx::after {
+  content:"";
+  border:1px solid #fff;
+  position:absolute;
+  top:50%;
+  left:35%;
+  width:100%;
+  z-index:1;
+  height:2px;
 }
