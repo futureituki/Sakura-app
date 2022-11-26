@@ -132,7 +132,7 @@ export const Section01 = () => {
           playsInline
           style={{ opacity: 1 }}
         >
-          <source src='/main.mp4' type='video/mp4'/>
+          <source src='/main.mp4' type='video/mp4' />
         </video>
       </div>
       <div className={styles.mv_in}>
