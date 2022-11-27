@@ -2,6 +2,7 @@ import { SwiperSlide } from 'swiper/react'
 import { SwiperContainer } from '@/components/swiper/SwiperAnimation'
 import { sliderSrc } from '@/constant/sliderSrc'
 import styles from '@/styles/Site.module.css'
+import { useRef, useState, VideoHTMLAttributes } from 'react'
 export const Section04 = () => {
   return (
     <section className={styles.sec_in_move}>

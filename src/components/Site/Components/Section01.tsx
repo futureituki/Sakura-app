@@ -3,11 +3,17 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useEffect, useRef } from 'react'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
+import { PrimaryButton } from '@/components/atoms/Button'
+import { useRouter } from 'next/router'
 
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
   const textRef = useRef<HTMLHeadingElement>(null)
+  const router = useRouter()
   const tl = gsap.timeline()
+  const loginPush = () => {
+    router.push('/login')
+  }
   let jsText: HTMLHeadingElement
   useEffect(() => {
     gsap.set('#glitch', { scale: 0 })
@@ -46,7 +52,10 @@ export const Section01 = () => {
           },
         },
         4,
-      )
+      ).to('#button_area',{
+        opacity:1,
+        y:-5,
+      })
       .to('#glitch', {
         opacity: 1,
         delay: 0.1,
@@ -132,7 +141,7 @@ export const Section01 = () => {
           playsInline
           style={{ opacity: 1 }}
         >
-          <source src='/main.mp4' type='video/mp4' />
+          <source src='/masatu.mp4' type='video/mp4' />
         </video>
       </div>
       <div className={styles.mv_in}>
@@ -143,6 +152,10 @@ export const Section01 = () => {
           <h2 className={styles.tx} style={{ opacity: 0 }} id='opening-sub'>
             櫻坂46を応援する非公式アプリ
           </h2>
+          <div className={styles.button_area} id='button_area'>
+            <PrimaryButton onClick={() => router.push('/login')} label='loginbutton' color='#fff' background='#000' variant='contained'>ログイン</PrimaryButton>
+            <PrimaryButton onClick={() => router.push('/sign')} label='signbutton' color='#fff' background='#000' variant='contained'>会員登録</PrimaryButton>
+          </div>
         </div>
       </div>
       <div className={styles.button_container}>{/* <PrimaryButton></PrimaryButton> */}</div>
