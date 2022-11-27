@@ -1,10 +1,10 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
+import { PrimaryButton } from '@/components/atoms/Button'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
-import { PrimaryButton } from '@/components/atoms/Button'
-import { useRouter } from 'next/router'
 
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
@@ -52,9 +52,10 @@ export const Section01 = () => {
           },
         },
         4,
-      ).to('#button_area',{
-        opacity:1,
-        y:-5,
+      )
+      .to('#button_area', {
+        opacity: 1,
+        y: -5,
       })
       .to('#glitch', {
         opacity: 1,
@@ -153,8 +154,24 @@ export const Section01 = () => {
             櫻坂46を応援する非公式アプリ
           </h2>
           <div className={styles.button_area} id='button_area'>
-            <PrimaryButton onClick={() => router.push('/login')} label='loginbutton' color='#fff' background='#000' variant='contained'>ログイン</PrimaryButton>
-            <PrimaryButton onClick={() => router.push('/sign')} label='signbutton' color='#fff' background='#000' variant='contained'>会員登録</PrimaryButton>
+            <PrimaryButton
+              onClick={() => router.push('/login')}
+              label='loginbutton'
+              color='#fff'
+              background='#000'
+              variant='contained'
+            >
+              ログイン
+            </PrimaryButton>
+            <PrimaryButton
+              onClick={() => router.push('/sign')}
+              label='signbutton'
+              color='#fff'
+              background='#000'
+              variant='contained'
+            >
+              会員登録
+            </PrimaryButton>
           </div>
         </div>
       </div>
