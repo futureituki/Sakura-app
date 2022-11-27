@@ -1,3 +1,4 @@
+import { useRef, useState, VideoHTMLAttributes } from 'react'
 import { SwiperSlide } from 'swiper/react'
 import { SwiperContainer } from '@/components/swiper/SwiperAnimation'
 import { sliderSrc } from '@/constant/sliderSrc'

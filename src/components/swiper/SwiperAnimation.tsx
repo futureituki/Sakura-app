@@ -18,7 +18,6 @@ export const SwiperContainer: FC<Children> = ({ children }) => {
   const prevRef = useRef<HTMLDivElement>(null)
   const nextRef = useRef<HTMLDivElement>(null)
   let speed = 3000
-  console.log(Swiper)
   return (
     <div className={styles.swiper_in}>
       <Swiper

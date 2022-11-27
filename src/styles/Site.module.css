@@ -428,3 +428,12 @@ transform: translate(0);
   position:relative;
   overflow:hidden;
 }
+.button_area {
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  opacity:0;
+}
+.button_area button {
+  border:1px solid #fff;
+}
