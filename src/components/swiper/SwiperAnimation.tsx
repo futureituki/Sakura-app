@@ -29,7 +29,7 @@ export const SwiperContainer: FC<Children> = ({ children }) => {
           nextEl: '#button_next',
         }}
         slidesPerView={1}
-        speed={500}
+        speed={1000}
         autoplay={{
           disableOnInteraction: false,
         }}

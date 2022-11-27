@@ -428,13 +428,3 @@ transform: translate(0);
   position:relative;
   overflow:hidden;
 }
-.sns_tx::after {
-  content:"";
-  border:1px solid #fff;
-  position:absolute;
-  top:50%;
-  left:35%;
-  width:100%;
-  z-index:1;
-  height:2px;
-}
