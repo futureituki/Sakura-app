@@ -20,7 +20,9 @@ const LoginPage: NextPage = () => {
       password: data.password,
     }
     dispatch(userLogin(userInfo))
-    router.push('/mypage')
+    setTimeout(() => { 
+      router.push('/mypage')
+    }, 5000);
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     console.log(errors)

@@ -48,7 +48,7 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(userLogin.fulfilled, (state: User, action: PayloadAction<User>) => {
+    builder.addCase(userLogin.fulfilled, (state, action) => {
       state.uid = action.payload.uid
       state.username = action.payload.username
       state.email = action.payload.email
