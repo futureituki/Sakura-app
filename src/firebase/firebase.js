@@ -1,6 +1,5 @@
 import { getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import firebase from 'firebase/compat/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { firebaseConfig } from '@/firebase/config'

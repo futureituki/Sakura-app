@@ -1,9 +1,7 @@
 import { ThemeProvider } from '@mui/material/styles'
 import { NextPageWithLayout } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import SignUp from '@/components/templates/SignUp'
-import { homeFontTheme } from '@/config/fontFamilry'
 import { Layout } from '@/layout/Layout'
 const Sign: NextPageWithLayout = () => {
   return (
