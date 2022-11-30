@@ -3,10 +3,9 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
 import { userSignUp } from '@/redux/userSlice'
 import { User } from '@/types/user'
-import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
-import { AppDispatch } from '@/redux/store'
 
 interface LoginForm {
   username: string

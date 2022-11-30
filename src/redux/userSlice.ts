@@ -6,16 +6,13 @@ import { login, signUp } from '@/firebase/firestore'
 import { User } from '@/types/user'
 
 type TypeLogin = {
-  email:string,
-  password:string
+  email: string
+  password: string
 }
-export const userLogin = createAsyncThunk(
-  'login',
-  async (userInfo:TypeLogin): Promise<any> => {
-    const user = await login(userInfo.email, userInfo.password)
-    return user
-  },
-)
+export const userLogin = createAsyncThunk('login', async (userInfo: TypeLogin): Promise<any> => {
+  const user = await login(userInfo.email, userInfo.password)
+  return user
+})
 export const userSignUp = createAsyncThunk(
   'signUp',
   async (userInfo: { username: string; email: string; password: string }): Promise<any> => {
@@ -50,9 +47,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
   reducers: {},
-  extraReducers: {
-    [userLogin.fulfilled]: (state: User, action: PayloadAction<User>) => {
-      console.log(state)
+  extraReducers: (builder) => {
+    builder.addCase(userLogin.fulfilled, (state: User, action: PayloadAction<User>) => {
       state.uid = action.payload.uid
       state.username = action.payload.username
       state.email = action.payload.email
@@ -60,8 +56,8 @@ export const userSlice = createSlice({
       state.created_at = action.payload.created_at.seconds
       state.updated_at = action.payload.updated_at.seconds
       state.favorite = action.payload.favorite
-    },
-    [userSignUp.fulfilled]: (state: User, action: PayloadAction<User>) => {
+    })
+    builder.addCase(userSignUp.fulfilled, (state: User, action: PayloadAction<User>) => {
       state.uid = action.payload.uid
       state.username = action.payload.username
       state.email = action.payload.email
@@ -69,8 +65,7 @@ export const userSlice = createSlice({
       state.created_at = action.payload.created_at
       state.updated_at = action.payload.updated_at
       state.favorite = action.payload.favorite
-    },
+    })
   },
 })
-
 export default userSlice.reducer

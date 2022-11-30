@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { userLogin } from '@/redux/userSlice'
 import { AppDispatch } from '@/redux/store'
+import { userLogin } from '@/redux/userSlice'
 
 interface LoginForm {
   email: string
