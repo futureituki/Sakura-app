@@ -5,9 +5,13 @@ import { auth } from '@/firebase/firebase'
 import { login, signUp } from '@/firebase/firestore'
 import { User } from '@/types/user'
 
+type TypeLogin = {
+  email:string,
+  password:string
+}
 export const userLogin = createAsyncThunk(
   'login',
-  async (userInfo: { email: string; password: string }): Promise<any> => {
+  async (userInfo:TypeLogin): Promise<any> => {
     const user = await login(userInfo.email, userInfo.password)
     return user
   },

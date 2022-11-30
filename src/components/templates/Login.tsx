@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { userLogin } from '@/redux/userSlice'
+import { AppDispatch } from '@/redux/store'
 
 interface LoginForm {
   email: string
@@ -11,7 +12,7 @@ interface LoginForm {
 }
 
 const LoginPage: NextPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const router = useRouter()
   const isValid: SubmitHandler<LoginForm> = (data: LoginForm) => {
     const userInfo = {

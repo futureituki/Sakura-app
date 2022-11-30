@@ -5,6 +5,8 @@ import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { userSignUp } from '@/redux/userSlice'
 import { User } from '@/types/user'
+import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
+import { AppDispatch } from '@/redux/store'
 
 interface LoginForm {
   username: string
@@ -13,7 +15,7 @@ interface LoginForm {
 }
 
 const SignUp: NextPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const user = useSelector((state: User) => state)
   const router = useRouter()
   console.log(user)
