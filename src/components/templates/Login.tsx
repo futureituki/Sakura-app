@@ -1,10 +1,13 @@
+import { CircularProgress } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 import { userLogin } from '@/redux/userSlice'
+import styles from '@/styles/Form.module.css'
 
 interface LoginForm {
   email: string
@@ -12,15 +15,29 @@ interface LoginForm {
 }
 
 const LoginPage: NextPage = () => {
+  const ref = useRef<HTMLDivElement>(null)
   const dispatch = useDispatch<AppDispatch>()
+  const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
-  const isValid: SubmitHandler<LoginForm> = (data: LoginForm) => {
+  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
+    setLoading(true)
     const userInfo = {
       email: data.email,
       password: data.password,
     }
-    dispatch(userLogin(userInfo))
-    router.push('/mypage')
+    const user = await dispatch(userLogin(userInfo))
+    console.log(user.payload)
+    if (user.payload === false) {
+      console.log('false')
+      if (ref.current) {
+        ref.current.innerHTML = 'メールアドレスかパスワードが違います。'
+        setLoading(false)
+      }
+      return
+    }
+    setTimeout(() => {
+      router.push('/favorite')
+    }, 4000)
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     console.log(errors)
@@ -33,12 +50,12 @@ const LoginPage: NextPage = () => {
     formState: { errors },
   } = useForm<LoginForm>()
   return (
-    <div className='mx-auto w-full max-w-lg'>
-      <div className='flex w-full flex-col items-center justify-center p-10'>
+    <div className={styles.form}>
+      <div className={styles.form_container}>
         <Image
           src='/cat.jpg'
-          width={130}
-          height={130}
+          width={60}
+          height={60}
           layout='fixed'
           className='rounded-full shadow-lg'
           alt='profile'
@@ -48,8 +65,8 @@ const LoginPage: NextPage = () => {
           className='flex w-full  flex-col items-center space-y-5 '
         >
           <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='email'>
-              Email
+            <label className={styles.label} htmlFor='email'>
+              メールアドレス
             </label>
             <input
               {...register('email', { required: 'emailを入力してください' })}
@@ -58,9 +75,9 @@ const LoginPage: NextPage = () => {
               name='email'
             />
             {errors.email && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -71,15 +88,13 @@ const LoginPage: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='mt-1 ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.email.message}
-                </div>
+                <div className={styles.error}>{errors.email.message}</div>
               </div>
             )}
           </div>
           <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='password'>
-              Password
+            <label className={styles.label} htmlFor='password'>
+              パスワード
             </label>
             <input
               {...register('password', {
@@ -91,9 +106,9 @@ const LoginPage: NextPage = () => {
               name='password'
             />
             {errors.password && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -104,19 +119,15 @@ const LoginPage: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.password.message}
-                </div>
+                <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
           </div>
-          <button
-            className='w-full rounded-lg bg-teal-500 px-3 py-2 text-lg font-semibold text-white focus:outline-none'
-            type='submit'
-          >
-            LOGIN
+          <button className={styles.button} type='submit'>
+            {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : 'Login'}
           </button>
         </form>
+        <div className={styles.after_error} ref={ref}></div>
       </div>
     </div>
   )

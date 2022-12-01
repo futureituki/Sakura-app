@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Timestamp } from 'firebase/firestore'
-import { auth } from '@/firebase/firebase'
-import { login, signUp } from '@/firebase/firestore'
+import { login, saveBookmark, signUp } from '@/firebase/firestore'
 import { User } from '@/types/user'
 
 type TypeLogin = {
@@ -33,6 +32,17 @@ export const userSignUp = createAsyncThunk(
     return memberInfo
   },
 )
+type bookmark = {
+  id: string
+  favorite: string | Array<string>
+}
+export const userSaveBookmark = createAsyncThunk(
+  'bookmark',
+  async (userInfo: bookmark): Promise<any> => {
+    const bookmark = await saveBookmark(userInfo.id, userInfo.favorite)
+    return bookmark
+  },
+)
 const initialState: User = {
   uid: '',
   username: '',
@@ -49,13 +59,15 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(userLogin.fulfilled, (state: User, action: PayloadAction<User>) => {
-      state.uid = action.payload.uid
-      state.username = action.payload.username
-      state.email = action.payload.email
-      state.password = action.payload.password
-      state.created_at = action.payload.created_at.seconds
-      state.updated_at = action.payload.updated_at.seconds
-      state.favorite = action.payload.favorite
+      if (action.payload) {
+        state.uid = action.payload.uid
+        state.username = action.payload.username
+        state.email = action.payload.email
+        state.password = action.payload.password
+        state.created_at = action.payload.created_at.seconds
+        state.updated_at = action.payload.updated_at.seconds
+        state.favorite = action.payload.favorite
+      }
     })
     builder.addCase(userSignUp.fulfilled, (state: User, action: PayloadAction<User>) => {
       state.uid = action.payload.uid
@@ -64,6 +76,9 @@ export const userSlice = createSlice({
       state.password = action.payload.password
       state.created_at = action.payload.created_at
       state.updated_at = action.payload.updated_at
+      state.favorite = action.payload.favorite
+    })
+    builder.addCase(userSaveBookmark.fulfilled, (state: User, action: PayloadAction<User>) => {
       state.favorite = action.payload.favorite
     })
   },

@@ -1,0 +1,36 @@
+.favorite_container {
+  margin:40px 0;
+}
+.favorite_members {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.heading_member {
+  font-size:1.8rem;
+  text-align:center;
+}
+.member_name {
+  text-align:center;
+  font-size:.7rem;
+}
+.member {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.member_img {
+  object-fit:cover;
+  border-radius:50%;
+  text-align:center;
+}
+.favorite_modal {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  justify-content:center;
+  align-items:center;
+  margin:20px 0;
+}
