@@ -3,18 +3,12 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
-import {
-  setDoc,
-  getDoc,
-  doc,
-  Timestamp,
-  updateDoc,
-} from 'firebase/firestore'
+import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { auth, db } from '@/firebase/firebase'
 import { User } from '@/types/user'
-export const getUser = (uid: string) => {
-  // 特定のユーザー取得処理
-}
+// export const getUser = (uid: string) => {
+//   // 特定のユーザー取得処理
+// }
 export const signUp = async (username: string, email: string, password: string): Promise<any> => {
   return await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
     if (userCredential) {
