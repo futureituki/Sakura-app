@@ -26,7 +26,7 @@ const SignUp: NextPage = () => {
     }
     const user = dispatch(userSignUp(userInfo))
     // if(user == undefined || user || null) retur
-    router.push('/mypage')
+    router.push('/favorite')
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     console.log(errors)
