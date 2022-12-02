@@ -56,5 +56,6 @@ export const saveBookmark = async (id: string, bookmark: string | Array<string>)
   await updateDoc(userRef, {
     favorite: favorites,
   })
+  console.log(favorites)
   return favorites
 }
