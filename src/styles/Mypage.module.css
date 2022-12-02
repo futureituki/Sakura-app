@@ -1,0 +1,28 @@
+.swiper_container {
+  margin:40px 0;
+  background:#f2f2f2;
+}
+.member_img {
+  object-fit:cover;
+  border-radius:50%;
+  text-align:center;
+  margin:20px 0;
+  border:3px solid #fff;
+}
+.member_box {
+  border:1px solid #fff;
+  padding:10px;
+  text-align:center;
+  margin:40px 0;
+}
+.member_information {
+  padding:10px;
+  align-items:center;
+  display:flex;
+  gap:10px;
+  background:#FFC0CB;
+}
+.user_area {
+  width:85%;
+  margin:40px auto;
+}

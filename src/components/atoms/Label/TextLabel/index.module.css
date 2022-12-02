@@ -1,0 +1,10 @@
+.label_box {
+  padding:5px;
+  text-align:center;
+}
+.label_text {
+  display:inherit;
+  text-align:center;
+  color:#fff;
+  font-size:.7rem;
+}

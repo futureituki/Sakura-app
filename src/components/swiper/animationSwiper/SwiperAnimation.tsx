@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import styles from '@/components/swiper/index.module.css'
+import styles from '@/components/swiper/animationSwiper/index.module.css'
 
 type Children = {
   children: React.ReactNode
