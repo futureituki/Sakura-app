@@ -1,12 +1,15 @@
+import { CircularProgress } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
+import { Heading } from '../atoms/Heading'
 import { AppDispatch } from '@/redux/store'
 import { userSignUp } from '@/redux/userSlice'
+import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
-
 interface LoginForm {
   username: string
   email: string
@@ -14,7 +17,9 @@ interface LoginForm {
 }
 
 const SignUp: NextPage = () => {
+  const ref = useRef<HTMLDivElement>(null)
   const dispatch = useDispatch<AppDispatch>()
+  const [loading, setLoading] = useState<boolean>(false)
   const user = useSelector((state: User) => state)
   const router = useRouter()
   console.log(user)
@@ -39,12 +44,12 @@ const SignUp: NextPage = () => {
     formState: { errors },
   } = useForm<LoginForm>()
   return (
-    <div className='mx-auto w-full max-w-lg'>
-      <div className='flex w-full flex-col items-center justify-center p-10'>
+    <div className={styles.form}>
+      <div className={styles.form_container}>
         <Image
           src='/cat.jpg'
-          width={130}
-          height={130}
+          width={60}
+          height={60}
           layout='fixed'
           className='rounded-full shadow-lg'
           alt='profile'
@@ -54,19 +59,19 @@ const SignUp: NextPage = () => {
           className='flex w-full  flex-col items-center space-y-5 '
         >
           <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='username'>
-              {user.email}
+            <label className={styles.label} htmlFor='username'>
+              ユーザー名
             </label>
             <input
-              {...register('username', { required: 'ユーザーネームを入力してください' })}
+              {...register('username', { required: 'ユーザー名' })}
               className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
               type='username'
               name='username'
             />
             {errors.username && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -77,15 +82,13 @@ const SignUp: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='mt-1 ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.username.message}
-                </div>
+                <div className={styles.error}>{errors.username.message}</div>
               </div>
             )}
           </div>
           <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='email'>
-              Email
+            <label className={styles.label} htmlFor='email'>
+              メールアドレス
             </label>
             <input
               {...register('email', { required: 'emailを入力してください' })}
@@ -94,9 +97,9 @@ const SignUp: NextPage = () => {
               name='email'
             />
             {errors.email && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -107,15 +110,13 @@ const SignUp: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='mt-1 ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.email.message}
-                </div>
+                <div className={styles.error}>{errors.email.message}</div>
               </div>
             )}
           </div>
           <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='password'>
-              Password
+            <label className={styles.label} htmlFor='password'>
+              パスワード
             </label>
             <input
               {...register('password', {
@@ -127,9 +128,9 @@ const SignUp: NextPage = () => {
               name='password'
             />
             {errors.password && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -140,19 +141,15 @@ const SignUp: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.password.message}
-                </div>
+                <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
           </div>
-          <button
-            className='w-full rounded-lg bg-teal-500 px-3 py-2 text-lg font-semibold text-white focus:outline-none'
-            type='submit'
-          >
-            登録
+          <button className={styles.button} type='submit'>
+            {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : '登録'}
           </button>
         </form>
+        <div className={styles.after_error} ref={ref}></div>
       </div>
     </div>
   )

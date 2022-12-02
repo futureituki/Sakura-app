@@ -40,6 +40,7 @@ export const userSaveBookmark = createAsyncThunk(
   'bookmark',
   async (userInfo: bookmark): Promise<any> => {
     const bookmark = await saveBookmark(userInfo.id, userInfo.favorite)
+    console.log(bookmark)
     return bookmark
   },
 )
@@ -78,8 +79,8 @@ export const userSlice = createSlice({
       state.updated_at = action.payload.updated_at
       state.favorite = action.payload.favorite
     })
-    builder.addCase(userSaveBookmark.fulfilled, (state: User, action: PayloadAction<User>) => {
-      state.favorite = action.payload.favorite
+    builder.addCase(userSaveBookmark.fulfilled, (state, action: PayloadAction<[]>) => {
+      state.favorite = action.payload
     })
   },
 })

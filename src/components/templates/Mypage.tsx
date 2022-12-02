@@ -12,5 +12,16 @@ export const MyPage = () => {
       router.push('/login')
     }
   }, [])
-  return <h1 style={{ color: '#000' }}>{user.username}</h1>
+  return (
+    <div>
+      <h1 style={{ color: '#000' }}>{user.username}</h1>
+      <ul>
+        {user.favorite.map((bookmark, index) => (
+          <li key={index}>
+            <span>{bookmark}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }

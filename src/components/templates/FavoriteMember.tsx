@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
 import { Heading } from '../atoms/Heading'
@@ -44,6 +44,7 @@ export const FavoritePage = () => {
       favorite: selectedImg.name,
     }
     dispatch(userSaveBookmark(userInfo))
+    router.push('/mypage')
   }
   return (
     <div>
