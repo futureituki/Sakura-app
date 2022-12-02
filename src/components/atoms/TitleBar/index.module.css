@@ -1,0 +1,12 @@
+.bar {
+  width:100%;
+  background:#ff69b8;
+  color:#fff;
+  padding:0 20px;
+  height:40px;
+}
+.bar_text {
+  display:inherit;
+  font-size:1.4rem;
+  text-align:center;
+}
