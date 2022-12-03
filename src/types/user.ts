@@ -7,5 +7,6 @@ export type User = {
   password: string
   created_at: any | null
   updated_at: any | null
-  favorite: []
+  favorite: Array<Map<string, string>>
+  first_favorite: { key: string }[] | null
 }
