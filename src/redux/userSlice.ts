@@ -44,12 +44,9 @@ export const userSaveBookmark = createAsyncThunk(
     return bookmark
   },
 )
-export const userLogout = createAsyncThunk(
-  'logout',
-  async () => {
-    await logout()
-  },
-)
+export const userLogout = createAsyncThunk('logout', async () => {
+  await logout()
+})
 const initialState: User = {
   uid: '',
   username: '',
@@ -95,19 +92,16 @@ export const userSlice = createSlice({
         state.first_favorite = action.payload as any
       },
     )
-    builder.addCase(
-      userLogout.fulfilled,
-      (state) => {
-        state.uid = ''
-        state.username = ''
-        state.email = ''
-        state.password = ''
-        state.created_at = null
-        state.updated_at = null
-        state.favorite = []
-        state.first_favorite = []
-      },
-    )
+    builder.addCase(userLogout.fulfilled, (state) => {
+      state.uid = ''
+      state.username = ''
+      state.email = ''
+      state.password = ''
+      state.created_at = null
+      state.updated_at = null
+      state.favorite = []
+      state.first_favorite = []
+    })
   },
 })
 export default userSlice.reducer

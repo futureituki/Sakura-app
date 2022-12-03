@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from 'firebase/auth'
 import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { auth, db } from '@/firebase/firebase'
@@ -60,11 +60,13 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
   return bookmark
 }
 
-export const logout = async() => {
-  return await signOut(auth).then(() => {
-    alert('ログアウトが成功しました')
-  }).catch(err => {
-    alert('ログアウトに失敗しました')
-    console.log(err)
-  })
+export const logout = async () => {
+  return await signOut(auth)
+    .then(() => {
+      alert('ログアウトが成功しました')
+    })
+    .catch((err) => {
+      alert('ログアウトに失敗しました')
+      console.log(err)
+    })
 }
