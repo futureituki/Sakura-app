@@ -24,6 +24,7 @@ export const signUp = async (username: string, email: string, password: string):
             created_at: timestamp,
             updated_at: timestamp,
             favorite: [],
+            first_favorite: null,
           }
           const colRef = doc(db, 'users', uid)
           setDoc(colRef, data)
@@ -48,14 +49,12 @@ export const login = async (email: string, password: string) => {
       return false
     })
 }
-export const saveBookmark = async (id: string, bookmark: string | Array<string>) => {
+export const saveBookmark = async (id: string, bookmark: { [s: string]: string }) => {
   const userRef = doc(db, 'users', id)
-  const querySnapshot = await getDoc(userRef)
-  const favorites = [...querySnapshot.data()?.favorite]
-  favorites.push(bookmark)
+  // const favorites = [...querySnapshot.data()?.favorite]
+  // favorites.push(bookmark)
   await updateDoc(userRef, {
-    favorite: favorites,
+    first_favorite: bookmark,
   })
-  console.log(favorites)
-  return favorites
+  return bookmark
 }

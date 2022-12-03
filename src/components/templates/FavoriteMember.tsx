@@ -41,7 +41,7 @@ export const FavoritePage = () => {
   const handleClick = () => {
     const userInfo = {
       id: user.uid,
-      favorite: selectedImg.name,
+      first_favorite: { name: selectedImg.name, src: selectedImg.src },
     }
     dispatch(userSaveBookmark(userInfo))
     router.push('/mypage')

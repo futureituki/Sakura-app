@@ -28,19 +28,19 @@ export const userSignUp = createAsyncThunk(
       created_at: timestamp,
       updated_at: timestamp,
       favorite: [],
+      first_favorite: null,
     }
     return memberInfo
   },
 )
 type bookmark = {
   id: string
-  favorite: string | Array<string>
+  first_favorite: { [s: string]: string }
 }
 export const userSaveBookmark = createAsyncThunk(
   'bookmark',
   async (userInfo: bookmark): Promise<any> => {
-    const bookmark = await saveBookmark(userInfo.id, userInfo.favorite)
-    console.log(bookmark)
+    const bookmark = await saveBookmark(userInfo.id, userInfo.first_favorite)
     return bookmark
   },
 )
@@ -52,6 +52,7 @@ const initialState: User = {
   created_at: null,
   updated_at: null,
   favorite: [],
+  first_favorite: null,
 }
 
 export const userSlice = createSlice({
@@ -68,6 +69,7 @@ export const userSlice = createSlice({
         state.created_at = action.payload.created_at.seconds
         state.updated_at = action.payload.updated_at.seconds
         state.favorite = action.payload.favorite
+        state.first_favorite = action.payload.first_favorite
       }
     })
     builder.addCase(userSignUp.fulfilled, (state: User, action: PayloadAction<User>) => {
@@ -78,10 +80,15 @@ export const userSlice = createSlice({
       state.created_at = action.payload.created_at
       state.updated_at = action.payload.updated_at
       state.favorite = action.payload.favorite
+      state.first_favorite = action.payload.first_favorite
     })
-    builder.addCase(userSaveBookmark.fulfilled, (state, action: PayloadAction<[]>) => {
-      state.favorite = action.payload
-    })
+    builder.addCase(
+      userSaveBookmark.fulfilled,
+      (state, action: PayloadAction<{ [s: string]: string }>) => {
+        console.log(action.payload)
+        state.first_favorite = action.payload as any
+      },
+    )
   },
 })
 export default userSlice.reducer
