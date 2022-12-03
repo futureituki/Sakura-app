@@ -9,8 +9,14 @@ import { TitleBar } from '../atoms/TitleBar'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import styles from '@/styles/Mypage.module.css'
 import { User } from '@/types/user'
+import { InductionButtons } from '../molecules/InductionButtons'
+import { logout } from '@/firebase/firestore'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
+
 export const MyPage = () => {
   const router = useRouter()
+  const dispatch = useDispatch<AppDispatch>()
   const user = useSelector((state: any) => state.user.user as User)
   let src
   let name
@@ -19,12 +25,16 @@ export const MyPage = () => {
     src = user.first_favorite['src' as any]
     // src = user.first_favorite?.get('name')
   }
-  console.log(name)
+  console.log(user)
   useEffect(() => {
     if (user.uid === '') {
       router.push('/login')
     }
   }, [])
+  const logoutCheck = async() => {
+    dispatch(logout)
+    router.push('/logout')
+  }
   return (
     <div>
       <TitleBar>MyPage</TitleBar>
@@ -86,6 +96,7 @@ export const MyPage = () => {
           </SwiperSlide>
         </SwiperInfinitLoop>
       </div>
+      <InductionButtons logoutHandle={logoutCheck} handle={() => console.log('push')}/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Timestamp } from 'firebase/firestore'
-import { login, saveBookmark, signUp } from '@/firebase/firestore'
+import { login, logout, saveBookmark, signUp } from '@/firebase/firestore'
 import { User } from '@/types/user'
 
 type TypeLogin = {
@@ -42,6 +42,12 @@ export const userSaveBookmark = createAsyncThunk(
   async (userInfo: bookmark): Promise<any> => {
     const bookmark = await saveBookmark(userInfo.id, userInfo.first_favorite)
     return bookmark
+  },
+)
+export const userLogout = createAsyncThunk(
+  'logout',
+  async () => {
+    await logout()
   },
 )
 const initialState: User = {
@@ -87,6 +93,19 @@ export const userSlice = createSlice({
       (state, action: PayloadAction<{ [s: string]: string }>) => {
         console.log(action.payload)
         state.first_favorite = action.payload as any
+      },
+    )
+    builder.addCase(
+      userLogout.fulfilled,
+      (state) => {
+        state.uid = ''
+        state.username = ''
+        state.email = ''
+        state.password = ''
+        state.created_at = null
+        state.updated_at = null
+        state.favorite = []
+        state.first_favorite = []
       },
     )
   },
