@@ -1,5 +1,3 @@
 export const TopPage = () => {
-  return (
-    <div>aaa</div>
-  )
+  return <div>aaa</div>
 }

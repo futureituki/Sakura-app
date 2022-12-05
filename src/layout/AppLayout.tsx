@@ -6,7 +6,7 @@ type LayoutProps = Required<{
   readonly children: ReactElement
 }>
 export const AppLayout = ({ children }: LayoutProps) => (
-  <div style={{overflow:"hidden"}}>
+  <div style={{ overflow: 'hidden' }}>
     <AppHeader />
     {children}
     <AppFooter />

@@ -21,7 +21,7 @@ export const AppHeader = () => {
   }
   return (
     <header className={styles.app_header}>
-      <Hamburger color="#000" open={open} label='メニューボタン' onClick={toggleHandler} />
+      <Hamburger color='#000' open={open} label='メニューボタン' onClick={toggleHandler} />
       <AppNavigation open={open} id='navigation' />
     </header>
   )

@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { HomePage } from '@/components/templates/HomePage'
 import { MyPage } from '@/components/templates/Mypage'
 import { homeFontTheme } from '@/config/fontFamilry'
-import { Layout } from '@/layout/Layout'
 import { AppLayout } from '@/layout/AppLayout'
+import { Layout } from '@/layout/Layout'
 const MyPages: NextPageWithLayout = () => {
   return (
     <>
