@@ -3,22 +3,21 @@ import { NextPageWithLayout } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { HomePage } from '@/components/templates/HomePage'
-import { MyPage } from '@/components/templates/Mypage'
+import { TopPage } from '@/components/templates/TopPage'
 import { homeFontTheme } from '@/config/fontFamilry'
-import { Layout } from '@/layout/Layout'
 import { AppLayout } from '@/layout/AppLayout'
-const MyPages: NextPageWithLayout = () => {
+const Top: NextPageWithLayout = () => {
   return (
     <>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
       <ThemeProvider theme={homeFontTheme}>
-        <MyPage />
+        <TopPage />
       </ThemeProvider>
     </>
   )
 }
-MyPages.getLayout = (page) => <AppLayout>{page}</AppLayout>
+Top.getLayout = (page) => <AppLayout>{page}</AppLayout>
 
-export default MyPages
+export default Top
