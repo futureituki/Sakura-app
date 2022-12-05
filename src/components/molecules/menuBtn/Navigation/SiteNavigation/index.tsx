@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { FC, useEffect } from 'react'
-import styles from '@/components/molecules/menuBtn/Navigation/index.module.css'
+import styles from '@/components/molecules/menuBtn/Navigation/SiteNavigation/index.module.css'
 type Props = {
   open: boolean
   id: string

@@ -1,10 +1,10 @@
 import gsap from 'gsap'
 import { useEffect, useState } from 'react'
 import { Hamburger } from '@/components/molecules/menuBtn/Hamburger'
-import { Navigation } from '@/components/molecules/menuBtn/Navigation/SiteNavigation'
+import { AppNavigation } from '@/components/molecules/menuBtn/Navigation/AppNavigation'
 import styles from '@/layout/Header/index.module.css'
 
-export const HomePageHeader = () => {
+export const AppHeader = () => {
   useEffect(() => {
     setUpGsap()
   }, [])
@@ -20,9 +20,9 @@ export const HomePageHeader = () => {
     setOpen(!open)
   }
   return (
-    <header className={styles.header}>
-      <Hamburger open={open} label='メニューボタン' onClick={toggleHandler} />
-      <Navigation open={open} id='navigation' />
+    <header className={styles.app_header}>
+      <Hamburger color='#000' open={open} label='メニューボタン' onClick={toggleHandler} />
+      <AppNavigation open={open} id='navigation' />
     </header>
   )
 }
