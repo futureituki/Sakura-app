@@ -1,11 +1,10 @@
-import { CircularProgress } from '@mui/material'
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
+import { Avatar, Box, CircularProgress } from '@mui/material'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
-import { Heading } from '../atoms/Heading'
 import { AppDispatch } from '@/redux/store'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
@@ -46,14 +45,15 @@ const SignUp: NextPage = () => {
   return (
     <div className={styles.form}>
       <div className={styles.form_container}>
-        <Image
-          src='/cat.jpg'
-          width={60}
-          height={60}
-          layout='fixed'
-          className='rounded-full shadow-lg'
-          alt='profile'
-        />
+        <Box
+          sx={{
+            marginTop: '10px',
+          }}
+        >
+          <Avatar sx={{ m: 4, bgcolor: '#000' }}>
+            <AssignmentIndIcon fontSize='large' />
+          </Avatar>
+        </Box>
         <form
           onSubmit={handleSubmit(isValid, isInValid)}
           className='flex w-full  flex-col items-center space-y-5 '
