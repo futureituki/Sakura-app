@@ -1,6 +1,8 @@
-import { CircularProgress } from '@mui/material'
+import LoginIcon from '@mui/icons-material/Login'
+import { Avatar, CircularProgress, TextField } from '@mui/material'
+import { Box } from '@mui/system'
 import type { NextPage } from 'next'
-import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
@@ -52,27 +54,41 @@ const LoginPage: NextPage = () => {
   return (
     <div className={styles.form}>
       <div className={styles.form_container}>
-        <Image
-          src='/cat.jpg'
-          width={60}
-          height={60}
-          layout='fixed'
-          className='rounded-full shadow-lg'
-          alt='profile'
-        />
+        <Box
+          sx={{
+            marginTop: '10px',
+          }}
+        >
+          <Avatar sx={{ m: 4, bgcolor: '#000' }}>
+            <LoginIcon fontSize='medium' />
+          </Avatar>
+        </Box>
         <form
           onSubmit={handleSubmit(isValid, isInValid)}
           className='flex w-full  flex-col items-center space-y-5 '
         >
-          <div className='flex w-full flex-col space-y-2'>
+          <Box
+            sx={{
+              marginTop: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '280px',
+            }}
+          >
             <label className={styles.label} htmlFor='email'>
               メールアドレス
             </label>
-            <input
-              {...register('email', { required: 'emailを入力してください' })}
-              className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
-              type='email'
+            <TextField
+              {...register('email', { required: 'メールアドレスを入力してください' })}
+              margin='normal'
+              required
+              fullWidth
+              id='email'
+              label='メールアドレス'
               name='email'
+              type='email'
+              autoComplete='email'
+              autoFocus
             />
             {errors.email && (
               <div className={styles.error_area} role='alert'>
@@ -91,19 +107,31 @@ const LoginPage: NextPage = () => {
                 <div className={styles.error}>{errors.email.message}</div>
               </div>
             )}
-          </div>
-          <div className='flex w-full flex-col space-y-2'>
+          </Box>
+          <Box
+            sx={{
+              marginTop: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <label className={styles.label} htmlFor='password'>
               パスワード
             </label>
-            <input
+            <TextField
               {...register('password', {
-                required: 'passwordを入力してください',
+                required: 'パスワードを入力してください',
                 minLength: { value: 8, message: '8文字以上入力してください' },
               })}
-              className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
-              type='password'
+              margin='normal'
+              required
+              fullWidth
+              id='password'
+              label='パスワード'
               name='password'
+              type='password'
+              autoComplete='password'
+              autoFocus
             />
             {errors.password && (
               <div className={styles.error_area} role='alert'>
@@ -122,9 +150,25 @@ const LoginPage: NextPage = () => {
                 <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
-          </div>
-          <button className={styles.button} type='submit'>
-            {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : 'Login'}
+          </Box>
+          <Box
+            sx={{
+              marginTop: '16px',
+              fontSize: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+            }}
+          >
+            <Link href='/reset'>パスワードをお忘れの方</Link>
+            <Link href='/sign'>会員登録はこちらから</Link>
+          </Box>
+          <button
+            className={styles.button}
+            style={loading ? { background: '#ccc' } : { background: '#ff69b8' }}
+            type='submit'
+          >
+            {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : 'Login'}
           </button>
         </form>
         <div className={styles.after_error} ref={ref}></div>

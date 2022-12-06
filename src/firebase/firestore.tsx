@@ -3,8 +3,11 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth'
 import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { auth, db } from '@/firebase/firebase'
 import { User } from '@/types/user'
 // export const getUser = (uid: string) => {
@@ -69,4 +72,27 @@ export const logout = async () => {
       alert('ログアウトに失敗しました')
       console.log(err)
     })
+}
+
+export const usePasswordReset = () => {
+  const router = useRouter()
+
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(null)
+
+  const passwordReset = (email: string) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setSuccess(true)
+        setTimeout(() => {
+          router.push('/login')
+        }, 2000)
+      })
+      .catch((err) => {
+        console.log(err.message)
+        setError(err.message)
+      })
+  }
+
+  return { success, error, passwordReset }
 }
