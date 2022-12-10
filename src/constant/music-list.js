@@ -1,5 +1,10 @@
 export const musicList = [
-  { src: '/assets/music/masatu-player.m4a', name: '摩擦係数', img: '/assets/disc/masatu.jpeg', number:"" },
+  {
+    src: '/assets/music/masatu-player.m4a',
+    name: '摩擦係数',
+    img: '/assets/disc/masatu.jpeg',
+    number: '',
+  },
   {
     src: '/assets/music/samidare-player.m4a',
     name: '五月雨よ',
@@ -12,7 +17,12 @@ export const musicList = [
     img: '/assets/disc/nagaredama.jpeg',
     number: '3rd',
   },
-  { src: '/assets/music/ban-player.m4a', name: 'BAN', img: '/assets/disc/ban.jpeg', number: '2nd' },
+  {
+    src: '/assets/music/ban-player.m4a',
+    name: 'BAN',
+    img: '/assets/disc/ban.jpeg',
+    number: '2nd',
+  },
   {
     src: '/assets/music/nobodys-player.m4a',
     name: 'Nobody`s fault',
