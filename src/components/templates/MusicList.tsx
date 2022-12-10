@@ -1,26 +1,13 @@
-import { Typography } from '@mui/material'
-import dynamic from 'next/dynamic'
+import { Box } from '@mui/material'
 import Image from 'next/image'
-import {
-  useState,
-  useEffect,
-  useRef,
-  CanvasHTMLAttributes,
-  ChangeEvent,
-  ChangeEventHandler,
-  forwardRef,
-  RefObject,
-  createRef,
-  MutableRefObject,
-  FC,
-} from 'react'
-import { musicList } from '@/constant/music-list'
+import { useState, useEffect, useRef, FC } from 'react'
 type Props = {
   src: string
   name: string
   img: string
+  number: string
 }
-export const MusicListPage: FC<Props> = ({ src, name, img }) => {
+export const Music: FC<Props> = ({ src, name, img, number }) => {
   const [playState, setPlayState] = useState('stop')
   const [duration, setDuration] = useState(0)
   const [timePosition, setTimePosition] = useState(0)
@@ -92,19 +79,35 @@ export const MusicListPage: FC<Props> = ({ src, name, img }) => {
 
   return (
     <>
-      <Image src={img} alt={name} width={300} height={250} />
-      <Typography>{name}</Typography>
-      <button type='button' onClick={handleTogglePlay}>
-        {playState === 'stop' && '開始'}
-        {playState === 'play' && '停止'}
-      </button>
-      <input
-        type='range'
-        min={0}
-        max={duration}
-        value={timePosition}
-        onInput={handleChangeTimePosition}
-      />
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '15px',
+          margin: '20px 0',
+        }}
+      >
+        <Image src={img} alt={name} width={150} height={100} />
+        <Box>
+          <p>{number}</p>
+          <p>{name}</p>
+          <button type='button' onClick={handleTogglePlay}>
+            {playState === 'stop' && (
+              <Image src={'/assets/start.png'} alt='start-button' width={30} height={30} />
+            )}
+            {playState === 'play' && (
+              <Image src={'/assets/stop.png'} alt='start-button' width={30} height={30} />
+            )}
+          </button>
+          <input
+            type='range'
+            min={0}
+            max={duration}
+            value={timePosition}
+            onInput={handleChangeTimePosition}
+          />
+        </Box>
+      </Box>
       <audio
         src={src}
         ref={audioRef}
