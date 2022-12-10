@@ -23,7 +23,6 @@ export const MyPage = () => {
     name = user.first_favorite['name' as any]
     src = user.first_favorite['src' as any]
   }
-  console.log(user)
   useEffect(() => {
     if (user.uid === '') {
       router.push('/login')
