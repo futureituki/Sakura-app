@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
+import YouTube from 'react-youtube'
 import { PrimaryButton } from '@/components/atoms/Button'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
@@ -120,6 +121,15 @@ export const Section01 = () => {
       },
     })
   }
+  const opts = {
+    playerVars: {
+      autoplay: 1, // 自動再生
+      mute: 1, // 音声をミュート
+      playsinline: 1, // インライン再生
+      loop: 1, // 動画を繰り返し再生
+      playlist: 'D8piCp9XMKA', // 再生する動画のリストをIDで指定(カンマ区切り)
+    },
+  }
   return (
     <section className={styles.sec_mv} id='sec_mv'>
       <div className={styles.top_loader_bg} id='top_curtain'>
@@ -132,19 +142,7 @@ export const Section01 = () => {
         <span className={`${styles.glitch_blue_bottom}`} id='glitch'></span>
         <span className={`${styles.glitch_green_bottom}`} id='glitch'></span>
       </div>
-      <div className={styles.mv_bg}>
-        <video
-          className='mainPath'
-          id='bg-video-start'
-          loop
-          autoPlay
-          muted
-          playsInline
-          style={{ opacity: 1 }}
-        >
-          <source src='/masatu.mp4' type='video/mp4' />
-        </video>
-      </div>
+      <YouTube videoId='D8piCp9XMKA' className={styles.iframe} opts={opts} />
       <div className={styles.mv_in}>
         <div className={`fadeout ${styles.mv_case}`}>
           <h1 ref={textRef} id='opening-title'>

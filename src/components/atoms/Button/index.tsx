@@ -9,7 +9,7 @@ type ButtonProps = {
   color: string
   background: string
   variant: 'text' | 'outlined' | 'contained' | undefined
-  onClick: () => void
+  onClick?: () => void
 }
 export type Button = ButtonProps
 
@@ -17,6 +17,7 @@ export const PrimaryButton = ({ onClick, children, label, color, background, var
   return (
     <Button
       onClick={onClick}
+      type='submit'
       variant={variant}
       style={{ color: color, background: background }}
       aria-label={label}

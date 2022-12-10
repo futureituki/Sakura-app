@@ -1,10 +1,15 @@
+import LoginIcon from '@mui/icons-material/Login'
+import { Avatar, CircularProgress, TextField } from '@mui/material'
+import { Box } from '@mui/system'
 import type { NextPage } from 'next'
-import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 import { userLogin } from '@/redux/userSlice'
+import styles from '@/styles/Form.module.css'
 
 interface LoginForm {
   email: string
@@ -12,17 +17,29 @@ interface LoginForm {
 }
 
 const LoginPage: NextPage = () => {
+  const ref = useRef<HTMLDivElement>(null)
   const dispatch = useDispatch<AppDispatch>()
+  const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
-  const isValid: SubmitHandler<LoginForm> = (data: LoginForm) => {
+  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
+    setLoading(true)
     const userInfo = {
       email: data.email,
       password: data.password,
     }
-    dispatch(userLogin(userInfo))
+    const user = await dispatch(userLogin(userInfo))
+    console.log(user.payload)
+    if (user.payload === false) {
+      console.log('false')
+      if (ref.current) {
+        ref.current.innerHTML = 'メールアドレスかパスワードが違います。'
+        setLoading(false)
+      }
+      return
+    }
     setTimeout(() => {
       router.push('/mypage')
-    }, 5000)
+    }, 3000)
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     console.log(errors)
@@ -35,34 +52,48 @@ const LoginPage: NextPage = () => {
     formState: { errors },
   } = useForm<LoginForm>()
   return (
-    <div className='mx-auto w-full max-w-lg'>
-      <div className='flex w-full flex-col items-center justify-center p-10'>
-        <Image
-          src='/cat.jpg'
-          width={130}
-          height={130}
-          layout='fixed'
-          className='rounded-full shadow-lg'
-          alt='profile'
-        />
+    <div className={styles.form}>
+      <div className={styles.form_container}>
+        <Box
+          sx={{
+            marginTop: '10px',
+          }}
+        >
+          <Avatar sx={{ m: 4, bgcolor: '#000' }}>
+            <LoginIcon fontSize='medium' />
+          </Avatar>
+        </Box>
         <form
           onSubmit={handleSubmit(isValid, isInValid)}
           className='flex w-full  flex-col items-center space-y-5 '
         >
-          <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='email'>
-              Email
+          <Box
+            sx={{
+              marginTop: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '280px',
+            }}
+          >
+            <label className={styles.label} htmlFor='email'>
+              メールアドレス
             </label>
-            <input
-              {...register('email', { required: 'emailを入力してください' })}
-              className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
-              type='email'
+            <TextField
+              {...register('email', { required: 'メールアドレスを入力してください' })}
+              margin='normal'
+              required
+              fullWidth
+              id='email'
+              label='メールアドレス'
               name='email'
+              type='email'
+              autoComplete='email'
+              autoFocus
             />
             {errors.email && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -73,29 +104,39 @@ const LoginPage: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='mt-1 ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.email.message}
-                </div>
+                <div className={styles.error}>{errors.email.message}</div>
               </div>
             )}
-          </div>
-          <div className='flex w-full flex-col space-y-2'>
-            <label className='text-sm text-gray-800' htmlFor='password'>
-              Password
+          </Box>
+          <Box
+            sx={{
+              marginTop: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <label className={styles.label} htmlFor='password'>
+              パスワード
             </label>
-            <input
+            <TextField
               {...register('password', {
-                required: 'passwordを入力してください',
+                required: 'パスワードを入力してください',
                 minLength: { value: 8, message: '8文字以上入力してください' },
               })}
-              className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
-              type='password'
+              margin='normal'
+              required
+              fullWidth
+              id='password'
+              label='パスワード'
               name='password'
+              type='password'
+              autoComplete='password'
+              autoFocus
             />
             {errors.password && (
-              <div className='flex rounded-lg bg-red-100 p-4 dark:bg-red-200' role='alert'>
+              <div className={styles.error_area} role='alert'>
                 <svg
-                  className='h-5 w-5 flex-shrink-0 text-red-700 dark:text-red-800'
+                  className={styles.svg}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -106,19 +147,31 @@ const LoginPage: NextPage = () => {
                     clipRule='evenodd'
                   ></path>
                 </svg>
-                <div className='ml-3 text-sm font-medium text-red-700 dark:text-red-800'>
-                  {errors.password.message}
-                </div>
+                <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
-          </div>
+          </Box>
+          <Box
+            sx={{
+              marginTop: '16px',
+              fontSize: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+            }}
+          >
+            <Link href='/reset'>パスワードをお忘れの方</Link>
+            <Link href='/sign'>会員登録はこちらから</Link>
+          </Box>
           <button
-            className='w-full rounded-lg bg-teal-500 px-3 py-2 text-lg font-semibold text-white focus:outline-none'
+            className={styles.button}
+            style={loading ? { background: '#ccc' } : { background: '#ff69b8' }}
             type='submit'
           >
-            LOGIN
+            {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : 'Login'}
           </button>
         </form>
+        <div className={styles.after_error} ref={ref}></div>
       </div>
     </div>
   )

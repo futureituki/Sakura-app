@@ -1,0 +1,29 @@
+.navigation {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5rem 2rem;
+  position: fixed;
+  top: 0;
+  right: -120%;
+  color:#fff;
+  background-color: #fff;
+  height:100vh;
+  transform: scale(1, 1);
+  transition: all 0.6s;
+}
+.navigation[aria-hidden="false"] {
+  right:0;
+}
+.navigation[aria-hidden="false"] .navigation ul li span {
+  background:#fff;
+}
+.navigation ul {
+  position:relative;
+  top:20%;
+}
+.navigation li {
+  color:#000;
+  margin:20px 0;
+  font-size:2rem;
+}
