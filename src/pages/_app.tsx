@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <Provider store={store}>
       <Component {...pageProps} />
+      <script></script>
     </Provider>,
   )
 }
