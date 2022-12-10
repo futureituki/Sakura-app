@@ -34,7 +34,6 @@
     "react-icons": "^4.6.0",
     "react-redux": "^8.0.5",
     "react-wavify": "^1.6.3",
-    "react-youtube": "^10.1.0",
     "redux-persist": "^6.0.0",
     "swiper": "^8.4.4"
   },

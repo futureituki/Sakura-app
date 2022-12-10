@@ -437,14 +437,3 @@ transform: translate(0);
 .button_area button {
   border:1px solid #fff;
 }
-.youtube {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%;
-}
-.iframe {
-  width:100%;
-  height:100vh;
-  padding-bottom:56.25%;
-  position:relative;
-}
