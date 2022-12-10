@@ -4,7 +4,7 @@ import { AppLayout } from '@/layout/AppLayout'
 const Reset: NextPageWithLayout = () => {
   return (
     <>
-        <PasswordResetPage />
+      <PasswordResetPage />
     </>
   )
 }

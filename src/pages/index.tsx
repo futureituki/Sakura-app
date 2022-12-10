@@ -5,7 +5,7 @@ import { Layout } from '@/layout/Layout'
 const Home: NextPageWithLayout = () => {
   return (
     <>
-        <HomePage />
+      <HomePage />
     </>
   )
 }

@@ -5,7 +5,7 @@ import { AppLayout } from '@/layout/AppLayout'
 const MyPages: NextPageWithLayout = () => {
   return (
     <>
-        <MyPage />
+      <MyPage />
     </>
   )
 }

@@ -9,7 +9,7 @@ const Top: NextPageWithLayout = () => {
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-        <TopPage />
+      <TopPage />
     </>
   )
 }

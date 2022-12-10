@@ -4,7 +4,7 @@ import { Layout } from '@/layout/Layout'
 const LogoutPage: NextPageWithLayout = () => {
   return (
     <>
-        <Logout />
+      <Logout />
     </>
   )
 }
