@@ -1,8 +1,5 @@
-import { ThemeProvider } from '@mui/material/styles'
 import { NextPageWithLayout } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import { HomePage } from '@/components/templates/HomePage'
 import { TopPage } from '@/components/templates/TopPage'
 import { homeFontTheme } from '@/config/fontFamilry'
 import { AppLayout } from '@/layout/AppLayout'
@@ -12,9 +9,7 @@ const Top: NextPageWithLayout = () => {
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-      <ThemeProvider theme={homeFontTheme}>
-        <TopPage />
-      </ThemeProvider>
+      <TopPage />
     </>
   )
 }
