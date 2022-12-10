@@ -8,9 +8,6 @@ type LayoutProps = Required<{
 }>
 export const AppLayout = ({ children }: LayoutProps) => (
   <>
-    <Head>
-      <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
-    </Head>
     <div style={{ overflow: 'hidden' }}>
       <AppHeader />
       {children}
