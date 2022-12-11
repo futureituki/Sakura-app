@@ -1,8 +1,6 @@
 import { NextPageWithLayout } from 'next'
-import { TitleBar } from '@/components/atoms/TitleBar'
 import { MusicListPage } from '@/components/templates/MusicListPage'
-import { musicList } from '@/constant/music-list'
-import { Layout } from '@/layout/Layout'
+import { AppLayout } from '@/layout/AppLayout'
 const MusicList: NextPageWithLayout = () => {
   return (
     <>
@@ -10,6 +8,6 @@ const MusicList: NextPageWithLayout = () => {
     </>
   )
 }
-MusicList.getLayout = (page) => <Layout>{page}</Layout>
+MusicList.getLayout = (page) => <AppLayout>{page}</AppLayout>
 
 export default MusicList

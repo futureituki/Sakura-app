@@ -38,7 +38,7 @@ const LoginPage: NextPage = () => {
       return
     }
     setTimeout(() => {
-      router.push('/mypage')
+      router.push('/top')
     }, 3000)
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
