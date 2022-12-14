@@ -3,7 +3,7 @@ import { SwiperSlide } from 'swiper/react'
 import { SwiperContainer } from '@/components/swiper/animationSwiper/SwiperAnimation'
 import { sliderSrc } from '@/constant/sliderSrc'
 import styles from '@/styles/Site.module.css'
-export const Section04 = () => {
+const Section04 = () => {
   return (
     <section className={styles.sec_in_move}>
       <SwiperContainer>
@@ -21,3 +21,5 @@ export const Section04 = () => {
     </section>
   )
 }
+
+export default Section04

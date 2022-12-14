@@ -7,7 +7,7 @@ import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
-const Section01 = () => {
+export const Section01 = () => {
   const textRef = useRef<HTMLHeadingElement>(null)
   const router = useRouter()
   const tl = gsap.timeline()
@@ -179,5 +179,3 @@ const Section01 = () => {
     </section>
   )
 }
-
-export default Section01
