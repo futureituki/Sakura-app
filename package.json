@@ -10,7 +10,8 @@
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "analyze-bundle": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@next/bundle-analyzer": "^13.0.6",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -55,6 +57,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-storybook": "^0.6.7",
+    "next-compose-plugins": "^2.2.1",
     "prettier": "^2.7.1",
     "sass": "^1.56.1",
     "typed-scss-modules": "^7.0.1",

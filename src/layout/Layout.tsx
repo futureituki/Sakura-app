@@ -8,9 +8,6 @@ type LayoutProps = Required<{
 }>
 export const Layout = ({ children }: LayoutProps) => (
   <>
-    <Head>
-      <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
-    </Head>
     <HomePageHeader />
     {children}
     <Footer />

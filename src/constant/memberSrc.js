@@ -1,7 +1,7 @@
 export const memberSrc = [
   { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉奈' },
   { src: '/assets/member/koike_main_visual.jpeg', name: '小池美波' },
-  { src: '/assets/member/kobayasi_main_visual.jpeg', name: '小林由依' },
+  { src: '/assets/member/kobayashi_main_visual.jpeg', name: '小林由依' },
   { src: '/assets/member/saito_main_visual.jpeg', name: '齋藤冬優花' },
   { src: '/assets/member/habu_main_visual.jpeg', name: '土生瑞穂' },
   { src: '/assets/member/inoue_main_visual.jpeg', name: '井上梨名' },
