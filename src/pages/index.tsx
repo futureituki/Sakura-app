@@ -1,11 +1,14 @@
 import { NextPageWithLayout } from 'next'
+import { Suspense } from 'react'
 import { HomePage } from '@/components/templates/HomePage'
 import { Layout } from '@/layout/Layout'
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
-      <HomePage />
+      <Suspense fallback={'loading'}>
+        <HomePage />
+      </Suspense>
     </>
   )
 }
