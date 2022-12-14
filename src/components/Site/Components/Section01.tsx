@@ -1,13 +1,13 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { PrimaryButton } from '@/components/atoms/Button'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
-export const Section01 = () => {
+const Section01 = () => {
   const textRef = useRef<HTMLHeadingElement>(null)
   const router = useRouter()
   const tl = gsap.timeline()
@@ -179,3 +179,5 @@ export const Section01 = () => {
     </section>
   )
 }
+
+export default Section01
