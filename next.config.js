@@ -1,6 +1,6 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-});
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,9 +10,9 @@ const nextConfig = {
     optimizeFonts: true,
   },
 }
-const withPlugins = require('next-compose-plugins');
+const withPlugins = require('next-compose-plugins')
 
 module.exports = withPlugins([withBundleAnalyzer], {
   /* オプション設定 */
-  nextConfig
-});
+  nextConfig,
+})
