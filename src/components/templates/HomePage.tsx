@@ -22,7 +22,6 @@ export const HomePage = () => {
         <Suspense fallback={`Loading...`}>
           <DynamicSection />
         </Suspense>
-        <Section01 />
         <Section02 />
         <Section03 />
         <Section04 />
