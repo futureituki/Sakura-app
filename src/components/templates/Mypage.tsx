@@ -17,8 +17,8 @@ type User = {
   uid: string
   username: string
   first_favorite: {
-    name: string
-    src: string
+    name: string | null
+    src: string | null
   }
 }
 
