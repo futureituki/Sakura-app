@@ -16,9 +16,9 @@ import styles from '@/styles/Mypage.module.css'
 type User = {
   uid: string
   username: string
-  first_favorite: {
-    name: string | null
-    src: string | null
+  first_favorite:{
+    name: string
+    src: string
   }
 }
 
@@ -28,7 +28,7 @@ export const MyPage = () => {
   const user = GetUser().user as unknown as User
   let name = ''
   let src = ''
-  if (user.first_favorite.name && user.first_favorite.src) {
+  if (user.first_favorite) {
     name = user.first_favorite.name
     src = user.first_favorite.src
   }
