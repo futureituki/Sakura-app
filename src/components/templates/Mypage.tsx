@@ -16,7 +16,7 @@ import styles from '@/styles/Mypage.module.css'
 type User = {
   uid: string
   username: string
-  first_favorite:{
+  first_favorite: {
     name: string
     src: string
   }
