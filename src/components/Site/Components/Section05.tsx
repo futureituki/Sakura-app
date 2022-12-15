@@ -9,7 +9,7 @@ export const Section05 = () => {
         Photo
       </Heading>
       {photoSrc.map((photo, index) => (
-        <SectionImg key={index} src={photo.src} alt_name={photo.name} />
+        <SectionImg key={index} src={photo.src} alt_name={photo.name} width={300} height={250}/>
       ))}
     </section>
   )
