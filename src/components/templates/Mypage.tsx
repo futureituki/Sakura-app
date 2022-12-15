@@ -28,7 +28,7 @@ export const MyPage = () => {
   const user = GetUser().user as unknown as User
   let name = ''
   let src = ''
-  if (user) {
+  if (user.first_favorite.name && user.first_favorite.src) {
     name = user.first_favorite.name
     src = user.first_favorite.src
   }
