@@ -41,7 +41,9 @@ export const AppMenu = () => {
           <Link href='/top'>Top</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href='/mypage'>My Page</Link>
+          <Link href='/mypage' style={{ width: '5vw' }}>
+            My Page
+          </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Link href='/music-list'>Music List</Link>

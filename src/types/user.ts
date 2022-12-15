@@ -8,5 +8,5 @@ export type User = {
   created_at: any | null
   updated_at: any | null
   favorite: { key: string }[]
-  first_favorite: { key: string }[] | null
+  first_favorite: Object | null
 }

@@ -12,8 +12,12 @@ import { NewsObj } from '@/types/news'
 type Props = {
   news: Array<NewsObj>
   imageList: Array<GalleryObj>
+  name: string
+  onClick: () => void
+  prev: () => void
+  next: () => void
 }
-export const BasicTabs: React.FC<Props> = ({ news, imageList }) => {
+export const BasicTabs: React.FC<Props> = ({ name, news, imageList, onClick, prev, next }) => {
   const [value, setValue] = React.useState('1')
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -34,7 +38,10 @@ export const BasicTabs: React.FC<Props> = ({ news, imageList }) => {
           <ListNewsLayout data={news} />
         </TabPanel>
         <TabPanel value='2'>
-          <ListImageLayout data={imageList} />
+          <ListImageLayout data={imageList} name={name} />
+          <button onClick={onClick}>取得する</button>
+          <button onClick={prev}>前へ</button>
+          <button onClick={next}>次へ</button>
         </TabPanel>
         <TabPanel value='3'>Item Three</TabPanel>
       </TabContext>

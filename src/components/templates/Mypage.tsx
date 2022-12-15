@@ -1,27 +1,36 @@
 import { Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { ReactPortal, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { SwiperSlide } from 'swiper/react'
 import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
 import { TitleBar } from '../atoms/TitleBar'
 import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { logout } from '@/firebase/firestore'
+import { GetUser } from '@/lib/user'
 import { AppDispatch } from '@/redux/store'
 import styles from '@/styles/Mypage.module.css'
-import { User } from '@/types/user'
+
+type User = {
+  uid: string
+  username: string
+  first_favorite: {
+    name: string
+    src: string
+  }
+}
 
 export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<AppDispatch>()
-  const user = useSelector((state: any) => state.user.user as User)
-  let src
-  let name
+  const user = GetUser().user as unknown as User
+  let name = ''
+  let src = ''
   if (user.first_favorite) {
-    name = user.first_favorite['name' as any]
-    src = user.first_favorite['src' as any]
+    name = user.first_favorite.name
+    src = user.first_favorite.src
   }
   useEffect(() => {
     if (user.uid === '') {
@@ -42,7 +51,7 @@ export const MyPage = () => {
         height={400}
         style={{ width: '100%', height: '100%' }}
       />
-      <p>{name as ReactPortal}</p>
+      <p>{name}</p>
       <div className={styles.user_area}>{user.username}</div>
       <div className={styles.swiper_container}>
         <SwiperInfinitLoop>
@@ -57,7 +66,7 @@ export const MyPage = () => {
               />
               <div className={styles.member_information}>
                 <TextLabel color='#ff69b8'>推しメン</TextLabel>
-                <Typography fontSize={14}>{name as ReactPortal}</Typography>
+                <Typography fontSize={14}>{name}</Typography>
               </div>
             </div>
           </SwiperSlide>

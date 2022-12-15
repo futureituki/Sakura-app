@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
 > => {
   const url =
     webEndpoint +
-    `?count=30&responseFilter=Webpages&freshness=Week&safeSearch=Strict&q=NEWS+site:sakurazaka46.com`
+    `?count=10&responseFilter=Webpages&freshness=Week&safeSearch=Strict&q=NEWS+site:sakurazaka46.com`
   const blogData = await getData(url, accessKey)
   const blogs: NewsObj[] = blogData.webPages.value
   return {
@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
 }
 
 const Top: NextPageWithLayout<Props> = ({ blogs }) => {
+  console.log(blogs)
   return (
     <>
       <Head>
