@@ -26,13 +26,12 @@ export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<AppDispatch>()
   const user = GetUser().user as unknown as User
-  let src
-  let name
+  let name = ''
+  let src = ''
   if (user) {
     name = user.first_favorite.name
     src = user.first_favorite.src
   }
-  console.log(user)
   useEffect(() => {
     if (user.uid === '') {
       router.push('/login')
