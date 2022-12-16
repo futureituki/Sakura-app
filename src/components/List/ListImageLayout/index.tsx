@@ -1,8 +1,13 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
-import ContentLoader from 'react-content-loader'
+import { useDispatch } from 'react-redux'
 import styles from '@/components/List/ListImageLayout/index.module.css'
+import { LikeButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
+import { saveImage } from '@/firebase/firestore'
+import { GetUser } from '@/lib/user'
+import { favoriteImgSave } from '@/redux/imageSlice'
+import { AppDispatch } from '@/redux/store'
 import { GalleryObj } from '@/types/gallery'
 
 // 例 newsobjの型をweb searchにする
@@ -11,6 +16,11 @@ type Gallery = {
   name: string
 }
 export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
+  const dispatch = useDispatch<AppDispatch>()
+  const uid = GetUser().user.uid
+  const save = async (uid: string, src: string) => {
+    await dispatch(favoriteImgSave({ uid, src }))
+  }
   return (
     <Box
       sx={{
@@ -24,6 +34,9 @@ export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
         {data.map((image: GalleryObj, index: number) => (
           <li key={index}>
             <img src={image.contentUrl} alt={''} width={300} height={250} />
+            <button onClick={() => save(uid, image.contentUrl)}>
+              <LikeButton />
+            </button>
           </li>
         ))}
       </ul>

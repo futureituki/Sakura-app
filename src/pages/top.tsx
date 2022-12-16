@@ -4,6 +4,8 @@ import { TopPage } from '@/components/templates/TopPage'
 import { accessKey, webEndpoint } from '@/constant/url'
 import { AppLayout } from '@/layout/AppLayout'
 import { getData } from '@/lib/bing-search'
+import { GetImg } from '@/lib/img'
+import { GetUser } from '@/lib/user'
 import { NewsObj } from '@/types/news'
 
 type Props = {
@@ -26,6 +28,9 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
 
 const Top: NextPageWithLayout<Props> = ({ blogs }) => {
   console.log(blogs)
+  const images = GetImg()
+  const user = GetUser()
+  console.log('images:', images.images, images)
   return (
     <>
       <Head>
