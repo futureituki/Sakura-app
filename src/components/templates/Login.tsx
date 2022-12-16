@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 import { userLogin } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
+import { setImages } from '@/redux/imageSlice'
 
 interface LoginForm {
   email: string
@@ -28,7 +29,6 @@ const LoginPage: NextPage = () => {
       password: data.password,
     }
     const user = await dispatch(userLogin(userInfo))
-    console.log(user.payload)
     if (user.payload === false) {
       console.log('false')
       if (ref.current) {
@@ -37,6 +37,8 @@ const LoginPage: NextPage = () => {
       }
       return
     }
+    const uid = user.payload.uid as string
+    await dispatch(setImages(uid))
     setTimeout(() => {
       router.push('/top')
     }, 3000)

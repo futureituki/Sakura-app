@@ -5,11 +5,12 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from 'firebase/auth'
-import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
+import { setDoc, getDoc, doc, Timestamp, updateDoc, DocumentData } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { auth, db } from '@/firebase/firebase'
 import { User } from '@/types/user'
+import { GetImg } from '@/lib/img'
 // export const getUser = (uid: string) => {
 //   // 特定のユーザー取得処理
 // }
@@ -95,4 +96,28 @@ export const usePasswordReset = () => {
   }
 
   return { success, error, passwordReset }
+}
+
+export const saveImage = async(uid:string,src:string) => {
+  console.log('test')
+  const dbSrc = GetImg() as unknown as Array<string>
+  const colRef = doc(db, 'images', uid)
+  const data = {
+    uid:uid,
+    src:dbSrc.push(src)
+  }
+  await setDoc(colRef, data)
+  console.log('test')
+  return src
+}
+
+type Props = {
+  src:Array<string>
+  uid:string
+}
+export const setImg = async (uid:string) => {
+  const images = await getDoc(doc(db,'images', uid)).then((doc) => {
+    return doc.data() as Props
+  })
+  return images.src
 }
