@@ -27,7 +27,7 @@ export const userSignUp = createAsyncThunk(
       created_at: timestamp,
       updated_at: timestamp,
       favorite: [],
-      first_favorite: {name:'', src:''},
+      first_favorite: { name: '', src: '' },
     }
     return memberInfo
   },
@@ -53,7 +53,7 @@ const initialState: UserReducer = {
   created_at: null,
   updated_at: null,
   favorite: [],
-  first_favorite: {name:'', src:''},
+  first_favorite: { name: '', src: '' },
 }
 
 export const userSlice = createSlice({
@@ -61,26 +61,32 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(userLogin.fulfilled, (state: UserReducer, action: PayloadAction<UserReducer>) => {
-      if (action.payload) {
+    builder.addCase(
+      userLogin.fulfilled,
+      (state: UserReducer, action: PayloadAction<UserReducer>) => {
+        if (action.payload) {
+          state.uid = action.payload.uid
+          state.username = action.payload.username
+          state.email = action.payload.email
+          state.created_at = action.payload.created_at.seconds
+          state.updated_at = action.payload.updated_at.seconds
+          state.favorite = action.payload.favorite
+          state.first_favorite = action.payload.first_favorite
+        }
+      },
+    )
+    builder.addCase(
+      userSignUp.fulfilled,
+      (state: UserReducer, action: PayloadAction<UserReducer>) => {
         state.uid = action.payload.uid
         state.username = action.payload.username
         state.email = action.payload.email
-        state.created_at = action.payload.created_at.seconds
-        state.updated_at = action.payload.updated_at.seconds
+        state.created_at = action.payload.created_at
+        state.updated_at = action.payload.updated_at
         state.favorite = action.payload.favorite
         state.first_favorite = action.payload.first_favorite
-      }
-    })
-    builder.addCase(userSignUp.fulfilled, (state: UserReducer, action: PayloadAction<UserReducer>) => {
-      state.uid = action.payload.uid
-      state.username = action.payload.username
-      state.email = action.payload.email
-      state.created_at = action.payload.created_at
-      state.updated_at = action.payload.updated_at
-      state.favorite = action.payload.favorite
-      state.first_favorite = action.payload.first_favorite
-    })
+      },
+    )
     builder.addCase(
       userSaveBookmark.fulfilled,
       (state, action: PayloadAction<{ [s: string]: string }>) => {
@@ -95,7 +101,7 @@ export const userSlice = createSlice({
       state.created_at = null
       state.updated_at = null
       state.favorite = []
-      state.first_favorite = {name:'', src:''}
+      state.first_favorite = { name: '', src: '' }
     })
   },
 })

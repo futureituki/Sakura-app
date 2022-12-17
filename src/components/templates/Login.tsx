@@ -8,7 +8,6 @@ import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { setImages } from '@/redux/imageSlice'
-import { AppDispatch, AppThunk, RootState } from '@/redux/store'
 import { userLogin } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 

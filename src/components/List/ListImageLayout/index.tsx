@@ -4,12 +4,9 @@ import { useDispatch } from 'react-redux'
 import styles from '@/components/List/ListImageLayout/index.module.css'
 import { LikeButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
-import { saveImage } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
 import { favoriteImgSave } from '@/redux/imageSlice'
-import { AppDispatch, AppThunk } from '@/redux/store'
 import { GalleryObj } from '@/types/gallery'
-import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
 
 // 例 newsobjの型をweb searchにする
 type Gallery = {

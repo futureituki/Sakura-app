@@ -18,7 +18,7 @@ export type UserReducer = {
   updated_at: any | null
   favorite: { key: string }[]
   first_favorite: {
-    name:string
-    src:string
+    name: string
+    src: string
   }
 }

@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import { imagesSlice } from '@/redux/imageSlice'
 import { userSlice } from '@/redux/userSlice'
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
 export const rootReducer = combineReducers({
   user: userSlice.reducer,
@@ -11,7 +11,7 @@ export const rootReducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage
-};
+  storage,
+}
 
-export const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const persistedReducer = persistReducer(persistConfig, rootReducer)

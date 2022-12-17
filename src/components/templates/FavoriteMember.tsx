@@ -7,11 +7,11 @@ import { PrimaryButton } from '../atoms/Button'
 import { Heading } from '../atoms/Heading'
 import { GeneralModal } from '../modal/generalModal'
 import { memberSrc } from '@/constant/memberSrc'
+import { GetUser } from '@/lib/user'
 import { AppDispatch } from '@/redux/store'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
 import { User, UserReducer } from '@/types/user'
-import { GetUser } from '@/lib/user'
 
 type SelectedProps = {
   name: string
@@ -32,7 +32,7 @@ export const FavoritePage = () => {
     setOpen(true)
   }, [])
   const handleClose = () => setOpen(false)
-  const user:UserReducer = GetUser().user
+  const user: UserReducer = GetUser().user
   const router = useRouter()
   // useEffect(() => {
   //   if (user.uid === '') {
