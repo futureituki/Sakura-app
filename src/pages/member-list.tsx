@@ -1,6 +1,6 @@
 import { NextPageWithLayout } from 'next'
-import { AppLayout } from '@/layout/AppLayout'
 import { MemberList } from '@/components/templates/MemberList'
+import { AppLayout } from '@/layout/AppLayout'
 
 const MemberListPage: NextPageWithLayout = () => {
   return (
