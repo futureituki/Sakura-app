@@ -7,8 +7,9 @@ import { Heading } from '@/components/atoms/Heading'
 import { saveImage } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
 import { favoriteImgSave } from '@/redux/imageSlice'
-import { AppDispatch } from '@/redux/store'
+import { AppDispatch, AppThunk } from '@/redux/store'
 import { GalleryObj } from '@/types/gallery'
+import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
 
 // 例 newsobjの型をweb searchにする
 type Gallery = {
@@ -16,7 +17,7 @@ type Gallery = {
   name: string
 }
 export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   const uid = GetUser().user.uid
   const save = async (uid: string, src: string) => {
     await dispatch(favoriteImgSave({ uid, src }))

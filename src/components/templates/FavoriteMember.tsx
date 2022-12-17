@@ -10,14 +10,15 @@ import { memberSrc } from '@/constant/memberSrc'
 import { AppDispatch } from '@/redux/store'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
-import { User } from '@/types/user'
+import { User, UserReducer } from '@/types/user'
+import { GetUser } from '@/lib/user'
 
 type SelectedProps = {
   name: string
   src: string
 }
 export const FavoritePage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   const [open, setOpen] = useState<boolean>(false)
   const [selectedImg, setSelectedImg] = useState<SelectedProps>({ name: '', src: '' })
   const handleOpen = useCallback((e: any) => {
@@ -31,7 +32,7 @@ export const FavoritePage = () => {
     setOpen(true)
   }, [])
   const handleClose = () => setOpen(false)
-  const user = useSelector((state: any) => state.user.user as User)
+  const user:UserReducer = GetUser().user
   const router = useRouter()
   // useEffect(() => {
   //   if (user.uid === '') {

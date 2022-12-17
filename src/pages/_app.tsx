@@ -5,6 +5,11 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+
+
+let persistor = persistStore(store);
 export default function App({ Component, pageProps, router }: AppPropsWithLayout) {
   let home = false
   if (router.pathname == '/') home = true
@@ -13,7 +18,9 @@ export default function App({ Component, pageProps, router }: AppPropsWithLayout
     ? getLayout(<Component {...pageProps} />)
     : getLayout(
         <Provider store={store}>
-          <Component {...pageProps} />
+          <PersistGate loading={null} persistor={persistor}>
+            <Component {...pageProps} />
+          </PersistGate>
         </Provider>,
       )
 }
