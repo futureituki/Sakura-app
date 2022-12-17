@@ -17,7 +17,7 @@ interface LoginForm {
 
 const SignUp: NextPage = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   const [loading, setLoading] = useState<boolean>(false)
   const user = useSelector((state: User) => state)
   const router = useRouter()

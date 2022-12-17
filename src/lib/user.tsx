@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import { User } from '@/types/user'
+import { User, UserReducer } from '@/types/user'
 
 export const GetUser = () => {
-  const user = useSelector((state: any) => state.user.user as User)
+  const user = useSelector((state: any) => state.user as UserReducer)
 
   return { user }
 }

@@ -7,7 +7,6 @@ import { Heading } from '@/components/atoms/Heading'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { favoriteImgSave } from '@/redux/imageSlice'
-import { AppDispatch } from '@/redux/store'
 import { GalleryObj } from '@/types/gallery'
 
 // 例 newsobjの型をweb searchにする
@@ -16,7 +15,7 @@ type Gallery = {
   name: string
 }
 export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   const uid = GetUser().user.uid
   const srcs = GetImg().images.images.src
   console.log(srcs, 'a')

@@ -10,8 +10,8 @@ import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { logout } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
-import { AppDispatch } from '@/redux/store'
 import styles from '@/styles/Mypage.module.css'
+import { UserReducer } from '@/types/user'
 
 type User = {
   uid: string
@@ -24,8 +24,8 @@ type User = {
 
 export const MyPage = () => {
   const router = useRouter()
-  const dispatch = useDispatch<AppDispatch>()
-  const user = GetUser().user as unknown as User
+  const dispatch = useDispatch<any>()
+  const user: UserReducer = GetUser().user
   let name = ''
   let src = ''
   if (user.first_favorite) {
