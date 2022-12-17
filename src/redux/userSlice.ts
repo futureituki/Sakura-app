@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Timestamp } from 'firebase/firestore'
 import { login, logout, saveBookmark, signUp } from '@/firebase/firestore'
-import { User, UserReducer } from '@/types/user'
+import { UserReducer } from '@/types/user'
 
 type TypeLogin = {
   email: string
@@ -43,7 +43,8 @@ export const userSaveBookmark = createAsyncThunk(
     return bookmark
   },
 )
-export const userLogout = createAsyncThunk('logout', async () => {
+export const userLogout = createAsyncThunk('out', async () => {
+  console.log('aa')
   await logout()
 })
 const initialState: UserReducer = {

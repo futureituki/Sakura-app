@@ -10,6 +10,7 @@ import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { logout } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
+import { userLogout } from '@/redux/userSlice'
 import styles from '@/styles/Mypage.module.css'
 import { UserReducer } from '@/types/user'
 
@@ -38,7 +39,7 @@ export const MyPage = () => {
     }
   }, [])
   const logoutCheck = async () => {
-    dispatch(logout)
+    await dispatch(userLogout())
     router.push('/logout')
   }
   return (

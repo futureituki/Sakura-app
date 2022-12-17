@@ -9,7 +9,6 @@ import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { auth, db } from '@/firebase/firebase'
-import { GetImg } from '@/lib/img'
 import { User } from '@/types/user'
 // export const getUser = (uid: string) => {
 //   // 特定のユーザー取得処理
@@ -65,7 +64,7 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
 }
 
 export const logout = async () => {
-  return await signOut(auth)
+  await signOut(auth)
     .then(() => {
       alert('ログアウトが成功しました')
     })
@@ -98,16 +97,18 @@ export const usePasswordReset = () => {
   return { success, error, passwordReset }
 }
 
-export const saveImage = async (uid: string, src: string) => {
-  console.log('test')
-  const dbSrc = GetImg() as unknown as Array<string>
+export const saveImage = async (uid: string, src: string, srcs: Array<string>) => {
+  console.log(srcs)
   const colRef = doc(db, 'images', uid)
+  srcs = Object.assign([], srcs)
+  srcs.push(src)
+  console.log(colRef)
   const data = {
     uid: uid,
-    src: dbSrc.push(src),
+    src: srcs,
   }
   await setDoc(colRef, data)
-  console.log('test')
+  console.log('test2')
   return src
 }
 

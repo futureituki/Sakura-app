@@ -1,21 +1,22 @@
 import { Box } from '@mui/material'
 import Link from 'next/link'
 import { FC } from 'react'
-import { NewsObj } from '@/types/news'
+import { SearchObj } from '@/types/search'
 
 // 例 newsobjの型をweb searchにする
 type List = {
-  data: NewsObj[]
+  data: SearchObj[]
 }
 export const ListNewsLayout: FC<List> = ({ data }) => {
   console.log(data)
   return (
     <Box>
       <ul>
-        {data.map((list: NewsObj, index) => (
+        {data.map((list: SearchObj, index) => (
           <li key={index}>
-            <Link href={list.url} target={'_blank'}>
-              {list.name !== '櫻坂46公式サイト' ? list.name : ''}
+            <Link href={list.formattedUrl} target={'_blank'}>
+              {list.title}
+              {list.pagemap.hproduct?.[0].fn}
             </Link>
           </li>
         ))}

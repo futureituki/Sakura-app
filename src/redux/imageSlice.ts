@@ -5,11 +5,12 @@ import { saveImage, setImg } from '@/firebase/firestore'
 type favoriteImg = {
   uid: string
   src: string
+  srcs: Array<string>
 }
 export const favoriteImgSave = createAsyncThunk(
   'favoriteImg',
-  async ({ uid, src }: favoriteImg): Promise<any> => {
-    const imgSrc = await saveImage(uid, src)
+  async ({ uid, src, srcs }: favoriteImg): Promise<any> => {
+    const imgSrc = await saveImage(uid, src, srcs)
     console.log(imgSrc)
     return imgSrc
   },
@@ -39,6 +40,7 @@ export const imagesSlice = createSlice({
       state.src.push(action.payload)
     })
     builder.addCase(setImages.fulfilled, (state, action: PayloadAction<Array<string>>) => {
+      state.src = []
       state.src = action.payload
     })
   },
