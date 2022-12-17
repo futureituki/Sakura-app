@@ -8,7 +8,6 @@ import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { setImages } from '@/redux/imageSlice'
-import { AppDispatch } from '@/redux/store'
 import { userLogin } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 
@@ -19,7 +18,7 @@ interface LoginForm {
 
 const LoginPage: NextPage = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<any>()
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
   const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
