@@ -12,6 +12,7 @@ import { logout } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
 import styles from '@/styles/Mypage.module.css'
 import { UserReducer } from '@/types/user'
+import { userLogout } from '@/redux/userSlice'
 
 type User = {
   uid: string
@@ -38,7 +39,7 @@ export const MyPage = () => {
     }
   }, [])
   const logoutCheck = async () => {
-    dispatch(logout)
+    await dispatch(userLogout())
     router.push('/logout')
   }
   return (

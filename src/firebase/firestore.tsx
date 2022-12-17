@@ -64,7 +64,7 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
 }
 
 export const logout = async () => {
-  return await signOut(auth)
+  await signOut(auth)
     .then(() => {
       alert('ログアウトが成功しました')
     })
@@ -98,14 +98,15 @@ export const usePasswordReset = () => {
 }
 
 export const saveImage = async (uid: string, src: string, srcs: Array<string>) => {
-  console.log(typeof srcs)
+  console.log(srcs)
   const colRef = doc(db, 'images', uid)
+  srcs = Object.assign([], srcs);
+  srcs.push(src)
   console.log(colRef)
   const data = {
     uid: uid,
-    src: srcs.push(src),
+    src: srcs,
   }
-  console.log(data)
   await setDoc(colRef, data)
   console.log('test2')
   return src

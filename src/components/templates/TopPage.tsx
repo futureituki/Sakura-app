@@ -6,6 +6,7 @@ import { GetUser } from '@/lib/user'
 import { GalleryObj } from '@/types/gallery'
 import { SearchObj } from '@/types/search'
 import { User } from '@/types/user'
+import { GetImg } from '@/lib/img'
 type Props = {
   searchs: SearchObj[]
 }
@@ -18,6 +19,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
   const [name, setName] = useState<string>()
   const [offsetCount, setOffsetCount] = useState(10)
   const user = GetUser().user.first_favorite as Favorite
+  const images = GetImg().images.src
   useEffect(() => {
     if (user) {
       setName(user.name)
@@ -50,6 +52,9 @@ export const TopPage: FC<Props> = ({ searchs }) => {
           prev={prevSet}
           next={nextSet}
         />
+        {images.map((img:string,index:number) => (
+          <img key={index} src={img}/>
+        ))}
         {/* {data.map((news,index) => (
           <div>
             <img src={news.image?.thumbnail.contentUrl} alt="" />

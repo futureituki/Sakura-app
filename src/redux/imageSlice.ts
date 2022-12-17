@@ -40,6 +40,7 @@ export const imagesSlice = createSlice({
       state.src.push(action.payload)
     })
     builder.addCase(setImages.fulfilled, (state, action: PayloadAction<Array<string>>) => {
+      state.src = []
       state.src = action.payload
     })
   },

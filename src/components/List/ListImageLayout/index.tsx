@@ -17,7 +17,7 @@ type Gallery = {
 export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
   const dispatch = useDispatch<any>()
   const uid = GetUser().user.uid
-  const srcs = GetImg().images.images.src
+  const srcs = GetImg().images.src
   console.log(srcs, 'a')
   const save = async (uid: string, src: string) => {
     await dispatch(favoriteImgSave({ uid, src, srcs }))
