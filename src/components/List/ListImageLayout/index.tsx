@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import styles from '@/components/List/ListImageLayout/index.module.css'
 import { LikeButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
-import { saveImage } from '@/firebase/firestore'
+import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { favoriteImgSave } from '@/redux/imageSlice'
 import { AppDispatch } from '@/redux/store'
@@ -18,8 +18,10 @@ type Gallery = {
 export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
   const dispatch = useDispatch<AppDispatch>()
   const uid = GetUser().user.uid
+  const srcs = GetImg().images.images.src
+  console.log(srcs, 'a')
   const save = async (uid: string, src: string) => {
-    await dispatch(favoriteImgSave({ uid, src }))
+    await dispatch(favoriteImgSave({ uid, src, srcs }))
   }
   return (
     <Box
@@ -31,14 +33,21 @@ export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
       <Heading style={{ color: '#000' }}>Gallery</Heading>
       <p>{name}</p>
       <ul className={styles.image}>
-        {data.map((image: GalleryObj, index: number) => (
-          <li key={index}>
-            <img src={image.contentUrl} alt={''} width={300} height={250} />
-            <button onClick={() => save(uid, image.contentUrl)}>
-              <LikeButton />
-            </button>
-          </li>
-        ))}
+        {data
+          ? data.map((image: GalleryObj, index: number) => (
+              <li key={index}>
+                <img
+                  src={image.link}
+                  alt={''}
+                  width={image.image.width}
+                  height={image.image.height}
+                />
+                <button onClick={() => save(uid, image.link)}>
+                  <LikeButton />
+                </button>
+              </li>
+            ))
+          : ''}
       </ul>
     </Box>
   )

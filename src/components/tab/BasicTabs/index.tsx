@@ -7,17 +7,24 @@ import * as React from 'react'
 import { ListImageLayout } from '@/components/List/ListImageLayout'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
 import { GalleryObj } from '@/types/gallery'
-import { NewsObj } from '@/types/news'
+import { SearchObj } from '@/types/search'
 
 type Props = {
-  news: Array<NewsObj>
+  searchResult: Array<SearchObj>
   imageList: Array<GalleryObj>
   name: string
   onClick: () => void
   prev: () => void
   next: () => void
 }
-export const BasicTabs: React.FC<Props> = ({ name, news, imageList, onClick, prev, next }) => {
+export const BasicTabs: React.FC<Props> = ({
+  name,
+  searchResult,
+  imageList,
+  onClick,
+  prev,
+  next,
+}) => {
   const [value, setValue] = React.useState('1')
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -35,7 +42,7 @@ export const BasicTabs: React.FC<Props> = ({ name, news, imageList, onClick, pre
           </TabList>
         </Box>
         <TabPanel value='1'>
-          <ListNewsLayout data={news} />
+          <ListNewsLayout data={searchResult} />
         </TabPanel>
         <TabPanel value='2'>
           <ListImageLayout data={imageList} name={name} />

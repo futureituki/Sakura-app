@@ -1,10 +1,13 @@
 export type GalleryObj = {
-  datePublished: string
-  contentUrl: string
-  thumbnail: {
+  fileFormat: string
+  image: {
+    byteSize: string
     height: number
     width: number
+    thumbnailLink: string
+    thumbnailHeight: number
+    thumbnailWidth: number
   }
-  imageId: string
-  thumbnailUrl: string
+  link: string
+  mime: string
 }

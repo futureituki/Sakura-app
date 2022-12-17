@@ -1,22 +1,20 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { FC, Key, ReactPortal, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { BasicTabs } from '../tab/BasicTabs'
-import { accessKey, imagesEndpoint, webEndpoint } from '@/constant/url'
 import { getData } from '@/lib/bing-search'
 import { GetUser } from '@/lib/user'
-import { NewsObj } from '@/types/news'
+import { GalleryObj } from '@/types/gallery'
+import { SearchObj } from '@/types/search'
 import { User } from '@/types/user'
 type Props = {
-  blogs: NewsObj[]
+  searchs: SearchObj[]
 }
 type Favorite = {
   name: string
   src: string
 }
-export const TopPage: FC<Props> = ({ blogs }) => {
-  const [data, setData] = useState([])
+export const TopPage: FC<Props> = ({ searchs }) => {
+  const [data, setData] = useState<Array<GalleryObj>>()
   const [name, setName] = useState<string>()
   const [offsetCount, setOffsetCount] = useState(10)
   const user = GetUser().user.first_favorite as Favorite
@@ -25,31 +23,29 @@ export const TopPage: FC<Props> = ({ blogs }) => {
       setName(user.name)
     }
   }, [])
-  const url =
-    imagesEndpoint +
-    `?count=10&responseFilter=Webpages&offset=${offsetCount}&safeSearch=Strict&q=${name}+site:sakurazaka46.com`
+  const url = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBQDRkSqqgoG4rTk9czMdjhW0ElY39QqMo&cx=708d155ae7f0e495c&searchType=image&q=${name}`
   const Setting = async () => {
-    const data = await getData(url, accessKey)
-    // setOffsetCount(offsetCount + 10)
-    setData(data.value)
+    const data = await getData(url)
+    setOffsetCount(offsetCount + 10)
+    setData(data.data.items)
   }
   const prevSet = async () => {
-    const data = await getData(url, accessKey)
+    const data = await getData(url)
     setOffsetCount(offsetCount - 10)
-    setData(data.value)
+    setData(data.data.items)
   }
   const nextSet = async () => {
-    const data = await getData(url, accessKey)
+    const data = await getData(url)
     setOffsetCount(offsetCount + 10)
-    setData(data.value)
+    setData(data.data.items)
   }
   return (
     <div>
       <div>
         <BasicTabs
           name={name as string}
-          news={blogs}
-          imageList={data}
+          searchResult={searchs}
+          imageList={data as Array<GalleryObj>}
           onClick={Setting}
           prev={prevSet}
           next={nextSet}
