@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { PrimaryButton } from '@/components/atoms/Button'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'

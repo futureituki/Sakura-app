@@ -1,5 +1,4 @@
 import { NextPageWithLayout } from 'next'
-import Head from 'next/head'
 import { MyPage } from '@/components/templates/Mypage'
 import { AppLayout } from '@/layout/AppLayout'
 const MyPages: NextPageWithLayout = () => {

@@ -1,0 +1,16 @@
+<エンドポイント>
+web検索
+https://api.bing.microsoft.com/v7.0/search
+画像検索
+https://api.bing.microsoft.com/v7.0/images/search
+ニュース検索
+https://api.bing.microsoft.com/v7.0/news/search
+画像検索
+?count=10&responseFilter=Webpages&safeSearch=Strict&q=藤吉夏鈴+site:sakurazaka46.com
+?count=10&responseFilter=Webpages&safeSearch=Strict&q=藤吉夏鈴+ふじよしかりん+site:sakurazaka46.com
+ニュース検索
+ブログ検索
+?count=150&responseFilter=Webpages&safeSearch=Strict&q=inanchor:櫻坂46公式ブログ+site:sakurazaka46.com`
+
+１ヶ月ブログ
+?count=50&responseFilter=Webpages&freshness=Month&safeSearch=Strict&q=公式ブログ+site:sakurazaka46.com
