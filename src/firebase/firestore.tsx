@@ -100,7 +100,7 @@ export const usePasswordReset = () => {
 export const saveImage = async (uid: string, src: string, srcs: Array<string>) => {
   console.log(srcs)
   const colRef = doc(db, 'images', uid)
-  srcs = Object.assign([], srcs);
+  srcs = Object.assign([], srcs)
   srcs.push(src)
   console.log(colRef)
   const data = {

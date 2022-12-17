@@ -1,12 +1,10 @@
 import { FC, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { BasicTabs } from '../tab/BasicTabs'
 import { getData } from '@/lib/bing-search'
+import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { GalleryObj } from '@/types/gallery'
 import { SearchObj } from '@/types/search'
-import { User } from '@/types/user'
-import { GetImg } from '@/lib/img'
 type Props = {
   searchs: SearchObj[]
 }
@@ -52,8 +50,8 @@ export const TopPage: FC<Props> = ({ searchs }) => {
           prev={prevSet}
           next={nextSet}
         />
-        {images.map((img:string,index:number) => (
-          <img key={index} src={img}/>
+        {images.map((img: string, index: number) => (
+          <img key={index} src={img} />
         ))}
         {/* {data.map((news,index) => (
           <div>

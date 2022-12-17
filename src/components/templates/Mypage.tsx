@@ -10,9 +10,9 @@ import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { logout } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
+import { userLogout } from '@/redux/userSlice'
 import styles from '@/styles/Mypage.module.css'
 import { UserReducer } from '@/types/user'
-import { userLogout } from '@/redux/userSlice'
 
 type User = {
   uid: string
