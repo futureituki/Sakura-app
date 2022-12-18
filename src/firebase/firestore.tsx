@@ -111,6 +111,21 @@ export const saveImage = async (uid: string, src: string, srcs: Array<string>) =
   console.log('test2')
   return src
 }
+type data = {
+  uid: string
+  src: Array<string>
+}
+export const deleteImg = async (uid: string, src: string, srcs: Array<string>) => {
+  const colRef = doc(db, 'images', uid)
+  srcs = Object.assign([], srcs)
+  const newSrcs = srcs.filter((value) => value != src)
+  const data: data = {
+    uid: uid,
+    src: newSrcs,
+  }
+  await setDoc(colRef, data)
+  return src
+}
 
 type Props = {
   src: Array<string>
