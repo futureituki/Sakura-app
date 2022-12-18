@@ -46,7 +46,7 @@ export const MyPage = () => {
     <div>
       <TitleBar>MyPage</TitleBar>
       <Image
-        src={`/assets/member/${src}`}
+        src={`/assets/member_list/${src.substring(0, src.indexOf('_')) + '.jpeg'}`}
         alt='image'
         width={300}
         height={400}
