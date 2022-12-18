@@ -29,7 +29,7 @@
 }
 
 .heart {
-  fill: rgba(6, 6, 6, 0.24);
+  fill: #fff;
   -webkit-transform: scale(0.8);
   transform: scale(0.8);
   -webkit-transform-origin: 250px 250px;
@@ -42,8 +42,20 @@
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
+.clickExplosion2 {
+  -webkit-animation: explosionAnime 800ms;
+  animation: explosionAnime 600ms;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
 
 .clickHeart {
+  -webkit-animation: heartAnime 800ms;
+  animation: heartAnime 800ms;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.clickHeart2 {
   -webkit-animation: heartAnime 800ms;
   animation: heartAnime 800ms;
   -webkit-animation-fill-mode: forwards;
@@ -53,6 +65,12 @@
 .clickParticleLayer {
   -webkit-animation: particleLayerAnime 800ms;
   animation: particleLayerAnime 800ms;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.clickParticleLayer2 {
+  -webkit-animation: particleLayerAnime 600ms;
+  animation: particleLayerAnime 600ms;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }

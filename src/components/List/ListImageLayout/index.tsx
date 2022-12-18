@@ -2,11 +2,11 @@ import { Box } from '@mui/material'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import styles from '@/components/List/ListImageLayout/index.module.css'
-import { LikeButton } from '@/components/atoms/Button/LikeButton'
+import { LikeButton, LikedButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
-import { favoriteImgSave } from '@/redux/imageSlice'
+import { favoriteImgDelete, favoriteImgSave } from '@/redux/imageSlice'
 import { GalleryObj } from '@/types/gallery'
 
 // 例 newsobjの型をweb searchにする
@@ -18,9 +18,11 @@ export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
   const dispatch = useDispatch<any>()
   const uid = GetUser().user.uid
   const srcs = GetImg().images.src
-  console.log(srcs, 'a')
   const save = async (uid: string, src: string) => {
     await dispatch(favoriteImgSave({ uid, src, srcs }))
+  }
+  const Delete = async (uid: string, src: string) => {
+    await dispatch(favoriteImgDelete({ uid, src, srcs }))
   }
   return (
     <Box
@@ -34,16 +36,22 @@ export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
       <ul className={styles.image}>
         {data
           ? data.map((image: GalleryObj, index: number) => (
-              <li key={index}>
+              <li key={index} className={styles.li}>
                 <img
                   src={image.link}
                   alt={''}
-                  width={image.image.width}
-                  height={image.image.height}
+                  width={image.image.width / 4}
+                  height={image.image.height / 4}
                 />
-                <button onClick={() => save(uid, image.link)}>
-                  <LikeButton />
-                </button>
+                {!srcs.includes(image.link) ? (
+                  <button onClick={() => save(uid, image.link)} className={styles.button}>
+                    <LikeButton />
+                  </button>
+                ) : (
+                  <button onClick={() => Delete(uid, image.link)} className={styles.button}>
+                    <LikedButton />
+                  </button>
+                )}
               </li>
             ))
           : ''}
