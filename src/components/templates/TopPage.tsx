@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import { BasicTabs } from '@/components/tab/BasicTabs'
+import { getData } from '@/lib/bing-search'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { GalleryObj } from '@/types/gallery'
 import { SearchObj } from '@/types/search'
-import { getData } from '@/lib/bing-search'
 type Props = {
   searchs: SearchObj[]
 }
