@@ -201,7 +201,7 @@ export const memberMap = new Map([
       height: '150.5cm',
       birthplace: '福岡県',
       bloodType: 'B型',
-      src: '/assets/member_list/morita.jpeg',
+      src: '/assets/member_list/hikaru.jpeg',
     },
   ],
   [
