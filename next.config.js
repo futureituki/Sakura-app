@@ -9,6 +9,16 @@ const nextConfig = {
   experimental: {
     optimizeFonts: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sakurazaka46.com',
+        port: '',
+        pathname: '/images/**',
+      },
+    ],
+  },
 }
 const withPlugins = require('next-compose-plugins')
 
