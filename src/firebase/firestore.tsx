@@ -131,7 +131,10 @@ type Props = {
   src: Array<string>
   uid: string
 }
-export const setImg = async (uid: string) => {
+export const setImg = async (uid: string, sign?: boolean) => {
+  if (sign) {
+    return []
+  }
   const images = await getDoc(doc(db, 'images', uid)).then((doc) => {
     return doc.data() as Props
   })

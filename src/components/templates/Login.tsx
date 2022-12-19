@@ -37,7 +37,7 @@ const LoginPage: NextPage = () => {
       return
     }
     const uid = user.payload.uid as string
-    await dispatch(setImages(uid))
+    await dispatch(setImages({ uid: uid, sign: false }))
     setTimeout(() => {
       router.push('/top')
     }, 3000)
