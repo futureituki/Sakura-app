@@ -23,10 +23,10 @@ export const favoriteImgDelete = createAsyncThunk(
 )
 type Props = {
   uid: string
+  sign?: boolean
 }
-export const setImages = createAsyncThunk('setImg', async (uid: string): Promise<any> => {
-  console.log(await setImg(uid))
-  const images = await setImg(uid)
+export const setImages = createAsyncThunk('setImg', async ({ uid, sign }: Props): Promise<any> => {
+  const images = await setImg(uid, sign)
   return images
 })
 type Img = {

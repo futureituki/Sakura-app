@@ -7,7 +7,9 @@ import { PrimaryButton } from '../atoms/Button'
 import { Heading } from '../atoms/Heading'
 import { GeneralModal } from '../modal/generalModal'
 import { memberSrc } from '@/constant/memberSrc'
+import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
+import { setImages } from '@/redux/imageSlice'
 import { AppDispatch } from '@/redux/store'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
@@ -20,6 +22,7 @@ type SelectedProps = {
 export const FavoritePage = () => {
   const dispatch = useDispatch<any>()
   const [open, setOpen] = useState<boolean>(false)
+  const images = GetImg().images.src
   const [selectedImg, setSelectedImg] = useState<SelectedProps>({ name: '', src: '' })
   const handleOpen = useCallback((e: any) => {
     const alt = e.target.alt
@@ -39,12 +42,13 @@ export const FavoritePage = () => {
   //     router.push('/login')
   //   }
   // }, [])
-  const handleClick = () => {
+  const handleClick = async () => {
     const userInfo = {
       id: user.uid,
       first_favorite: { name: selectedImg.name, src: selectedImg.src },
     }
     dispatch(userSaveBookmark(userInfo))
+    await dispatch(setImages({ uid: userInfo.id, sign: true }))
     router.push('/mypage')
   }
   return (
