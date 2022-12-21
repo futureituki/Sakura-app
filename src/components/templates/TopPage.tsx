@@ -1,11 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import { BasicTabs } from '@/components/tab/TopTab'
+import { customSearchEndpoint } from '@/constant/url'
 import { getData } from '@/lib/bing-search'
-import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { GalleryObj } from '@/types/gallery'
 import { SearchObj } from '@/types/search'
-import { customSearchEndpoint } from '@/constant/url'
 type Props = {
   searchs: SearchObj[]
 }
