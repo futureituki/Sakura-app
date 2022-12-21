@@ -22,7 +22,9 @@ export const TopPage: FC<Props> = ({ searchs }) => {
       setName(user.name)
     }
   }, [])
-  const url = customSearchEndpoint + `?key=${process.env.NEXT_PUBLIC_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&count=10&start=${offsetCount}&searchType=image&q=${name}`
+  const url =
+    customSearchEndpoint +
+    `?key=${process.env.NEXT_PUBLIC_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&count=10&start=${offsetCount}&searchType=image&q=${name}`
   const Setting = async () => {
     const data = await getData(url)
     setData(data.data.items)
