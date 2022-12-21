@@ -36,7 +36,8 @@
     "react-hook-form": "^7.39.6",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
-    "swiper": "^8.4.4"
+    "swiper": "^8.4.4",
+    "twitter-api-sdk": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -51,6 +52,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/gsap": "^3.0.0",
     "@types/react-redux": "^7.1.24",
+    "@types/twitter": "^1.7.1",
     "babel-loader": "^8.3.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
