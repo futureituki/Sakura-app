@@ -11,6 +11,7 @@ import * as React from 'react'
 import { FavoriteImageLayout } from '@/components/List/FavoriteImageLayout'
 import { ListImageLayout } from '@/components/List/ListImageLayout'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
+import { ListTweetLayout } from '@/components/List/ListTweetLayout'
 import { GalleryObj } from '@/types/gallery'
 import { SearchObj } from '@/types/search'
 type Props = {
@@ -40,10 +41,42 @@ export const BasicTabs: React.FC<Props> = ({
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label='lab API tabs example'>
-            <Tab label={<NewspaperIcon />} value='1' />
-            <Tab label={<CollectionsIcon />} value='2' />
-            <Tab label={<TwitterIcon />} value='3' />
-            <Tab label={<FavoriteIcon />} value='4' />
+            <Tab
+              label={
+                <>
+                  <NewspaperIcon />
+                  <p>News</p>
+                </>
+              }
+              value='1'
+            />
+            <Tab
+              label={
+                <>
+                  <CollectionsIcon />
+                  <p>Gallery</p>
+                </>
+              }
+              value='2'
+            />
+            <Tab
+              label={
+                <>
+                  <TwitterIcon />
+                  <p>SNS</p>
+                </>
+              }
+              value='3'
+            />
+            <Tab
+              label={
+                <>
+                  <FavoriteIcon />
+                  <p>いいね</p>
+                </>
+              }
+              value='4'
+            />
           </TabList>
         </Box>
         <TabPanel value='1'>
@@ -55,7 +88,9 @@ export const BasicTabs: React.FC<Props> = ({
           <button onClick={prev}>前へ</button>
           <button onClick={next}>次へ</button>
         </TabPanel>
-        <TabPanel value='3'>Item Three</TabPanel>
+        <TabPanel value='3'>
+          <ListTweetLayout />
+        </TabPanel>
         <TabPanel value='4'>
           <FavoriteImageLayout />
         </TabPanel>
