@@ -445,14 +445,14 @@ p.swiper-slide{
   color: #ffffff;
   font-size: 2rem;
   font-weight: bold;
- }
+}
 .swiper-slide-active{ 
   & p.swiper-slide {
       animation-name: fade-in;
       animation-duration: 2s;
       animation-fill-mode: both;
   }
- }
+}
  @keyframes fade-in {
   from {
       opacity: 0;
@@ -462,6 +462,36 @@ p.swiper-slide{
   to {
       opacity: 1;
       transform: translateY(0);
+  }
+}
+p.top_slider{ 
+  color:#000;
+  font-size: 1.1vw;
+  line-height: 1.75;
+  font-weight: bold;
+  bottom: 0%;
+  text-align: center;
+  left: 0%;
+}
+p.top_slider > span {
+  display: inline-block;
+  width: 85vw;
+  margin:0px auto;
+}
+.swiper-slide-active{ 
+  & p.top_slider {
+      animation-name: fade-in;
+      animation-duration: 2s;
+      animation-fill-mode: both;
+  }
+}
+ @keyframes fade-in {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
   }
 }
 

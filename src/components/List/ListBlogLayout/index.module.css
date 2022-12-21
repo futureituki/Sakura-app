@@ -1,0 +1,16 @@
+.inner {
+  width:90vw;
+  margin:0 auto;
+}
+.ul {
+  width:100%;
+}
+.blog {
+  width:85vw;
+  margin:0 auto;
+}
+.snippet {
+  font-size:2vw;
+  margin:10px 0;
+  line-height:1.75;
+}

@@ -9,28 +9,19 @@ import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import * as React from 'react'
 import { FavoriteImageLayout } from '@/components/List/FavoriteImageLayout'
+import { ListBlogLayout } from '@/components/List/ListBlogLayout'
 import { ListImageLayout } from '@/components/List/ListImageLayout'
-import { ListNewsLayout } from '@/components/List/ListNewsLayout'
 import { ListTweetLayout } from '@/components/List/ListTweetLayout'
 import { GalleryObj } from '@/types/gallery'
-import { SearchObj } from '@/types/search'
 type Props = {
-  searchResult: Array<SearchObj>
   imageList: Array<GalleryObj>
   name: string
   onClick: () => void
   prev: () => void
   next: () => void
 }
-export const BasicTabs: React.FC<Props> = ({
-  name,
-  searchResult,
-  imageList,
-  onClick,
-  prev,
-  next,
-}) => {
-  const [value, setValue] = React.useState('1')
+export const BasicTabs: React.FC<Props> = ({ name, imageList, onClick, prev, next }) => {
+  const [value, setValue] = React.useState('')
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
@@ -45,7 +36,7 @@ export const BasicTabs: React.FC<Props> = ({
               label={
                 <>
                   <NewspaperIcon />
-                  <p>News</p>
+                  <p>BLOGS</p>
                 </>
               }
               value='1'
@@ -80,7 +71,7 @@ export const BasicTabs: React.FC<Props> = ({
           </TabList>
         </Box>
         <TabPanel value='1'>
-          <ListNewsLayout data={searchResult} />
+          <ListBlogLayout />
         </TabPanel>
         <TabPanel value='2'>
           <ListImageLayout data={imageList} name={name} />
