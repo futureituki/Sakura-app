@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps<Props> = async (): Promise<
 > => {
   const url =
     customSearchEndpoint +
-    `?key=AIzaSyBQDRkSqqgoG4rTk9czMdjhW0ElY39QqMo&cx=708d155ae7f0e495c&sort=date&dateRestrict=d6&q=ニュース櫻坂46`
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース櫻坂46`
   const data = await getData(url)
   const search: SearchObj[] = data.data.items
   return {
