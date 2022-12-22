@@ -1,8 +1,9 @@
 import { Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { PrimaryButton } from '../atoms/Button'
 import { Heading } from '../atoms/Heading'
 import { GeneralModal } from '../modal/generalModal'
@@ -37,11 +38,11 @@ export const FavoritePage = () => {
   const handleClose = () => setOpen(false)
   const user: UserReducer = GetUser().user
   const router = useRouter()
-  // useEffect(() => {
-  //   if (user.uid === '') {
-  //     router.push('/login')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (router.query.sign) {
+      toast.success('会員登録に成功しました！')
+    }
+  }, [])
   const handleClick = async () => {
     const userInfo = {
       id: user.uid,
@@ -49,7 +50,7 @@ export const FavoritePage = () => {
     }
     dispatch(userSaveBookmark(userInfo))
     await dispatch(setImages({ uid: userInfo.id, sign: true }))
-    router.push('/mypage')
+    router.push({ pathname: '/top', query: { first_come: true } })
   }
   return (
     <div>

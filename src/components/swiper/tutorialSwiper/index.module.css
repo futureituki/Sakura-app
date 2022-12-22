@@ -1,0 +1,37 @@
+.title {
+  color:#ff69b8;
+  font-size:8vw;
+  display:flex;
+  justify-content:center;
+  margin:0 0 20px 0;
+}
+.prev {
+  border:1px solid #ff69b8;
+  color:#fff;
+  top:80%;
+  width:16vw;
+  height:8vw;
+  background:#ff69b8;
+  border-radius:5px;
+}
+.prev::after {
+  content:""
+}
+.next {
+  border:1px solid #ff69b8;
+  color:#fff;
+  top:80%;
+  width:16vw;
+  height:8vw;
+  background:#ff69b8;
+  border-radius:5px;
+}
+.next::after {
+  content:""
+}
+.index {
+  position:absolute;
+  top:78%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
