@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { setImages } from '@/redux/imageSlice'
 import { userLogin } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
@@ -31,6 +32,7 @@ const LoginPage: NextPage = () => {
     if (user.payload === false) {
       console.log('false')
       if (ref.current) {
+        toast.error('ログインに失敗しました。')
         ref.current.innerHTML = 'メールアドレスかパスワードが違います。'
         setLoading(false)
       }
@@ -38,12 +40,10 @@ const LoginPage: NextPage = () => {
     }
     const uid = user.payload.uid as string
     await dispatch(setImages({ uid: uid, sign: false }))
-    setTimeout(() => {
-      router.push('/top')
-    }, 3000)
+    router.push({ pathname: '/top', query: { sign: true } })
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
-    console.log(errors)
+    toast.error('ログインに失敗しました。')
     console.log('Fail Login')
   }
   const {

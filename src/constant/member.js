@@ -93,7 +93,7 @@ export const memberMap = new Map([
       height: '158cm',
       birthplace: '鹿児島県',
       bloodType: 'A型',
-      src: '/assets/member_list/oozono.jpeg',
+      src: '/assets/member_list/ozno.jpeg',
     },
   ],
   [

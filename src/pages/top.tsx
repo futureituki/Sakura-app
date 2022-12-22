@@ -12,12 +12,12 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props> = async (): Promise<
   GetStaticPropsResult<Props>
 > => {
-  // const url =
-  //   customSearchEndpoint +
-  //   `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=w1&q=ニュース`
-  // const data = await getData(url)
-  // const search: SearchObj[] = data.data.items
-  const search: SearchObj[] = []
+  const url =
+    customSearchEndpoint +
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+  const data = await getData(url)
+  const search: SearchObj[] = data.data.items
+  // const search: SearchObj[] = []
   return {
     props: {
       search,

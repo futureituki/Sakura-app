@@ -1,8 +1,12 @@
+import { Alert } from '@mui/material'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { InductionButtons } from '../molecules/InductionButtons'
+import { TransitionsPopper } from '../popup'
 import { DotSwiper } from '../swiper/dotSwiper'
+import { TutorialSwiper } from '../swiper/tutorialSwiper'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
 import { BasicTabs } from '@/components/tab/TopTab'
 import { sliderSrc, sliderVideoSrc } from '@/constant/sliderSrc'
@@ -29,6 +33,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
   const [offsetCount, setOffsetCount] = useState(0)
   const user = GetUser().user.first_favorite as Favorite
   const router = useRouter()
+  console.log(router)
   useEffect(() => {
     if (user) {
       setName(user.name)
@@ -59,6 +64,14 @@ export const TopPage: FC<Props> = ({ searchs }) => {
   }
   return (
     <div>
+      {router.query.first_come ? (
+        <TransitionsPopper>
+          <TutorialSwiper />
+        </TransitionsPopper>
+      ) : (
+        ''
+      )}
+      {router.query.sign ? toast.success('ログインに成功しました') : ''}
       <div>
         <BasicTabs
           name={name as string}
