@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -8,7 +9,6 @@ import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
 import { TitleBar } from '../atoms/TitleBar'
 import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
-import { logout } from '@/firebase/firestore'
 import { GetUser } from '@/lib/user'
 import { userLogout } from '@/redux/userSlice'
 import styles from '@/styles/Mypage.module.css'
@@ -22,7 +22,10 @@ type User = {
     src: string
   }
 }
-
+type Favorite = {
+  name: string
+  src: string
+}
 export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
@@ -57,53 +60,43 @@ export const MyPage = () => {
       <div className={styles.swiper_container}>
         <SwiperInfinitLoop>
           <SwiperSlide style={{ width: '56%' }}>
-            <div className={styles.member_box}>
-              <Image
-                height={110}
-                width={100}
-                src={`/assets/member/${src}`}
-                alt={'の画像'}
-                className={styles.member_img}
-              />
-              <div className={styles.member_information}>
-                <TextLabel color='#ff69b8'>推しメン</TextLabel>
-                <Typography fontSize={14}>{name}</Typography>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/* {user.favorite.map((member,index) => (
-            <SwiperSlide style={{ width: '56%' }}>
+            <Link href='/change_oshimen'>
               <div className={styles.member_box}>
                 <Image
                   height={110}
                   width={100}
-                  // src={`${member['src' as any] ? member['src'] : '/no-image-person'}`}
-                  src={`/no-image-person.jpeg`}
+                  src={`/assets/member/${src}`}
                   alt={'の画像'}
                   className={styles.member_img}
                 />
                 <div className={styles.member_information}>
-                  <TextLabel color='#ccc'>気になる</TextLabel>
-                  <Typography fontSize={14}>藤吉夏鈴</Typography>
+                  <TextLabel color='#ff69b8'>推しメン</TextLabel>
+                  <Typography fontSize={14}>{name}</Typography>
                 </div>
               </div>
-            </SwiperSlide>
-          ))} */}
-          <SwiperSlide style={{ width: '56%' }}>
-            <div className={styles.member_box}>
-              <Image
-                height={110}
-                width={100}
-                src={`/no-image-person.jpeg`}
-                alt={'の画像'}
-                className={styles.member_img}
-              />
-              <div className={styles.member_information}>
-                <TextLabel color='#ccc'>気になる</TextLabel>
-                <Typography fontSize={14}>藤吉夏鈴</Typography>
-              </div>
-            </div>
+            </Link>
           </SwiperSlide>
+          {user.favorite
+            ? user.favorite.map((member: Favorite, index: number) => (
+                <SwiperSlide style={{ width: '56%' }} key={index}>
+                  <Link href='/change_oshimen'>
+                    <div className={styles.member_box}>
+                      <Image
+                        height={110}
+                        width={100}
+                        src={`/assets/member/${member.src}`}
+                        alt={'の画像'}
+                        className={styles.member_img}
+                      />
+                      <div className={styles.member_information}>
+                        <TextLabel color='#ccc'>気になる</TextLabel>
+                        <Typography fontSize={14}>{member.name}</Typography>
+                      </div>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))
+            : ''}
         </SwiperInfinitLoop>
       </div>
       <InductionButtons logoutHandle={logoutCheck} handle={() => console.log('push')} />

@@ -1,7 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Timestamp } from 'firebase/firestore'
-import { login, logout, saveBookmark, signUp } from '@/firebase/firestore'
+import {
+  login,
+  logout,
+  saveBookmark,
+  setFavorite,
+  setFirstFavorite,
+  signUp,
+} from '@/firebase/firestore'
 import { UserReducer } from '@/types/user'
 
 type TypeLogin = {
@@ -26,7 +33,11 @@ export const userSignUp = createAsyncThunk(
       email: user.email,
       created_at: timestamp,
       updated_at: timestamp,
-      favorite: [],
+      favorite: [
+        { name: '未登録', src: 'no-image-person.jpeg' },
+        { name: '未登録', src: 'no-image-person.jpeg' },
+        { name: '未登録', src: 'no-image-person.jpeg' },
+      ],
       first_favorite: { name: '', src: '' },
     }
     return memberInfo
@@ -34,7 +45,26 @@ export const userSignUp = createAsyncThunk(
 )
 type bookmark = {
   id: string
-  first_favorite: { [s: string]: string }
+  first_favorite: {
+    name: string
+    src: string
+  }
+}
+type secondBookmark = {
+  id: string
+  first_favorite: {
+    name: string
+    src: string
+  }
+  selectData: {
+    name: string
+    src: string
+  }
+  favorite: Favorite[]
+}
+type Favorite = {
+  name: string
+  src: string
 }
 export const userSaveBookmark = createAsyncThunk(
   'bookmark',
@@ -47,13 +77,37 @@ export const userLogout = createAsyncThunk('out', async () => {
   console.log('aa')
   await logout()
 })
+export const saveFirstFavorite = createAsyncThunk(
+  'first_favorite',
+  async (userInfo: bookmark): Promise<any> => {
+    const data = await setFirstFavorite(userInfo.id, userInfo.first_favorite)
+    return data
+  },
+)
+export const saveFavorite = createAsyncThunk(
+  'favorite',
+  async (userInfo: secondBookmark): Promise<any> => {
+    const data = await setFavorite(
+      userInfo.id,
+      userInfo.first_favorite,
+      userInfo.selectData,
+      userInfo.favorite,
+    )
+    console.log(data)
+    return data
+  },
+)
 const initialState: UserReducer = {
   uid: '',
   username: '',
   email: '',
   created_at: null,
   updated_at: null,
-  favorite: [],
+  favorite: [
+    { name: '未登録', src: 'no-image-person.jpeg' },
+    { name: '未登録', src: 'no-image-person.jpeg' },
+    { name: '未登録', src: 'no-image-person.jpeg' },
+  ],
   first_favorite: { name: '', src: '' },
 }
 
@@ -79,6 +133,7 @@ export const userSlice = createSlice({
     builder.addCase(
       userSignUp.fulfilled,
       (state: UserReducer, action: PayloadAction<UserReducer>) => {
+        console.log(action)
         state.uid = action.payload.uid
         state.username = action.payload.username
         state.email = action.payload.email
@@ -104,6 +159,18 @@ export const userSlice = createSlice({
       state.favorite = []
       state.first_favorite = { name: '', src: '' }
     })
+    builder.addCase(
+      saveFirstFavorite.fulfilled,
+      (state: UserReducer, action: PayloadAction<Favorite>) => {
+        state.first_favorite = action.payload
+      },
+    )
+    builder.addCase(
+      saveFavorite.fulfilled,
+      (state: UserReducer, action: PayloadAction<Favorite[]>) => {
+        state.favorite = action.payload
+      },
+    )
   },
 })
 export default userSlice.reducer

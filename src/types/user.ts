@@ -7,7 +7,10 @@ export type User = {
   password: string
   created_at: any | null
   updated_at: any | null
-  favorite: { key: string }[]
+  favorite: {
+    name: string
+    src: string
+  }[]
   first_favorite: Object | null
 }
 export type UserReducer = {
@@ -16,7 +19,10 @@ export type UserReducer = {
   email: string
   created_at: any | null
   updated_at: any | null
-  favorite: { key: string }[]
+  favorite: {
+    name: string
+    src: string
+  }[]
   first_favorite: {
     name: string
     src: string
