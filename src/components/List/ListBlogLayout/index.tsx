@@ -12,7 +12,7 @@ export const ListBlogLayout = () => {
     const getBlogs = async () => {
       const url =
         customSearchEndpoint +
-        `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=m5&q=藤吉 夏鈴公式ブログ`
+        `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&q=公式ブログ`
       const result: BlogObj[] = await getData(url).then((data) => data.data.items)
       console.log(result)
       setBlogs(result)
