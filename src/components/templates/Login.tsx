@@ -30,7 +30,6 @@ const LoginPage: NextPage = () => {
     }
     const user = await dispatch(userLogin(userInfo))
     if (user.payload === false) {
-      console.log('false')
       if (ref.current) {
         toast.error('ログインに失敗しました。')
         ref.current.innerHTML = 'メールアドレスかパスワードが違います。'
@@ -38,9 +37,12 @@ const LoginPage: NextPage = () => {
       }
       return
     }
+    toast.success('ログインに成功しました。')
     const uid = user.payload.uid as string
     await dispatch(setImages({ uid: uid, sign: false }))
-    router.push({ pathname: '/top', query: { sign: true } })
+    setTimeout(() => {
+      router.push('/top')
+    }, 2000)
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     toast.error('ログインに失敗しました。')

@@ -30,7 +30,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
   const dispatch = useDispatch<any>()
   const [data, setData] = useState<Array<GalleryObj>>()
   const [name, setName] = useState<string>()
-  const [offsetCount, setOffsetCount] = useState(0)
+  const [offsetCount, setOffsetCount] = useState(1 + Math.floor(Math.random() * 10))
   const user = GetUser().user.first_favorite as Favorite
   const router = useRouter()
   console.log(router)
@@ -53,8 +53,9 @@ export const TopPage: FC<Props> = ({ searchs }) => {
     const data = await getData(url)
     setData(data.data.items)
   }
+  console.log(offsetCount)
   const nextSet = async () => {
-    setOffsetCount(offsetCount + 10)
+    setOffsetCount(1 + Math.floor(Math.random() * 100))
     const data = await getData(url)
     setData(data.data.items)
   }
@@ -71,7 +72,6 @@ export const TopPage: FC<Props> = ({ searchs }) => {
       ) : (
         ''
       )}
-      {router.query.sign ? toast.success('ログインに成功しました') : ''}
       <div>
         <BasicTabs
           name={name as string}
