@@ -19,6 +19,7 @@ export const FavoriteChangePage = () => {
     name: router.query.name as string,
     src: router.query.src as string,
   })
+  console.log(favorite)
   const user = GetUser().user
   useEffect(() => {
     if (!router.query.name) {
@@ -43,6 +44,7 @@ export const FavoriteChangePage = () => {
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target.value
+    console.log(target)
     const selectMember: Favorite = memberSrcMap.get(target) as Favorite
     setValue(target)
     setFavorite(selectMember)
