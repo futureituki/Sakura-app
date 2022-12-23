@@ -53,7 +53,7 @@ export const Section02 = () => {
             知ってもらいたかったからです。
           </p>
           <p className={styles.tx} id='tx_on'>
-            このパフォーマンス力と表現力は目を見張るものがあります。
+            このパフォーマンス力と表現力
           </p>
         </div>
       </div>

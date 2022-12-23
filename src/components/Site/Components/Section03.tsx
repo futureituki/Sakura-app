@@ -14,7 +14,7 @@ export const Section03 = () => {
         <PinningContainer>
           {memberSrc.map((member, index) => (
             <PinningItemList key={index}>
-              <SectionImg src={member.src} alt_name={member.name} width={400} height={300} />
+              <SectionImg src={member.src} alt_name={member.name} width={280} height={350} />
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
           ))}
