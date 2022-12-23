@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { PrimaryButton } from '../atoms/Button'
 import { Heading } from '../atoms/Heading'
@@ -11,14 +11,20 @@ import { memberSrc } from '@/constant/memberSrc'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { setImages } from '@/redux/imageSlice'
-import { AppDispatch } from '@/redux/store'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
-import { User, UserReducer } from '@/types/user'
+import { UserReducer } from '@/types/user'
 
 type SelectedProps = {
   name: string
   src: string
+}
+type Props = {
+  id: string
+  first_favorite: {
+    name: string
+    src: string
+  }
 }
 export const FavoritePage = () => {
   const dispatch = useDispatch<any>()
@@ -44,7 +50,7 @@ export const FavoritePage = () => {
     }
   }, [])
   const handleClick = async () => {
-    const userInfo = {
+    const userInfo: Props = {
       id: user.uid,
       first_favorite: { name: selectedImg.name, src: selectedImg.src },
     }

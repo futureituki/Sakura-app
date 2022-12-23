@@ -9,6 +9,7 @@ import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { auth, db } from '@/firebase/firebase'
+import { GetUser } from '@/lib/user'
 import { User } from '@/types/user'
 // export const getUser = (uid: string) => {
 //   // 特定のユーザー取得処理
@@ -27,7 +28,11 @@ export const signUp = async (username: string, email: string, password: string):
             password: password,
             created_at: timestamp,
             updated_at: timestamp,
-            favorite: [],
+            favorite: [
+              { name: '未登録', src: 'no-image-person.jpeg' },
+              { name: '未登録', src: 'no-image-person.jpeg' },
+              { name: '未登録', src: 'no-image-person.jpeg' },
+            ],
             first_favorite: null,
           }
           const colRef = doc(db, 'users', uid)
@@ -139,4 +144,26 @@ export const setImg = async (uid: string, sign?: boolean) => {
     return doc.data() as Props
   })
   return images.src
+}
+type FavoriteObj = {
+  name: string
+  src: string
+}
+export const setFirstFavorite = async (uid: string, data: FavoriteObj) => {
+  const ref = doc(db, 'users', uid)
+  await setDoc(ref, { first_favorite: data }, { merge: true })
+  return data
+}
+export const setFavorite = async (
+  uid: string,
+  data: FavoriteObj,
+  selectData: FavoriteObj,
+  favorite: FavoriteObj[],
+) => {
+  const ref = doc(db, 'users', uid)
+  const index = favorite.findIndex((name) => name.name == selectData.name)
+  const newFavorite = [...favorite]
+  newFavorite.splice(index, 1, data)
+  await setDoc(ref, { favorite: newFavorite }, { merge: true })
+  return newFavorite
 }
