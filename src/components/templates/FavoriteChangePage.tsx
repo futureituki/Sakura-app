@@ -83,7 +83,12 @@ export const FavoriteChangePage = () => {
             >
               <FormControlLabel
                 value={member.name}
-                disabled={member.name == user.first_favorite.name || user.favorite.map((favoriteMember) => favoriteMember.name).includes(member.name) ? true : false}
+                disabled={
+                  member.name == user.first_favorite.name ||
+                  user.favorite.map((favoriteMember) => favoriteMember.name).includes(member.name)
+                    ? true
+                    : false
+                }
                 control={<Radio />}
                 label={member.name}
               />
@@ -94,7 +99,9 @@ export const FavoriteChangePage = () => {
                   alignItems: 'center',
                 }}
               >
-                {user.favorite.map((favoriteMember) => favoriteMember.name == member.name ? '気になる' : '')}
+                {user.favorite.map((favoriteMember) =>
+                  favoriteMember.name == member.name ? '気になる' : '',
+                )}
                 {user.first_favorite.name == member.name ? '推しメン' : ''}
                 <Image src={member.src} alt={member.name} width={100} height={100} />
               </Box>
