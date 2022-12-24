@@ -1,14 +1,13 @@
 import { Box } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
+import { PrimaryButton } from '@/components/atoms/Button'
+import { memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { getData } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
-import { PrimaryButton } from '@/components/atoms/Button'
-import { Member } from '@/components/templates/Member'
-import { memberSrcMap } from '@/constant/memberSrc'
-import Image from 'next/image'
 
 export const ListBlogLayout = () => {
   const [blogs, setBlogs] = useState<BlogObj[]>()
@@ -60,14 +59,15 @@ export const ListBlogLayout = () => {
                 {blog.pagemap.hproduct[0].photo ? (
                   <Image
                     src={
-                      "/assets/member/" + memberSrcMap?.get(
-                        blog.title.replace(/ /g, '').slice(0, blog.title.indexOf('公式') - 1),
-                      )?.src as string
+                      ('/assets/member/' +
+                        memberSrcMap?.get(
+                          blog.title.replace(/ /g, '').slice(0, blog.title.indexOf('公式') - 1),
+                        )?.src) as string
                     }
-                    alt="blog"
+                    alt='blog'
                     width={100}
                     height={100}
-                    style={{borderRadius:"50%", width:"20vw",height:"20vw"}}
+                    style={{ borderRadius: '50%', width: '20vw', height: '20vw' }}
                   />
                 ) : (
                   ''
@@ -82,15 +82,19 @@ export const ListBlogLayout = () => {
           </li>
         ))}
       </ul>
-      {offsetCount != 0 ? <PrimaryButton
-        label='prevbutton'
-        color='#fff'
-        background='#ff69b8'
-        variant='contained'
-        onClick={prevSet}
-      >
-        前のページへ
-      </PrimaryButton> : ''}
+      {offsetCount != 0 ? (
+        <PrimaryButton
+          label='prevbutton'
+          color='#fff'
+          background='#ff69b8'
+          variant='contained'
+          onClick={prevSet}
+        >
+          前のページへ
+        </PrimaryButton>
+      ) : (
+        ''
+      )}
       <PrimaryButton
         label='nextbutton'
         color='#fff'
