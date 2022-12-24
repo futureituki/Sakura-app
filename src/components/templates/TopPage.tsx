@@ -94,7 +94,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
           </div>
         ))} */}
       </div>
-      <InductionButtons logoutHandle={logoutCheck} handle={() => console.log('push')} />
+      <InductionButtons logoutHandle={logoutCheck} handle={() => router.push('/mypage')} />
     </div>
   )
 }
