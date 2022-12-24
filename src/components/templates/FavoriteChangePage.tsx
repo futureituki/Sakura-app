@@ -79,18 +79,22 @@ export const FavoriteChangePage = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
+            gap: '20px',
             padding: '20px 0',
           }}
         >
-          現在の{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+          <p style={{ fontSize: '2vw' }}>
+            現在の{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+          </p>
           <Image
             src={`/assets/member/${router.query.src}`}
             alt={router.query.name as string}
             width={100}
             height={100}
-            style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+            style={{ width: '24vw', height: '24vw', borderRadius: '50%' }}
           />
-          <p>{router.query.name}</p>
+          <p style={{ fontSize: '5vw' }}>{router.query.name}</p>
         </Box>
         <FormLabel id='demo-controlled-radio-buttons-group'>
           {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
@@ -141,7 +145,7 @@ export const FavoriteChangePage = () => {
                     alt={member.name}
                     width={100}
                     height={100}
-                    style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+                    style={{ width: '20vw', height: '20vw', borderRadius: '50%' }}
                   />
                   <Box
                     sx={{
@@ -222,15 +226,17 @@ export const FavoriteChangePage = () => {
         </Box>
       </Box>
       <GeneralModal open={open} handleClose={handleClose}>
-        <p>{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}</p>
+        <p style={{ fontSize: '4vw' }}>
+          {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+        </p>
         <Image
           src={`/assets/member/${favorite.src}`}
           alt={favorite.name}
           width={100}
           height={100}
-          style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+          style={{ width: '30vw', height: '30vw', borderRadius: '50%' }}
         />
-        <p>{favorite.name}</p>
+        <p style={{ fontSize: '5vw' }}>{favorite.name}</p>
         <Box
           sx={{
             display: 'flex',
