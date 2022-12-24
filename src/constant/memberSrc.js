@@ -27,6 +27,8 @@ export const memberSrcMap = new Map([
   ['井上梨名', { src: 'inoue_main_visual.jpeg', name: '井上梨名' }],
   ['遠藤光莉', { src: 'endo_main_visual.jpeg', name: '遠藤光莉' }],
   ['大園玲', { src: 'ozno_main_visual.jpeg', name: '大園玲' }],
+  ['大沼晶保', { src: 'oonuma_main_visual.jpeg', name: '大沼晶保' }],
+  ['幸阪茉里乃', { src: 'kousaka_main_visual.jpeg', name: '幸阪茉里乃' }],
   ['関有美子', { src: 'seki_main_visual.jpeg', name: '関有美子' }],
   ['武元唯衣', { src: 'takemoto_main_visual.jpeg', name: '武元唯衣' }],
   ['田村保乃', { src: 'tamura_main_visual.jpeg', name: '田村保乃' }],
