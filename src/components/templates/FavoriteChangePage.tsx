@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { PrimaryButton } from '../atoms/Button'
+import { TitleBar } from '../atoms/TitleBar'
+import { GeneralModal } from '../modal/generalModal'
 import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { GetUser } from '@/lib/user'
 import { saveFavorite, saveFirstFavorite } from '@/redux/userSlice'
@@ -19,13 +22,16 @@ export const FavoriteChangePage = () => {
     name: router.query.name as string,
     src: router.query.src as string,
   })
-  console.log(favorite)
+  const [open, setOpen] = useState<boolean>(false)
   const user = GetUser().user
   useEffect(() => {
     if (!router.query.name) {
       router.push('/change_oshimen')
     }
   })
+  const handleClose = () => {
+    setOpen(!open)
+  }
   const handleSubmit = async () => {
     const data = {
       id: user.uid,
@@ -34,7 +40,6 @@ export const FavoriteChangePage = () => {
       favorite: user.favorite,
     }
     if (router.query.name !== user.first_favorite.name) {
-      console.log(favorite, user, favorite)
       await dispatch(saveFavorite(data))
       router.push('/mypage')
     } else {
@@ -51,65 +56,210 @@ export const FavoriteChangePage = () => {
   }
   return (
     <Box>
-      現在の{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
-      <Box>
-        <Image
-          src={`/assets/member/${router.query.src}`}
-          alt={router.query.name as string}
-          width={150}
-          height={150}
-        />
-        <p>{router.query.name}</p>
+      <TitleBar>推しメン変更画面</TitleBar>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '40px 0',
+          color: '#666',
+          fontSize: '3vw',
+        }}
+      >
+        登録する枠をタップしてください
       </Box>
-      <FormLabel id='demo-controlled-radio-buttons-group'>
-        {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
-        に選択するメンバーを決めてください
-      </FormLabel>
-      <FormControl>
-        <RadioGroup
-          aria-labelledby='demo-controlled-radio-buttons-group'
-          name='controlled-radio-buttons-group'
-          value={value}
-          onChange={handleChange}
+      <Box
+        sx={{
+          background: '#f2f2f2',
+          padding: '20px 0',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '20px 0',
+          }}
         >
-          {memberSrc.map((member: Favorite, index: number) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                gap: '15px',
-                alignItems: 'center',
-              }}
+          現在の{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+          <Image
+            src={`/assets/member/${router.query.src}`}
+            alt={router.query.name as string}
+            width={100}
+            height={100}
+            style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+          />
+          <p>{router.query.name}</p>
+        </Box>
+        <FormLabel id='demo-controlled-radio-buttons-group'>
+          {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+          に選択するメンバーを決めてください
+        </FormLabel>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <FormControl>
+            <RadioGroup
+              aria-labelledby='demo-controlled-radio-buttons-group'
+              name='controlled-radio-buttons-group'
+              value={value}
+              onChange={handleChange}
             >
-              <FormControlLabel
-                value={member.name}
-                disabled={
-                  member.name == user.first_favorite.name ||
-                  user.favorite.map((favoriteMember) => favoriteMember.name).includes(member.name)
-                    ? true
-                    : false
-                }
-                control={<Radio />}
-                label={member.name}
-              />
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: '15px',
-                  alignItems: 'center',
-                }}
-              >
-                {user.favorite.map((favoriteMember) =>
-                  favoriteMember.name == member.name ? '気になる' : '',
-                )}
-                {user.first_favorite.name == member.name ? '推しメン' : ''}
-                <Image src={member.src} alt={member.name} width={100} height={100} />
-              </Box>
-            </Box>
-          ))}
-        </RadioGroup>
-      </FormControl>
-      <button onClick={handleSubmit}>登録する</button>
+              {memberSrc.map((member: Favorite, index: number) => (
+                <Box
+                  key={index}
+                  sx={{
+                    width: '80vw',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '15px',
+                    alignItems: 'center',
+                    background: '#fff',
+                    border: '1px solid #000',
+                    padding: '15px 0',
+                  }}
+                >
+                  <FormControlLabel
+                    value={member.name}
+                    disabled={
+                      member.name == user.first_favorite.name ||
+                      user.favorite
+                        .map((favoriteMember) => favoriteMember.name)
+                        .includes(member.name)
+                        ? true
+                        : false
+                    }
+                    control={<Radio />}
+                    label={''}
+                  />
+                  <Image
+                    src={member.src}
+                    alt={member.name}
+                    width={100}
+                    height={100}
+                    style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+                  />
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '15px',
+                      alignItems: 'center',
+                      width: '20vw',
+                    }}
+                  >
+                    {user.favorite.map((favoriteMember: Favorite, index: number) =>
+                      favoriteMember.name == member.name ? (
+                        <p
+                          key={index}
+                          style={{
+                            fontSize: '1.4vw',
+                            border: '1px solid #000',
+                            borderRadius: '2.5em',
+                            padding: '5px 10px',
+                          }}
+                        >
+                          気になる
+                        </p>
+                      ) : (
+                        ''
+                      ),
+                    )}
+                    {user.first_favorite.name == member.name ? (
+                      <p
+                        style={{
+                          fontSize: '1.4vw',
+                          border: '1px solid #000',
+                          borderRadius: '2.5em',
+                          padding: '5px 10px',
+                        }}
+                      >
+                        推しメン
+                      </p>
+                    ) : (
+                      ''
+                    )}
+                    <p>{member.name}</p>
+                  </Box>
+                </Box>
+              ))}
+            </RadioGroup>
+          </FormControl>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100vw',
+            alignItems: 'center',
+            gap: '20px',
+            margin: '20px 0',
+          }}
+        >
+          <PrimaryButton
+            label='sign'
+            color={`${router.query.name != favorite.name ? '#fff' : '#ccc'}`}
+            background={`${router.query.name != favorite.name ? '#ff69b8' : '#f2f2f2'}`}
+            disabled={router.query.name != favorite.name ? false : true}
+            variant='contained'
+            onClick={() => setOpen(!open)}
+          >
+            登録確認
+          </PrimaryButton>
+          <PrimaryButton
+            label='sign'
+            color='#fff'
+            background='#ccc'
+            variant='contained'
+            onClick={() => router.push('/change_oshimen')}
+          >
+            もどる
+          </PrimaryButton>
+        </Box>
+      </Box>
+      <GeneralModal open={open} handleClose={handleClose}>
+        <p>{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}</p>
+        <Image
+          src={`/assets/member/${favorite.src}`}
+          alt={favorite.name}
+          width={100}
+          height={100}
+          style={{ width: '14vw', height: '14vw', borderRadius: '50%' }}
+        />
+        <p>{favorite.name}</p>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+            margin: '20px 0',
+          }}
+        >
+          <PrimaryButton
+            label='sign'
+            color='#fff'
+            background='#ff69b8'
+            variant='contained'
+            onClick={handleSubmit}
+          >
+            登録確認
+          </PrimaryButton>
+          <PrimaryButton
+            label='sign'
+            color='#fff'
+            background='#ccc'
+            variant='contained'
+            onClick={handleClose}
+          >
+            閉じる
+          </PrimaryButton>
+        </Box>
+      </GeneralModal>
     </Box>
   )
 }

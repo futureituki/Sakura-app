@@ -10,10 +10,19 @@ type ButtonProps = {
   background: string
   variant: 'text' | 'outlined' | 'contained' | undefined
   onClick?: () => void
+  disabled?: boolean
 }
 export type Button = ButtonProps
 
-export const PrimaryButton = ({ onClick, children, label, color, background, variant }: Button) => {
+export const PrimaryButton = ({
+  onClick,
+  children,
+  label,
+  color,
+  background,
+  variant,
+  disabled = false,
+}: Button) => {
   return (
     <Button
       onClick={onClick}
@@ -21,6 +30,7 @@ export const PrimaryButton = ({ onClick, children, label, color, background, var
       variant={variant}
       style={{ color: color, background: background }}
       aria-label={label}
+      disabled={disabled}
     >
       {children}
     </Button>
