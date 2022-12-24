@@ -12,6 +12,7 @@ import { FavoriteImageLayout } from '@/components/List/FavoriteImageLayout'
 import { ListBlogLayout } from '@/components/List/ListBlogLayout'
 import { ListImageLayout } from '@/components/List/ListImageLayout'
 import { ListTweetLayout } from '@/components/List/ListTweetLayout'
+import { PrimaryButton } from '@/components/atoms/Button'
 import { GalleryObj } from '@/types/gallery'
 type Props = {
   imageList: Array<GalleryObj>
@@ -75,9 +76,39 @@ export const BasicTabs: React.FC<Props> = ({ name, imageList, onClick, prev, nex
         </TabPanel>
         <TabPanel value='2'>
           <ListImageLayout data={imageList} name={name} />
-          <button onClick={onClick}>取得する</button>
-          <button onClick={prev}>前へ</button>
-          <button onClick={next}>次へ</button>
+          <PrimaryButton
+            label='get'
+            onClick={onClick}
+            color='#fff'
+            background='#ff69b8'
+            variant='contained'
+          >
+            {name}の画像を検索する
+          </PrimaryButton>
+          {imageList ? (
+            <>
+              <PrimaryButton
+                label='get'
+                onClick={prev}
+                color='#fff'
+                background='#ff69b8'
+                variant='contained'
+              >
+                前へ
+              </PrimaryButton>
+              <PrimaryButton
+                label='get'
+                onClick={next}
+                color='#fff'
+                background='#ff69b8'
+                variant='contained'
+              >
+                次へ
+              </PrimaryButton>
+            </>
+          ) : (
+            ''
+          )}
         </TabPanel>
         <TabPanel value='3'>
           <ListTweetLayout />

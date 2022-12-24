@@ -32,7 +32,6 @@ export const ListImageLayout: FC<Gallery> = ({ data, name }) => {
       }}
     >
       <Heading style={{ color: '#000' }}>Gallery</Heading>
-      <p>{name}</p>
       <ul className={styles.image}>
         {data
           ? data.map((image: GalleryObj, index: number) => (

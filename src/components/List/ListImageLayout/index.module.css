@@ -21,8 +21,9 @@
   height:100%;
 }
 .button {
-  position:absolute;
-  bottom:-10%;
-  right:-5%;
-  z-index:10;
+  width: 10vw;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  z-index: 10;
 }
