@@ -14,7 +14,7 @@ export const ListBlogLayout = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   let url =
     customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&q=ブログ`
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=w1&q=ブログ`
   useEffect(() => {
     const getBlogs = async () => {
       const result: BlogObj[] = await getData(url).then((data) => data.data.items)
@@ -26,6 +26,7 @@ export const ListBlogLayout = () => {
   const nextSet = async () => {
     setOffsetCount(offsetCount + 11)
     const result: BlogObj[] = await getData(url).then((data) => data.data.items)
+    console.log(result)
     setBlogs(result)
   }
   const prevSet = async () => {
