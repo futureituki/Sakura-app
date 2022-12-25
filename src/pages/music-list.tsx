@@ -40,7 +40,7 @@ const MusicList: NextPageWithLayout = ({
   console.log(trackContents)
   return (
     <>
-      <a href={loginPath}>Sign in with Spotify</a>
+      <button onClick={login}>Sign in with Spotify</button>
       {trackContents
         ? trackContents.map((track: any, index) => (
             <div key={index}>
