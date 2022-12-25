@@ -29,4 +29,10 @@ export const musicList = [
     img: '/assets/disc/nobody.jpeg',
     number: '1st',
   },
+  {
+    src: '/assets/music/nazekoi.m4a',
+    name: 'なぜ恋をしてこなかったんだろう',
+    img: '/assets/disc/nobody.jpeg',
+    number: '1st',
+  },
 ]
