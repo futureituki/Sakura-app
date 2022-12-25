@@ -39,26 +39,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
       setName(user.name)
     }
   }, [])
-  const url =
-    customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&count=10&start=${offsetCount}&searchType=image&q=${name}`
-  const Setting = async () => {
-    const data = await getData(url)
-    setData(data.data.items)
-  }
-  const prevSet = async () => {
-    if (offsetCount == 0) return
-    setOffsetCount(offsetCount - 10)
-    console.log('test')
-    const data = await getData(url)
-    setData(data.data.items)
-  }
-  console.log(offsetCount)
-  const nextSet = async () => {
-    setOffsetCount(1 + Math.floor(Math.random() * 100))
-    const data = await getData(url)
-    setData(data.data.items)
-  }
+
   const logoutCheck = async () => {
     await dispatch(userLogout())
     router.push('/logout')
@@ -73,13 +54,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
         ''
       )}
       <div>
-        <BasicTabs
-          name={name as string}
-          imageList={data as Array<GalleryObj>}
-          onClick={Setting}
-          prev={prevSet}
-          next={nextSet}
-        />
+        <BasicTabs name={name as string} />
         <DotSwiper data={sliderVideoSrc as SwiperProps} />
         <ListNewsLayout data={searchs} />
         {/* {data.map((news,index) => (
