@@ -19,6 +19,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/templates/MusicList.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/templates/MusicList.tsx",
+    "src/spotify/spotify.js"
+  ],
   "exclude": ["node_modules"]
 }
