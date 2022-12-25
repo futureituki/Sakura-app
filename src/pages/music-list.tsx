@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const params = new URLSearchParams()
   params.append('client_id', process.env.SPOTIFY_CLIENT_ID || '')
   params.append('response_type', 'code')
-  params.append('redirect_uri', process.env.RETURN_TO || '')
+  params.append('redirect_uri', `${process.env.RETURN_TO}` || '')
   params.append('scope', scopes.join(' '))
   params.append('state', 'state')
   return {
