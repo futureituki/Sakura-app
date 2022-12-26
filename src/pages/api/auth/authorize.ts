@@ -14,7 +14,7 @@ const authorize = async (req: any, res: any) => {
   const params = new URLSearchParams()
   params.append('grant_type', 'authorization_code')
   params.append('code', code as string)
-  params.append('redirect_uri', process.env.RETURN_TO as string)
+  params.append('redirect_uri', `${process.env.RETURN_TO}` as string)
 
   const response = await axios.post<SpotifyAuthApiResponse>(
     'https://accounts.spotify.com/api/token',

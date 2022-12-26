@@ -7,7 +7,7 @@ const withSession = (handler: NextIronHandler) => {
     cookieName: 'app_session',
     password: `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET_ID}`,
     cookieOptions: {
-      secure: process.env.NODE_ENV === 'production',
+      secure: `${process.env.NODE_ENV}` === 'production',
     },
   })
 }

@@ -26,7 +26,6 @@ const MusicList: NextPageWithLayout = ({
     window.location.href = loginPath
   }, [loginPath])
   const [token, setToken] = useState(null)
-
   useEffect(() => {
     if (loginData?.accessToken) {
       axios(`https://api.spotify.com/v1/albums/0k4rYF9WBoCOoPjr0fEvER`, {
@@ -73,7 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const params = new URLSearchParams()
   params.append('client_id', process.env.SPOTIFY_CLIENT_ID || '')
   params.append('response_type', 'code')
-  params.append('redirect_uri', process.env.RETURN_TO || '')
+  params.append('redirect_uri', `${process.env.RETURN_TO}` || '')
   params.append('scope', scopes.join(' '))
   params.append('state', 'state')
   return {
