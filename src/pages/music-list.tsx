@@ -26,7 +26,6 @@ const MusicList: NextPageWithLayout = ({
     window.location.href = loginPath
   }, [loginPath])
   const [token, setToken] = useState(null)
-
   useEffect(() => {
     if (loginData?.accessToken) {
       axios(`https://api.spotify.com/v1/albums/0k4rYF9WBoCOoPjr0fEvER`, {
