@@ -36,3 +36,31 @@ export const musicList = [
     number: '1st',
   },
 ]
+
+export const music_id = [
+  {
+    id: '0k4rYF9WBoCOoPjr0fEvER',
+    src: 'disc/thum_asyouknow.jpeg',
+    title: 'As you know?',
+    type: 'album',
+  },
+  {
+    id: '3JRgpVojs3aIgGy835mvLH',
+    src: 'disc/thum_samidareyo.jpeg',
+    title: '五月雨よ',
+    type: 'single',
+  },
+  {
+    id: '0HYpXXxzD45aBgoN84feHc',
+    src: 'disc/thum_nagaredama.jpeg',
+    title: '流れ弾',
+    type: 'single',
+  },
+  { id: '74oBBYbpxNZLcwprLNjUFB', src: 'disc/thum_ban.jpeg', title: 'BAN', type: 'single' },
+  {
+    id: '3Hv8KXFlfO3HzhTq9g2yci',
+    src: 'disc/thum_nobodysfault.jpeg',
+    title: 'Nobody`s fault',
+    type: 'single',
+  },
+]

@@ -1,12 +1,13 @@
-import axios from 'axios'
+import { Box } from '@mui/material'
 import { NextPageWithLayout, GetStaticProps, InferGetStaticPropsType } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback, useEffect, useState } from 'react'
-import session from 'redux-persist/lib/storage/session'
+import { useCallback } from 'react'
+import { PrimaryButton } from '@/components/atoms/Button'
 import { MusicListPage } from '@/components/templates/MusicListPage'
+import { music_id } from '@/constant/music-list'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
-import { accessUrl, getTokenFromUrl } from '@/spotify/spotify'
 
 type SpotifyAuthApiResponse = {
   access_token: string
@@ -15,46 +16,87 @@ type SpotifyAuthApiResponse = {
   expires_in: number
   refresh_token: string
 }
-
+type Music = {
+  id: string
+  src: string
+  title: string
+  type: string
+}
 const MusicList: NextPageWithLayout = ({
   loginPath,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
-  const [trackContents, setTracksContents] = useState([])
-  console.log(loginData)
   const login = useCallback(() => {
     window.location.href = loginPath
   }, [loginPath])
-  const [token, setToken] = useState(null)
-  useEffect(() => {
-    if (loginData?.accessToken) {
-      axios(`https://api.spotify.com/v1/albums/0k4rYF9WBoCOoPjr0fEvER`, {
-        method: 'GET',
-        headers: { Authorization: 'Bearer ' + loginData.accessToken },
-      }).then((tracksReaponse) => {
-        setTracksContents(tracksReaponse.data.tracks.items)
-      })
-    }
-  }, [loginData])
-  console.log(trackContents)
+
   return (
     <>
-      <button onClick={login}>Sign in with Spotify</button>
-      {trackContents
-        ? trackContents.map((track: any, index) => (
-            <div key={index}>
-              {track.name}
-              <iframe
-                style={{ position: 'relative' }}
-                src={track.preview_url}
-                width={100}
-                height={100}
-              />
-            </div>
-            // <Link href={track.external_urls.spotify}>{track.name}</Link>
-          ))
-        : ''}
       <MusicListPage />
+      {loginData?.accessToken ? (
+        ''
+      ) : (
+        <Box sx={{}}>
+          <p style={{ fontSize: '4vw' }}>もっと聞きたい人はSPOTIFYにログインしてね</p>
+          <p style={{ fontSize: '2vw' }}>※ログイン後この画面に再度リダイレクトされます</p>
+          <PrimaryButton
+            variant='contained'
+            label='login'
+            color='#fff'
+            background='#1BD760'
+            onClick={login}
+          >
+            Sign in with Spotify
+          </PrimaryButton>
+        </Box>
+      )}
+      <Link href='/music-list/single'>Single</Link>
+      {loginData?.accessToken ? (
+        <Box
+          sx={{
+            margin: '60px 0',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '40px',
+          }}
+        >
+          {music_id.map((music: Music, index: number) => (
+            <Link href={`/music-list/single/${music.id}`} key={index}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  gap: '10px',
+                }}
+              >
+                <Image
+                  src={`/assets/${music.src}`}
+                  alt={music.title}
+                  width={400}
+                  height={400}
+                  style={{ width: '40vw', height: '100%', display: 'block' }}
+                />
+                <Box
+                  sx={{
+                    border: '1px solid #f2f2f2',
+                    borderRadius: '2.5em',
+                    padding: '5px 15px',
+                    width: 'fit-Content',
+                    fontSize: '2vw',
+                  }}
+                >
+                  <span>{music.type}</span>
+                </Box>
+                <p style={{ fontSize: '3.4vw' }}>{music.title}</p>
+              </Box>
+            </Link>
+          ))}
+        </Box>
+      ) : (
+        ''
+      )}
     </>
   )
 }
