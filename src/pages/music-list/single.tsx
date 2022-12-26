@@ -2,10 +2,10 @@ import { Box } from '@mui/material'
 import { NextPageWithLayout } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { TitleBar } from '@/components/atoms/TitleBar'
 import { music_id } from '@/constant/music-list'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
-import { TitleBar } from '@/components/atoms/TitleBar'
 
 type Music = {
   id: string
