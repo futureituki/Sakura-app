@@ -10,16 +10,17 @@ export const MusicListPage = () => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '15px',
         }}
       >
         {musicList.map((music, index) => (
-          <div key={index}>
+          <Box key={index}>
             <Music src={music.src} name={music.name} img={music.img} number={music.number} />
-          </div>
+          </Box>
         ))}
       </Box>
     </Box>
