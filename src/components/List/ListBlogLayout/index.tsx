@@ -46,7 +46,7 @@ export const ListBlogLayout = () => {
           <li key={index} className={styles.blog}>
             {blog.pagemap.hproduct ? (
               <Link href={blog.formattedUrl} target={'_blank'}>
-                {blog.pagemap.hproduct ? (
+                {blog.pagemap.hproduct[0].photo.indexOf('jpg') !== -1 ? (
                   <img
                     src={blog.pagemap.hproduct[0].photo}
                     alt=''

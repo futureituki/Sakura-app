@@ -50,7 +50,7 @@ const MusicList: NextPageWithLayout = ({
           </PrimaryButton>
         </Box>
       )}
-      <Link href='/music-list/single'>Single</Link>
+      <Link href='/music/single-list'>Single</Link>
       {loginData?.accessToken ? (
         <Box
           sx={{
@@ -62,7 +62,7 @@ const MusicList: NextPageWithLayout = ({
           }}
         >
           {music_id.map((music: Music, index: number) => (
-            <Link href={`/music-list/single/${music.id}`} key={index}>
+            <Link href={`/music/single/${music.id}`} key={index}>
               <Box
                 sx={{
                   display: 'flex',

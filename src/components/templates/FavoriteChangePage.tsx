@@ -161,7 +161,7 @@ export const FavoriteChangePage = () => {
                         <p
                           key={index}
                           style={{
-                            fontSize: '1.4vw',
+                            fontSize: '2vw',
                             border: '1px solid #000',
                             borderRadius: '2.5em',
                             padding: '5px 10px',
@@ -176,7 +176,7 @@ export const FavoriteChangePage = () => {
                     {user.first_favorite.name == member.name ? (
                       <p
                         style={{
-                          fontSize: '1.4vw',
+                          fontSize: '2vw',
                           border: '1px solid #000',
                           borderRadius: '2.5em',
                           padding: '5px 10px',
@@ -187,7 +187,7 @@ export const FavoriteChangePage = () => {
                     ) : (
                       ''
                     )}
-                    <p>{member.name}</p>
+                    <p style={{ fontSize: '3.4vw' }}>{member.name}</p>
                   </Box>
                 </Box>
               ))}
@@ -212,7 +212,9 @@ export const FavoriteChangePage = () => {
             variant='contained'
             onClick={() => setOpen(!open)}
           >
-            登録確認
+            <span style={{ width: '20vw', display: 'inline-block', textAlign: 'center' }}>
+              登録確認
+            </span>
           </PrimaryButton>
           <PrimaryButton
             label='sign'
@@ -221,49 +223,57 @@ export const FavoriteChangePage = () => {
             variant='contained'
             onClick={() => router.push('/change_oshimen')}
           >
-            もどる
+            <span style={{ width: '20vw', display: 'inline-block', textAlign: 'center' }}>
+              閉じる
+            </span>
           </PrimaryButton>
         </Box>
       </Box>
       <GeneralModal open={open} handleClose={handleClose}>
-        <p style={{ fontSize: '4vw' }}>
-          {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
-        </p>
-        <Image
-          src={`/assets/member/${favorite.src}`}
-          alt={favorite.name}
-          width={100}
-          height={100}
-          style={{ width: '30vw', height: '30vw', borderRadius: '50%' }}
-        />
-        <p style={{ fontSize: '5vw' }}>{favorite.name}</p>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-            margin: '20px 0',
+            width: '60vw',
           }}
         >
-          <PrimaryButton
-            label='sign'
-            color='#fff'
-            background='#ff69b8'
-            variant='contained'
-            onClick={handleSubmit}
+          <p style={{ fontSize: '4vw' }}>
+            {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
+          </p>
+          <Image
+            src={`/assets/member/${favorite.src}`}
+            alt={favorite.name}
+            width={100}
+            height={100}
+            style={{ width: '30vw', height: '30vw', borderRadius: '50%' }}
+          />
+          <p style={{ fontSize: '5vw' }}>{favorite.name}</p>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '20px',
+              margin: '20px 0',
+            }}
           >
-            登録確認
-          </PrimaryButton>
-          <PrimaryButton
-            label='sign'
-            color='#fff'
-            background='#ccc'
-            variant='contained'
-            onClick={handleClose}
-          >
-            閉じる
-          </PrimaryButton>
+            <PrimaryButton
+              label='sign'
+              color='#fff'
+              background='#ff69b8'
+              variant='contained'
+              onClick={handleSubmit}
+            >
+              <span style={{ width: '20vw', display: 'inline-block' }}>登録</span>
+            </PrimaryButton>
+            <PrimaryButton
+              label='sign'
+              color='#fff'
+              background='#ccc'
+              variant='contained'
+              onClick={handleClose}
+            >
+              <span style={{ width: '20vw', display: 'inline-block' }}>閉じる</span>
+            </PrimaryButton>
+          </Box>
         </Box>
       </GeneralModal>
     </Box>
