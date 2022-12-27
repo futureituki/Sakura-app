@@ -2,12 +2,12 @@
   width:100%;
   background:#ff69b8;
   color:#fff;
-  padding:0 20px;
-  height:40px;
+  padding:4vw 20px;
+  height:50px;
 }
 .bar_text {
   display:inherit;
-  font-size:1.4rem;
+  font-size:4.4vw;
   text-align:center;
   display: flex;
   justify-content: center;

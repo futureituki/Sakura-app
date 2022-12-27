@@ -4,7 +4,6 @@ import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { TitleBar } from '@/components/atoms/TitleBar'
-import { Member } from '@/components/templates/Member'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
 import { Album } from '@/types/spotify'
@@ -33,17 +32,37 @@ const MusicDetail: NextPageWithLayout = () => {
     <>
       <TitleBar>Music List</TitleBar>
       {trackContents ? (
-        <img src={trackContents.images[0].url} style={{ width: '50vw', height: '100%' }} />
+        <Box
+          sx={{
+            width: '100vw',
+            display: 'flex',
+            flexDirection: 'column',
+            margin: '40px 0',
+          }}
+        >
+          <img
+            src={trackContents.images[0].url}
+            style={{ width: '70vw', height: '100%', margin: '0 auto' }}
+          />
+          <p
+            style={{
+              fontSize: '5vw',
+              margin: '20px',
+            }}
+          >
+            {trackContents.name}
+          </p>
+        </Box>
       ) : (
         ''
       )}
       {trackContents
         ? trackContents.tracks.items.map((track: any, index: number) => (
             <Box key={index}>
-              {track.name}
-              <video controls>
+              <video controls playsInline>
                 <source src={track.preview_url} type='video/mp4' />
               </video>
+              <p>{track.name}</p>
             </Box>
             // <Link href={track.external_urls.spotify}>{track.name}</Link>
           ))
