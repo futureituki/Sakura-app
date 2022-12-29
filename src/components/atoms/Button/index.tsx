@@ -31,8 +31,11 @@ export const PrimaryButton = ({
       style={{ color: color, background: background }}
       aria-label={label}
       disabled={disabled}
+      sx={{
+        width: 'fit-content',
+      }}
     >
-      {children}
+      <span style={{ fontSize: '2.4vw', padding: '1vw 1.6vw' }}>{children}</span>
     </Button>
   )
 }

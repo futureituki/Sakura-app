@@ -46,6 +46,11 @@ export const AppMenu = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <Link href='/community' style={{ width: '5vw' }}>
+            Community
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <Link href='/music-list'>Music List</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>

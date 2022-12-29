@@ -1,0 +1,10 @@
+.box_img {
+  height:100%;
+  position:absolute;
+  top:0%;
+  left:0%;
+  z-index:2;
+}
+.input_box:hover {
+  opacity:0.5
+}

@@ -5,11 +5,12 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from 'firebase/auth'
-import { setDoc, getDoc, doc, Timestamp, updateDoc } from 'firebase/firestore'
+import { setDoc, getDoc, doc, Timestamp, updateDoc, collection } from 'firebase/firestore'
+import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { auth, db } from '@/firebase/firebase'
-import { GetUser } from '@/lib/user'
+import { auth, db, storage } from '@/firebase/firebase'
+import { Community } from '@/types/community'
 import { User } from '@/types/user'
 // export const getUser = (uid: string) => {
 //   // 特定のユーザー取得処理
@@ -103,17 +104,14 @@ export const usePasswordReset = () => {
 }
 
 export const saveImage = async (uid: string, src: string, srcs: Array<string>) => {
-  console.log(srcs)
   const colRef = doc(db, 'images', uid)
   srcs = Object.assign([], srcs)
   srcs.push(src)
-  console.log(colRef)
   const data = {
     uid: uid,
     src: srcs,
   }
   await setDoc(colRef, data)
-  console.log('test2')
   return src
 }
 type data = {
@@ -166,4 +164,32 @@ export const setFavorite = async (
   newFavorite.splice(index, 1, data)
   await setDoc(ref, { favorite: newFavorite }, { merge: true })
   return newFavorite
+}
+
+type SavePhotoProps = {
+  uid: string
+  file: File
+  url: string
+  title: string
+  tag: string[]
+}
+export const createPhotoStorage = async ({ uid, file, url, title, tag }: SavePhotoProps) => {
+  const hashName = Math.random().toString(36).slice(-8)
+  const ext = file.name.split('.').pop()
+  const imageRef = ref(storage, `images/${uid}/${hashName}.${ext}`)
+  await uploadString(imageRef, url, 'data_url')
+  const preview = await getDownloadURL(imageRef)
+  const timestamp = Timestamp.now()
+  const newCityRef = doc(collection(db, 'community'))
+  const data: Community = {
+    id: newCityRef.id,
+    uid: uid,
+    title: title,
+    tag: tag,
+    created_at: timestamp,
+    updated_at: timestamp,
+    url: preview,
+  }
+  await setDoc(newCityRef, data)
+  return data
 }
