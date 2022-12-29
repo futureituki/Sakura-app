@@ -1,5 +1,5 @@
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
-import { Avatar, Box, CircularProgress } from '@mui/material'
+import { Avatar, Box, CircularProgress, TextField } from '@mui/material'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
@@ -116,18 +116,30 @@ const SignUp: NextPage = () => {
               </div>
             )}
           </div>
-          <div className='flex w-full flex-col space-y-2'>
+          <Box
+            sx={{
+              marginTop: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <label className={styles.label} htmlFor='password'>
               パスワード
             </label>
-            <input
+            <TextField
               {...register('password', {
-                required: 'passwordを入力してください',
+                required: 'パスワードを入力してください',
                 minLength: { value: 8, message: '8文字以上入力してください' },
               })}
-              className='rounded-md border px-3 py-2 focus:border-2 focus:border-teal-500 focus:outline-none'
-              type='password'
+              margin='normal'
+              required
+              fullWidth
+              id='password'
+              label='パスワード'
               name='password'
+              type='password'
+              autoComplete='password'
+              autoFocus
             />
             {errors.password && (
               <div className={styles.error_area} role='alert'>
@@ -146,7 +158,7 @@ const SignUp: NextPage = () => {
                 <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
-          </div>
+          </Box>
           <button className={styles.button} type='submit'>
             {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : '登録'}
           </button>
