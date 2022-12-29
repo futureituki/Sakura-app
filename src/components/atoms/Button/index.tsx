@@ -8,6 +8,8 @@ type ButtonProps = {
   label: string
   color: string
   background: string
+  size?: string
+  padding?: string
   variant: 'text' | 'outlined' | 'contained' | undefined
   onClick?: () => void
   disabled?: boolean
@@ -19,6 +21,8 @@ export const PrimaryButton = ({
   children,
   label,
   color,
+  size = '2.4vw',
+  padding = '1vw 1.6vw',
   background,
   variant,
   disabled = false,
@@ -35,7 +39,7 @@ export const PrimaryButton = ({
         width: 'fit-content',
       }}
     >
-      <span style={{ fontSize: '2.4vw', padding: '1vw 1.6vw' }}>{children}</span>
+      <span style={{ fontSize: size, padding: padding }}>{children}</span>
     </Button>
   )
 }

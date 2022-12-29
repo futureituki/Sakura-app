@@ -5,7 +5,7 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from 'firebase/auth'
-import { setDoc, getDoc, doc, Timestamp, updateDoc, collection } from 'firebase/firestore'
+import { setDoc, getDoc, doc, Timestamp, updateDoc, collection, addDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -181,6 +181,7 @@ export const createPhotoStorage = async ({ uid, file, url, title, tag }: SavePho
   const preview = await getDownloadURL(imageRef)
   const timestamp = Timestamp.now()
   const newCityRef = doc(collection(db, 'community'))
+  console.log(tag)
   const data: Community = {
     id: newCityRef.id,
     uid: uid,
