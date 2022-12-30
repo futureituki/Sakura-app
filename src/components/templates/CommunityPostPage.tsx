@@ -59,17 +59,11 @@ export const CommunityPostPage = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<{ title: string }>()
-  const onDropAccepted = useCallback((accetedFile: File[]) => {
-    setMyFiles(accetedFile[0])
+  const onAccepted = (e: any) => {
+    const { files } = e.target
+    setMyFiles(files[0])
     setOpen(!open)
-  }, [])
-  const { getRootProps, getInputProps, isDragAccept } = useDropzone({
-    onDropAccepted,
-    accept: {
-      'image/png': [],
-      'image/jpeg': [],
-    },
-  })
+  }
   const handleClose = () => {
     setOpen(!open)
   }
@@ -79,7 +73,6 @@ export const CommunityPostPage = () => {
 
   const getPropedImage = () => {
     const image = refImage.current?.getImage()
-    console.log(image)
     const canvas = document.createElement('canvas')
     canvas.width = image?.width as number
     canvas.height = image?.height as number
@@ -92,17 +85,15 @@ export const CommunityPostPage = () => {
   }
 
   const submit: SubmitHandler<{ title: string }> = async (data: { title: string }) => {
-    if (preview.match(/^data:/)) {
-      const props: SavePhotoProps = {
-        uid: user.uid,
-        title: data.title,
-        file: myFiles as File,
-        url: preview,
-        tag: addedTag,
-      }
-      await dispatch(savePhoto(props))
-      router.push('/community')
+    const props: SavePhotoProps = {
+      uid: user.uid,
+      title: data.title,
+      file: myFiles as File,
+      url: preview,
+      tag: addedTag,
     }
+    await dispatch(savePhoto(props))
+    router.push('/community')
   }
   return (
     <>
@@ -115,7 +106,6 @@ export const CommunityPostPage = () => {
       >
         <form onSubmit={handleSubmit(submit)}>
           <Box
-            {...getRootProps()}
             className={styles.input_box}
             sx={{
               width: '50vw',
@@ -136,7 +126,7 @@ export const CommunityPostPage = () => {
               }}
             />
             {preview ? <img src={preview} className={styles.box_img} /> : ''}
-            <input {...getInputProps} style={{ overflow: 'hidden' }} />
+            <input type='file' onChange={onAccepted} style={{ width: '100%' }} />
           </Box>
           <GeneralModal open={open} handleClose={handleClose}>
             {myFiles && (
