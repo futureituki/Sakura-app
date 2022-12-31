@@ -16,7 +16,6 @@ export type User = {
 export type UserReducer = {
   uid: string
   username: string
-  email: string
   created_at: any | null
   updated_at: any | null
   favorite: {
