@@ -178,10 +178,9 @@ export const createPhotoStorage = async ({ uid, file, url, title, tag }: SavePho
   const ext = file.name.split('.').pop()
   const imageRef = ref(storage, `images/${uid}/${hashName}.${ext}`)
   await uploadString(imageRef, url, 'data_url')
-  const preview = await getDownloadURL(imageRef)
+  url = await getDownloadURL(imageRef)
   const timestamp = Timestamp.now()
   const newCityRef = doc(collection(db, 'community'))
-  console.log(tag)
   const data: Community = {
     id: newCityRef.id,
     uid: uid,
@@ -189,7 +188,7 @@ export const createPhotoStorage = async ({ uid, file, url, title, tag }: SavePho
     tag: tag,
     created_at: timestamp,
     updated_at: timestamp,
-    url: preview,
+    url: url,
   }
   await setDoc(newCityRef, data)
   return data
