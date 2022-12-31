@@ -321,14 +321,14 @@ transform: translate(0);
   transition: 0.5s cubic-bezier(0, 1.05, 0.78, 0.44);
 }
 .mv_in h1 {
-  font-size: 3.7rem;
+  font-size: 6vw;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.08em;
   margin-bottom: 12px;
 }
 .mv_in .tx {
-  font-size: 1.2rem;
+  font-size: 2.6vw;
   letter-spacing: 0.03em;
   margin-bottom: 20px;
 }
@@ -370,10 +370,10 @@ transform: translate(0);
 .rea_in .tx {
   margin-bottom: 12px;
   line-height: 1.6;
-  font-size: 1.8rem;
+  font-size: 3vw;
 }
 .read_tx {
-  font-size: 3rem;
+  font-size: 6vw;
   line-height: 1.4;
   margin-bottom: 16px;
 }
