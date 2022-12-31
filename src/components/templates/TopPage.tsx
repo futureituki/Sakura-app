@@ -28,12 +28,12 @@ type Favorite = {
 }
 export const TopPage: FC<Props> = ({ searchs }) => {
   const dispatch = useDispatch<any>()
-  const [data, setData] = useState<Array<GalleryObj>>()
   const [name, setName] = useState<string>()
-  const [offsetCount, setOffsetCount] = useState(1 + Math.floor(Math.random() * 10))
+
   const user = GetUser().user.first_favorite as Favorite
+  const users = GetUser().user
+  console.log(users)
   const router = useRouter()
-  console.log(router)
   useEffect(() => {
     if (user) {
       setName(user.name)
