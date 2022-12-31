@@ -21,7 +21,7 @@ export const PrimaryButton = ({
   children,
   label,
   color,
-  size = '2.4vw',
+  size = '1.6vw',
   padding = '1vw 1.6vw',
   background,
   variant,

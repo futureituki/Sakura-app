@@ -8,7 +8,11 @@ export const Section03 = () => {
   return (
     <section className={styles.sec_member}>
       <div className={styles.sec_member_container}>
-        <Heading level={2} visualLevel={1} style={{ color: '#fff', position: 'relative' }}>
+        <Heading
+          level={2}
+          visualLevel={1}
+          style={{ color: '#fff', position: 'relative', fontSize: '6vw' }}
+        >
           Member
         </Heading>
         <PinningContainer>
