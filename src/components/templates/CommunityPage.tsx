@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { PrimaryButton } from '../atoms/Button'
 import { TitleBar } from '../atoms/TitleBar'
 import { Heading } from '@/components/atoms/Heading'
 import { Community } from '@/types/community'
-import Link from 'next/link'
 
 type Props = {
   communitys: Community[]

@@ -1,10 +1,10 @@
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CloseIcon from '@mui/icons-material/Close'
+import { LoadingButton } from '@mui/lab'
 import { Box, CircularProgress, TextField } from '@mui/material'
 import { useRouter } from 'next/router'
 import { ChangeEvent, ReactNode, useCallback, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
-import { useDropzone } from 'react-dropzone'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
@@ -15,7 +15,6 @@ import styles from '@/components/templates/Community.module.css'
 import { memberSrc } from '@/constant/memberSrc'
 import { GetUser } from '@/lib/user'
 import { savePhoto } from '@/redux/communitySlice'
-import { LoadingButton } from '@mui/lab'
 
 type SavePhotoProps = {
   uid: string

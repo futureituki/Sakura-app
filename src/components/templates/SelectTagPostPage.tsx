@@ -1,10 +1,9 @@
-import { db } from '@/firebase/firebase'
-import { Community } from '@/types/community'
 import { Box } from '@mui/material'
 import { collection, where, query, onSnapshot } from 'firebase/firestore'
-import { connectStorageEmulator } from 'firebase/storage'
 import { FC, useEffect, useState } from 'react'
-import { TitleBar } from '../atoms/TitleBar'
+import { TitleBar } from '@/components/atoms/TitleBar'
+import { db } from '@/firebase/firebase'
+import { Community } from '@/types/community'
 
 type Props = {
   tagName: string
