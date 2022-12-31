@@ -1,10 +1,10 @@
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, TextField } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
+import { Box, CircularProgress, TextField } from '@mui/material'
 import { useRouter } from 'next/router'
 import { ChangeEvent, ReactNode, useCallback, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
-import { useDropzone } from 'react-dropzone'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
@@ -22,6 +22,10 @@ type SavePhotoProps = {
   url: string
   title: string
   tag: string[]
+}
+type Post = {
+  image: File
+  title: string
 }
 export const CommunityPostPage = () => {
   const refImage = useRef<AvatarEditor>(null)
@@ -42,6 +46,9 @@ export const CommunityPostPage = () => {
     setAddedTag([...addedTag, tag])
     setTag('')
   }
+  const sliceTag = (selectTag: string) => {
+    setAddedTag(addedTag.filter((tag) => tag !== selectTag))
+  }
   // useEffect(() => {
   //   const gsReference = ref(
   //     storage,
@@ -58,7 +65,7 @@ export const CommunityPostPage = () => {
     control,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<{ title: string }>()
+  } = useForm<Post>()
   const onAccepted = (e: any) => {
     const { files } = e.target
     setMyFiles(files[0])
@@ -126,8 +133,29 @@ export const CommunityPostPage = () => {
               }}
             />
             {preview ? <img src={preview} className={styles.box_img} /> : ''}
-            <input type='file' onChange={onAccepted} style={{ width: '100%' }} />
+            <input
+              {...register('image', {
+                required: '画像を入力してください',
+              })}
+              type='file'
+              id='image'
+              name='image'
+              onChange={onAccepted}
+              style={{ width: '100%' }}
+            />
           </Box>
+          {errors.image && (
+            <Box className={styles.error_area} role='alert'>
+              <Box
+                sx={{
+                  color: 'red',
+                  fontSize: '1vw',
+                }}
+              >
+                {errors.image?.message as ReactNode}
+              </Box>
+            </Box>
+          )}
           <GeneralModal open={open} handleClose={handleClose}>
             {myFiles && (
               <div>
@@ -208,17 +236,7 @@ export const CommunityPostPage = () => {
                 </option>
               ))}
             </CustomizedSelects>
-            <PrimaryButton
-              size='1vw'
-              padding=''
-              onClick={addTag}
-              label='photo'
-              variant='contained'
-              color='#fff'
-              background='#ff69b8'
-            >
-              追加
-            </PrimaryButton>
+            <Box onClick={addTag}>追加</Box>
           </Box>
           <Box
             sx={{
@@ -247,7 +265,9 @@ export const CommunityPostPage = () => {
                       }}
                     >
                       <span>{tag}</span>
-                      <CloseIcon />
+                      <Box onClick={() => sliceTag(tag)}>
+                        <CloseIcon />
+                      </Box>
                     </Box>
                   </Box>
                 ))
@@ -270,9 +290,15 @@ export const CommunityPostPage = () => {
             >
               もどる
             </PrimaryButton>
-            <PrimaryButton label='photo' variant='contained' color='#fff' background='#ff69b8'>
-              投稿
-            </PrimaryButton>
+            {isSubmitting ? (
+              <PrimaryButton label='photo' variant='contained' color='#fff' background='#f2f2f2'>
+                <CircularProgress style={{ width: '20px', height: '20px' }} />
+              </PrimaryButton>
+            ) : (
+              <PrimaryButton label='photo' variant='contained' color='#fff' background='#ff69b8'>
+                投稿
+              </PrimaryButton>
+            )}
           </Box>
         </form>
       </Box>
