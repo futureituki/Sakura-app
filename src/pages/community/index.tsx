@@ -7,7 +7,7 @@ import { AppLayout } from '@/layout/AppLayout'
 import { Community } from '@/types/community'
 const Community: NextPageWithLayout = ({
   community,
-}:InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <CommunityPage communitys={community} />
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const community = JSON.parse(JSON.stringify(communitys))
   return {
     props: {
-        community,
+      community,
     },
   }
 }
