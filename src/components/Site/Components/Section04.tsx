@@ -1,4 +1,5 @@
 import { SwiperSlide } from 'swiper/react'
+import { Section04Sounds } from './Section04-Sounds'
 import { SwiperContainer } from '@/components/swiper/animationSwiper/SwiperAnimation'
 import { sliderSrc } from '@/constant/sliderSrc'
 import styles from '@/styles/Site.module.css'
