@@ -39,31 +39,31 @@ export const musicList = [
 
 export const musicThumbnailList = [
   {
-    music_src: '/assets/music/masatu-player.m4a',
+    music_src: '/assets/music/masatu-preview.m4a',
     title: '摩擦係数',
     img_src: '/assets/disc/thum_asyouknow.jpeg',
     number: '',
   },
   {
-    music_src: '/assets/music/samidare-player.m4a',
+    music_src: '/assets/music/samidareyo-preview.m4a',
     title: '五月雨よ',
     img_src: '/assets/disc/thum_samidareyo.jpeg',
     number: '4th',
   },
   {
-    music_src: '/assets/music/nagaredama-player.m4a',
+    music_src: '/assets/music/nagaredama-preview.m4a',
     title: '流れ弾',
     img_src: '/assets/disc/thum_nagaredama.jpeg',
     number: '3rd',
   },
   {
-    music_src: '/assets/music/ban-player.m4a',
+    music_src: '/assets/music/ban-preview.m4a',
     title: 'BAN',
     img_src: '/assets/disc/thum_ban.jpeg',
     number: '2nd',
   },
   {
-    music_src: '/assets/music/nobodys-player.m4a',
+    music_src: '/assets/music/nobodysfault-preview.m4a',
     title: 'Nobody`s fault',
     img_src: '/assets/disc/thum_nobodysfault.jpeg',
     number: '1st',
