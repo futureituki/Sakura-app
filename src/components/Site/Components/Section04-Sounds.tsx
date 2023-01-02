@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import gsap from 'gsap'
 import Image from 'next/image'
 import { createRef, RefObject, useEffect, useRef, useState } from 'react'
+import { Heading } from '@/components/atoms/Heading'
 import { MusicAudio } from '@/components/templates/MusicList'
 import { musicThumbnailList, music_id } from '@/constant/music-list'
 
@@ -216,15 +217,30 @@ export const Section04Sounds = () => {
       sx={{
         position: 'relative',
         zIndex: 1000,
-        height: '70vh',
+        width: '70vw',
+        margin: '0 auto',
+        height: '80vh',
+        '@media screen and (min-width:900px)': {
+          height: '50vh',
+        },
       }}
     >
       <Box
         sx={{
+          padding: '0px 0 70px 0',
+        }}
+      >
+        <Heading style={{ fontSize: '5vw' }}>Sounds</Heading>
+      </Box>
+      <Box
+        sx={{
           position: 'relative',
           width: '80vw',
-          height: '80vw',
+          height: '80vh',
           margin: '0 auto',
+          '@media screen and (min-width:900px)': {
+            height: '40vh',
+          },
         }}
       >
         {musicThumbnailList.map((music, index: number) => (
@@ -267,9 +283,12 @@ export const Section04Sounds = () => {
                 opacity: index === 4 ? 1 : 0,
                 color: '#fff',
                 zIndex: 10,
-                bottom: '10%',
-                left: '20%',
-                transform: 'translate(-50%,-50%)',
+                bottom: '40%',
+                fontSize: '3.4vw',
+                '@media screen and (min-width:900px)': {
+                  right: '15%',
+                  top: '10%',
+                },
               }}
             >
               <p>{music.title}</p>
