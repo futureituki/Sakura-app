@@ -132,7 +132,7 @@ export const Section01 = () => {
         <span className={`${styles.glitch_blue_bottom}`} id='glitch'></span>
         <span className={`${styles.glitch_green_bottom}`} id='glitch'></span>
       </div>
-      <div className={styles.mv_bg}>
+      {/* <div className={styles.mv_bg}>
         <video
           className='mainPath'
           id='bg-video-start'
@@ -144,7 +144,7 @@ export const Section01 = () => {
         >
           <source src='/assets/masatu.mp4' type='video/mp4' />
         </video>
-      </div>
+      </div> */}
       <div className={styles.mv_in}>
         <div className={`fadeout ${styles.mv_case}`}>
           <h1 ref={textRef} id='opening-title'>
