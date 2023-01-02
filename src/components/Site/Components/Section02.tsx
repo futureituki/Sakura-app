@@ -101,7 +101,7 @@ export const Section02 = () => {
               margin: '4vw 0',
             }}
           >
-            <h3 style={{ fontSize: '3vw' }}>
+            <h3 style={{ fontSize: '2vw' }}>
               興味が湧いてもらえたら、下のライブ映像を見てほしい
               <br />
               僕は、アイドルという常識が覆りました。

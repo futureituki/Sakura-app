@@ -11,7 +11,7 @@ export const Section03 = () => {
         <Heading
           level={2}
           visualLevel={1}
-          style={{ color: '#fff', position: 'relative', fontSize: '6vw' }}
+          style={{ color: '#fff', position: 'relative', fontSize: '5vw' }}
         >
           Member
         </Heading>
