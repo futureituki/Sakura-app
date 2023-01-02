@@ -19,7 +19,7 @@ const DynamicSection = dynamic(
 export const HomePage = () => {
   return (
     <div>
-      <main style={{ background: '#000' }}>
+      <main style={{ background: '#000', overflow: 'hidden' }}>
         <Section01 />
         <SectionHarf02 />
         <Section02 />
