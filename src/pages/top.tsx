@@ -1,8 +1,6 @@
-import { NextPageWithLayout, GetServerSideProps } from 'next'
+import { NextPageWithLayout, GetServerSideProps, GetStaticPropsResult, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import nookies from 'nookies'
-import { useEffect, useState } from 'react'
 import { TopPage } from '@/components/templates/TopPage'
 import { customSearchEndpoint } from '@/constant/url'
 import { AdminAUTH } from '@/firebase/server'
@@ -12,47 +10,31 @@ import { SearchObj } from '@/types/search'
 type Props = {
   search: SearchObj[]
 }
-
-const Top: NextPageWithLayout<Props> = (email) => {
-  const [news, setNews] = useState<SearchObj[]>([])
-  const router = useRouter()
-  useEffect(() => {
-    if (!email) {
-      router.push('/login')
-    }
-    const getNews = async () => {
-      const url =
-        customSearchEndpoint +
-        `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
-      const data = await getData(url)
-      const search: SearchObj[] = data.data.items
-      setNews(search)
-    }
-    getNews()
-  })
-  console.log(news)
+export const getStaticProps: GetStaticProps<Props> = async (): Promise<
+  GetStaticPropsResult<Props>
+> => {
+  // const url =
+  //   customSearchEndpoint +
+  //   `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+  // const data = await getData(url)
+  // const search: SearchObj[] = data.data.items
+  const search: SearchObj[] = []
+  return {
+    props: {
+      search,
+    },
+  }
+}
+const Top: NextPageWithLayout<Props> = ({ search }) => {
   return (
     <>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-      <TopPage searchs={news as SearchObj[]} />
+      <TopPage searchs={search} />
     </>
   )
 }
 Top.getLayout = (page) => <AppLayout>{page}</AppLayout>
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const cookies = nookies.get(ctx)
-  const session = cookies.session || ''
-  // セッションIDを検証して、認証情報を取得する
-  // const user = await AdminAUTH.verifySessionCookie(session, true).catch(() => null)
-
-  // 認証情報が無い場合は、ログイン画面へ遷移させる
-  return {
-    props: {
-      email: '',
-    },
-  }
-}
 export default Top
