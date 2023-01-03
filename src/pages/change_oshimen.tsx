@@ -6,7 +6,7 @@ import { ChangeOshimenPage } from '@/components/templates/ChangeOshimenPage'
 import { AdminAUTH } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
 
-const ChangeOshimen: NextPageWithLayout = () => {
+const ChangeOshimen: NextPageWithLayout = (email) => {
   return (
     <>
       <ChangeOshimenPage />

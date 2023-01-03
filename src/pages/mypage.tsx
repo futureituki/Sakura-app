@@ -5,7 +5,6 @@ import { AdminAUTH } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
 
 const MyPages: NextPageWithLayout = (email) => {
-  console.log(email)
   return (
     <>
       <MyPage />
