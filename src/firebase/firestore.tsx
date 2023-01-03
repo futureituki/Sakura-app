@@ -45,19 +45,17 @@ export const signUp = async (username: string, email: string, password: string):
   })
 }
 export const login = async (email: string, password: string) => {
-  return await signInWithEmailAndPassword(auth, email, password)
-    .then((result) => {
-      const uid = result.user.uid
-      const user = getDoc(doc(db, 'users', uid)).then((doc) => {
-        return doc.data()
-      })
-      return user
-    })
-    .catch((error) => {
-      console.log(error.code)
-      console.log(error.message)
-      return false
-    })
+  const result = await signInWithEmailAndPassword(auth, email, password)
+  if (!result) {
+    alert('ログインに失敗')
+  }
+  const uid = result.user.uid
+  const id = await result.user.getIdToken()
+  await fetch('/api/auth/user/session', { method: 'POST', body: JSON.stringify({ id }) })
+  const user = getDoc(doc(db, 'users', uid)).then((doc) => {
+    return doc.data()
+  })
+  return user
 }
 export const saveBookmark = async (id: string, bookmark: { [s: string]: string }) => {
   const userRef = doc(db, 'users', id)
@@ -70,14 +68,15 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
 }
 
 export const logout = async () => {
-  await signOut(auth)
-    .then(() => {
-      alert('ログアウトが成功しました')
-    })
-    .catch((err) => {
-      alert('ログアウトに失敗しました')
-      console.log(err)
-    })
+  await fetch('/api/sessionLogout', { method: 'POST' })
+  // await signOut(auth)
+  //   .then(() => {
+  //     alert('ログアウトが成功しました')
+  //   })
+  //   .catch((err) => {
+  //     alert('ログアウトに失敗しました')
+  //     console.log(err)
+  //   })
 }
 
 export const usePasswordReset = () => {

@@ -29,7 +29,8 @@ const LoginPage: NextPage = () => {
       password: data.password,
     }
     const user = await dispatch(userLogin(userInfo))
-    if (user.payload === false) {
+    console.log(user)
+    if (!user.payload) {
       if (ref.current) {
         toast.error('ログインに失敗しました。')
         ref.current.innerHTML = 'メールアドレスかパスワードが違います。'
