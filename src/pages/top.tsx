@@ -14,7 +14,7 @@ type Props = {
 }
 
 const Top: NextPageWithLayout<Props> = (email) => {
-  const [news, setNews] = useState<SearchObj[]>()
+  const [news, setNews] = useState<SearchObj[]>([])
   const router = useRouter()
   useEffect(() => {
     if (!email) {
@@ -30,6 +30,7 @@ const Top: NextPageWithLayout<Props> = (email) => {
     }
     getNews()
   })
+  console.log(news)
   return (
     <>
       <Head>
@@ -45,12 +46,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const cookies = nookies.get(ctx)
   const session = cookies.session || ''
   // セッションIDを検証して、認証情報を取得する
-  const user = await AdminAUTH.verifySessionCookie(session, true).catch(() => null)
+  // const user = await AdminAUTH.verifySessionCookie(session, true).catch(() => null)
 
   // 認証情報が無い場合は、ログイン画面へ遷移させる
   return {
     props: {
-      email: user?.email,
+      email: '',
     },
   }
 }
