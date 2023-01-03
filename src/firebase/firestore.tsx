@@ -16,48 +16,40 @@ import { User } from '@/types/user'
 //   // 特定のユーザー取得処理
 // }
 export const signUp = async (username: string, email: string, password: string): Promise<any> => {
-  return await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-    if (userCredential) {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const uid = user.uid
-          const timestamp = Timestamp.now()
-          const data: User = {
-            uid: uid,
-            username: username,
-            email: email,
-            password: password,
-            created_at: timestamp,
-            updated_at: timestamp,
-            favorite: [
-              { name: '未登録', src: 'no-image-person.jpeg' },
-              { name: '未登録', src: 'no-image-person.jpeg' },
-              { name: '未登録', src: 'no-image-person.jpeg' },
-            ],
-            first_favorite: null,
-          }
-          const colRef = doc(db, 'users', uid)
-          setDoc(colRef, data)
-        }
-      })
+  const result = await createUserWithEmailAndPassword(auth, email, password)
+  const id = await result.user.getIdToken()
+  await fetch('/api/auth/user/session', { method: 'POST', body: JSON.stringify({ id }) })
+  if (result.user) {
+    const uid = result.user.uid
+    const timestamp = Timestamp.now()
+    const data: User = {
+      uid: uid,
+      username: username,
+      email: email,
+      password: password,
+      created_at: timestamp,
+      updated_at: timestamp,
+      favorite: [
+        { name: '未登録', src: 'no-image-person.jpeg' },
+        { name: '未登録', src: 'no-image-person.jpeg' },
+        { name: '未登録', src: 'no-image-person.jpeg' },
+      ],
+      first_favorite: null,
     }
-    return userCredential.user
-  })
+    const colRef = doc(db, 'users', uid)
+    setDoc(colRef, data)
+  }
+  return result.user
 }
 export const login = async (email: string, password: string) => {
-  return await signInWithEmailAndPassword(auth, email, password)
-    .then((result) => {
-      const uid = result.user.uid
-      const user = getDoc(doc(db, 'users', uid)).then((doc) => {
-        return doc.data()
-      })
-      return user
-    })
-    .catch((error) => {
-      console.log(error.code)
-      console.log(error.message)
-      return false
-    })
+  const result = await signInWithEmailAndPassword(auth, email, password)
+  const uid = result.user.uid
+  const id = await result.user.getIdToken()
+  await fetch('/api/auth/user/session', { method: 'POST', body: JSON.stringify({ id }) })
+  const user = getDoc(doc(db, 'users', uid)).then((doc) => {
+    return doc.data()
+  })
+  return user
 }
 export const saveBookmark = async (id: string, bookmark: { [s: string]: string }) => {
   const userRef = doc(db, 'users', id)
@@ -70,14 +62,15 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
 }
 
 export const logout = async () => {
-  await signOut(auth)
-    .then(() => {
-      alert('ログアウトが成功しました')
-    })
-    .catch((err) => {
-      alert('ログアウトに失敗しました')
-      console.log(err)
-    })
+  await fetch('/api/sessionLogout', { method: 'POST' })
+  // await signOut(auth)
+  //   .then(() => {
+  //     alert('ログアウトが成功しました')
+  //   })
+  //   .catch((err) => {
+  //     alert('ログアウトに失敗しました')
+  //     console.log(err)
+  //   })
 }
 
 export const usePasswordReset = () => {
