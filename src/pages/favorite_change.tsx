@@ -6,7 +6,7 @@ import { FavoriteChangePage } from '@/components/templates/FavoriteChangePage'
 import { AdminAUTH } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
 
-const FavoriteChange: NextPageWithLayout = () => {
+const FavoriteChange: NextPageWithLayout = (email) => {
   return (
     <>
       <FavoriteChangePage />
