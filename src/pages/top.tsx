@@ -12,13 +12,18 @@ type Props = {
   search: SearchObj[]
 }
 
-const Top: NextPageWithLayout<Props> = ({ search }) => {
+const Top: NextPageWithLayout<Props> = (email) => {
+  //   const url =
+  //   customSearchEndpoint +
+  //   `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+  // const data = await getData(url)
+  // const search: SearchObj[] = data.data.items
   return (
     <>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-      <TopPage searchs={search} />
+      <TopPage searchs={[]} />
     </>
   )
 }
@@ -39,14 +44,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
     }
   }
-  const url =
-    customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
-  const data = await getData(url)
-  const search: SearchObj[] = data.data.items
   return {
     props: {
-      search,
+      email: user.email,
     },
   }
 }
