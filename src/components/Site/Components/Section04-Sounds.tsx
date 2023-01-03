@@ -50,7 +50,7 @@ export const Section04Sounds = () => {
               zIndex: 16,
               onUpdate: function () {
                 if (ref2.current) {
-                  ref2.current.style.transform = 'translate3d(0, -10%, 0) scale(0.9) rotate(-13deg)'
+                  ref2.current.style.transform = 'translate3d(0, 0%, 0) scale(0.9) rotate(-13deg)'
                 }
               },
             })
@@ -85,7 +85,7 @@ export const Section04Sounds = () => {
               zIndex: 16,
               onUpdate: function () {
                 if (ref2.current) {
-                  ref2.current.style.transform = 'translate3d(0, -10%, 0) scale(0.9) rotate(-12deg)'
+                  ref2.current.style.transform = 'translate3d(0, 0%, 0) scale(0.9) rotate(-12deg)'
                 }
               },
             })
@@ -123,7 +123,7 @@ export const Section04Sounds = () => {
               zIndex: 16,
               onUpdate: function () {
                 if (ref2.current) {
-                  ref2.current.style.transform = 'translate3d(0, -10%, 0) scale(0.9) rotate(-23deg)'
+                  ref2.current.style.transform = 'translate3d(0, 0%, 0) scale(0.9) rotate(-23deg)'
                 }
               },
             })
@@ -161,7 +161,7 @@ export const Section04Sounds = () => {
               zIndex: 16,
               onUpdate: function () {
                 if (ref2.current) {
-                  ref2.current.style.transform = 'translate3d(0, -10%, 0) scale(0.9) rotate(-18deg)'
+                  ref2.current.style.transform = 'translate3d(0, 0%, 0) scale(0.9) rotate(-18deg)'
                 }
               },
             })
@@ -199,7 +199,7 @@ export const Section04Sounds = () => {
               zIndex: 11,
               onUpdate: function () {
                 if (ref2.current) {
-                  ref2.current.style.transform = 'translate3d(0, -10%, 0) scale(0.9) rotate(-15deg)'
+                  ref2.current.style.transform = 'translate3d(0, 0%, 0) scale(0.9) rotate(-15deg)'
                 }
               },
             })
@@ -285,6 +285,7 @@ export const Section04Sounds = () => {
                 zIndex: 10,
                 bottom: '40%',
                 fontSize: '3.4vw',
+                textAlign: 'left',
                 '@media screen and (min-width:900px)': {
                   right: '15%',
                   top: '10%',

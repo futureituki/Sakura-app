@@ -10,7 +10,7 @@ const Section04 = () => {
         {sliderSrc.map((video, index) => (
           <SwiperSlide key={index}>
             <div className={styles.video_wrapper}>
-              <video loop autoPlay muted playsInline className={styles.swiper_video}>
+              <video preload='none' loop autoPlay muted playsInline className={styles.swiper_video}>
                 <source src={video.src} />
               </video>
               <p className='swiper-slide'>{video.name}</p>
