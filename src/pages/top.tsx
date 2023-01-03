@@ -1,5 +1,6 @@
 import { NextPageWithLayout, GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import nookies from 'nookies'
 import { useEffect, useState } from 'react'
 import { TopPage } from '@/components/templates/TopPage'
@@ -13,17 +14,28 @@ type Props = {
 }
 
 const Top: NextPageWithLayout<Props> = (email) => {
-  //   const url =
-  //   customSearchEndpoint +
-  //   `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
-  // const data = await getData(url)
-  // const search: SearchObj[] = data.data.items
+  const [news, setNews] = useState<SearchObj[]>()
+  const router = useRouter()
+  useEffect(() => {
+    if (!email) {
+      router.push('/login')
+    }
+    const getNews = async () => {
+      const url =
+        customSearchEndpoint +
+        `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+      const data = await getData(url)
+      const search: SearchObj[] = data.data.items
+      setNews(search)
+    }
+    getNews()
+  })
   return (
     <>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-      <TopPage searchs={[]} />
+      <TopPage searchs={news as SearchObj[]} />
     </>
   )
 }
@@ -36,17 +48,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const user = await AdminAUTH.verifySessionCookie(session, true).catch(() => null)
 
   // 認証情報が無い場合は、ログイン画面へ遷移させる
-  if (!user) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
   return {
     props: {
-      email: user.email,
+      email: user?.email,
     },
   }
 }
