@@ -37,6 +37,29 @@ export const Section05 = () => {
           }),
       },
     })
+    gsap.to('#nagaredama-title', {
+      scrollTrigger: {
+        trigger: '#triggernagaredama',
+        start: 'top-=40%',
+        scrub: true,
+        onEnter: () =>
+          gsap.to('#nagaredama-title', {
+            opacity: 1,
+          }),
+        onLeave: () =>
+          gsap.to('#nagaredama-title', {
+            opacity: 0,
+          }),
+        onEnterBack: () =>
+          gsap.to('#nagaredama-title', {
+            opacity: 1,
+          }),
+        onLeaveBack: () =>
+          gsap.to('#nagaredama-title', {
+            opacity: 0,
+          }),
+      },
+    })
     gsap.to('#samidareyo-title', {
       scrollTrigger: {
         trigger: '#triggersamidareyo',
@@ -125,7 +148,7 @@ export const Section05 = () => {
             },
           }}
         >
-          <Image
+          <img
             src={photo.src}
             alt=''
             width={300}
