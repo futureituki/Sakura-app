@@ -62,7 +62,7 @@ const MusicList: NextPageWithLayout = ({
           }}
         >
           {music_id.map((music: Music, index: number) => (
-            <Link href={`/music/single/${music.id}`} key={index}>
+            <Link href={`/music-list/single/${music.id}`} key={index}>
               <Box
                 sx={{
                   display: 'flex',
