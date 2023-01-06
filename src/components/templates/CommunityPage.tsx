@@ -26,38 +26,57 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
       >
         写真を投稿する
       </PrimaryButton>
-      {communitys.map((data: Community, index: number) => (
-        <Box key={index}>
-          <img src={data.url} style={{ width: '50vw' }} />
-          <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
-            {data.title}
-          </Heading>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'start',
+          flexWrap: 'wrap',
+          gap: '20px',
+          margin: '50px 0',
+          '@media screen and (min-width:1200px)': {
+            justifyContent: 'center',
+          },
+        }}
+      >
+        {communitys.map((data: Community, index: number) => (
           <Box
+            key={index}
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
+              width: '30vw',
+              '@media screen and (min-width:640)': {},
             }}
           >
-            {data.tag?.map((tagName: string, index: number) => (
-              <Link key={index} href={`community/posts/${tagName}`}>
-                <Box
-                  key={index}
-                  sx={{
-                    margin: '20px 0',
-                    padding: '5px 10px',
-                    background: '#f2f2f2',
-                    width: 'fit-content',
-                    borderRadius: '10px',
-                  }}
-                >
-                  <span>{tagName}</span>
-                </Box>
-              </Link>
-            ))}
+            <img src={data.url} style={{ width: '100%' }} />
+            <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
+              {data.title}
+            </Heading>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+              }}
+            >
+              {data.tag?.map((tagName: string, index: number) => (
+                <Link key={index} href={`community/${tagName}`}>
+                  <Box
+                    key={index}
+                    sx={{
+                      margin: '20px 0',
+                      padding: '5px 10px',
+                      background: '#f2f2f2',
+                      width: 'fit-content',
+                      borderRadius: '10px',
+                    }}
+                  >
+                    <span>{tagName}</span>
+                  </Box>
+                </Link>
+              ))}
+            </Box>
           </Box>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </>
   )
 }
