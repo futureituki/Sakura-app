@@ -1,4 +1,9 @@
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import PeopleIcon from '@mui/icons-material/People'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
+import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import Fade from '@mui/material/Fade'
 import Menu from '@mui/material/Menu'
@@ -17,7 +22,7 @@ export const AppMenu = () => {
   }
 
   return (
-    <div>
+    <Box>
       <Button
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
@@ -41,22 +46,54 @@ export const AppMenu = () => {
           <Link href='/top'>Top</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href='/mypage' style={{ width: '5vw' }}>
-            My Page
-          </Link>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <AssignmentIndIcon />
+            <Link href='/mypage'>My Page</Link>
+          </Box>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href='/community' style={{ width: '5vw' }}>
-            Community
-          </Link>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <PeopleIcon />
+            <Link href='/community'>Community</Link>
+          </Box>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href='/music-list'>Music List</Link>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <LibraryMusicIcon />
+            <Link href='/music-list'>Music List</Link>
+          </Box>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href='/member-list'>Member List</Link>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <PeopleAltIcon />
+            <Link href='/member-list'>Member List</Link>
+          </Box>
         </MenuItem>
       </Menu>
-    </div>
+    </Box>
   )
 }
