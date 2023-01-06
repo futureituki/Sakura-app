@@ -28,6 +28,7 @@ const SignUp: NextPage = () => {
       email: data.email,
       password: data.password,
     }
+    setLoading(true)
     const user = await dispatch(userSignUp(userInfo))
     if (user) {
       router.push({ pathname: '/favorite', query: { sign: true } })
@@ -159,7 +160,11 @@ const SignUp: NextPage = () => {
               </div>
             )}
           </Box>
-          <button className={styles.button} type='submit'>
+          <button
+            className={styles.button}
+            style={loading ? { background: '#ccc' } : { background: '#ff69b8' }}
+            type='submit'
+          >
             {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : '登録'}
           </button>
         </form>
