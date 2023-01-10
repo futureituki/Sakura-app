@@ -1,4 +1,6 @@
-export const photoSrc = [
+import { PhotoObj } from '@/types/constant/photo'
+
+export const photoSrc: PhotoObj[] = [
   {
     src: '/assets/photo/discography_1th_main.jpeg',
     name: 'nobody`s fault',

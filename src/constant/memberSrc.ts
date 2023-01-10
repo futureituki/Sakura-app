@@ -1,4 +1,6 @@
-export const memberSrc = [
+import { MemberObj } from '@/types/constant/member'
+
+export const memberSrc: MemberObj[] = [
   { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉奈' },
   { src: '/assets/member/koike_main_visual.jpeg', name: '小池美波' },
   { src: '/assets/member/kobayashi_main_visual.jpeg', name: '小林由依' },

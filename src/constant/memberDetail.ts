@@ -1,4 +1,6 @@
-export const memberMap = new Map([
+import { MemberDetailObj } from '@/types/constant/member'
+
+export const memberMap: MemberDetailObj = new Map([
   [
     '上村莉奈',
     {
