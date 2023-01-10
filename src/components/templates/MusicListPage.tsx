@@ -1,7 +1,8 @@
-import { Container, Box } from '@mui/material'
+import { Box } from '@mui/material'
 import { TitleBar } from '../atoms/TitleBar'
 import { Music } from '@/components/templates/MusicList'
 import { musicList } from '@/constant/music-list'
+import { MusicObj } from '@/types/constant/music'
 
 export const MusicListPage = () => {
   return (
@@ -17,9 +18,9 @@ export const MusicListPage = () => {
           gap: '15px',
         }}
       >
-        {musicList.map((music, index) => (
+        {musicList.map((music: MusicObj, index: number) => (
           <Box key={index}>
-            <Music src={music.src} name={music.name} img={music.img} number={music.number} />
+            <Music src={music.src} name={music.name} img={music.img} number={music.release} />
           </Box>
         ))}
       </Box>

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import Image from 'next/image'
 import { TitleBar } from '../atoms/TitleBar'
-import { memberMap } from '@/constant/member'
+import { memberMap } from '@/constant/memberDetail'
 import styles from '@/styles/Member.module.css'
 type Information = {
   name: string

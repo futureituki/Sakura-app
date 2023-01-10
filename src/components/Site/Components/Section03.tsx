@@ -3,6 +3,7 @@ import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { memberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css'
+import { MemberObj } from '@/types/constant/member'
 
 export const Section03 = () => {
   return (
@@ -16,7 +17,7 @@ export const Section03 = () => {
           Member
         </Heading>
         <PinningContainer>
-          {memberSrc.map((member, index) => (
+          {memberSrc.map((member: MemberObj, index: number) => (
             <PinningItemList key={index}>
               <SectionImg src={member.src} alt_name={member.name} width={280} height={350} />
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>

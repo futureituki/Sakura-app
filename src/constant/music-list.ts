@@ -1,39 +1,41 @@
-export const musicList = [
+import { MusicObj } from '@/types/constant/music'
+
+export const musicList: MusicObj[] = [
   {
     src: '/assets/music/masatu-player.m4a',
     name: '摩擦係数',
     img: '/assets/disc/masatu.jpeg',
-    number: '',
+    release: '',
   },
   {
     src: '/assets/music/samidare-player.m4a',
     name: '五月雨よ',
     img: '/assets/disc/samidare.jpeg',
-    number: '4th',
+    release: '4th',
   },
   {
     src: '/assets/music/nagaredama-player.m4a',
     name: '流れ弾',
     img: '/assets/disc/nagaredama.jpeg',
-    number: '3rd',
+    release: '3rd',
   },
   {
     src: '/assets/music/ban-player.m4a',
     name: 'BAN',
     img: '/assets/disc/ban.jpeg',
-    number: '2nd',
+    release: '2nd',
   },
   {
     src: '/assets/music/nobodys-player.m4a',
     name: 'Nobody`s fault',
     img: '/assets/disc/nobody.jpeg',
-    number: '1st',
+    release: '1st',
   },
   {
     src: '/assets/music/nazekoi.m4a',
     name: 'なぜ恋をしてこなかったんだろう',
     img: '/assets/disc/nobody.jpeg',
-    number: '1st',
+    release: '1st',
   },
 ]
 
@@ -42,31 +44,31 @@ export const musicThumbnailList = [
     music_src: '/assets/music/masatu-preview.m4a',
     title: '摩擦係数',
     img_src: '/assets/disc/thum_asyouknow.jpeg',
-    number: '',
+    release: '',
   },
   {
     music_src: '/assets/music/samidareyo-preview.m4a',
     title: '五月雨よ',
     img_src: '/assets/disc/thum_samidareyo.jpeg',
-    number: '4th',
+    release: '4th',
   },
   {
     music_src: '/assets/music/nagaredama-preview.m4a',
     title: '流れ弾',
     img_src: '/assets/disc/thum_nagaredama.jpeg',
-    number: '3rd',
+    release: '3rd',
   },
   {
     music_src: '/assets/music/ban-preview.m4a',
     title: 'BAN',
     img_src: '/assets/disc/thum_ban.jpeg',
-    number: '2nd',
+    release: '2nd',
   },
   {
     music_src: '/assets/music/nobodysfault-preview.m4a',
     title: 'Nobody`s fault',
     img_src: '/assets/disc/thum_nobodysfault.jpeg',
-    number: '1st',
+    release: '1st',
   },
 ]
 
