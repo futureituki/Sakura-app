@@ -4,35 +4,40 @@ import { NextPageWithLayout } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import { TitleBar } from '@/components/atoms/TitleBar'
 import { AppLayout } from '@/layout/AppLayout'
+import { Getfetcher } from '@/lib/bing-search'
 import useLoginApi from '@/lib/hook/useLoginApi'
 import { Album } from '@/types/spotify'
 
 const MusicDetail: NextPageWithLayout = () => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
-  const [trackContents, setTracksContents] = useState<Album>()
   const router = useRouter()
   const id = router.query.id
-  console.log(loginData)
-  useEffect(() => {
-    if (loginData?.accessToken) {
-      axios
-        .get(`https://api.spotify.com/v1/albums/${id}`, {
-          headers: {
-            Authorization: 'Bearer ' + loginData.accessToken,
-          },
-        })
-        .then((tracksReaponse) => {
-          setTracksContents(tracksReaponse.data)
-        })
-    }
-  }, [loginData])
-  console.log(trackContents)
+  const fetcher = (url: string) =>
+    axios
+      .get(url, {
+        headers: {
+          Authorization: 'Bearer ' + loginData?.accessToken,
+        },
+      })
+      .then((res) => res.data)
+  const { data, error }: { data: Album; error: any } = useSWR(
+    loginData?.accessToken ? `https://api.spotify.com/v1/albums/${id}` : null,
+    loginData?.accessToken ? fetcher : null,
+  )
+  if (error)
+    return (
+      <div>
+        エラーが発生しました<br></br>Spotifyにログインしてください
+      </div>
+    )
+  if (!data) return <div>Loading. . .</div>
   return (
     <>
       <TitleBar>Music List</TitleBar>
-      {trackContents ? (
+      {data ? (
         <Box
           sx={{
             width: '100vw',
@@ -42,10 +47,10 @@ const MusicDetail: NextPageWithLayout = () => {
           }}
         >
           <Image
-            src={trackContents.images[0].url}
+            src={data.images[0].url}
             width={300}
             height={300}
-            alt={trackContents.name}
+            alt={data.name}
             style={{ width: '70vw', height: '100%', margin: '0 auto' }}
           />
           <p
@@ -54,14 +59,14 @@ const MusicDetail: NextPageWithLayout = () => {
               margin: '20px',
             }}
           >
-            {trackContents.name}
+            {data.name}
           </p>
         </Box>
       ) : (
         ''
       )}
-      {trackContents
-        ? trackContents.tracks.items.map((track: any, index: number) => (
+      {data
+        ? data.tracks.items.map((track: any, index: number) => (
             <Box key={index}>
               <video controls playsInline>
                 <source src={track.preview_url} type='video/mp4' />
