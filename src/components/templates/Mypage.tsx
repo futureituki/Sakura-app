@@ -30,12 +30,7 @@ export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
   const user: UserReducer = GetUser().user
-  let name = ''
-  let src = ''
-  if (user.first_favorite) {
-    name = user.first_favorite.name
-    src = user.first_favorite.src
-  }
+
   useEffect(() => {
     if (user.uid === '') {
       router.push('/login')
@@ -49,13 +44,15 @@ export const MyPage = () => {
     <div>
       <TitleBar>MyPage</TitleBar>
       <Image
-        src={`/assets/member_list/${src.substring(0, src.indexOf('_')) + '.jpeg'}`}
+        src={`/assets/member_list/${
+          user.first_favorite.src.substring(0, user.first_favorite.src.indexOf('_')) + '.jpeg'
+        }`}
         alt='image'
         width={300}
         height={400}
         style={{ width: '100%', height: '100%' }}
       />
-      <p>{name}</p>
+      <p>{user.first_favorite.name}</p>
       <div className={styles.user_area}>{user.username}</div>
       <div className={styles.swiper_container}>
         <SwiperInfinitLoop>
@@ -65,13 +62,13 @@ export const MyPage = () => {
                 <Image
                   height={110}
                   width={100}
-                  src={`/assets/member/${src}`}
+                  src={`/assets/member/${user.first_favorite.src}`}
                   alt={'の画像'}
                   className={styles.member_img}
                 />
                 <div className={styles.member_information}>
                   <TextLabel color='#ff69b8'>推しメン</TextLabel>
-                  <Typography fontSize={14}>{name}</Typography>
+                  <Typography fontSize={14}>{user.first_favorite.name}</Typography>
                 </div>
               </div>
             </Link>
