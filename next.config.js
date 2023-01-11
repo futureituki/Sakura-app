@@ -3,7 +3,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withPlugins = require('next-compose-plugins')
+
+module.exports = withPlugins([withBundleAnalyzer], {
+  /* オプション設定 */
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
@@ -13,16 +16,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'sakurazaka46.com',
-        port: '',
-        pathname: '/images/**',
+        hostname: '**',
       },
     ],
   },
-}
-const withPlugins = require('next-compose-plugins')
-
-module.exports = withPlugins([withBundleAnalyzer], {
-  /* オプション設定 */
-  nextConfig,
 })

@@ -2,6 +2,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CloseIcon from '@mui/icons-material/Close'
 import { LoadingButton } from '@mui/lab'
 import { Box, CircularProgress, TextField } from '@mui/material'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { ChangeEvent, ReactNode, useCallback, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
@@ -132,7 +133,11 @@ export const CommunityPostPage = () => {
                 transform: 'translate(-50%,-50%)',
               }}
             />
-            {preview ? <img src={preview} className={styles.box_img} /> : ''}
+            {preview ? (
+              <Image src={preview} width={300} height={300} alt='' className={styles.box_img} />
+            ) : (
+              ''
+            )}
             <input
               {...register('image', {
                 required: '画像を入力してください',

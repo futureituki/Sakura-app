@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { collection, where, query, onSnapshot } from 'firebase/firestore'
+import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { Heading } from '@/components/atoms/Heading'
 import { TitleBar } from '@/components/atoms/TitleBar'
@@ -46,7 +47,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
               '@media screen and (min-width:640)': {},
             }}
           >
-            <img src={post.url} style={{ width: '100%' }} />
+            <Image src={post.url} alt='' width={300} height={300} style={{ width: '100%' }} />
             <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
               {post.title}
             </Heading>

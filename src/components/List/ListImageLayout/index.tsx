@@ -1,4 +1,5 @@
 import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { ChangeEvent, EventHandler, FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -86,7 +87,7 @@ export const ListImageLayout = () => {
         {data
           ? data.map((image: GalleryObj, index: number) => (
               <li key={index} className={styles.li}>
-                <img
+                <Image
                   src={image.link}
                   alt={''}
                   width={image.image.width / 4}
