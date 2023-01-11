@@ -21,7 +21,7 @@ export const memberSrc: MemberObj[] = [
 ]
 
 export const memberSrcMap = new Map([
-  ['上村莉奈', { src: 'uemura_main_visual.jpeg', name: '上村莉奈' }],
+  ['上村莉菜', { src: 'uemura_main_visual.jpeg', name: '上村莉菜' }],
   ['小池美波', { src: 'koike_main_visual.jpeg', name: '小池美波' }],
   ['小林由依', { src: 'kobayashi_main_visual.jpeg', name: '小林由依' }],
   ['齋藤冬優花', { src: 'saito_main_visual.jpeg', name: '齋藤冬優花' }],

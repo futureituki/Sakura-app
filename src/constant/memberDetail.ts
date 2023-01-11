@@ -2,9 +2,9 @@ import { MemberDetailObj } from '@/types/constant/member'
 
 export const memberMap: MemberDetailObj = new Map([
   [
-    '上村莉奈',
+    '上村莉菜',
     {
-      name: '上村莉奈',
+      name: '上村莉菜',
       birthday: '1997年1月4日',
       sign: 'やぎ座',
       height: '153.5cm',
