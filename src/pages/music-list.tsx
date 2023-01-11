@@ -9,13 +9,6 @@ import { music_id } from '@/constant/music-list'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
 
-type SpotifyAuthApiResponse = {
-  access_token: string
-  token_type: string
-  scope: string
-  expires_in: number
-  refresh_token: string
-}
 type Music = {
   id: string
   src: string
@@ -50,7 +43,7 @@ const MusicList: NextPageWithLayout = ({
           </PrimaryButton>
         </Box>
       )}
-      <Link href='/music/single-list'>Single</Link>
+      <Link href='/music-list/single'>Single</Link>
       {loginData?.accessToken ? (
         <Box
           sx={{

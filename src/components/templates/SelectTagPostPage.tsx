@@ -14,16 +14,14 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
   const [posts, setPosts] = useState<Community[]>()
   useEffect(() => {
     const getData = () => {
-      if (tagName) {
-        const colRef = collection(db, 'community') // 例
-        const q = query(colRef, where('tag', 'array-contains', tagName))
-        const unsub = onSnapshot(q, (querySnapshot) => {
-          setPosts(querySnapshot.docs.map((doc) => ({ ...doc.data() } as Community)))
-        })
-      }
+      const colRef = collection(db, 'community') // 例
+      const q = query(colRef, where('tag', 'array-contains', tagName))
+      const unsub = onSnapshot(q, (querySnapshot) => {
+        setPosts(querySnapshot.docs.map((doc) => ({ ...doc.data() } as Community)))
+      })
     }
     getData()
-  }, [tagName])
+  }, [])
   return (
     <Box>
       <TitleBar>{tagName}</TitleBar>

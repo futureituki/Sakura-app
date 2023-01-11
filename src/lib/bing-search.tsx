@@ -11,3 +11,8 @@ export const getTweet = async (url: string) => {
     return data
   })
 }
+
+export const Getfetcher = (url: string) =>
+  axios.get(url).then((data) => {
+    return data.data.items
+  })

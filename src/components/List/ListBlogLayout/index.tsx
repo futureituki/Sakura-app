@@ -1,39 +1,29 @@
 import { Box } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC, useEffect, useState } from 'react'
+import { useState } from 'react'
+import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
-import { getData } from '@/lib/bing-search'
+import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
 
 export const ListBlogLayout = () => {
-  const [blogs, setBlogs] = useState<BlogObj[]>()
   const [offsetCount, setOffsetCount] = useState<number>(0)
-  let url =
+  const url =
     customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=w1&q=ブログ`
-  useEffect(() => {
-    const getBlogs = async () => {
-      const result: BlogObj[] = await getData(url).then((data) => data.data.items)
-      console.log(result)
-      setBlogs(result)
-    }
-    getBlogs()
-  }, [])
-  const nextSet = async () => {
-    setOffsetCount(offsetCount + 11)
-    const result: BlogObj[] = await getData(url).then((data) => data.data.items)
-    console.log(result)
-    setBlogs(result)
-  }
-  const prevSet = async () => {
-    setOffsetCount(offsetCount - 11)
-    const result: BlogObj[] = await getData(url).then((data) => data.data.items)
-    setBlogs(result)
-  }
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=m1&q=ブログ`
+  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher)
+  if (error)
+    return (
+      <div>
+        今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
+      </div>
+    )
+  if (!data) return <div>loading...</div>
+
   return (
     <Box
       sx={{
@@ -42,7 +32,7 @@ export const ListBlogLayout = () => {
       }}
     >
       <ul className={styles.ul}>
-        {blogs?.map((blog: BlogObj, index: number) => (
+        {data?.map((blog: BlogObj, index: number) => (
           <li key={index} className={styles.blog}>
             {blog.pagemap.hproduct ? (
               <Link href={blog.formattedUrl} target={'_blank'}>
@@ -89,7 +79,7 @@ export const ListBlogLayout = () => {
           color='#fff'
           background='#ff69b8'
           variant='contained'
-          onClick={prevSet}
+          onClick={() => setOffsetCount(offsetCount - 11)}
         >
           前のページへ
         </PrimaryButton>
@@ -101,7 +91,7 @@ export const ListBlogLayout = () => {
         color='#fff'
         background='#ff69b8'
         variant='contained'
-        onClick={nextSet}
+        onClick={() => setOffsetCount(offsetCount + 11)}
       >
         次のページへ
       </PrimaryButton>
