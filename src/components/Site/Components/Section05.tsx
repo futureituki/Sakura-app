@@ -148,7 +148,7 @@ export const Section05 = () => {
             },
           }}
         >
-          <img
+          <Image
             src={photo.src}
             alt=''
             width={300}

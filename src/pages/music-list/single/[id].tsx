@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import axios from 'axios'
 import { NextPageWithLayout } from 'next'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { TitleBar } from '@/components/atoms/TitleBar'
@@ -40,8 +41,11 @@ const MusicDetail: NextPageWithLayout = () => {
             margin: '40px 0',
           }}
         >
-          <img
+          <Image
             src={trackContents.images[0].url}
+            width={300}
+            height={300}
+            alt={trackContents.name}
             style={{ width: '70vw', height: '100%', margin: '0 auto' }}
           />
           <p

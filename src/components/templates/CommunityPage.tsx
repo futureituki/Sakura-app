@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
@@ -46,7 +47,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               '@media screen and (min-width:640)': {},
             }}
           >
-            <img src={data.url} style={{ width: '100%' }} />
+            <Image src={data.url} alt='' width={300} height={300} style={{ width: '100%' }} />
             <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
               {data.title}
             </Heading>
