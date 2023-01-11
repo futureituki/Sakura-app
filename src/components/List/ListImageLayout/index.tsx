@@ -1,6 +1,6 @@
 import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material'
 import Image from 'next/image'
-import { ChangeEvent, EventHandler, FC, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import useSWR from 'swr'
 import styles from '@/components/List/ListImageLayout/index.module.css'
