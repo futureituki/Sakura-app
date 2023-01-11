@@ -31,70 +31,104 @@ export const ListBlogLayout = () => {
         margin: '0 auto',
       }}
     >
-      <ul className={styles.ul}>
+      <Box
+        sx={{
+          '@media screen and (min-width:900px)': {
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '20px',
+          },
+        }}
+      >
         {data?.map((blog: BlogObj, index: number) => (
-          <li key={index} className={styles.blog}>
+          <>
             {blog.pagemap.hproduct ? (
-              <Link href={blog.formattedUrl} target={'_blank'}>
-                {blog.pagemap.hproduct[0].photo.indexOf('jpg') !== -1 ? (
-                  <Image
-                    src={blog.pagemap.hproduct[0].photo}
-                    alt=''
-                    width={300}
-                    height={300}
-                    style={{ width: '85vw', margin: '0 auto', height: '100%' }}
-                  />
-                ) : (
-                  ''
-                )}
-                {blog.pagemap.hproduct[0].photo ? (
-                  <Image
-                    src={
-                      ('/assets/member/' +
+              <Box
+                key={index}
+                sx={{
+                  '@media screen and (min-width:900px)': {
+                    width: '24vw',
+                    margin: '0',
+                  },
+                }}
+              >
+                <Link href={blog.formattedUrl} target={'_blank'} className={styles.link}>
+                  {blog.pagemap.hproduct[0].photo.indexOf('jpg') !== -1 ? (
+                    <Image
+                      src={blog.pagemap.hproduct[0].photo}
+                      alt=''
+                      width={300}
+                      height={300}
+                      className={styles.blog_img}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      gap: '15px',
+                      alignItems: 'center',
+                      margin: '3vw 0',
+                    }}
+                  >
+                    {blog.pagemap.hproduct[0].photo ? (
+                      <Image
+                        src={
+                          ('/assets/member/' +
+                            memberSrcMap?.get(
+                              blog.title.replace(/ /g, '').slice(0, blog.title.indexOf('公式') - 1),
+                            )?.src) as string
+                        }
+                        alt='blog'
+                        width={100}
+                        height={100}
+                        className={styles.icon}
+                      />
+                    ) : (
+                      ''
+                    )}
+                    <p className={styles.name}>
+                      {
                         memberSrcMap?.get(
                           blog.title.replace(/ /g, '').slice(0, blog.title.indexOf('公式') - 1),
-                        )?.src) as string
-                    }
-                    alt='blog'
-                    width={100}
-                    height={100}
-                    style={{ borderRadius: '50%', width: '20vw', height: '20vw' }}
-                  />
-                ) : (
-                  ''
-                )}
-                <p className={styles.snippet}>
-                  {blog.snippet.substring(blog.snippet.indexOf('...') + 3)}
-                </p>
-              </Link>
+                        )?.name
+                      }
+                    </p>
+                  </Box>
+                  <p className={styles.snippet}>
+                    {blog.snippet.substring(blog.snippet.indexOf('...') + 3)}
+                  </p>
+                </Link>
+              </Box>
             ) : (
               ''
             )}
-          </li>
+          </>
         ))}
-      </ul>
-      {offsetCount != 0 ? (
+        {offsetCount != 0 ? (
+          <PrimaryButton
+            label='prevbutton'
+            color='#fff'
+            background='#ff69b8'
+            variant='contained'
+            onClick={() => setOffsetCount(offsetCount - 11)}
+          >
+            前のページへ
+          </PrimaryButton>
+        ) : (
+          ''
+        )}
         <PrimaryButton
-          label='prevbutton'
+          label='nextbutton'
           color='#fff'
           background='#ff69b8'
           variant='contained'
-          onClick={() => setOffsetCount(offsetCount - 11)}
+          onClick={() => setOffsetCount(offsetCount + 11)}
         >
-          前のページへ
+          次のページへ
         </PrimaryButton>
-      ) : (
-        ''
-      )}
-      <PrimaryButton
-        label='nextbutton'
-        color='#fff'
-        background='#ff69b8'
-        variant='contained'
-        onClick={() => setOffsetCount(offsetCount + 11)}
-      >
-        次のページへ
-      </PrimaryButton>
+      </Box>
     </Box>
   )
 }

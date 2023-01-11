@@ -92,7 +92,7 @@ export const FavoriteChangePage = () => {
             alt={router.query.name as string}
             width={100}
             height={100}
-            style={{ width: '24vw', height: '24vw', borderRadius: '50%' }}
+            style={{ width: '24vw', height: '24vw', borderRadius: '50%', objectFit: 'cover' }}
           />
           <p style={{ fontSize: '5vw' }}>{router.query.name}</p>
         </Box>
@@ -124,7 +124,8 @@ export const FavoriteChangePage = () => {
                     alignItems: 'center',
                     background: '#fff',
                     border: '1px solid #000',
-                    padding: '15px 0',
+                    padding: '30px 0',
+                    margin: '10px 0',
                   }}
                 >
                   <FormControlLabel
@@ -145,7 +146,12 @@ export const FavoriteChangePage = () => {
                     alt={member.name}
                     width={100}
                     height={100}
-                    style={{ width: '20vw', height: '20vw', borderRadius: '50%' }}
+                    style={{
+                      width: '20vw',
+                      height: '20vw',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                    }}
                   />
                   <Box
                     sx={{

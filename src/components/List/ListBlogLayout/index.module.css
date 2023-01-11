@@ -6,11 +6,38 @@
   width:100%;
 }
 .blog {
-  width:85vw;
+  width:100%;
   margin:0 auto;
+}
+.link {
+  display:inline-block;
 }
 .snippet {
   font-size:2vw;
-  margin:10px 0;
+  margin:3vw 0;
   line-height:1.75;
+}
+.blog_img {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  object-fit:cover;
+}
+.icon {
+  border-radius:50%;
+  width:10vw;
+  height:10vw;
+  objectFit:cover;
+}
+.name {
+  font-size:2vw;
+}
+@media screen and (min-width:900px) {
+  .blog_img {
+    width: 300px;
+    height: 300px;
+  }
+  .snippet {
+    font-size:1.2vw;
+  }
 }
