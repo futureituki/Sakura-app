@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
-import { AppDispatch } from '@/redux/store'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
@@ -37,7 +36,6 @@ const SignUp: NextPage = () => {
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     console.log(errors)
-    console.log('Fail Login')
   }
   const {
     register,
