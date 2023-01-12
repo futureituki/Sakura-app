@@ -23,7 +23,7 @@ const MusicDetail: NextPageWithLayout = () => {
       .then((res) => res.data)
   const { data, error }: { data: Album; error: any } = useSWR(
     loginData?.accessToken ? `https://api.spotify.com/v1/albums/${id}` : null,
-    loginData?.accessToken ? fetcher : null,
+    fetcher,
   )
   if (error)
     return (
