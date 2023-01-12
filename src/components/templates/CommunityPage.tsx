@@ -6,6 +6,7 @@ import { FC } from 'react'
 import { PrimaryButton } from '../atoms/Button'
 import { TitleBar } from '../atoms/TitleBar'
 import { Heading } from '@/components/atoms/Heading'
+import Pagination from '@/components/pagination'
 import { Community } from '@/types/community'
 
 type Props = {
@@ -59,7 +60,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               }}
             >
               {data.tag?.map((tagName: string, index: number) => (
-                <Link key={index} href={`community/${tagName}`}>
+                <Link key={index} href={`/community/tag/${tagName}`}>
                   <Box
                     key={index}
                     sx={{
