@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import React, { Suspense } from 'react'
 import { Section01 } from '../Site/Components/Section01'
 import { Section02 } from '../Site/Components/Section02'
 import { Section03 } from '../Site/Components/Section03'

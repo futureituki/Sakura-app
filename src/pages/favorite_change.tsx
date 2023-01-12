@@ -1,6 +1,5 @@
 import { NextPageWithLayout, GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import nookies from 'nookies'
 import { FavoriteChangePage } from '@/components/templates/FavoriteChangePage'
 import { AdminAUTH } from '@/firebase/server'

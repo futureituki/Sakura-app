@@ -6,7 +6,6 @@ import firebaseConfig from '@/firebase/config'
 if (!getApps()?.length) {
   initializeApp(firebaseConfig)
 }
-console.log(firebaseConfig.apiKey)
 export const storage = getStorage()
 export const auth = getAuth()
 export const db = getFirestore()

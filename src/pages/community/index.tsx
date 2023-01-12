@@ -1,6 +1,5 @@
 import { NextPageWithLayout, InferGetServerSidePropsType, GetStaticProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { CommunityPage } from '@/components/templates/CommunityPage'
 import { AdminDB } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
