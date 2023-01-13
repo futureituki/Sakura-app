@@ -1,7 +1,7 @@
 import { MemberObj } from '@/types/constant/member'
 
 export const memberSrc: MemberObj[] = [
-  { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉奈' },
+  { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉菜' },
   { src: '/assets/member/koike_main_visual.jpeg', name: '小池美波' },
   { src: '/assets/member/kobayashi_main_visual.jpeg', name: '小林由依' },
   { src: '/assets/member/saito_main_visual.jpeg', name: '齋藤冬優花' },
@@ -9,6 +9,7 @@ export const memberSrc: MemberObj[] = [
   { src: '/assets/member/inoue_main_visual.jpeg', name: '井上梨名' },
   { src: '/assets/member/endo_main_visual.jpeg', name: '遠藤光莉' },
   { src: '/assets/member/ozno_main_visual.jpeg', name: '大園玲' },
+  { src: '/assets/member/kousaka_main_visual.jpeg', name: '幸阪茉里乃' },
   { src: '/assets/member/seki_main_visual.jpeg', name: '関有美子' },
   { src: '/assets/member/takemoto_main_visual.jpeg', name: '武元唯衣' },
   { src: '/assets/member/tamura_main_visual.jpeg', name: '田村保乃' },

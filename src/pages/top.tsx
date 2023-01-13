@@ -1,37 +1,32 @@
+import axios from 'axios'
 import { NextPageWithLayout, GetServerSideProps, GetStaticPropsResult, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 import { TopPage } from '@/components/templates/TopPage'
 import { customSearchEndpoint } from '@/constant/url'
 import { AdminAUTH } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
-import { getData } from '@/lib/bing-search'
 import { SearchObj } from '@/types/search'
-type Props = {
-  search: SearchObj[]
-}
-export const getStaticProps: GetStaticProps<Props> = async (): Promise<
-  GetStaticPropsResult<Props>
-> => {
-  // const url =
-  //   customSearchEndpoint +
-  //   `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
-  // const data = await getData(url)
-  // const search: SearchObj[] = data.data.items
-  const search: SearchObj[] = []
-  return {
-    props: {
-      search,
-    },
+
+const Top: NextPageWithLayout = () => {
+  const url =
+    customSearchEndpoint +
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+  const fetcher = async (url: string) => {
+    return await axios.get(url).then((data) => {
+      return data.data.items
+    })
   }
-}
-const Top: NextPageWithLayout<Props> = ({ search }) => {
+  const { data, error }: { data: SearchObj[]; error: any } = useSWR(url, fetcher)
+  if (error) return <div>Error News取得に失敗しました。</div>
+  if (!data) return <div>Loading...</div>
   return (
     <>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
-      <TopPage searchs={search} />
+      <TopPage searchs={data} />
     </>
   )
 }

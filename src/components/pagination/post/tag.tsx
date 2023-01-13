@@ -1,7 +1,13 @@
 import { Box } from '@mui/material'
 import Link from 'next/link'
 
-export const Pagination = ({ numberPages }: { numberPages: number }) => {
+export const TagPagination = ({
+  numberPages,
+  tagName,
+}: {
+  numberPages: number
+  tagName: string
+}) => {
   const pages = Math.ceil(numberPages / 3)
   return (
     <Box
@@ -12,7 +18,10 @@ export const Pagination = ({ numberPages }: { numberPages: number }) => {
       }}
     >
       {Array.from({ length: pages }, (_, i) => (
-        <Link key={i + 1} href={i === 0 ? `/community/posts` : `/community/posts/${i + 1}`}>
+        <Link
+          key={i + 1}
+          href={i === 0 ? `/community/tag/${tagName}` : `/community/tag/${tagName}/${i + 1}`}
+        >
           <Box
             sx={{
               border: '1px solid #000',
@@ -27,4 +36,4 @@ export const Pagination = ({ numberPages }: { numberPages: number }) => {
   )
 }
 
-export default Pagination
+export default TagPagination

@@ -48,7 +48,13 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               '@media screen and (min-width:640)': {},
             }}
           >
-            <Image src={data.url} alt='' width={300} height={300} style={{ width: '100%' }} />
+            <Image
+              src={data.url}
+              alt=''
+              width={300}
+              height={300}
+              style={{ width: '30vw', height: '30vw' }}
+            />
             <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
               {data.title}
             </Heading>
