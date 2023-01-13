@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import Link from 'next/link'
 
-export const Pagination = ({ numberPages }: { numberPages: number }) => {
+export const PostsPagination = ({ numberPages }: { numberPages: number }) => {
   const pages = Math.ceil(numberPages / 3)
   return (
     <Box
@@ -27,4 +27,4 @@ export const Pagination = ({ numberPages }: { numberPages: number }) => {
   )
 }
 
-export default Pagination
+export default PostsPagination

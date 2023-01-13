@@ -1,5 +1,7 @@
 import { NextPageWithLayout, InferGetServerSidePropsType, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { PrimaryButton } from '@/components/atoms/Button'
 import Pagination from '@/components/pagination'
 import { CommunityPage } from '@/components/templates/CommunityPage'
 import { AdminDB } from '@/firebase/server'
@@ -9,11 +11,21 @@ const Posts: NextPageWithLayout = ({
   community,
   postsCount,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  const router = useRouter()
   sessionStorage.setItem('pages', postsCount._data.count)
   return (
     <>
       <CommunityPage communitys={community} />
       <Pagination numberPages={postsCount._data.count} />
+      <PrimaryButton
+        label='pushbutton'
+        color='#fff'
+        variant='contained'
+        background='#002172'
+        onClick={() => router.push('/community/tag')}
+      >
+        タグ一覧
+      </PrimaryButton>
     </>
   )
 }
