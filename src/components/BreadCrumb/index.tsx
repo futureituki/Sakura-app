@@ -33,6 +33,8 @@ export const BreadCrumb: NextPage = () => {
       case 'post':
         return '投稿画面'
       case '0HYpXXxzD45aBgoN84feHc':
+        return 'As you know?'
+      case '0HYpXXxzD45aBgoN84feHc':
         return '流れ弾'
       case '3JRgpVojs3aIgGy835mvLH':
         return '五月雨よ'
