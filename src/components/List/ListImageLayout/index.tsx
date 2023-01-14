@@ -26,7 +26,9 @@ export const ListImageLayout = () => {
   const dispatch = useDispatch<any>()
   const srcs = GetImg().images.src
   const [name, setName] = useState<string>(user.first_favorite.name)
-  const [offsetCount, setOffsetCount] = useState(1 + Math.floor(Math.random() * 10))
+  const [offsetCount, setOffsetCount] = useState<number>(
+    1 + Math.floor(Math.random() * Math.random()),
+  )
   const url =
     customSearchEndpoint +
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&count=10&start=${offsetCount}&searchType=image&q=${name}`
@@ -95,15 +97,6 @@ export const ListImageLayout = () => {
       </ul>
       {data ? (
         <>
-          <PrimaryButton
-            label='get'
-            onClick={() => console.log()}
-            color='#fff'
-            background='#ff69b8'
-            variant='contained'
-          >
-            前へ
-          </PrimaryButton>
           <PrimaryButton
             label='get'
             onClick={() => setOffsetCount(1 + Math.floor(Math.random() * 100))}
