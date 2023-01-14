@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { PrimaryButton } from '@/components/atoms/Button'
 import Pagination from '@/components/pagination'
 import { CommunityPage } from '@/components/templates/CommunityPage'
+import { TagListPage } from '@/components/templates/TagList'
 import { AdminDB } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
 import { Community } from '@/types/community'
@@ -17,15 +18,7 @@ const Posts: NextPageWithLayout = ({
     <>
       <CommunityPage communitys={community} />
       <Pagination numberPages={postsCount._data.count} />
-      <PrimaryButton
-        label='pushbutton'
-        color='#fff'
-        variant='contained'
-        background='#002172'
-        onClick={() => router.push('/community/tag')}
-      >
-        タグ一覧
-      </PrimaryButton>
+      <TagListPage />
     </>
   )
 }

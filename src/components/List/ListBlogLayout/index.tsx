@@ -27,8 +27,11 @@ export const ListBlogLayout = () => {
   return (
     <Box
       sx={{
-        width: '90vw',
+        width: '80vw',
         margin: '0 auto',
+        '@media screen and (min-width:900px)': {
+          width: '94vw',
+        },
       }}
     >
       <Box
@@ -46,8 +49,13 @@ export const ListBlogLayout = () => {
               <Box
                 key={index}
                 sx={{
+                  borderTop: '1px solid #ccc',
+                  borderBottom: '1px solid #ccc',
+                  padding: '40px 0',
                   '@media screen and (min-width:900px)': {
-                    width: '24vw',
+                    borderTop: 'none',
+                    borderBottom: 'none',
+                    width: '18vw',
                     margin: '0',
                   },
                 }}
@@ -67,8 +75,9 @@ export const ListBlogLayout = () => {
                   <Box
                     sx={{
                       display: 'flex',
+                      flexDirection: 'column',
                       gap: '15px',
-                      alignItems: 'center',
+                      justifyContent: 'center',
                       margin: '3vw 0',
                     }}
                   >
@@ -106,29 +115,29 @@ export const ListBlogLayout = () => {
             )}
           </>
         ))}
-        {offsetCount != 0 ? (
-          <PrimaryButton
-            label='prevbutton'
-            color='#fff'
-            background='#ff69b8'
-            variant='contained'
-            onClick={() => setOffsetCount(offsetCount - 11)}
-          >
-            前のページへ
-          </PrimaryButton>
-        ) : (
-          ''
-        )}
+      </Box>
+      {offsetCount != 0 ? (
         <PrimaryButton
-          label='nextbutton'
+          label='prevbutton'
           color='#fff'
           background='#ff69b8'
           variant='contained'
-          onClick={() => setOffsetCount(offsetCount + 11)}
+          onClick={() => setOffsetCount(offsetCount - 11)}
         >
-          次のページへ
+          前のページへ
         </PrimaryButton>
-      </Box>
+      ) : (
+        ''
+      )}
+      <PrimaryButton
+        label='nextbutton'
+        color='#fff'
+        background='#ff69b8'
+        variant='contained'
+        onClick={() => setOffsetCount(offsetCount + 11)}
+      >
+        次のページへ
+      </PrimaryButton>
     </Box>
   )
 }

@@ -53,7 +53,13 @@ export const ChangeOshimenPage = () => {
                 alt={user.first_favorite.name}
                 width={100}
                 height={100}
-                style={{ width: '14vw', height: '14vw', borderRadius: '50%', objectFit: 'cover' }}
+                style={{
+                  width: '14vw',
+                  height: '14vw',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  objectPosition: '0 0',
+                }}
               />
             </Box>
           </Box>
@@ -105,6 +111,7 @@ export const ChangeOshimenPage = () => {
                       height: '14vw',
                       borderRadius: '50%',
                       objectFit: 'cover',
+                      objectPosition: '0 0',
                     }}
                   />
                 </Box>

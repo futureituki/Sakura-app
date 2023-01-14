@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
-import { memberSrc } from '@/constant/memberSrc'
+import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { MemberObj } from '@/types/constant/member'
 
 export const TagListPage = () => {
@@ -26,13 +27,28 @@ export const TagListPage = () => {
             <Box
               key={index}
               sx={{
+                display: 'grid',
+                placeItems: 'center',
+                gap: '10px',
                 margin: '20px 0',
                 padding: '5px 10px',
-                background: '#f2f2f2',
                 width: 'fit-content',
                 borderRadius: '10px',
               }}
             >
+              <Image
+                src={`/assets/member/${memberSrcMap.get(member.name)?.src}`}
+                alt=''
+                width={200}
+                height={200}
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  objectFit: 'cover',
+                  objectPosition: '0 0',
+                  borderRadius: '50%',
+                }}
+              />
               <Box
                 sx={{
                   display: 'flex',
