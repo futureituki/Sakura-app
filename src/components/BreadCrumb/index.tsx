@@ -12,7 +12,38 @@ export const BreadCrumb: NextPage = () => {
   // リンク先アドレスの取得
   const roots = ['']
   for (let i = 0; i < paths.length; i++) roots.push(roots[i] + '/' + paths[i])
-
+  const textBread = (link: string) => {
+    switch (link) {
+      case 'music-list':
+        return '楽曲一覧'
+      case 'mypage':
+        return 'マイページ'
+      case 'change_oshimen':
+        return '推しメン選択'
+      case 'favorite_change':
+        return '推しメン変更'
+      case 'member-list':
+        return 'メンバー一覧'
+      case 'community':
+        return 'コミュニティー'
+      case 'posts':
+        return '投稿一覧'
+      case 'tag':
+        return 'タグ'
+      case 'post':
+        return '投稿画面'
+      case '0HYpXXxzD45aBgoN84feHc':
+        return '流れ弾'
+      case '3JRgpVojs3aIgGy835mvLH':
+        return '五月雨よ'
+      case '74oBBYbpxNZLcwprLNjUFB':
+        return 'BAN'
+      case '3Hv8KXFlfO3HzhTq9g2yci':
+        return "Nobody's fault"
+      default:
+        return link
+    }
+  }
   return (
     <div className={styles.container}>
       {/* Homeのリンク */}
@@ -27,7 +58,7 @@ export const BreadCrumb: NextPage = () => {
             ''
           ) : (
             <Link href={roots[i + 1]} key={i}>
-              <span className={styles.link}>{x}</span>
+              <span className={styles.link}>{textBread(x)}</span>
             </Link>
           )}
         </>
