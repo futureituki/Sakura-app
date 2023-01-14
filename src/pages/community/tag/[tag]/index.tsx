@@ -8,7 +8,7 @@ import { AppLayout } from '@/layout/AppLayout'
 
 const SelectTagPost: NextPageWithLayout = () => {
   const router = useRouter()
-  if (router.query.tag === undefined) return <div></div>
+  if (router.query.tag === undefined) return <div>Loading</div>
   const { tag } = router.query
   return (
     <>
@@ -18,7 +18,4 @@ const SelectTagPost: NextPageWithLayout = () => {
 }
 SelectTagPost.getLayout = (page) => <AppLayout>{page}</AppLayout>
 
-interface Params extends ParsedUrlQuery {
-  slug: string
-}
 export default SelectTagPost

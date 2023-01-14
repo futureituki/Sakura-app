@@ -1,20 +1,9 @@
+import { LoadingButton } from '@mui/lab'
 import { Box } from '@mui/material'
 import axios from 'axios'
-import {
-  collection,
-  where,
-  query,
-  onSnapshot,
-  limit,
-  startAt,
-  orderBy,
-  getDocs,
-  startAfter,
-  endBefore,
-} from 'firebase/firestore'
+import { collection, where, query, limit, orderBy, getDocs } from 'firebase/firestore'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
-import useSWR from 'swr'
 import { Heading } from '@/components/atoms/Heading'
 import { TitleBar } from '@/components/atoms/TitleBar'
 import { db } from '@/firebase/firebase'
@@ -24,8 +13,9 @@ type Props = {
 }
 export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
   const [posts, setPosts] = useState<Community[]>()
-  const [snap, setSnap] = useState<any>()
-  const [page, setPage] = useState<number>(1)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [page, setPage] = useState<number>(3)
+  const LIMIT = 3
   useEffect(() => {
     const getData = async () => {
       const first = query(
@@ -35,40 +25,25 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
         limit(3),
       )
       const documentSnapshots = await getDocs(first)
-      setSnap(documentSnapshots)
       const unsub = setPosts(documentSnapshots.docs.map((doc) => ({ ...doc.data() } as Community)))
     }
     getData()
-  }, [tagName])
+  }, [])
   if (!posts) return <div>Loading...</div>
-  // Construct a new query starting at this document,
-  // get the next 25 cities.
-  const getNext = async () => {
-    setPage((prev) => prev + 1)
-    const next = query(
+  const getPost = async (page: number) => {
+    setLoading(true)
+    const second = query(
       collection(db, 'community'),
       where('tag', 'array-contains', tagName),
       orderBy('created_at', 'desc'),
-      startAfter(snap.docs[posts?.length - 1]),
-      limit(3),
+      limit(page),
     )
-    const documentSnapshots = await getDocs(next)
-    setSnap(documentSnapshots)
-    const unsub = setPosts(documentSnapshots.docs.map((doc) => ({ ...doc.data() } as Community)))
+    const documentSnapshots = await getDocs(second)
+    const postData = documentSnapshots.docs.map((doc) => ({ ...doc.data() } as Community))
+    setPosts(postData)
+    setLoading(false)
   }
-  const getPrev = async () => {
-    setPage((prev) => prev - 1)
-    const prev = query(
-      collection(db, 'community'),
-      where('tag', 'array-contains', tagName),
-      orderBy('created_at', 'desc'),
-      endBefore(snap.docs[0]),
-      limit(3),
-    )
-    const documentSnapshots = await getDocs(prev)
-    setSnap(documentSnapshots)
-    const unsub = setPosts(documentSnapshots.docs.map((doc) => ({ ...doc.data() } as Community)))
-  }
+
   return (
     <Box>
       <TitleBar>{tagName}</TitleBar>
@@ -105,20 +80,16 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
           </Box>
         ))}
       </Box>
-      <button
-        style={{ background: page === 1 ? '#f2f2f2' : '#1BD760' }}
-        onClick={getPrev}
-        disabled={page === 1}
+      <Box
+        sx={{
+          display: 'grid',
+          placeItems: 'center',
+        }}
       >
-        前へ
-      </button>
-      <button
-        style={{ background: posts.length !== 3 ? '#f2f2f2' : '#1BD760' }}
-        onClick={getNext}
-        disabled={posts.length !== 3}
-      >
-        次へ
-      </button>
+        <LoadingButton onClick={() => getPost(page + LIMIT)} loading={loading} variant='contained'>
+          さらに見る
+        </LoadingButton>
+      </Box>
     </Box>
   )
 }
