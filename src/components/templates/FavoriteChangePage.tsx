@@ -92,7 +92,13 @@ export const FavoriteChangePage = () => {
             alt={router.query.name as string}
             width={100}
             height={100}
-            style={{ width: '24vw', height: '24vw', borderRadius: '50%', objectFit: 'cover' }}
+            style={{
+              width: '24vw',
+              height: '24vw',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              objectPosition: '0 0',
+            }}
           />
           <p style={{ fontSize: '5vw' }}>{router.query.name}</p>
         </Box>
@@ -151,6 +157,7 @@ export const FavoriteChangePage = () => {
                       height: '20vw',
                       borderRadius: '50%',
                       objectFit: 'cover',
+                      objectPosition: '0 0',
                     }}
                   />
                   <Box
@@ -249,7 +256,13 @@ export const FavoriteChangePage = () => {
             alt={favorite.name}
             width={100}
             height={100}
-            style={{ width: '30vw', height: '30vw', borderRadius: '50%' }}
+            style={{
+              width: '30vw',
+              height: '30vw',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              objectPosition: '0 0',
+            }}
           />
           <p style={{ fontSize: '5vw' }}>{favorite.name}</p>
           <Box
