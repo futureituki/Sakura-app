@@ -32,7 +32,7 @@ export const BreadCrumb: NextPage = () => {
         return 'タグ'
       case 'post':
         return '投稿画面'
-      case '0HYpXXxzD45aBgoN84feHc':
+      case '0k4rYF9WBoCOoPjr0fEvER':
         return 'As you know?'
       case '0HYpXXxzD45aBgoN84feHc':
         return '流れ弾'
