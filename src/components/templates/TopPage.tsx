@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -50,6 +51,16 @@ export const TopPage: FC<Props> = ({ searchs }) => {
       )}
       <div>
         <BasicTabs name={name as string} />
+        <Box
+          sx={{
+            fontSize: '3vw',
+            display: 'grid',
+            placeItems: 'center',
+            padding: '20px 0',
+          }}
+        >
+          <h2>Video</h2>
+        </Box>
         <DotSwiper data={sliderVideoSrc as SwiperProps} />
         <ListNewsLayout data={searchs} />
         {/* {data.map((news,index) => (

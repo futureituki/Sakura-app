@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/templates/MusicList.tsx",
+    "src/components/templates/Music.tsx",
     "src/spotify/spotify.js"
   ],
   "exclude": ["node_modules"]

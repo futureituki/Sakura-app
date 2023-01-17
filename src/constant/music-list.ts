@@ -6,36 +6,35 @@ export const musicList: MusicObj[] = [
     name: '摩擦係数',
     img: '/assets/disc/masatu.jpeg',
     release: '',
+    time: '3:24',
   },
   {
     src: '/assets/music/samidare-player.m4a',
     name: '五月雨よ',
     img: '/assets/disc/samidare.jpeg',
     release: '4th',
+    time: '5:40',
   },
   {
     src: '/assets/music/nagaredama-player.m4a',
     name: '流れ弾',
     img: '/assets/disc/nagaredama.jpeg',
     release: '3rd',
+    time: '4:24',
   },
   {
     src: '/assets/music/ban-player.m4a',
     name: 'BAN',
     img: '/assets/disc/ban.jpeg',
     release: '2nd',
+    time: '4:24',
   },
   {
     src: '/assets/music/nobodys-player.m4a',
     name: 'Nobody`s fault',
     img: '/assets/disc/nobody.jpeg',
     release: '1st',
-  },
-  {
-    src: '/assets/music/nazekoi.m4a',
-    name: 'なぜ恋をしてこなかったんだろう',
-    img: '/assets/disc/nobody.jpeg',
-    release: '1st',
+    time: '4:24',
   },
 ]
 

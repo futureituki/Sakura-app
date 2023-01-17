@@ -14,7 +14,6 @@ type Information = {
 }
 export const Member = ({ name }: { name: string }) => {
   const selectMember: Information = memberMap.get(name) as Information
-  console.log(name)
   return (
     <Box>
       <TitleBar>MEMBER</TitleBar>
