@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -11,7 +12,6 @@ import { sliderVideoSrc } from '@/constant/sliderSrc'
 import { GetUser } from '@/lib/user'
 import { userLogout } from '@/redux/userSlice'
 import { SearchObj } from '@/types/search'
-import { Box } from '@mui/material'
 type Props = {
   searchs: SearchObj[]
 }
@@ -51,12 +51,14 @@ export const TopPage: FC<Props> = ({ searchs }) => {
       )}
       <div>
         <BasicTabs name={name as string} />
-        <Box sx={{
-          fontSize:"3vw",
-          display:"grid",
-          placeItems:"center",
-          padding:"20px 0"
-        }}>
+        <Box
+          sx={{
+            fontSize: '3vw',
+            display: 'grid',
+            placeItems: 'center',
+            padding: '20px 0',
+          }}
+        >
           <h2>Video</h2>
         </Box>
         <DotSwiper data={sliderVideoSrc as SwiperProps} />

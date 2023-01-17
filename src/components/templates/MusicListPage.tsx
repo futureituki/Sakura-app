@@ -19,7 +19,13 @@ export const MusicListPage = () => {
       >
         {musicList.map((music: MusicObj, index: number) => (
           <Box key={index}>
-            <Music src={music.src} name={music.name} img={music.img} number={music.release} time={music.time} />
+            <Music
+              src={music.src}
+              name={music.name}
+              img={music.img}
+              number={music.release}
+              time={music.time}
+            />
           </Box>
         ))}
       </Box>
