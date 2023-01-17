@@ -3,4 +3,5 @@ export type MusicObj = {
   name: string
   img: string
   release: string
+  time:string
 }

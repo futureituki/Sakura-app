@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import { createRef, RefObject, useEffect, useRef, useState } from 'react'
 import { Heading } from '@/components/atoms/Heading'
-import { MusicAudio } from '@/components/templates/MusicList'
+import { MusicAudio } from '@/components/templates/Music'
 import { musicThumbnailList, music_id } from '@/constant/music-list'
 
 export const Section04Sounds = () => {
