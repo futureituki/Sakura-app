@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # Name
 sakura-app
 
+Basic認証を使用しているため、chromeかsafariでログインをお願いいたします。
+
 # URL
 https://sakura-app-ko6p.vercel.app/ <br >
 トップページのログインボタンから、メールアドレスとパスワードを入力してログインできます。
