@@ -143,6 +143,8 @@ export const Section02 = () => {
                   sx={{
                     display: 'flex',
                     justifyContent: 'flex-end',
+                    zIndex: open ? 0 : 99999,
+                    position: 'relative',
                   }}
                 >
                   <PlayCircleFilledWhiteIcon
