@@ -1,23 +1,21 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
-import YouTube from 'react-youtube'
+import YouTube, { YouTubeProps } from 'react-youtube'
 import { TransitionsPopper } from '@/components/popup/index'
 type Props = {
   id: string
 }
 export const YoutubePopUp: FC<Props> = ({ id }) => {
-  const opts = {
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
+  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
+    // access to player in all event handlers via event.target
+    console.log(event)
+    event.target.playVideo()
   }
 
   return (
     <Box>
       <YouTube
         videoId={id}
-        opts={opts}
         style={{
           position: 'relative',
           width: '90vw',
@@ -25,6 +23,7 @@ export const YoutubePopUp: FC<Props> = ({ id }) => {
           zIndex: 1000,
           margin: '3vw 0',
         }}
+        onReady={onPlayerReady}
       />
     </Box>
   )
