@@ -4,9 +4,11 @@ import React, { FC, useEffect, useRef } from 'react'
 import styles from '@/components/PinningScroll/index.module.css'
 type ContainerProps = {
   children: React.ReactNode
+  parent_id: string
+  child_id: string
 }
 gsap.registerPlugin(ScrollTrigger)
-export const PinningContainer: FC<ContainerProps> = ({ children }) => {
+export const PinningContainer: FC<ContainerProps> = ({ children, parent_id, child_id }) => {
   const listRef = useRef<HTMLUListElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const didEffect = useRef(false)
@@ -21,11 +23,11 @@ export const PinningContainer: FC<ContainerProps> = ({ children }) => {
     if (listRef.current && wrapperRef.current) {
       let list_current = listRef.current
       let wrapper_current = wrapperRef.current
-      gsap.to('#list', {
+      gsap.to(`#${child_id}`, {
         x: () => -(list_current.clientWidth - wrapper_current.clientWidth),
         ease: 'none',
         scrollTrigger: {
-          trigger: '#list-wrapper',
+          trigger: `#${parent_id}`,
           start: 'top top',
           end: () => `+=${list_current.clientWidth - wrapper_current.clientWidth}`,
           scrub: true,
@@ -37,8 +39,8 @@ export const PinningContainer: FC<ContainerProps> = ({ children }) => {
     }
   }
   return (
-    <div ref={wrapperRef} className={styles.slide_scroll_list_wrapper} id='list-wrapper'>
-      <ul className={styles.slide_scroll_list} ref={listRef} id='list'>
+    <div ref={wrapperRef} className={styles.slide_scroll_list_wrapper} id={parent_id}>
+      <ul className={styles.slide_scroll_list} ref={listRef} id={child_id}>
         {children}
       </ul>
     </div>

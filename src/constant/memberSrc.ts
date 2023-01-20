@@ -1,5 +1,40 @@
 import { MemberObj } from '@/types/constant/member'
 
+export const firstMemberSrc: MemberObj[] = [
+  { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉菜' },
+  { src: '/assets/member/koike_main_visual.jpeg', name: '小池美波' },
+  { src: '/assets/member/kobayashi_main_visual.jpeg', name: '小林由依' },
+  { src: '/assets/member/saito_main_visual.jpeg', name: '齋藤冬優花' },
+  { src: '/assets/member/habu_main_visual.jpeg', name: '土生瑞穂' },
+]
+export const secondMemberSrc: MemberObj[] = [
+  { src: '/assets/member/inoue_main_visual.jpeg', name: '井上梨名' },
+  { src: '/assets/member/endo_main_visual.jpeg', name: '遠藤光莉' },
+  { src: '/assets/member/ozno_main_visual.jpeg', name: '大園玲' },
+  { src: '/assets/member/kousaka_main_visual.jpeg', name: '幸阪茉里乃' },
+  { src: '/assets/member/seki_main_visual.jpeg', name: '関有美子' },
+  { src: '/assets/member/takemoto_main_visual.jpeg', name: '武元唯衣' },
+  { src: '/assets/member/tamura_main_visual.jpeg', name: '田村保乃' },
+  { src: '/assets/member/fujiyoshi_main_visual.jpeg', name: '藤吉夏鈴' },
+  { src: '/assets/member/matuda_main_visual.jpeg', name: '松田里奈' },
+  { src: '/assets/member/masumoto_main_visual.jpeg', name: '増本綺良' },
+  { src: '/assets/member/hikaru_main_visual.jpeg', name: '森田ひかる' },
+  { src: '/assets/member/moriya_main_visual.jpeg', name: '守屋麗奈' },
+  { src: '/assets/member/yamasaki_main_visual.jpeg', name: '山﨑天' },
+]
+export const thirdMemberSrc: MemberObj[] = [
+  { src: '/assets/member_list/matono.jpeg', name: '的野美青' },
+  { src: '/assets/member_list/kojima.jpeg', name: '小島凪紗' },
+  { src: '/assets/member_list/nakajima.jpeg', name: '中嶋優月' },
+  { src: '/assets/member_list/odakura.jpeg', name: '小田倉麗奈' },
+  { src: '/assets/member_list/mukai.jpeg', name: '向井純葉' },
+  { src: '/assets/member_list/riko.jpeg', name: '遠藤理子' },
+  { src: '/assets/member_list/ishimori.jpeg', name: '石森璃花' },
+  { src: '/assets/member_list/taniguti.jpeg', name: '谷口愛李' },
+  { src: '/assets/member_list/murayama.jpeg', name: '村山美羽' },
+  { src: '/assets/member/seki_main_visual.jpeg', name: 'Coming soon' },
+  { src: '/assets/member/takemoto_main_visual.jpeg', name: 'Coming soon' },
+]
 export const memberSrc: MemberObj[] = [
   { src: '/assets/member/uemura_main_visual.jpeg', name: '上村莉菜' },
   { src: '/assets/member/koike_main_visual.jpeg', name: '小池美波' },

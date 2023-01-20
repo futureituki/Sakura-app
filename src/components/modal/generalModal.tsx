@@ -1,3 +1,4 @@
+import { Close } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Modal from '@mui/material/Modal'
@@ -25,11 +26,13 @@ export const GeneralModal: React.FC<Props> = ({ open, handleClose, children }) =
   return (
     <Modal
       open={open}
-      onClose={handleClose}
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <Box sx={style}>{children}</Box>
+      <Box sx={style}>
+        <Close onClick={handleClose} />
+        {children}
+      </Box>
     </Modal>
   )
 }
