@@ -1,17 +1,24 @@
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite'
 import { Box } from '@mui/material'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Youtube from 'react-youtube'
+import { GeneralModal } from '@/components/modal/generalModal'
+import { YoutubePopUp } from '@/components/popup/youtube'
 import styles from '@/styles/Site.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 export const Section02 = () => {
+  const [open, setOpen] = useState<boolean>(false)
   useEffect(() => {
     setupGsap()
   }, [])
+  const handleOpen = () => {
+    setOpen(!open)
+  }
   const setupGsap = () => {
     gsap.to('#overlay-on', {
       scrollTrigger: {
@@ -110,28 +117,61 @@ export const Section02 = () => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
+                margin: '20px 0',
+                borderTop: '2px solid #fff',
+                borderBottom: '2px solid #fff',
+                padding: '20px 0',
               }}
             >
-              <Youtube
-                videoId='uxC0v1902dE'
-                style={{
-                  position: 'relative',
+              <GeneralModal open={open} handleClose={handleOpen}>
+                <YoutubePopUp id={'uxC0v1902dE'} />
+              </GeneralModal>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
                   width: '90vw',
-                  height: '50vw',
-                  zIndex: 1000,
-                  margin: '3vw 0',
                 }}
-              />
+              >
+                <Box>
+                  <MusicNoteIcon />
+                  <span style={{ fontSize: '2.6vw' }}>条件反射で泣けてくる</span>
+                </Box>
+                <Box
+                  onClick={handleOpen}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <PlayCircleFilledWhiteIcon
+                    sx={{
+                      fontSize: '10vw',
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  margin: '40px 0',
+                }}
+              >
+                <Image
+                  src={'/assets/slider/slider1.jpeg'}
+                  width={500}
+                  height={400}
+                  alt=''
+                  style={{ width: '80vw', height: '100%' }}
+                />
+              </Box>
               <Box
                 sx={{
                   display: 'flex',
                   gap: '10px',
                   alignItems: 'center',
                 }}
-              >
-                <MusicNoteIcon />
-                <span style={{ fontSize: '2.6vw' }}>条件反射で泣けてくる</span>
-              </Box>
+              ></Box>
             </Box>
           </Box>
         </div>
