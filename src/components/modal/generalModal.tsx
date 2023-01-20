@@ -1,4 +1,5 @@
 import { Close } from '@mui/icons-material'
+import { Backdrop, Fade } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Modal from '@mui/material/Modal'
@@ -12,7 +13,7 @@ const style = {
   height: '100vh',
   width: '100vw',
   transform: 'translate(-50%, -50%)',
-  bgcolor: 'rgba(255,255,255, 0.5);',
+  bgcolor: 'rgba(255,255,255, 0.8);',
   border: '2px solid #000',
   textAlign: 'center',
   boxShadow: 24,
@@ -29,11 +30,27 @@ export const GeneralModal: React.FC<Props> = ({ open, handleClose, children }) =
       open={open}
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
     >
-      <Box sx={style}>
-        <Close onClick={handleClose} />
-        {children}
-      </Box>
+      <Fade in={open}>
+        <Box sx={style}>
+          <Close
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              top: '5%',
+              right: '5%',
+              fontSize: '7vw',
+              color: '#5a5a5a',
+            }}
+          />
+          {children}
+        </Box>
+      </Fade>
     </Modal>
   )
 }
