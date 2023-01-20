@@ -9,12 +9,13 @@ const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
+  height:'100vh',
+  width:"100vw",
   transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
+  bgcolor: 'rgba(255,255,255, 0.5);',
   border: '2px solid #000',
   textAlign: 'center',
   boxShadow: 24,
-  p: 4,
 }
 
 type Props = {
