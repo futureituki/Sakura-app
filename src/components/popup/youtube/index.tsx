@@ -19,30 +19,27 @@ export const YoutubePopUp: FC<Props> = ({ id }) => {
         transform: 'translate(-50%, -50%)',
         top: '50%',
         left: '50%',
-        width: '100%',
+        maxWidth: '960px',
+        overflow: 'hidden',
       }}
     >
       <Box
         sx={{
           height: '0',
-          width: '100vw',
+          width: '100%',
           position: 'relative',
           paddingBottom: '56.25%',
           overflow: 'hidden',
-          '@media screen and (min-width:800px)': {
-            width: '800px',
-            margin: '0 auto',
-          },
         }}
       >
         <YouTube
           videoId={id}
           style={{
+            height: '100%',
             position: 'absolute',
             top: '0',
             left: '0',
             width: '100%',
-            height: '100%',
             zIndex: 1000,
           }}
           onReady={onPlayerReady}

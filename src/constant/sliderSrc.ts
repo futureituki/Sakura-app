@@ -31,17 +31,17 @@ export const sliderVideoSrc = [
   {
     src: '/assets/slider/slider1.jpeg',
     title: '櫻坂46『2nd TOUR 2022 “As you know?”』（for J-LODlive）',
-    url: 'https://www.youtube.com/watch?v=uxC0v1902dE',
+    id: 'uxC0v1902dE',
   },
   {
     src: '/assets/slider/slider2.jpeg',
-    title:
-      '櫻坂46 2nd Blu-ray ＆ DVD『櫻坂46 RISA WATANABE GRADUATION CONCERT』完全生産限定盤・特典映像　予告編',
-    url: 'https://www.youtube.com/watch?v=0nmRs1kCi3s',
+    title: '櫻坂46 2nd Blu-ray ＆ DVD『櫻坂46 RISA WATANABE GRADUATION CONCERT』ダイジェスト映像',
+    id: 'rfhj20_9Gig',
   },
   {
     src: '/assets/slider/slider3.jpeg',
-    title: '櫻坂46 2nd Blu-ray ＆ DVD『櫻坂46 RISA WATANABE GRADUATION CONCERT』ダイジェスト映像',
-    url: 'https://www.youtube.com/watch?v=rfhj20_9Gig',
+    title:
+      '櫻坂46 2nd Blu-ray ＆ DVD『櫻坂46 RISA WATANABE GRADUATION CONCERT』完全生産限定盤・特典映像　予告編',
+    id: '0nmRs1kCi3s',
   },
 ]

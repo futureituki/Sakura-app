@@ -452,6 +452,11 @@ p.swiper-slide{
       animation-duration: 2s;
       animation-fill-mode: both;
   }
+  & div.swiper-slide {
+      animation-name: fade-in;
+      animation-duration: 2s;
+      animation-fill-mode: both;
+  }
 }
  @keyframes fade-in {
   from {
@@ -473,10 +478,33 @@ p.top_slider{
   text-align: center;
   left: 0%;
 }
+div.top_slider{ 
+  color:#000;
+  font-size: 1.1vw;
+  line-height: 1.75;
+  font-weight: bold;
+}
 p.top_slider > span {
   display: inline-block;
   width: 85vw;
   margin:0px auto;
+}
+div.top_slider > span {
+  display: inline-block;
+  width: 85vw;
+  margin:0px auto;
+  animation-name: fade-out;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+}
+
+to {
+    opacity: 0;
+}
 }
 .swiper-slide-active{ 
   & p.top_slider {
@@ -484,6 +512,13 @@ p.top_slider > span {
       animation-duration: 2s;
       animation-fill-mode: both;
   }
+}
+.swiper-slide-active{ 
+  & div.top_slider > span {
+    animation-name: fade-in;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+}
 }
  @keyframes fade-in {
   from {
