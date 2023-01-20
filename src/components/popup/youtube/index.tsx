@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
-import YouTube, { YouTubeProps } from 'react-youtube'
-import { TransitionsPopper } from '@/components/popup/index'
+import YouTube, { YouTubeProps } from 'react-youtube/dist/YouTube'
+
 type Props = {
   id: string
 }
