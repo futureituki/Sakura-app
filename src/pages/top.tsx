@@ -5,11 +5,12 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { TopPage } from '@/components/templates/TopPage'
 import { customSearchEndpoint } from '@/constant/url'
-import { AdminAUTH } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
+import useLogin from '@/lib/hook/useLogin'
 import { SearchObj } from '@/types/search'
 
 const Top: NextPageWithLayout = () => {
+  const router = useRouter()
   const url =
     customSearchEndpoint +
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
@@ -21,6 +22,7 @@ const Top: NextPageWithLayout = () => {
   const { data, error }: { data: SearchObj[]; error: any } = useSWR(url, fetcher)
   if (error) return <div>Error News取得に失敗しました。</div>
   if (!data) return <div>Loading...</div>
+
   return (
     <>
       <Head>

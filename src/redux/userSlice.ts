@@ -72,7 +72,7 @@ export const userSaveBookmark = createAsyncThunk(
     return bookmark
   },
 )
-export const userLogout = createAsyncThunk('out', async () => {
+export const userLogout = createAsyncThunk('logout', async () => {
   console.log('aa')
   await logout()
 })

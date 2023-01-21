@@ -62,7 +62,7 @@ export const saveBookmark = async (id: string, bookmark: { [s: string]: string }
 }
 
 export const logout = async () => {
-  await fetch('/api/sessionLogout', { method: 'POST' })
+  await fetch('/api/auth/user/logout', { method: 'POST' })
   // await signOut(auth)
   //   .then(() => {
   //     alert('ログアウトが成功しました')

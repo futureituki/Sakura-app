@@ -31,11 +31,11 @@ export const MyPage = () => {
   const dispatch = useDispatch<any>()
   const user: UserReducer = GetUser().user
 
-  useEffect(() => {
-    if (user.uid === '') {
-      router.push('/login')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (user.uid === '') {
+  //     router.push('/login')
+  //   }
+  // }, [])
   const logoutCheck = async () => {
     await dispatch(userLogout())
     router.push('/logout')
