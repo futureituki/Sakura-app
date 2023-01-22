@@ -32,6 +32,7 @@ const MusicDetail: NextPageWithLayout = () => {
       </div>
     )
   if (!data) return <div>Loading. . .</div>
+  console.log(data)
   return (
     <>
       <TitleBar>Music List</TitleBar>
@@ -66,10 +67,18 @@ const MusicDetail: NextPageWithLayout = () => {
       {data
         ? data.tracks.items.map((track: any, index: number) => (
             <Box key={index}>
-              <video controls playsInline>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Image src={data.images[0].url} width={50} height={50} alt={data.name} />
+                <p>{track.name}</p>
+              </Box>
+              <video controls playsInline muted>
                 <source src={track.preview_url} type='video/mp4' />
               </video>
-              <p>{track.name}</p>
             </Box>
             // <Link href={track.external_urls.spotify}>{track.name}</Link>
           ))
