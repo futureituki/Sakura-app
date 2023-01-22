@@ -4,9 +4,9 @@ import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { PrimaryButton } from '../atoms/Button'
-import { Heading } from '../atoms/Heading'
-import { GeneralModal } from '../modal/generalModal'
+import { PrimaryButton } from '@/components/atoms/Button'
+import { Heading } from '@/components/atoms/Heading'
+import { SelectModal } from '@/components/modal/selectModal'
 import { memberSrc } from '@/constant/memberSrc'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
@@ -67,7 +67,7 @@ export const FavoritePage = () => {
         >
           気になるメンバーを決めよう！
         </Heading>
-        <GeneralModal open={open} handleClose={handleClose}>
+        <SelectModal open={open} handleClose={handleClose}>
           <Image
             className={styles.member_img}
             src={`/assets/member/${selectedImg.src}`}
@@ -87,7 +87,7 @@ export const FavoritePage = () => {
               このメンバーにする
             </PrimaryButton>
           </div>
-        </GeneralModal>
+        </SelectModal>
         <div className={styles.favorite_members}>
           {memberSrc.map((member, index) => (
             <div className={styles.member} key={index}>

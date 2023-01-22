@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
 import { TitleBar } from '../atoms/TitleBar'
-import { GeneralModal } from '../modal/generalModal'
+import { SelectModal } from '@/components/modal/selectModal'
 import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { GetUser } from '@/lib/user'
 import { saveFavorite, saveFirstFavorite } from '@/redux/userSlice'
@@ -242,7 +242,7 @@ export const FavoriteChangePage = () => {
           </PrimaryButton>
         </Box>
       </Box>
-      <GeneralModal open={open} handleClose={handleClose}>
+      <SelectModal open={open} handleClose={handleClose}>
         <Box
           sx={{
             width: '60vw',
@@ -294,7 +294,7 @@ export const FavoriteChangePage = () => {
             </PrimaryButton>
           </Box>
         </Box>
-      </GeneralModal>
+      </SelectModal>
     </Box>
   )
 }

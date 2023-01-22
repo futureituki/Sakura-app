@@ -24,6 +24,7 @@ type Props = {
   handleClose: () => void
   children: React.ReactNode
 }
+// Youtube開くときに使うモーダル //
 export const GeneralModal: React.FC<Props> = ({ open, handleClose, children }) => {
   return (
     <Modal

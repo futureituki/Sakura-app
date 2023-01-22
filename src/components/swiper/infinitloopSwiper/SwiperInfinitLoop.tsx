@@ -25,6 +25,11 @@ export const SwiperInfinitLoop: FC<Props> = ({ children }) => {
         pagination={{
           clickable: true,
         }}
+        breakpoints={{
+          550: {
+            slidesPerView: 3,
+          },
+        }}
         modules={[Pagination, Navigation]}
         className={styles.mySwiper}
       >
