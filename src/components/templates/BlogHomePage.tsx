@@ -2,6 +2,7 @@ import { Box, FormControl, Input, InputLabel, MenuItem, Select, TextField } from
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
@@ -9,7 +10,6 @@ import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
-import { useForm } from 'react-hook-form'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
 export const BlogHomePage = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
@@ -17,7 +17,9 @@ export const BlogHomePage = () => {
   let url =
     customSearchEndpoint +
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=m1&q=${name}ブログ`
-  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher,{ refreshInterval: 1000 })
+  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher, {
+    refreshInterval: 1000,
+  })
   const handleChange = (event: any) => {
     setName(event.target.value)
   }
@@ -42,21 +44,26 @@ export const BlogHomePage = () => {
         },
       }}
     >
-        <FormControl sx={{
-          width:"300px"
-        }}>
+      <FormControl
+        sx={{
+          width: '300px',
+        }}
+      >
         <InputLabel id='blog-select'>メンバー選択</InputLabel>
-        <Select 
-            labelId='blog-select-label'
-            id='blog-select'
-            value={name}
-            label='メンバー選択'
-            onChange={handleChange}>
-          {memberSrc.map((member:MemberObj, index:number) => (
-            <MenuItem key={index} value={member.name}>{member.name}</MenuItem>
+        <Select
+          labelId='blog-select-label'
+          id='blog-select'
+          value={name}
+          label='メンバー選択'
+          onChange={handleChange}
+        >
+          {memberSrc.map((member: MemberObj, index: number) => (
+            <MenuItem key={index} value={member.name}>
+              {member.name}
+            </MenuItem>
           ))}
         </Select>
-        </FormControl>
+      </FormControl>
       <p>{name}関連のブログが表示されます</p>
       <Box
         sx={{

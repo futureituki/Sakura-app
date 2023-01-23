@@ -2,21 +2,23 @@ import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, useState } from 'react'
+import { Heading } from '../atoms/Heading'
 import { TitleBar } from '../atoms/TitleBar'
 import { firstMemberSrc, memberSrc, secondMemberSrc, thirdMemberSrc } from '@/constant/memberSrc'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
-import { Heading } from '../atoms/Heading'
 
-const MemberBox = ({list}:{list:MemberSrc[] | MemberObj[]}) => {
+const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
   return (
-    <Box sx={{
-      display:"flex",
-      flexWrap:"wrap",
-      gap:"20px",
-      width: "60vw",   
-      margin:"0 0 0 auto"
-    }}>
-      {list.map((member:MemberSrc,index:number) => (
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '20px',
+        width: '60vw',
+        margin: '0 0 0 auto',
+      }}
+    >
+      {list.map((member: MemberSrc, index: number) => (
         <Link href={`member-list/${member.name}`} key={index}>
           <Box
             sx={{
@@ -95,10 +97,12 @@ export const MemberList = () => {
   return (
     <Box sx={{}}>
       <TitleBar>MEMBER</TitleBar>
-      <Box sx={{
-          display:"grid",
-          placeItems:"center",
-      }}>
+      <Box
+        sx={{
+          display: 'grid',
+          placeItems: 'center',
+        }}
+      >
         <FormControl
           sx={{
             width: '300px',
@@ -130,11 +134,13 @@ export const MemberList = () => {
           width: '80vw',
         }}
       >
-        {value === 'syllabary' ? 
+        {value === 'syllabary' ? (
           <Box>
-            <MemberBox list={memberArr}/>
+            <MemberBox list={memberArr} />
           </Box>
-        : ''}
+        ) : (
+          ''
+        )}
         {value === 'sign'
           ? signMemberArr?.map((member: any, index: number) => (
               <Box key={index} sx={{ width: '80vw', margin: '0 auto' }}>
@@ -168,15 +174,16 @@ export const MemberList = () => {
                   </Box>
                 ) : (
                   <Box sx={{ width: '80vw', margin: '0 auto' }}>
-                    <Heading visualLevel={2} level={3} style={{color:"#000"}}>{member.sign}</Heading>
+                    <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
+                      {member.sign}
+                    </Heading>
                     <Link href={`member-list/${member.name}`} key={index}>
                       <Box
                         sx={{
                           fontSize: '4vw',
                           margin: '20px 0',
                         }}
-                      >
-                      </Box>
+                      ></Box>
                       <Image src={member.src} alt='' width={250} height={350} />
                       <p>{member.name}</p>
                     </Link>
@@ -185,25 +192,35 @@ export const MemberList = () => {
               </Box>
             ))
           : ''}
-          { value === '' ? 
-              <Box sx={{
-                width:"80vw",
-                margin:"0 0 0 auto"
-              }}>
-                <Box>
-                  <Heading visualLevel={2} level={3} style={{color:"#000"}}>一期生</Heading>
-                  <MemberBox list={firstMemberSrc}/>
-                </Box>
-                <Box>
-                  <Heading visualLevel={2} level={3} style={{color:"#000"}}>二期生</Heading>
-                  <MemberBox list={secondMemberSrc}/>
-                </Box>
-                <Box>
-                  <Heading visualLevel={2} level={3} style={{color:"#000"}}>三期生</Heading>
-                  <MemberBox list={thirdMemberSrc}/>
-                </Box>
-              </Box>
-          : ''}
+        {value === '' ? (
+          <Box
+            sx={{
+              width: '80vw',
+              margin: '0 0 0 auto',
+            }}
+          >
+            <Box>
+              <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
+                一期生
+              </Heading>
+              <MemberBox list={firstMemberSrc} />
+            </Box>
+            <Box>
+              <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
+                二期生
+              </Heading>
+              <MemberBox list={secondMemberSrc} />
+            </Box>
+            <Box>
+              <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
+                三期生
+              </Heading>
+              <MemberBox list={thirdMemberSrc} />
+            </Box>
+          </Box>
+        ) : (
+          ''
+        )}
       </Box>
     </Box>
   )

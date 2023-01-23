@@ -1,17 +1,19 @@
+import { Box } from '@mui/material'
 import { PinningContainer, PinningItemList } from '@/components/PinningScroll/Pinning-Side-Scroll'
 import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { firstMemberSrc, secondMemberSrc, thirdMemberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
-import { Box } from '@mui/material'
 
 export const Section03 = () => {
   return (
     <section className={styles.sec_member}>
-      <Box sx={{
-        maxWidth:"900px"
-      }}>
+      <Box
+        sx={{
+          maxWidth: '900px',
+        }}
+      >
         <Heading
           level={2}
           visualLevel={1}
