@@ -171,6 +171,7 @@ const LoginPage: NextPage = () => {
             className={styles.button}
             style={loading ? { background: '#ccc' } : { background: '#ff69b8' }}
             type='submit'
+            disabled={loading}
           >
             {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : 'Login'}
           </button>

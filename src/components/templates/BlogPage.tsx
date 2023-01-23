@@ -16,7 +16,6 @@ export const BlogPage = ({ name }: { name: string }) => {
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&q=${name}ブログ`
   const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher)
   if (!data) return <div>Loading</div>
-  console.log(data)
   return (
     <Box
       sx={{

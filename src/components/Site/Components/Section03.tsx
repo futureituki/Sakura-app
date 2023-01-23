@@ -4,11 +4,14 @@ import { Heading } from '@/components/atoms/Heading'
 import { firstMemberSrc, secondMemberSrc, thirdMemberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
+import { Box } from '@mui/material'
 
 export const Section03 = () => {
   return (
     <section className={styles.sec_member}>
-      <div className={styles.sec_member_container}>
+      <Box sx={{
+        maxWidth:"900px"
+      }}>
         <Heading
           level={2}
           visualLevel={1}
@@ -61,7 +64,7 @@ export const Section03 = () => {
             </PinningItemList>
           ))}
         </PinningContainer>
-      </div>
+      </Box>
     </section>
   )
 }

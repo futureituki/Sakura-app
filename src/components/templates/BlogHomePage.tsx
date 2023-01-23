@@ -1,24 +1,30 @@
-import { Box, Input, TextField } from '@mui/material'
+import { Box, FormControl, Input, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
-import { memberSrcMap } from '@/constant/memberSrc'
+import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
+import { useForm } from 'react-hook-form'
+import { MemberObj, MemberSrc } from '@/types/constant/member'
 export const BlogHomePage = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   const [name, setName] = useState<string>('')
-  const url =
+  let url =
     customSearchEndpoint +
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=m1&q=${name}ブログ`
-  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher)
+  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher,{ refreshInterval: 1000 })
+  const handleChange = (event: any) => {
+    setName(event.target.value)
+  }
   // const handleChange = (e) => {
   //   setName(e.target.value)
   // }
+  console.log(name)
   if (error)
     return (
       <div>
@@ -36,10 +42,21 @@ export const BlogHomePage = () => {
         },
       }}
     >
-      <form>
-        <TextField value={name} />
-        <button>検索</button>
-      </form>
+        <FormControl sx={{
+          width:"300px"
+        }}>
+        <InputLabel id='blog-select'>メンバー選択</InputLabel>
+        <Select 
+            labelId='blog-select-label'
+            id='blog-select'
+            value={name}
+            label='メンバー選択'
+            onChange={handleChange}>
+          {memberSrc.map((member:MemberObj, index:number) => (
+            <MenuItem key={index} value={member.name}>{member.name}</MenuItem>
+          ))}
+        </Select>
+        </FormControl>
       <p>{name}関連のブログが表示されます</p>
       <Box
         sx={{

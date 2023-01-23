@@ -26,6 +26,7 @@ export const secondMemberSrc: MemberSrc[] = [
   { src: '/assets/member/inoue_main_visual.jpeg', name: '井上梨名' },
   { src: '/assets/member/endo_main_visual.jpeg', name: '遠藤光莉' },
   { src: '/assets/member/ozno_main_visual.jpeg', name: '大園玲' },
+  { src: '/assets/member/oonuma_main_visual.jpeg', name: '大沼晶穂' },
   { src: '/assets/member/kousaka_main_visual.jpeg', name: '幸阪茉里乃' },
   { src: '/assets/member/seki_main_visual.jpeg', name: '関有美子' },
   { src: '/assets/member/takemoto_main_visual.jpeg', name: '武元唯衣' },
@@ -108,7 +109,7 @@ export const memberSrc: MemberObj[] = [
     sign: 'おひつじ座',
   },
   {
-    src: '/assets/member/kousaka_main_visual.jpeg',
+    src: '/assets/member/oonuma_main_visual.jpeg',
     name: '大沼晶穂',
     ruby: 'おおぬまあきほ',
     birthday: '1999年10月12日',
