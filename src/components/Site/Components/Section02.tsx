@@ -159,7 +159,7 @@ export const Section02 = () => {
                   margin: '40px 0',
                 }}
               >
-                <Image
+                <img
                   src={'/assets/slider/slider1.jpeg'}
                   width={500}
                   height={400}
