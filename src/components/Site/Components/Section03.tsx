@@ -11,16 +11,9 @@ export const Section03 = () => {
     <section className={styles.sec_member}>
       <Box
         sx={{
-          maxWidth: '900px',
+          maxWidth: '1200px',
         }}
       >
-        <Heading
-          level={2}
-          visualLevel={1}
-          style={{ color: '#fff', position: 'relative', fontSize: '5vw' }}
-        >
-          Member
-        </Heading>
         <Heading
           level={2}
           visualLevel={1}
