@@ -320,6 +320,8 @@ transform: translate(0);
   opacity: 1;
   transform: translate(0, 0);
   transition: 0.5s cubic-bezier(0, 1.05, 0.78, 0.44);
+  position:relative;
+  z-index:-1;
 }
 .mv_in h1 {
   font-size: 6.4vw;
@@ -406,6 +408,7 @@ transform: translate(0);
   transform: translate3d(-50%, -50%, 0);
 }
 .video_wrapper {
+  width:90%;
   position:relative;
   height:100vh;
   overflow:hidden

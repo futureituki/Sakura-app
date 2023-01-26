@@ -28,7 +28,6 @@ export const TopPage: FC<Props> = ({ searchs }) => {
 
   const user = GetUser().user.first_favorite as Favorite
   const users = GetUser().user
-  console.log(users)
   const router = useRouter()
   useEffect(() => {
     if (user) {

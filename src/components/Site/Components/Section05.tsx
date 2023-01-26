@@ -17,7 +17,7 @@ export const Section05 = () => {
     gsap.to('#BAN-title', {
       scrollTrigger: {
         trigger: '#triggerBAN',
-        start: 'top-=40%',
+        start: 'top top+=100px',
         scrub: true,
         onEnter: () =>
           gsap.to('#BAN-title', {
@@ -40,7 +40,7 @@ export const Section05 = () => {
     gsap.to('#nagaredama-title', {
       scrollTrigger: {
         trigger: '#triggernagaredama',
-        start: 'top-=40%',
+        start: 'top top+=100px',
         scrub: true,
         onEnter: () =>
           gsap.to('#nagaredama-title', {
@@ -63,7 +63,7 @@ export const Section05 = () => {
     gsap.to('#samidareyo-title', {
       scrollTrigger: {
         trigger: '#triggersamidareyo',
-        start: 'top-=40%',
+        start: 'top top+=100px',
         scrub: true,
         onEnter: () =>
           gsap.to('#samidareyo-title', {
@@ -86,7 +86,7 @@ export const Section05 = () => {
     gsap.to('#nobodysfault-title', {
       scrollTrigger: {
         trigger: '#triggernobodysfault',
-        start: 'top-=40%',
+        start: 'top top+=100px',
         scrub: true,
         onEnter: () =>
           gsap.to('#nobodysfault-title', {
@@ -109,7 +109,7 @@ export const Section05 = () => {
     gsap.to('#masatu-title', {
       scrollTrigger: {
         trigger: '#triggermasatu',
-        start: 'top-=40%',
+        start: 'top top+=100px',
         scrub: true,
         onEnter: () =>
           gsap.to('#masatu-title', {

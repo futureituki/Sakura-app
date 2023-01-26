@@ -101,6 +101,8 @@ export const Section01 = () => {
           gsap.to('.fadeout', {
             opacity: 0,
             y: -100,
+            position: 'relative',
+            zIndex: -999,
           }),
         onLeave: () =>
           gsap.to('.fadeout', {
@@ -111,6 +113,8 @@ export const Section01 = () => {
           gsap.to('.fadeout', {
             opacity: 0,
             y: -100,
+            position: 'relative',
+            zIndex: -999,
           }),
         onLeaveBack: () =>
           gsap.to('.fadeout', {

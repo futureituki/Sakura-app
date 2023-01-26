@@ -34,9 +34,11 @@
   transition-timing-function: linear;
 }
 .navigation {
-  width:100%;
+  width:350px;
   position:relative;
   top:25px;
+  left:50%;
+  transform:translateX(-50%);
 }
 .pagination_area {
   width:150px;
