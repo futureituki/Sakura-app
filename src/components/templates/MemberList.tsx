@@ -60,7 +60,6 @@ export const MemberList = () => {
         setMemberArr(newMember)
         break
       case 'sign':
-        console.log(value)
         //並び替え処理
         let signMemberMap = new Map()
         let arr = []

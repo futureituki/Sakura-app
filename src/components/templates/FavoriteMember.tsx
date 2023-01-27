@@ -34,7 +34,6 @@ export const FavoritePage = () => {
   const handleOpen = useCallback((e: any) => {
     const alt = e.target.alt
     const src = e.target.src
-    console.log(e.target.alt.slice(0, e.target.alt.indexOf('の')))
     const name = alt.slice(0, e.target.alt.indexOf('の'))
     let img_src = src.substr(src.indexOf('2F') + 20)
     img_src = img_src.substr(0, img_src.indexOf('jpeg') + 4)

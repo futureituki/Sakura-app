@@ -26,7 +26,6 @@ export const BlogHomePage = () => {
   // const handleChange = (e) => {
   //   setName(e.target.value)
   // }
-  console.log(name)
   if (error)
     return (
       <div>

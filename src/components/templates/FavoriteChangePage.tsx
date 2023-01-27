@@ -49,7 +49,6 @@ export const FavoriteChangePage = () => {
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target.value
-    console.log(target)
     const selectMember: Favorite = memberSrcMap.get(target) as Favorite
     setValue(target)
     setFavorite(selectMember)

@@ -246,7 +246,6 @@ export const MusicAudio = ({ src }: { src: string }) => {
   }
 
   const handleLoadedMetadata = () => {
-    console.log(audioRef.current)
     if (audioRef.current == null) return
     const duration = audioRef.current.duration
     setDuration(duration)

@@ -20,7 +20,6 @@ const SignUp: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const user = useSelector((state: User) => state)
   const router = useRouter()
-  console.log(user)
   const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
     const userInfo = {
       username: data.username,
