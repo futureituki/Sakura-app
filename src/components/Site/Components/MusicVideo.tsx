@@ -318,7 +318,9 @@ export const MusicVideo = () => {
           <Box css={action_box}>
             <Box css={comment_box}>
               <CommentButton
-                onClick={() => getVideoComment(video?.items[0].snippet.resourceId.videoId as string)}
+                onClick={() =>
+                  getVideoComment(video?.items[0].snippet.resourceId.videoId as string)
+                }
               />
             </Box>
           </Box>
