@@ -67,10 +67,7 @@ const LoginPage: NextPage = () => {
             <LoginIcon fontSize='medium' />
           </Avatar>
         </Box>
-        <form
-          onSubmit={handleSubmit(isValid, isInValid)}
-          className='flex w-full  flex-col items-center space-y-5 '
-        >
+        <form onSubmit={handleSubmit(isValid, isInValid)}>
           <Box
             sx={{
               marginTop: '10px',

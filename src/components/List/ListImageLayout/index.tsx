@@ -82,6 +82,7 @@ export const ListImageLayout = () => {
               alt={''}
               width={image.image.width / 4}
               height={image.image.height / 4}
+              unoptimized
             />
             {!srcs.includes(image.link) ? (
               <button onClick={() => save(user.uid, image.link)} className={styles.button}>

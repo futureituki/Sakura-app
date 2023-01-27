@@ -86,6 +86,7 @@ export const Section02 = () => {
                 width={300}
                 height={300}
                 style={{ width: '30vw', height: '100%' }}
+                unoptimized
               />
               <Image
                 src='/assets/live-2.jpeg'
@@ -93,6 +94,7 @@ export const Section02 = () => {
                 width={300}
                 height={300}
                 style={{ width: '30vw', height: '100%' }}
+                unoptimized
               />
               <Image
                 src='/assets/live-3.jpeg'
@@ -100,6 +102,7 @@ export const Section02 = () => {
                 width={300}
                 height={300}
                 style={{ width: '30vw', height: '100%' }}
+                unoptimized
               />
             </Box>
           </Box>
@@ -132,6 +135,7 @@ export const Section02 = () => {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   width: '90vw',
+                  maxWidth: '1300px',
                 }}
               >
                 <Box>
@@ -164,7 +168,7 @@ export const Section02 = () => {
                   width={500}
                   height={400}
                   alt=''
-                  style={{ width: '80vw', height: '100%' }}
+                  style={{ width: '80vw', height: '100%', maxWidth: '1200px' }}
                 />
               </Box>
               <Box

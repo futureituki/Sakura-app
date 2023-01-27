@@ -35,7 +35,6 @@ export const DotSwiper: FC<{ data: Props }> = ({ data }) => {
         break
     }
   }
-  console.log(name)
   return (
     <Box
       sx={{

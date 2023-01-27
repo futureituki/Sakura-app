@@ -9,10 +9,14 @@ module.exports = withPlugins([withBundleAnalyzer], {
   /* オプション設定 */
   reactStrictMode: true,
   swcMinify: true,
+  compiler: {
+    emotion: true,
+  },
   experimental: {
     optimizeFonts: true,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

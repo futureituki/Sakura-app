@@ -73,7 +73,13 @@ const MusicDetail: NextPageWithLayout = () => {
                   alignItems: 'center',
                 }}
               >
-                <Image src={data.images[0].url} width={50} height={50} alt={data.name} />
+                <Image
+                  src={data.images[0].url}
+                  width={50}
+                  height={50}
+                  alt={data.name}
+                  unoptimized
+                />
                 <p>{track.name}</p>
               </Box>
               <video controls playsInline muted>
