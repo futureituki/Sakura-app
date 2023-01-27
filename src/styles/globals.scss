@@ -34,7 +34,7 @@ html {
  */
 
 body {
-  margin: 0;
+  max-width: 1440px;
 }
 
 /**
@@ -422,9 +422,19 @@ th {
 html,
 body {
   padding: 0;
-  margin: 0;
   line-height:1.5;
   font-family: "Sawarabi Mincho";
+  max-width: 1440px;
+  margin: 0 auto;
+}
+@media screen and (min-width:1440px) {
+  body {
+    margin: 0 auto;
+    padding: 0;
+    line-height:1.5;
+    font-family: "Sawarabi Mincho";
+    max-width: 1440px;
+  }
 }
 
 a {

@@ -21,7 +21,7 @@ const DynamicSection = dynamic(
 )
 export const HomePage = () => {
   return (
-    <div>
+    <Box sx={{ maxWidth: '1440px' }}>
       <main style={{ background: '#000', overflow: 'hidden' }}>
         <Section01 />
         <SectionHarf02 />
@@ -47,6 +47,6 @@ export const HomePage = () => {
         <Section05 />
         <Section06 />
       </main>
-    </div>
+    </Box>
   )
 }

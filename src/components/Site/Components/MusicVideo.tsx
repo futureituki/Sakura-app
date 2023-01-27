@@ -1,67 +1,113 @@
 import { css, keyframes } from '@emotion/react'
 import { Box } from '@mui/material'
+import axios from 'axios'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import YouTube, { YouTubeEvent, YouTubeProps } from 'react-youtube/dist/YouTube'
-import { EffectFade, Navigation, Pagination } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/effect-fade'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 import { CommentButton } from '@/components/atoms/Button/CommentButton'
 import { ClickPlayButton } from '@/components/atoms/ClickPlayButton'
 import { Heading } from '@/components/atoms/Heading'
 import { Loading } from '@/components/atoms/Loading'
+import { youtubeEndPoint } from '@/constant/url'
+import { Youtube, YoutubeComment } from '@/types/youtube'
 gsap.registerPlugin(ScrollTrigger)
 
 export const MusicVideo = () => {
-  const [show, setShow] = useState({
-    nobodys_show: false,
-    ban_show: false,
-    nagaredama_show: false,
-    samidareyo_show: false,
-    masatu_show: false,
-  })
   const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false)
+  const [video, setVideo] = useState<Youtube>()
+  const [comments, setComment] = useState<YoutubeComment[]>([])
   const bgTL = gsap.timeline()
-  const changeYoutube = (name: string) => {
-    switch (name) {
-      case 'Nobody`s fault':
-        const showsVal_1 = {
-          masatu_show: false,
-          ban_show: false,
-          samidareyo_show: false,
-          nagaredama_show: false,
-        }
-        setShow({ ...showsVal_1, nobodys_show: true })
-        break
-      case 'BAN':
-        const showsVal_2 = {
-          masatu_show: false,
-          nobodys_show: false,
-          samidareyo_show: false,
-          nagaredama_show: false,
-        }
-        setShow({ ...showsVal_2, ban_show: true })
-        break
-      case '流れ弾':
-        setShow({ ...show, nagaredama_show: true })
-        break
-      case '五月雨よ':
-        setShow({ ...show, samidareyo_show: true })
-        break
-      case '摩擦係数':
-        setShow({ ...show, masatu_show: true })
-        break
-      default:
-        break
+  let url =
+    youtubeEndPoint +
+    `/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1`
+  useEffect(() => {
+    const getYoutube = async () => {
+      const result = await axios
+        .get(
+          `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1`,
+          {
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+            },
+          },
+        )
+        .then((data) => {
+          return data.data as Youtube
+        })
+      setVideo(result)
     }
+    getYoutube()
+  }, [])
+  console.log(video)
+  if (!video) return <Loading />
+  const getNextVideo = async (nextPage: string) => {
     setLoading(true)
+    next()
+    const result = await axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${nextPage}`,
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        },
+      )
+      .then((data) => {
+        return data.data as Youtube
+      })
+    setVideo(result)
+    setLoading(false)
+    setShow(false)
   }
+  const getPrevVideo = async (prevPage: string) => {
+    setLoading(true)
+    next()
+    const result = await axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${prevPage}`,
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        },
+      )
+      .then((data) => {
+        return data.data as Youtube
+      })
+    setVideo(result)
+    setLoading(false)
+    setShow(false)
+  }
+  const getVideoComment = async (videoId: string) => {
+    // videoのコメントを取得
+    // https://www.googleapis.com/youtube/v3/comments
+    const result = await axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&videoId=${videoId}&maxResults=10`,
+        {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        },
+      )
+      .then((data) => {
+        return data.data.items as YoutubeComment[]
+      })
+    setComment(result)
+  }
+  const changeYoutube = () => {
+    setLoading(true)
+    setShow(true)
+    // 次のミュージックビデオを取得
+  }
+  // const changeYoutube = (nextToken: string) => {
+  //   setLoading(true)
+  //   setShow(true)
+  //   // 次のミュージックビデオを取得
+  // }
   const play: YouTubeProps['onReady'] = (event: YouTubeEvent) => {
     // access to player in all event handlers via event.target
     event.target.isMuted()
@@ -87,13 +133,15 @@ export const MusicVideo = () => {
   // style //
   const container = css`
     position: relative;
+    max-width: 1440px;
   `
   const box = css`
     position: relative;
-    width: 100vw;
+    width: 90vw;
     height: 100%;
     margin: 100px auto 0 auto;
     z-index: 40;
+    max-width: 1440px;
   `
   const button_box = css`
     position: absolute;
@@ -104,7 +152,6 @@ export const MusicVideo = () => {
   `
   const music_box = css`
     position: relative;
-    width: 70vw;
     margin: 40px auto;
   `
   const img = css`
@@ -115,7 +162,6 @@ export const MusicVideo = () => {
     margin: 20px 0;
   `
   const area = css`
-    width: 80vw;
     height: 100%;
     margin: 60px auto;
   `
@@ -182,6 +228,18 @@ export const MusicVideo = () => {
     display: flex;
     align-items: center;
   `
+  const thumnail_img = css`
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 60vw;
+  `
+  const youtube_area = css`
+    height: 50vh;
+    width: 60vw;
+    max-width: 1200px;
+    position: relative;
+    zindex: 100;
+  `
   const bg_caten = css`
     position: absolute;
     opacity: 1;
@@ -195,142 +253,119 @@ export const MusicVideo = () => {
     place-items: center;
     pointer-events: none;
   `
-
+  const slider = css`
+    overflow: hidden;
+    display: flex;
+    & > div : {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+  `
   return (
     <Box css={box}>
       <Heading style={{ color: '#fff' }}>Music Video</Heading>
-      <Swiper
-        loop={true}
-        spaceBetween={50}
-        navigation={{
-          prevEl: '#button_prev',
-          nextEl: '#button_next',
+      <Box css={container}>
+        <Box css={area}>
+          <Box
+            css={music_box}
+            sx={{
+              display: 'grid',
+              placeItems: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                position: 'relative',
+              }}
+            >
+              {show ? (
+                <YouTube
+                  videoId={video.items[0].snippet.resourceId.videoId}
+                  style={{
+                    height: '50vh',
+                    width: '60vw',
+                    position: 'relative',
+                    zIndex: 100,
+                  }}
+                  onReady={play}
+                  // onPlay={play}
+                />
+              ) : (
+                <Image
+                  src={video.items[0].snippet.thumbnails.standard.url as string}
+                  alt=''
+                  width={300}
+                  height={300}
+                  css={thumnail_img}
+                  unoptimized
+                />
+              )}
+              <Box css={button_box}>
+                {loading ? <Loading /> : <></>}
+                {show ? <></> : <ClickPlayButton onClick={changeYoutube} />}
+              </Box>
+            </Box>
+            <Box>
+              <p style={{ color: '#fff' }}>{video.items[0].snippet.title}</p>
+              <p style={{ color: '#fff' }}>
+                {video.items[0].snippet.publishedAt.slice(
+                  0,
+                  video.items[0].snippet.publishedAt.indexOf('T'),
+                )}
+              </p>
+            </Box>
+          </Box>
+          <Box css={action_box}>
+            <Box css={comment_box}>
+              <CommentButton
+                onClick={() => getVideoComment(video.items[0].snippet.resourceId.videoId)}
+              />
+            </Box>
+          </Box>
+        </Box>
+        <Box css={action_buttons}>
+          {video.prevPageToken ? (
+            <Box
+              component='button'
+              css={action_button}
+              id='button_prev'
+              onClick={() => getPrevVideo(video.prevPageToken)}
+            >
+              <span>prev</span>
+            </Box>
+          ) : (
+            ''
+          )}
+          <Box
+            component='button'
+            css={action_button}
+            onClick={() => getNextVideo(video.nextPageToken)}
+            id='button_next'
+          >
+            <span>next</span>
+          </Box>
+        </Box>
+      </Box>
+      <YouTube
+        videoId={video.items[0].snippet.resourceId.videoId}
+        style={{
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+          zIndex: 100,
         }}
-        slidesPerView={1}
-        speed={3000}
-        modules={[EffectFade, Navigation, Pagination]}
-      >
-        <SwiperSlide>
-          <Box css={container}>
-            <Box css={animation_text_container}>
-              <Box css={animation_text}>Nobody`s fault</Box>
-              <Box css={animation_text2}>Nobody`s fault</Box>
-            </Box>
-            <Box css={area}>
-              <Box
-                css={music_box}
-                sx={{
-                  height: '50vw',
-                  '& > img': {
-                    width: '100%',
-                    height: '100%',
-                  },
-                }}
-              >
-                <Box css={button_box}>
-                  {loading ? <Loading /> : <></>}
-                  {show.nobodys_show ? (
-                    <></>
-                  ) : (
-                    <ClickPlayButton onClick={() => changeYoutube('Nobody`s fault')} />
-                  )}
-                </Box>
-                {show.nobodys_show ? (
-                  <YouTube
-                    videoId='fagRTasDcKo'
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      position: 'relative',
-                      zIndex: 100,
-                    }}
-                    onReady={play}
-                    // onPlay={play}
-                  />
-                ) : (
-                  <Image
-                    src='/assets/photo/discography_1th_main.jpeg'
-                    alt=''
-                    width={300}
-                    height={300}
-                  />
-                )}
-              </Box>
-              <Box css={action_box}>
-                <Box css={action_buttons}>
-                  <Box component='button' css={action_button} id='button_prev'>
-                    <span>prev</span>
-                  </Box>
-                  <Box component='button' css={action_button} onClick={next} id='button_next'>
-                    <span>next</span>
-                  </Box>
-                </Box>
-                <Box css={comment_box}>
-                  <CommentButton onClick={() => console.log('push')} />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Box css={container}>
-            <Box css={animation_text_container}>
-              <Box css={animation_text}>BAN</Box>
-              <Box css={animation_text2}>BAN</Box>
-            </Box>
-            <Box css={area}>
-              <Box
-                css={music_box}
-                sx={{
-                  height: '50vw',
-                  '& > img': {
-                    width: '100%',
-                    height: '100%',
-                  },
-                }}
-              >
-                <Box css={button_box}>
-                  {loading ? <Loading /> : <></>}
-                  {show.ban_show ? <></> : <ClickPlayButton onClick={() => changeYoutube('BAN')} />}
-                </Box>
-                {show.ban_show ? (
-                  <YouTube
-                    videoId='fPZ37t3nvco'
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      position: 'relative',
-                      zIndex: 100,
-                    }}
-                    onReady={play}
-                    // onPlay={play}
-                  />
-                ) : (
-                  <Image
-                    src='/assets/photo/discography_2th_main.jpeg'
-                    alt=''
-                    width={300}
-                    height={300}
-                  />
-                )}
-              </Box>
-              <Box css={action_box}>
-                <Box css={action_buttons}>
-                  <Box component='button' css={action_button} id='button_prev'>
-                    <span>prev</span>
-                  </Box>
-                  <Box component='button' css={action_button} onClick={next} id='button_next'>
-                    <span>next</span>
-                  </Box>
-                </Box>
-                <Box css={comment_box}>
-                  <CommentButton onClick={() => console.log('push')} />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </SwiperSlide>
-      </Swiper>
+        onReady={play}
+        // onPlay={play}
+      />
+      {comments
+        ? comments.map((comment: YoutubeComment, index: number) => (
+            <p style={{ color: '#fff' }} key={index}>
+              {comment.snippet.topLevelComment.snippet.textOriginal}
+            </p>
+          ))
+        : ''}
       <Box css={bg_caten} id='bg_animation'></Box>
     </Box>
   )

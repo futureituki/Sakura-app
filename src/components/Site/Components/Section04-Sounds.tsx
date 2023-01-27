@@ -274,7 +274,7 @@ export const Section04Sounds = () => {
               >
                 <MusicAudio src={music.music_src} />
               </Box>
-              <Image src={`${music.img_src}`} alt='' width={300} height={300} />
+              <Image src={`${music.img_src}`} alt='' width={300} height={300} unoptimized />
             </Box>
             <Box
               id={`text${index}`}

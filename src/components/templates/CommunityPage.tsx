@@ -60,6 +60,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               width={300}
               height={300}
               style={{ width: '30vw', height: '30vw' }}
+              unoptimized
             />
             <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
               {data.title}

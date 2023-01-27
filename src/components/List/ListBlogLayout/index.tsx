@@ -68,6 +68,7 @@ export const ListBlogLayout = () => {
                       width={300}
                       height={300}
                       className={styles.blog_img}
+                      unoptimized
                     />
                   ) : (
                     ''

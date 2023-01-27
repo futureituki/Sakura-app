@@ -16,6 +16,7 @@ module.exports = withPlugins([withBundleAnalyzer], {
     optimizeFonts: true,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
