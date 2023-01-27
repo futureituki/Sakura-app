@@ -41,8 +41,6 @@ export const MusicVideo = () => {
     }
     getYoutube()
   }, [])
-  console.log(video)
-  if (!video) return <Loading />
   const getNextVideo = async (nextPage: string) => {
     setLoading(true)
     next()
@@ -282,7 +280,7 @@ export const MusicVideo = () => {
             >
               {show ? (
                 <YouTube
-                  videoId={video.items[0].snippet.resourceId.videoId}
+                  videoId={video?.items[0].snippet.resourceId.videoId}
                   style={{
                     height: '50vh',
                     width: '60vw',
@@ -294,7 +292,7 @@ export const MusicVideo = () => {
                 />
               ) : (
                 <Image
-                  src={video.items[0].snippet.thumbnails.standard.url as string}
+                  src={video?.items[0].snippet.thumbnails.standard.url as string}
                   alt=''
                   width={300}
                   height={300}
@@ -308,11 +306,11 @@ export const MusicVideo = () => {
               </Box>
             </Box>
             <Box>
-              <p style={{ color: '#fff' }}>{video.items[0].snippet.title}</p>
+              <p style={{ color: '#fff' }}>{video?.items[0].snippet.title}</p>
               <p style={{ color: '#fff' }}>
-                {video.items[0].snippet.publishedAt.slice(
+                {video?.items[0].snippet.publishedAt.slice(
                   0,
-                  video.items[0].snippet.publishedAt.indexOf('T'),
+                  video?.items[0].snippet.publishedAt.indexOf('T'),
                 )}
               </p>
             </Box>
@@ -320,18 +318,20 @@ export const MusicVideo = () => {
           <Box css={action_box}>
             <Box css={comment_box}>
               <CommentButton
-                onClick={() => getVideoComment(video.items[0].snippet.resourceId.videoId)}
+                onClick={() =>
+                  getVideoComment(video?.items[0].snippet.resourceId.videoId as string)
+                }
               />
             </Box>
           </Box>
         </Box>
         <Box css={action_buttons}>
-          {video.prevPageToken ? (
+          {video?.prevPageToken ? (
             <Box
               component='button'
               css={action_button}
               id='button_prev'
-              onClick={() => getPrevVideo(video.prevPageToken)}
+              onClick={() => getPrevVideo(video?.prevPageToken)}
             >
               <span>prev</span>
             </Box>
@@ -341,7 +341,7 @@ export const MusicVideo = () => {
           <Box
             component='button'
             css={action_button}
-            onClick={() => getNextVideo(video.nextPageToken)}
+            onClick={() => getNextVideo(video?.nextPageToken as string)}
             id='button_next'
           >
             <span>next</span>
@@ -349,7 +349,7 @@ export const MusicVideo = () => {
         </Box>
       </Box>
       <YouTube
-        videoId={video.items[0].snippet.resourceId.videoId}
+        videoId={video?.items[0].snippet.resourceId.videoId}
         style={{
           height: '100%',
           width: '100%',
