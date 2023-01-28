@@ -17,7 +17,7 @@ export const TutorialSwiper = () => {
     <Box
       sx={{
         position: 'relative',
-        height: '100%',
+        minHeight: '600px',
       }}
     >
       <Swiper

@@ -50,16 +50,7 @@ export const CommunityPostPage = () => {
   const sliceTag = (selectTag: string) => {
     setAddedTag(addedTag.filter((tag) => tag !== selectTag))
   }
-  // useEffect(() => {
-  //   const gsReference = ref(
-  //     storage,
-  //     "gs://portofolio-fb1b5.appspot.com/images/wZXFmIP6MlVqAxBb5gar1Tkb7U22/9bdrcx1g.jpeg"
-  //   )
-  //   getDownloadURL(gsReference)
-  // .then(url => {
-  //   setImage(url)
-  // })
-  // })
+
   const {
     handleSubmit,
     register,
@@ -85,6 +76,7 @@ export const CommunityPostPage = () => {
     canvas.width = image?.width as number
     canvas.height = image?.height as number
     const cxt = canvas.getContext('2d')
+    alert('画像が小さすぎます')
     cxt?.drawImage(image!, 0, 0)
 
     setPreview(canvas.toDataURL('image/jpeg'))
@@ -110,6 +102,7 @@ export const CommunityPostPage = () => {
         sx={{
           width: '80vw',
           margin: '0 auto',
+          maxWidth: '1440px',
         }}
       >
         <form onSubmit={handleSubmit(submit)}>
@@ -173,12 +166,13 @@ export const CommunityPostPage = () => {
                   color={[255, 255, 255, 0.6]} // RGBA
                   scale={scale}
                   rotate={0}
+                  style={{ maxWidth: '900px' }}
                 />
                 <input
                   type='range'
                   defaultValue={scale}
-                  min={1}
-                  max={2}
+                  min={0}
+                  max={3}
                   step={0.1}
                   onChange={handleScaleChange}
                 />
@@ -296,7 +290,13 @@ export const CommunityPostPage = () => {
               もどる
             </PrimaryButton>
             {isSubmitting ? (
-              <PrimaryButton label='photo' variant='contained' color='#fff' background='#f2f2f2'>
+              <PrimaryButton
+                label='photo'
+                variant='contained'
+                color='#fff'
+                background='#f2f2f2'
+                disabled={true}
+              >
                 <CircularProgress style={{ width: '20px', height: '20px' }} />
               </PrimaryButton>
             ) : (

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, css } from '@mui/material'
 import Image from 'next/image'
 import { TitleBar } from '../atoms/TitleBar'
 import { memberMap } from '@/constant/memberDetail'
@@ -14,6 +14,14 @@ type Information = {
 }
 export const Member = ({ name }: { name: string }) => {
   const selectMember: Information = memberMap.get(name) as Information
+  const img = css`
+    max-width: 900px;
+    height: 100%;
+    width: 85vw;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+  `
   return (
     <Box>
       <TitleBar>MEMBER</TitleBar>
@@ -22,6 +30,7 @@ export const Member = ({ name }: { name: string }) => {
           display: 'flex',
           justifyContent: 'center',
           padding: '20px 0',
+          fontSize: '2vw',
           borderBottom: '1px solid #000',
         }}
       >
@@ -31,11 +40,16 @@ export const Member = ({ name }: { name: string }) => {
         sx={{
           width: '85vw',
           margin: '40px auto',
+          maxWidth: '1440px',
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            maxWidth: '1440px',
+          }}
+        >
           <Image
-            style={{ width: '85vw', height: '100%' }}
+            css={img}
             src={selectMember.src}
             alt={selectMember.name}
             width={350}

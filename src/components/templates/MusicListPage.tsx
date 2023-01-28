@@ -18,7 +18,12 @@ export const MusicListPage = () => {
         }}
       >
         {musicList.map((music: MusicObj, index: number) => (
-          <Box key={index}>
+          <Box
+            key={index}
+            sx={{
+              maxWidth: '1400px',
+            }}
+          >
             <Music
               src={music.src}
               name={music.name}

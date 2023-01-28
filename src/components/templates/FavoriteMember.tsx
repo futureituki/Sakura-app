@@ -35,8 +35,7 @@ export const FavoritePage = () => {
     const alt = e.target.alt
     const src = e.target.src
     const name = alt.slice(0, e.target.alt.indexOf('の'))
-    let img_src = src.substr(src.indexOf('2F') + 20)
-    img_src = img_src.substr(0, img_src.indexOf('jpeg') + 4)
+    let img_src = src.substr(src.indexOf('assets') - 1)
     setSelectedImg({ name: name, src: img_src })
     setOpen(true)
   }, [])
@@ -69,7 +68,7 @@ export const FavoritePage = () => {
         <SelectModal open={open} handleClose={handleClose}>
           <Image
             className={styles.member_img}
-            src={`/assets/member/${selectedImg.src}`}
+            src={`${selectedImg.src}`}
             alt={'member_img'}
             width={150}
             height={150}

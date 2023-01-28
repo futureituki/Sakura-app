@@ -349,6 +349,7 @@ transform: translate(0);
   padding:70px 0;
   position:relative;
   color:#fff;
+  max-width:1440px;
 }
 .overlay {
   content: "";
@@ -398,6 +399,7 @@ transform: translate(0);
   width:90%;
   margin:40px auto;
   overflow:hidden;
+  max-width:1440px;
 }
 .swiper_video {
   position:absolute;

@@ -33,6 +33,8 @@ export const ChangeOshimenPage = () => {
             fontSize: '14px',
             lineHeight: '1.75',
             width: '90vw',
+            maxWidth: '1440px',
+            textAlign: 'center',
           }}
         >
           <p>
@@ -67,7 +69,7 @@ export const ChangeOshimenPage = () => {
             display: 'flex',
             justifyContent: 'center',
             padding: '15px 0',
-            fontSize: '4vw',
+            fontSize: '3vw',
             marginBottom: '40px',
             '@media screen and (min-width:960px)': {
               width: '100%',
@@ -90,7 +92,7 @@ export const ChangeOshimenPage = () => {
                 gap: '20px',
               }}
             >
-              <p style={{ width: '18vw', fontSize: '3vw' }}>{user.first_favorite.name}</p>
+              <p style={{ width: '18vw', fontSize: '2.6vw' }}>{user.first_favorite.name}</p>
               <Image
                 src={`/assets/member/${user.first_favorite.src}`}
                 alt={user.first_favorite.name}
@@ -102,6 +104,8 @@ export const ChangeOshimenPage = () => {
                   borderRadius: '50%',
                   objectFit: 'cover',
                   objectPosition: '0 0',
+                  maxWidth: '300px',
+                  maxHeight: '300px',
                 }}
               />
             </Box>
@@ -114,7 +118,7 @@ export const ChangeOshimenPage = () => {
             display: 'flex',
             justifyContent: 'center',
             padding: '15px 0',
-            fontSize: '4vw',
+            fontSize: '3vw',
             margin: '40px 0',
             '@media screen and (min-width:960px)': {
               width: '100%',
@@ -147,7 +151,7 @@ export const ChangeOshimenPage = () => {
                     gap: '20px',
                   }}
                 >
-                  <p style={{ width: '18vw', fontSize: '3vw' }}>{member.name}</p>
+                  <p style={{ width: '18vw', fontSize: '2.4vw' }}>{member.name}</p>
                   <Image
                     src={`/assets/member/${member.src}`}
                     alt={member.name}
@@ -159,6 +163,8 @@ export const ChangeOshimenPage = () => {
                       borderRadius: '50%',
                       objectFit: 'cover',
                       objectPosition: '0 0',
+                      maxWidth: '300px',
+                      maxHeight: '300px',
                     }}
                   />
                 </Box>

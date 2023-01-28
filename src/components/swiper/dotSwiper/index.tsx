@@ -54,7 +54,7 @@ export const DotSwiper: FC<{ data: Props }> = ({ data }) => {
           <SwiperSlide key={index}>
             <Box
               sx={{
-                width: '100vw',
+                maxWidth: '1440px',
               }}
               onClick={() => handleOpen(slide.title)}
             >

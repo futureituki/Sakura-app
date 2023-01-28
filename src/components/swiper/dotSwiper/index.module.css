@@ -6,6 +6,12 @@
   width: 100%;
   height: 100%;
 }
+.swiper_title {
+  z-index: 9999;
+  position: relative;
+  margin: 30px auto 60px auto;
+  max-width: 1440px;
+}
 @media screen and (min-width:800px) {
   .mySwiper {
     height:60%;
@@ -15,10 +21,8 @@
     margin:0 auto;
     display:grid;
   }
-}
-.swiper_title {
-  z-index: 9999;
-  position: relative;
-  text-align: center;
-  margin: 20px 0 60px 0;
+  .swiper_title {
+    width:60%;
+    margin:20px auto;
+  }
 }

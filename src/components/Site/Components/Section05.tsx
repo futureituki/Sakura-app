@@ -142,6 +142,7 @@ export const Section05 = () => {
           sx={{
             width: '80vw',
             margin: '40px 0',
+            maxWidth: '1200px',
             position: 'relative',
             '@media screen and (min-width:900px)': {
               width: '70vw',

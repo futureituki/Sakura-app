@@ -220,6 +220,7 @@ export const Section04Sounds = () => {
         width: '70vw',
         margin: '0 auto',
         height: '90vh',
+        maxWidth: '1440px',
         '@media screen and (min-width:900px)': {
           height: '50vh',
         },
@@ -238,6 +239,7 @@ export const Section04Sounds = () => {
           width: '80vw',
           height: '80vh',
           margin: '0 auto',
+          maxWidth: '1440px',
           '@media screen and (min-width:900px)': {
             height: '40vh',
           },

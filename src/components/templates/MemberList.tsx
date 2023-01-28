@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { Box, FormControl, InputLabel, MenuItem, Select, css } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, useState } from 'react'
@@ -8,6 +8,10 @@ import { firstMemberSrc, memberSrc, secondMemberSrc, thirdMemberSrc } from '@/co
 import { MemberObj, MemberSrc } from '@/types/constant/member'
 
 const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
+  const img = css`
+    width: 100%;
+    height: 100%;
+  `
   return (
     <Box
       sx={{
@@ -15,7 +19,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
         flexWrap: 'wrap',
         gap: '20px',
         width: '60vw',
-        margin: '0 0 0 auto',
+        maxWidth: '1440px',
       }}
     >
       {list.map((member: MemberSrc, index: number) => (
@@ -28,7 +32,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
               gap: '10px',
             }}
           >
-            <Image src={member.src} alt={member.name} width={250} height={350} />
+            <Image src={member.src} alt={member.name} width={250} height={350} css={img} />
             <p>{member.name}</p>
           </Box>
         </Link>
@@ -36,6 +40,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
     </Box>
   )
 }
+
 export const MemberList = () => {
   const [value, setValue] = useState<string>('')
   const [memberArr, setMemberArr] = useState<MemberObj[]>(memberSrc)
@@ -44,6 +49,7 @@ export const MemberList = () => {
     setValue(event.target.value)
     onSwitch(event.target.value)
   }
+  console.log(value)
   const onSwitch = (value: string) => {
     switch (value) {
       case 'syllabary':
@@ -93,6 +99,9 @@ export const MemberList = () => {
         break
     }
   }
+  const name = css`
+    width: 100%;
+  `
   return (
     <Box sx={{}}>
       <TitleBar>MEMBER</TitleBar>
@@ -131,6 +140,7 @@ export const MemberList = () => {
           alignItems: 'center',
           gap: '20px',
           width: '80vw',
+          maxWidth: '1440px',
         }}
       >
         {value === 'syllabary' ? (
@@ -142,7 +152,7 @@ export const MemberList = () => {
         )}
         {value === 'sign'
           ? signMemberArr?.map((member: any, index: number) => (
-              <Box key={index} sx={{ width: '80vw', margin: '0 auto' }}>
+              <Box key={index} sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }}>
                 {member.length !== undefined ? (
                   <Box
                     sx={{
@@ -156,34 +166,34 @@ export const MemberList = () => {
                       <Link href={`member-list/${m.name}`} key={index}>
                         <Box
                           sx={{
-                            fontSize: '4vw',
+                            fontSize: '2vw',
                             margin: '20px 0',
                           }}
                         >
-                          <p>
+                          <p css={name}>
                             {index === 0 ? m.sign : <span style={{ opacity: 0 }}>{m.sign}</span>}
                           </p>
                         </Box>
-                        <Box key={index} sx={{ width: '30%' }}>
-                          <Image src={m.src} alt='' width={250} height={350} />
-                          <p>{m.name}</p>
+                        <Box key={index} sx={{ maxWidth: '1440px' }}>
+                          <Image src={m.src} alt='' width={250} height={350} unoptimized={false} />
+                          <p css={name}>{m.name}</p>
                         </Box>
                       </Link>
                     ))}
                   </Box>
                 ) : (
-                  <Box sx={{ width: '80vw', margin: '0 auto' }}>
+                  <Box sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }} key={index}>
                     <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                       {member.sign}
                     </Heading>
-                    <Link href={`member-list/${member.name}`} key={index}>
+                    <Link href={`member-list/${member.name}`}>
                       <Box
                         sx={{
                           fontSize: '4vw',
                           margin: '20px 0',
                         }}
                       ></Box>
-                      <Image src={member.src} alt='' width={250} height={350} />
+                      <Image src={member.src} alt='' width={250} height={350} unoptimized={false} />
                       <p>{member.name}</p>
                     </Link>
                   </Box>
@@ -198,19 +208,31 @@ export const MemberList = () => {
               margin: '0 0 0 auto',
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                maxWidth: '1440px',
+              }}
+            >
               <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                 一期生
               </Heading>
               <MemberBox list={firstMemberSrc} />
             </Box>
-            <Box>
+            <Box
+              sx={{
+                maxWidth: '1440px',
+              }}
+            >
               <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                 二期生
               </Heading>
               <MemberBox list={secondMemberSrc} />
             </Box>
-            <Box>
+            <Box
+              sx={{
+                maxWidth: '1440px',
+              }}
+            >
               <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                 三期生
               </Heading>

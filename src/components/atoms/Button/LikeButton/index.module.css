@@ -1,5 +1,7 @@
 .likeButton {
   cursor: pointer;
+  max-width:100px;
+  width:14vw;
 }
 
 .likeButton .border {

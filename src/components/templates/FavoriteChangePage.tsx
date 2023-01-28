@@ -122,6 +122,7 @@ export const FavoriteChangePage = () => {
                 <Box
                   key={index}
                   sx={{
+                    maxWidth: '1440px',
                     width: '80vw',
                     display: 'flex',
                     justifyContent: 'center',
@@ -157,6 +158,8 @@ export const FavoriteChangePage = () => {
                       borderRadius: '50%',
                       objectFit: 'cover',
                       objectPosition: '0 0',
+                      maxWidth: '300px',
+                      maxHeight: '300px',
                     }}
                   />
                   <Box
@@ -199,7 +202,7 @@ export const FavoriteChangePage = () => {
                     ) : (
                       ''
                     )}
-                    <p style={{ fontSize: '3.4vw' }}>{member.name}</p>
+                    <p style={{ fontSize: '2.6vw' }}>{member.name}</p>
                   </Box>
                 </Box>
               ))}
@@ -211,6 +214,7 @@ export const FavoriteChangePage = () => {
             display: 'flex',
             flexDirection: 'column',
             width: '100vw',
+            maxWidth: '1440px',
             alignItems: 'center',
             gap: '20px',
             margin: '20px 0',

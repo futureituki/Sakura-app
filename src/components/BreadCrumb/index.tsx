@@ -52,15 +52,15 @@ export const BreadCrumb: NextPage = () => {
       <Link href={'/top'}>
         <span className={styles.link}>Top</span>
       </Link>
-      {paths.map((x, i) => (
+      {paths.map((path: string, index: number) => (
         <>
           {/* サブページのリンク */}
           {'>'}
-          {x === 'top' ? (
+          {path === 'top' ? (
             ''
           ) : (
-            <Link href={roots[i + 1]} key={i}>
-              <span className={styles.link}>{textBread(x)}</span>
+            <Link href={roots[index + 1]} key={index}>
+              <span className={styles.link}>{textBread(path)}</span>
             </Link>
           )}
         </>

@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { InductionButtons } from '../molecules/InductionButtons'
-import { TransitionsPopper } from '../popup'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
+import { TransitionsPopper } from '@/components/popup'
 import { DotSwiper } from '@/components/swiper/dotSwiper'
 import { TutorialSwiper } from '@/components/swiper/tutorialSwiper'
 import { BasicTabs } from '@/components/tab/TopTab'
@@ -62,17 +62,6 @@ export const TopPage: FC<Props> = ({ searchs }) => {
         </Box>
         <DotSwiper data={sliderVideoSrc as SwiperProps} />
         <ListNewsLayout data={searchs} />
-        {/* {data.map((news,index) => (
-          <div>
-            <img src={news.image?.thumbnail.contentUrl} alt="" />
-            <p>
-              {index}
-              <Link href={news.url} target={"_blank"}>
-                {news.snippet}
-              </Link>
-            </p>
-          </div>
-        ))} */}
       </div>
       <InductionButtons logoutHandle={logoutCheck} handle={() => router.push('/mypage')} />
     </div>

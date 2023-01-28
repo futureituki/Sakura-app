@@ -24,26 +24,33 @@ export const HomePage = () => {
     <Box sx={{ maxWidth: '1440px' }}>
       <main style={{ background: '#000', overflow: 'hidden' }}>
         <Section01 />
-        <SectionHarf02 />
-        <Section02 />
         <Box
           sx={{
-            width: '80vw',
+            maxWidth: '1300px',
             margin: '0 auto',
           }}
         >
-          <Heading
-            level={2}
-            visualLevel={1}
-            style={{ color: '#fff', position: 'relative', fontSize: '5vw' }}
+          <SectionHarf02 />
+          <Section02 />
+          <Box
+            sx={{
+              width: '80vw',
+              margin: '0 auto',
+            }}
           >
-            Member
-          </Heading>
+            <Heading
+              level={2}
+              visualLevel={1}
+              style={{ color: '#fff', position: 'relative', fontSize: '5vw' }}
+            >
+              Member
+            </Heading>
+          </Box>
+          <Section03 />
+          <Section04Sounds />
+          <MusicVideo />
+          <DynamicSection />
         </Box>
-        <Section03 />
-        <Section04Sounds />
-        <MusicVideo />
-        <DynamicSection />
         <Section05 />
         <Section06 />
       </main>

@@ -11,7 +11,6 @@ type List = {
   data: SearchObj[]
 }
 export const ListNewsLayout: FC<List> = ({ data }) => {
-  console.log(data)
   return (
     <Box
       sx={{
@@ -25,20 +24,21 @@ export const ListNewsLayout: FC<List> = ({ data }) => {
           width: '90vw',
           margin: '20px auto',
         }}
-      ></Box>
-      <ul>
-        {data.map((list: SearchObj, index) => (
-          <li key={index} className={styles.news_title}>
-            {list.title.indexOf('日向坂') ? (
-              <Link href={list.formattedUrl} target={'_blank'}>
-                {list.title}
-              </Link>
-            ) : (
-              ''
-            )}
-          </li>
-        ))}
-      </ul>
+      >
+        <ul>
+          {data.map((list: SearchObj, index: number) => (
+            <li key={index} className={styles.news_title}>
+              {list.title.indexOf('日向坂') ? (
+                <Link href={list.formattedUrl} target={'_blank'}>
+                  {list.title}
+                </Link>
+              ) : (
+                ''
+              )}
+            </li>
+          ))}
+        </ul>
+      </Box>
     </Box>
   )
 }

@@ -230,6 +230,7 @@ export const MusicVideo = () => {
     max-width: 1200px;
     margin: 0 auto;
     width: 60vw;
+    height: 100%;
   `
   const youtube_area = css`
     height: 50vh;
@@ -348,17 +349,6 @@ export const MusicVideo = () => {
           </Box>
         </Box>
       </Box>
-      <YouTube
-        videoId={video?.items[0].snippet.resourceId.videoId}
-        style={{
-          height: '100%',
-          width: '100%',
-          position: 'relative',
-          zIndex: 100,
-        }}
-        onReady={play}
-        // onPlay={play}
-      />
       {comments
         ? comments.map((comment: YoutubeComment, index: number) => (
             <p style={{ color: '#fff' }} key={index}>

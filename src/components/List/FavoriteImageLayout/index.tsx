@@ -20,7 +20,7 @@ export const FavoriteImageLayout = () => {
   }
   return (
     <Box>
-      <ul>
+      <ul className={styles.ul}>
         {srcs.map((src: string, index: number) => (
           <li className={styles.li} key={index}>
             <Image

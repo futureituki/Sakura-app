@@ -33,17 +33,6 @@ export const SwiperInfinitLoop: FC<Props> = ({ children }) => {
         modules={[Pagination, Navigation]}
         className={styles.mySwiper}
       >
-        {/* <SwiperSlide style={{width:"45%"}}>
-        <Image src="/assets/member/fujiyoshi_main_visual.jpeg" alt="image" width={300} height={300} style={{width:"100%",height:"100%"}}/>
-        </SwiperSlide>
-        <SwiperSlide style={{width:"45%"}}>
-        <Image src="/assets/member/fujiyoshi_main_visual.jpeg" alt="image" width={300} height={400} style={{width:"100%",height:"100%"}}/>
-        </SwiperSlide>
-        <SwiperSlide style={{width:"45%"}}>
-          <Image src="/assets/member/fujiyoshi_main_visual.jpeg" alt="image" width={300} height={400} style={{width:"100%",height:"100%"}}/></SwiperSlide>
-        <SwiperSlide style={{width:"45%"}}>
-        <Image src="/assets/member/fujiyoshi_main_visual.jpeg" alt="image" width={300} height={400} style={{width:"100%",height:"100%"}}/>
-        </SwiperSlide> */}
         {children}
       </Swiper>
     </>

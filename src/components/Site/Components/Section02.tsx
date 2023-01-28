@@ -1,6 +1,6 @@
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite'
-import { Box } from '@mui/material'
+import { Box, css } from '@mui/material'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image'
@@ -53,6 +53,11 @@ export const Section02 = () => {
       },
     })
   }
+  const img = css`
+    width: 30vw;
+    height: 100%;
+    max-width: 400px;
+  `
   return (
     <section className={styles.sec_rea} id='overlay-on'>
       <div className={`overlay-cover ${styles.overlay}`}></div>
@@ -77,6 +82,7 @@ export const Section02 = () => {
             <Box
               sx={{
                 display: 'flex',
+                flexWrap: 'wrap',
                 gap: '10px',
               }}
             >
@@ -85,7 +91,7 @@ export const Section02 = () => {
                 alt=''
                 width={300}
                 height={300}
-                style={{ width: '30vw', height: '100%' }}
+                css={img}
                 unoptimized
               />
               <Image
@@ -93,7 +99,7 @@ export const Section02 = () => {
                 alt=''
                 width={300}
                 height={300}
-                style={{ width: '30vw', height: '100%' }}
+                css={img}
                 unoptimized
               />
               <Image
@@ -101,7 +107,7 @@ export const Section02 = () => {
                 alt=''
                 width={300}
                 height={300}
-                style={{ width: '30vw', height: '100%' }}
+                css={img}
                 unoptimized
               />
             </Box>

@@ -9,6 +9,7 @@ export const SectionHarf02 = () => {
         sx={{
           width: '90vw',
           margin: '0 auto',
+          maxWidth: '1300px',
         }}
       >
         <Heading
