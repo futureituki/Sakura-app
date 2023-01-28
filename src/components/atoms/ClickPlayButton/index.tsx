@@ -2,39 +2,41 @@ import { css } from '@emotion/react'
 import { Box } from '@mui/material'
 import { FC } from 'react'
 type Props = {
-  background?: string
-  color?: string
-  className?: string
   onClick: () => void
 }
-export const ClickPlayButton: FC<Props> = ({
-  background = '#000',
-  color = '#fff',
-  className = '',
-  onClick,
-}) => {
+export const ClickPlayButton: FC<Props> = ({ onClick }) => {
   const container = css`
-    width: fit-content;
-    background: ${background};
-    display: grid;
-    place-items: center;
-    color: ${color};
-    border-radius: 50%;
-    border: 1px solid #fff;
-    padding: 20px 10px;
-    text-align: center;
+    width: 100%;
+    height: 100%;
   `
-  const button = css`
-    font-size: 16px;
+
+  const y_playBg = css`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(/assets/y_playBg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
   `
-  const span = css`
-    font-size: 24px;
-    display: block;
+  const y_playMark = css`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(/assets/y_play.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
   `
   return (
     <Box css={container}>
-      <button onClick={onClick} css={button}>
-        CLICK TO <span css={span}>PLAY!</span>
+      <button onClick={onClick}>
+        <Box css={y_playBg} />
+        <Box css={y_playMark} />
       </button>
     </Box>
   )

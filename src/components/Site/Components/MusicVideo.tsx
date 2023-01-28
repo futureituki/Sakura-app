@@ -99,19 +99,15 @@ export const MusicVideo = () => {
   const changeYoutube = () => {
     setLoading(true)
     setShow(true)
-    // 次のミュージックビデオを取得
   }
-  // const changeYoutube = (nextToken: string) => {
-  //   setLoading(true)
-  //   setShow(true)
-  //   // 次のミュージックビデオを取得
-  // }
+
   const play: YouTubeProps['onReady'] = (event: YouTubeEvent) => {
     // access to player in all event handlers via event.target
     event.target.isMuted()
     event.target.playVideo()
     setLoading(false)
   }
+
   const loaderBg = () => {
     bgTL.to('#bg_animation', {
       x: '100%',
@@ -131,7 +127,7 @@ export const MusicVideo = () => {
   // style //
   const container = css`
     position: relative;
-    max-width: 1440px;
+    max-width: 1300px;
   `
   const box = css`
     position: relative;
@@ -139,22 +135,26 @@ export const MusicVideo = () => {
     height: 100%;
     margin: 100px auto 0 auto;
     z-index: 40;
-    max-width: 1440px;
+    max-width: 1300px;
   `
   const button_box = css`
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    @media screen and(min-width:500) {
+      width: 128px;
+      height: 128px;
+    }
   `
   const music_box = css`
     position: relative;
     margin: 40px auto;
-  `
-  const img = css`
-    width: 100%;
-    height: 100%;
   `
   const comment_box = css`
     margin: 20px 0;
@@ -179,65 +179,21 @@ export const MusicVideo = () => {
     color: #fff;
     text-align: center;
   `
-  const loop = keyframes`
-  0% {
-    transform: translateX(200%) rotate(15deg);
-  }
-  to {
-    transform: translateX(-100%) rotate(15deg);
-  }
-  `
-  const loop2 = keyframes`
-  0% {
-    transform: translateX(200%) rotate(15deg);
-  }
-  to {
-    transform: translateX(-200%) rotate(15deg);
-  }
-  `
-  const animation_text = css`
-  width:fit-content;
-  height:fit-content;
-  transform:rotate(15deg);
-  color:#fff;
-  font-size:7vw;
-  letter-spacing:3px;
-  animation:${loop} 8s 100s linear infinite;
-  }
-  `
-  const animation_text2 = css`
-    width: fit-content;
-    height: fit-content;
-    transform: rotate(15deg);
-    color: #fff;
-    font-size: 7vw;
-    letter-spacing: 3px;
-    animation: ${loop2} 8s linear infinite;
-  `
-  const animation_text_container = css`
-    position: absolute;
-    top: 15%;
-    display: flex;
-    width: 100vw;
-    height: 100%;
-    overflow: hidden;
-  `
   const action_box = css`
     display: flex;
     align-items: center;
   `
   const thumnail_img = css`
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    width: 60vw;
+    width: 70vw;
     height: 100%;
   `
   const youtube_area = css`
-    height: 50vh;
-    width: 60vw;
-    max-width: 1200px;
-    position: relative;
-    zindex: 100;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 70vw;
+    height: 50vw;
   `
   const bg_caten = css`
     position: absolute;
@@ -262,6 +218,14 @@ export const MusicVideo = () => {
       padding: 0;
     }
   `
+  const video_title = css`
+    font-size: 2vw;
+    color: #fff;
+  `
+  const video_published = css`
+    font-size: 1.6vw;
+    color: #fff;
+  `
   return (
     <Box css={box}>
       <Heading style={{ color: '#fff' }}>Music Video</Heading>
@@ -282,12 +246,7 @@ export const MusicVideo = () => {
               {show ? (
                 <YouTube
                   videoId={video?.items[0].snippet.resourceId.videoId}
-                  style={{
-                    height: '50vh',
-                    width: '60vw',
-                    position: 'relative',
-                    zIndex: 100,
-                  }}
+                  css={youtube_area}
                   onReady={play}
                   // onPlay={play}
                 />
@@ -307,13 +266,7 @@ export const MusicVideo = () => {
               </Box>
             </Box>
             <Box>
-              <p style={{ color: '#fff' }}>{video?.items[0].snippet.title}</p>
-              <p style={{ color: '#fff' }}>
-                {video?.items[0].snippet.publishedAt.slice(
-                  0,
-                  video?.items[0].snippet.publishedAt.indexOf('T'),
-                )}
-              </p>
+              <p css={video_title}>{video?.items[0].snippet.title}</p>
             </Box>
           </Box>
           <Box css={action_box}>
