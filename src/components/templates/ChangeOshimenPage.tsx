@@ -94,7 +94,7 @@ export const ChangeOshimenPage = () => {
             >
               <p style={{ width: '18vw', fontSize: '2.6vw' }}>{user.first_favorite.name}</p>
               <Image
-                src={`/assets/member/${user.first_favorite.src}`}
+                src={`assets/member/${user.first_favorite.src}`}
                 alt={user.first_favorite.name}
                 width={100}
                 height={100}

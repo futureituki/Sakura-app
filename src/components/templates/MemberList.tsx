@@ -49,7 +49,6 @@ export const MemberList = () => {
     setValue(event.target.value)
     onSwitch(event.target.value)
   }
-  console.log(value)
   const onSwitch = (value: string) => {
     switch (value) {
       case 'syllabary':
@@ -99,6 +98,9 @@ export const MemberList = () => {
         break
     }
   }
+  const sign_text = css`
+    font-size: 3vw;
+  `
   const name = css`
     width: 100%;
   `
@@ -125,6 +127,7 @@ export const MemberList = () => {
             label='並び替え'
             onChange={handleChange}
           >
+            <MenuItem value=''>デフォルト</MenuItem>
             <MenuItem value='syllabary'>語順音順</MenuItem>
             <MenuItem value='sign'>星座</MenuItem>
             {/* <MenuItem value={30}>Thirty</MenuItem> */}
@@ -152,7 +155,7 @@ export const MemberList = () => {
         )}
         {value === 'sign'
           ? signMemberArr?.map((member: any, index: number) => (
-              <Box key={index} sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }}>
+              <Box key={index} sx={{ width: '80vw', margin: '20px auto', maxWidth: '1440px' }}>
                 {member.length !== undefined ? (
                   <Box
                     sx={{
@@ -170,7 +173,7 @@ export const MemberList = () => {
                             margin: '20px 0',
                           }}
                         >
-                          <p css={name}>
+                          <p css={sign_text}>
                             {index === 0 ? m.sign : <span style={{ opacity: 0 }}>{m.sign}</span>}
                           </p>
                         </Box>
@@ -183,13 +186,11 @@ export const MemberList = () => {
                   </Box>
                 ) : (
                   <Box sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }} key={index}>
-                    <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
-                      {member.sign}
-                    </Heading>
+                    <p css={sign_text}>{member.sign}</p>
                     <Link href={`member-list/${member.name}`}>
                       <Box
                         sx={{
-                          fontSize: '4vw',
+                          fontSize: '2vw',
                           margin: '20px 0',
                         }}
                       ></Box>
@@ -228,7 +229,7 @@ export const MemberList = () => {
               </Heading>
               <MemberBox list={secondMemberSrc} />
             </Box>
-            <Box
+            {/* <Box
               sx={{
                 maxWidth: '1440px',
               }}
@@ -237,7 +238,7 @@ export const MemberList = () => {
                 三期生
               </Heading>
               <MemberBox list={thirdMemberSrc} />
-            </Box>
+            </Box> */}
           </Box>
         ) : (
           ''

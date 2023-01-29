@@ -1,6 +1,9 @@
 export type Youtube = {
   items: [
     {
+      contentDetails: {
+        videoPublishedAt: string
+      }
       snippet: {
         description: string
         publishedAt: string

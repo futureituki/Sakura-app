@@ -1,5 +1,6 @@
-import { MemberObj, MemberSrc } from '@/types/constant/member'
+import { MemberDetailObj, MemberObj, MemberSrc } from '@/types/constant/member'
 
+// トップページサイトでの使用 //
 export const firstMemberSrc: MemberSrc[] = [
   {
     src: '/assets/member/uemura_main_visual.jpeg',
@@ -50,6 +51,85 @@ export const thirdMemberSrc: MemberSrc[] = [
   { src: '/assets/member_list/murayama.jpeg', name: '村山美羽' },
   { src: '/assets/member/seki_main_visual.jpeg', name: 'Coming soon' },
   { src: '/assets/member/takemoto_main_visual.jpeg', name: 'Coming soon' },
+]
+// お気に入りメンバー決める //
+export const favoriteMember: MemberSrc[] = [
+  {
+    src: 'uemura_main_visual.jpeg',
+    name: '上村莉菜',
+  },
+  {
+    src: 'koike_main_visual.jpeg',
+    name: '小池美波',
+  },
+  {
+    src: 'kobayashi_main_visual.jpeg',
+    name: '小林由依',
+  },
+  {
+    src: 'saito_main_visual.jpeg',
+    name: '齋藤冬優花',
+  },
+  {
+    src: 'habu_main_visual.jpeg',
+    name: '土生瑞穂',
+  },
+  {
+    src: 'inoue_main_visual.jpeg',
+    name: '井上梨名',
+  },
+  {
+    src: 'endo_main_visual.jpeg',
+    name: '遠藤光莉',
+  },
+  {
+    src: 'ozno_main_visual.jpeg',
+    name: '大園玲',
+  },
+  {
+    src: 'oonuma_main_visual.jpeg',
+    name: '大沼晶保',
+  },
+  {
+    src: 'kousaka_main_visual.jpeg',
+    name: '幸阪茉里乃',
+  },
+  {
+    src: 'seki_main_visual.jpeg',
+    name: '関有美子',
+  },
+  {
+    src: 'takemoto_main_visual.jpeg',
+    name: '武元唯衣',
+  },
+  {
+    src: 'tamura_main_visual.jpeg',
+    name: '田村保乃',
+  },
+  {
+    src: 'fujiyoshi_main_visual.jpeg',
+    name: '藤吉夏鈴',
+  },
+  {
+    src: 'matuda_main_visual.jpeg',
+    name: '松田里奈',
+  },
+  {
+    src: 'masumoto_main_visual.jpeg',
+    name: '増本綺良',
+  },
+  {
+    src: 'hikaru_main_visual.jpeg',
+    name: '森田ひかる',
+  },
+  {
+    src: 'moriya_main_visual.jpeg',
+    name: '守屋麗奈',
+  },
+  {
+    src: 'yamasaki_main_visual.jpeg',
+    name: '山﨑天',
+  },
 ]
 export const memberSrc: MemberObj[] = [
   {
@@ -186,7 +266,6 @@ export const memberSrc: MemberObj[] = [
     sign: 'てんびん座',
   },
 ]
-
 export const memberSrcMap = new Map([
   ['上村莉菜', { src: 'uemura_main_visual.jpeg', name: '上村莉菜' }],
   ['小池美波', { src: 'koike_main_visual.jpeg', name: '小池美波' }],

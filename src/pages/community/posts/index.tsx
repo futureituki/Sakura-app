@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
       community,
       postsCount,
     },
-    revalidate: 5,
+    revalidate: 2,
   }
 }
 export default Posts

@@ -1,8 +1,7 @@
 import { Box, FormControl, Input, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
@@ -16,10 +15,18 @@ export const BlogHomePage = () => {
   const [name, setName] = useState<string>('')
   let url =
     customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=m1&q=${name}ブログ`
-  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher, {
-    refreshInterval: 1000,
-  })
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=m1&q=ブログ`
+  let memberUrl =
+    customSearchEndpoint +
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&dateRestrict=y2&q=${name}`
+  const { data, error }: { data: BlogObj[]; error: any } = useSWR(
+    name !== '' ? memberUrl : url,
+    Getfetcher,
+    {
+      refreshInterval: 300,
+    },
+  )
+  console.log(data)
   const handleChange = (event: any) => {
     setName(event.target.value)
   }
@@ -56,7 +63,7 @@ export const BlogHomePage = () => {
           label='メンバー選択'
           onChange={handleChange}
         >
-          {memberSrc.map((member: MemberObj, index: number) => (
+          {memberSrc.map((member: MemberSrc, index: number) => (
             <MenuItem key={index} value={member.name}>
               {member.name}
             </MenuItem>

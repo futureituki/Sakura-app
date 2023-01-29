@@ -64,6 +64,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
             key={index}
             sx={{
               width: '30vw',
+              maxWidth: '500px',
               '@media screen and (min-width:640)': {},
             }}
           >
@@ -72,7 +73,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
               alt=''
               width={300}
               height={300}
-              style={{ width: '30vw', height: '30vw' }}
+              style={{ width: '100%', height: '100%' }}
             />
             <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
               {post.title}

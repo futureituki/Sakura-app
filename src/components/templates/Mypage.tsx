@@ -30,7 +30,7 @@ export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
   const user: UserReducer = GetUser().user
-
+  console.log(user.first_favorite.src)
   // useEffect(() => {
   //   if (user.uid === '') {
   //     router.push('/login')

@@ -161,6 +161,7 @@ const SignUp: NextPage = () => {
             className={styles.button}
             style={loading ? { background: '#ccc' } : { background: '#ff69b8' }}
             type='submit'
+            disabled={loading}
           >
             {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : '登録'}
           </button>

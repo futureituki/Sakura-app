@@ -4,7 +4,7 @@ import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { firstMemberSrc, secondMemberSrc, thirdMemberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css'
-import { MemberObj, MemberSrc } from '@/types/constant/member'
+import { MemberSrc } from '@/types/constant/member'
 
 export const Section03 = () => {
   return (

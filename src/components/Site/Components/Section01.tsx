@@ -11,9 +11,7 @@ export const Section01 = () => {
   const textRef = useRef<HTMLHeadingElement>(null)
   const router = useRouter()
   const tl = gsap.timeline()
-  const loginPush = () => {
-    router.push('/login')
-  }
+
   let jsText: HTMLHeadingElement
   useEffect(() => {
     gsap.set('#glitch', { scale: 0 })
@@ -126,29 +124,6 @@ export const Section01 = () => {
   }
   return (
     <section className={styles.sec_mv} id='sec_mv'>
-      <div className={styles.top_loader_bg} id='top_curtain'>
-        <span className={`${styles.glitch_red}`} id='glitch'></span>
-        <span className={`${styles.glitch_blue}`} id='glitch'></span>
-        <span className={`${styles.glitch_green}`} id='glitch'></span>
-      </div>
-      <div className={styles.bottom_loader_bg} id='bottom_curtain'>
-        <span className={`${styles.glitch_red_bottom}`} id='glitch'></span>
-        <span className={`${styles.glitch_blue_bottom}`} id='glitch'></span>
-        <span className={`${styles.glitch_green_bottom}`} id='glitch'></span>
-      </div>
-      {/* <div className={styles.mv_bg}>
-        <video
-          className='mainPath'
-          id='bg-video-start'
-          loop
-          autoPlay
-          muted
-          playsInline
-          style={{ opacity: 1 }}
-        >
-          <source src='/assets/masatu.mp4' type='video/mp4' />
-        </video>
-      </div> */}
       <div className={styles.mv_in}>
         <div className={`fadeout ${styles.mv_case}`}>
           <h1 ref={textRef} id='opening-title'>

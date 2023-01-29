@@ -44,6 +44,7 @@ export const CommunityPostPage = () => {
     setTag(event.target.value)
   }
   const addTag = () => {
+    if (tag === '') return
     setAddedTag([...addedTag, tag])
     setTag('')
   }
@@ -76,7 +77,6 @@ export const CommunityPostPage = () => {
     canvas.width = image?.width as number
     canvas.height = image?.height as number
     const cxt = canvas.getContext('2d')
-    alert('画像が小さすぎます')
     cxt?.drawImage(image!, 0, 0)
 
     setPreview(canvas.toDataURL('image/jpeg'))
@@ -93,7 +93,7 @@ export const CommunityPostPage = () => {
       tag: addedTag,
     }
     await dispatch(savePhoto(props))
-    router.push('/community')
+    router.push('/community/posts')
   }
   return (
     <>
@@ -114,6 +114,7 @@ export const CommunityPostPage = () => {
               background: '#f2f2f2',
               position: 'relative',
               margin: '40px auto',
+              maxWidth: '900px',
             }}
           >
             <AddPhotoAlternateIcon
@@ -139,7 +140,7 @@ export const CommunityPostPage = () => {
               id='image'
               name='image'
               onChange={onAccepted}
-              style={{ width: '100%' }}
+              style={{ width: '100%', height: '100%', opacity: 0 }}
             />
           </Box>
           {errors.image && (
@@ -166,7 +167,7 @@ export const CommunityPostPage = () => {
                   color={[255, 255, 255, 0.6]} // RGBA
                   scale={scale}
                   rotate={0}
-                  style={{ maxWidth: '900px' }}
+                  style={{ maxWidth: '900px', width: '80%' }}
                 />
                 <input
                   type='range'
@@ -185,6 +186,7 @@ export const CommunityPostPage = () => {
               </div>
             )}
           </GeneralModal>
+          {preview ? <button onClick={() => setPreview('')}>選び直す</button> : ''}
           <Box>
             <label className={styles.label} htmlFor='password'>
               タイトル
@@ -221,6 +223,7 @@ export const CommunityPostPage = () => {
               width: 'fit-content',
               height: '5vw',
               alignItems: 'center',
+              margin: '15px 0',
             }}
           >
             <CustomizedSelects value={tag} handle={handleChange} title='タグ'>
@@ -235,7 +238,16 @@ export const CommunityPostPage = () => {
                 </option>
               ))}
             </CustomizedSelects>
-            <Box onClick={addTag}>追加</Box>
+            <PrimaryButton
+              label='タグ追加'
+              variant='contained'
+              color='#fff'
+              background='#0067c0'
+              onClick={addTag}
+              disabled={tag === ''}
+            >
+              追加
+            </PrimaryButton>
           </Box>
           <Box
             sx={{

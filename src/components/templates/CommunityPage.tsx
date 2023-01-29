@@ -51,6 +51,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
             key={index}
             sx={{
               width: '30vw',
+              maxWidth: '500px',
               '@media screen and (min-width:640)': {},
             }}
           >
@@ -69,7 +70,9 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
+                flexWrap: 'wrap',
                 gap: '10px',
+                margin: '20px 0',
               }}
             >
               {data.tag?.map((tagName: string, index: number) => (
@@ -77,7 +80,6 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
                   <Box
                     key={index}
                     sx={{
-                      margin: '20px 0',
                       padding: '5px 10px',
                       background: '#f2f2f2',
                       width: 'fit-content',

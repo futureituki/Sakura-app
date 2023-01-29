@@ -11,10 +11,6 @@ import { BasicTabs } from '@/components/tab/TopTab'
 import { sliderVideoSrc } from '@/constant/sliderSrc'
 import { GetUser } from '@/lib/user'
 import { userLogout } from '@/redux/userSlice'
-import { SearchObj } from '@/types/search'
-type Props = {
-  searchs: SearchObj[]
-}
 
 type SwiperProps = typeof sliderVideoSrc
 
@@ -22,13 +18,14 @@ type Favorite = {
   name: string
   src: string
 }
-export const TopPage: FC<Props> = ({ searchs }) => {
+export const TopPage = () => {
   const dispatch = useDispatch<any>()
   const [name, setName] = useState<string>()
 
   const user = GetUser().user.first_favorite as Favorite
   const users = GetUser().user
   const router = useRouter()
+
   useEffect(() => {
     if (user) {
       setName(user.name)
@@ -61,7 +58,7 @@ export const TopPage: FC<Props> = ({ searchs }) => {
           <h2>Video</h2>
         </Box>
         <DotSwiper data={sliderVideoSrc as SwiperProps} />
-        <ListNewsLayout data={searchs} />
+        <ListNewsLayout />
       </div>
       <InductionButtons logoutHandle={logoutCheck} handle={() => router.push('/mypage')} />
     </div>

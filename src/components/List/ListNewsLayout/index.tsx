@@ -1,21 +1,34 @@
+import { css } from '@emotion/react'
 import { Box } from '@mui/material'
-import Image from 'next/image'
+import axios from 'axios'
 import Link from 'next/link'
-import { FC } from 'react'
-import styles from '@/components/List/ListNewsLayout/index.module.css'
+import useSWR from 'swr'
 import { Heading } from '@/components/atoms/Heading'
+import { customSearchEndpoint } from '@/constant/url'
 import { SearchObj } from '@/types/search'
 
-// 例 newsobjの型をweb searchにする
-type List = {
-  data: SearchObj[]
-}
-export const ListNewsLayout: FC<List> = ({ data }) => {
+export const ListNewsLayout = () => {
+  const url =
+    customSearchEndpoint +
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
+  const fetcher = async (url: string) => {
+    return await axios.get(url).then((data) => {
+      return data.data.items
+    })
+  }
+  const { data: news, error }: { data: SearchObj[]; error: any } = useSWR(url, fetcher)
+  if (error) return <div>Error News取得に失敗しました。</div>
+  if (!news) return <div>Loading...</div>
+  const news_text = css`
+    border-bottom: 1px solid #000;
+    margin: 10px 0;
+  `
   return (
     <Box
       sx={{
         width: '95vw',
         margin: '20px auto',
+        maxWidth: '1440px',
       }}
     >
       <Heading style={{ color: '#000' }}>NEWS</Heading>
@@ -23,11 +36,12 @@ export const ListNewsLayout: FC<List> = ({ data }) => {
         sx={{
           width: '90vw',
           margin: '20px auto',
+          maxWidth: '1440px',
         }}
       >
         <ul>
-          {data.map((list: SearchObj, index: number) => (
-            <li key={index} className={styles.news_title}>
+          {news.map((list: SearchObj, index: number) => (
+            <li key={index} css={news_text}>
               {list.title.indexOf('日向坂') ? (
                 <Link href={list.formattedUrl} target={'_blank'}>
                   {list.title}
