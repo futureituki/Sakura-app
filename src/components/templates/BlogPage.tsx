@@ -13,8 +13,14 @@ export const BlogPage = ({ name }: { name: string }) => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   const url =
     customSearchEndpoint +
-    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&q=${name}のブログ`
+    `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&q=${name}`
   const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher)
+  if (error)
+    return (
+      <div>
+        今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
+      </div>
+    )
   if (!data) return <div>Loading</div>
   return (
     <Box

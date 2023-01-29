@@ -129,6 +129,29 @@ export const Section05 = () => {
           }),
       },
     })
+    gsap.to('#sakuratuki-title', {
+      scrollTrigger: {
+        trigger: '#triggersakuratuki',
+        start: 'top top+=100px',
+        scrub: true,
+        onEnter: () =>
+          gsap.to('#sakuratuki-title', {
+            opacity: 1,
+          }),
+        onLeave: () =>
+          gsap.to('#sakuratuki-title', {
+            opacity: 0,
+          }),
+        onEnterBack: () =>
+          gsap.to('#sakuratuki-title', {
+            opacity: 1,
+          }),
+        onLeaveBack: () =>
+          gsap.to('#sakuratuki-title', {
+            opacity: 0,
+          }),
+      },
+    })
   }
   return (
     <section className={styles.sec_photo}>

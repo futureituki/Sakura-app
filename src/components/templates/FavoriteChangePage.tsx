@@ -47,6 +47,7 @@ export const FavoriteChangePage = () => {
       router.push('/mypage')
     }
   }
+  console.log(router.query)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target.value
     const selectMember: Favorite = memberSrcMap.get(target) as Favorite
@@ -87,7 +88,7 @@ export const FavoriteChangePage = () => {
             現在の{router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
           </p>
           <Image
-            src={`/assets/member/${router.query.src}`}
+            src={`assets/member/${router.query.src}`}
             alt={router.query.name as string}
             width={100}
             height={100}
@@ -97,6 +98,8 @@ export const FavoriteChangePage = () => {
               borderRadius: '50%',
               objectFit: 'cover',
               objectPosition: '0 0',
+              maxWidth: '200px',
+              maxHeight: '200px',
             }}
           />
           <p style={{ fontSize: '5vw' }}>{router.query.name}</p>
@@ -158,8 +161,8 @@ export const FavoriteChangePage = () => {
                       borderRadius: '50%',
                       objectFit: 'cover',
                       objectPosition: '0 0',
-                      maxWidth: '300px',
-                      maxHeight: '300px',
+                      maxWidth: '200px',
+                      maxHeight: '200px',
                     }}
                   />
                   <Box
@@ -255,7 +258,7 @@ export const FavoriteChangePage = () => {
             {router.query.name == user.first_favorite.name ? '「推しメン」' : '「気になる」'}
           </p>
           <Image
-            src={`/assets/member/${favorite.src}`}
+            src={`assets/member/${favorite.src}`}
             alt={favorite.name}
             width={100}
             height={100}
@@ -265,6 +268,8 @@ export const FavoriteChangePage = () => {
               borderRadius: '50%',
               objectFit: 'cover',
               objectPosition: '0 0',
+              maxWidth: '200px',
+              maxHeight: '200px',
             }}
           />
           <p style={{ fontSize: '5vw' }}>{favorite.name}</p>

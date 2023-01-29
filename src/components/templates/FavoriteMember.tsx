@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { Heading } from '@/components/atoms/Heading'
 import { SelectModal } from '@/components/modal/selectModal'
-import { memberSrc } from '@/constant/memberSrc'
+import { favoriteMember, memberSrc } from '@/constant/memberSrc'
 import { GetImg } from '@/lib/img'
 import { GetUser } from '@/lib/user'
 import { setImages } from '@/redux/imageSlice'
@@ -26,6 +26,10 @@ type Props = {
     src: string
   }
 }
+type Favorite = {
+  src: string
+  name: string
+}
 export const FavoritePage = () => {
   const dispatch = useDispatch<any>()
   const [open, setOpen] = useState<boolean>(false)
@@ -35,7 +39,7 @@ export const FavoritePage = () => {
     const alt = e.target.alt
     const src = e.target.src
     const name = alt.slice(0, e.target.alt.indexOf('の'))
-    let img_src = src.substr(src.indexOf('assets') - 1)
+    let img_src = src.substr(src.indexOf('member') + 7)
     setSelectedImg({ name: name, src: img_src })
     setOpen(true)
   }, [])
@@ -68,7 +72,7 @@ export const FavoritePage = () => {
         <SelectModal open={open} handleClose={handleClose}>
           <Image
             className={styles.member_img}
-            src={`${selectedImg.src}`}
+            src={`/assets/member/${selectedImg.src}`}
             alt={'member_img'}
             width={150}
             height={150}
@@ -87,13 +91,13 @@ export const FavoritePage = () => {
           </div>
         </SelectModal>
         <div className={styles.favorite_members}>
-          {memberSrc.map((member, index) => (
+          {favoriteMember.map((member: Favorite, index) => (
             <div className={styles.member} key={index}>
               <Image
                 onClick={(e) => handleOpen(e)}
                 height={110}
                 width={100}
-                src={member.src}
+                src={`/assets/member/${member.src}`}
                 alt={member.name + 'の画像'}
                 className={styles.member_img}
                 defaultValue={member.name}

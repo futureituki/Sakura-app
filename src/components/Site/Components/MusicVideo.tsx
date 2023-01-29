@@ -20,14 +20,11 @@ export const MusicVideo = () => {
   const [video, setVideo] = useState<Youtube>()
   const [comments, setComment] = useState<YoutubeComment[]>([])
   const bgTL = gsap.timeline()
-  let url =
-    youtubeEndPoint +
-    `/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1`
   useEffect(() => {
     const getYoutube = async () => {
       const result = await axios
         .get(
-          `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1`,
+          `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=contentDetails,snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1`,
           {
             headers: {
               'Content-Type': 'application/json; charset=utf-8',
@@ -42,11 +39,10 @@ export const MusicVideo = () => {
     getYoutube()
   }, [])
   const getNextVideo = async (nextPage: string) => {
-    setLoading(true)
     next()
     const result = await axios
       .get(
-        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${nextPage}`,
+        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=contentDetails,snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${nextPage}`,
         {
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -57,15 +53,14 @@ export const MusicVideo = () => {
         return data.data as Youtube
       })
     setVideo(result)
-    setLoading(false)
+    setComment([])
     setShow(false)
   }
   const getPrevVideo = async (prevPage: string) => {
-    setLoading(true)
     next()
     const result = await axios
       .get(
-        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${prevPage}`,
+        `https://www.googleapis.com/youtube/v3/playlistItems?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&part=contentDetails,snippet&playlistId=PL0eK3gfF1BbM6tiu8UThzL9nYNowS8LL2&maxResults=1&pageToken=${prevPage}`,
         {
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -76,7 +71,7 @@ export const MusicVideo = () => {
         return data.data as Youtube
       })
     setVideo(result)
-    setLoading(false)
+    setComment([])
     setShow(false)
   }
   const getVideoComment = async (videoId: string) => {
@@ -109,15 +104,15 @@ export const MusicVideo = () => {
   }
 
   const loaderBg = () => {
-    bgTL.to('#bg_animation', {
-      x: '100%',
-      duration: 1.2,
-    })
-    bgTL.to('#bg_animation', {
-      opacity: 0,
-      duration: 1,
-      delay: 1,
-    })
+    bgTL
+      .to('#bg_animation', {
+        x: '100%',
+        opacity: 1,
+      })
+      .to('#bg_animation', {
+        opacity: 0,
+        duration: 1,
+      })
   }
   const next = () => {
     loaderBg()
@@ -170,6 +165,7 @@ export const MusicVideo = () => {
     width: 100%;
     display: flex;
     align-items: center;
+    gap: 15px;
   `
   const action_button = css`
     width: 50px;
@@ -182,6 +178,7 @@ export const MusicVideo = () => {
   const action_box = css`
     display: flex;
     align-items: center;
+    gap: 15px;
   `
   const thumnail_img = css`
     max-width: 900px;
@@ -248,7 +245,6 @@ export const MusicVideo = () => {
                   videoId={video?.items[0].snippet.resourceId.videoId}
                   css={youtube_area}
                   onReady={play}
-                  // onPlay={play}
                 />
               ) : (
                 <Image
@@ -267,6 +263,12 @@ export const MusicVideo = () => {
             </Box>
             <Box>
               <p css={video_title}>{video?.items[0].snippet.title}</p>
+              <p css={video_title}>
+                {video?.items[0].contentDetails.videoPublishedAt.slice(
+                  0,
+                  video?.items[0].contentDetails.videoPublishedAt.indexOf('T'),
+                )}
+              </p>
             </Box>
           </Box>
           <Box css={action_box}>
@@ -277,28 +279,28 @@ export const MusicVideo = () => {
                 }
               />
             </Box>
-          </Box>
-        </Box>
-        <Box css={action_buttons}>
-          {video?.prevPageToken ? (
-            <Box
-              component='button'
-              css={action_button}
-              id='button_prev'
-              onClick={() => getPrevVideo(video?.prevPageToken)}
-            >
-              <span>prev</span>
+            <Box css={action_buttons}>
+              {video?.prevPageToken ? (
+                <Box
+                  component='button'
+                  css={action_button}
+                  id='button_prev'
+                  onClick={() => getPrevVideo(video?.prevPageToken)}
+                >
+                  <span>prev</span>
+                </Box>
+              ) : (
+                ''
+              )}
+              <Box
+                component='button'
+                css={action_button}
+                onClick={() => getNextVideo(video?.nextPageToken as string)}
+                id='button_next'
+              >
+                <span>next</span>
+              </Box>
             </Box>
-          ) : (
-            ''
-          )}
-          <Box
-            component='button'
-            css={action_button}
-            onClick={() => getNextVideo(video?.nextPageToken as string)}
-            id='button_next'
-          >
-            <span>next</span>
           </Box>
         </Box>
       </Box>
@@ -309,7 +311,9 @@ export const MusicVideo = () => {
             </p>
           ))
         : ''}
-      <Box css={bg_caten} id='bg_animation'></Box>
+      <Box css={bg_caten} id='bg_animation'>
+        <Loading />
+      </Box>
     </Box>
   )
 }

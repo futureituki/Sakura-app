@@ -54,7 +54,7 @@ export const Section02 = () => {
     })
   }
   const img = css`
-    width: 30vw;
+    width: 25vw;
     height: 100%;
     max-width: 400px;
   `

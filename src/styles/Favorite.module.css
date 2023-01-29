@@ -29,6 +29,7 @@
   height:10vw;
   min-width:100px;
   min-height:100px;
+  object-position: 0 0;
 }
 .favorite_modal {
   display:flex;

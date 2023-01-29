@@ -21,14 +21,13 @@ export const CommentButton: FC<Props> = ({
     color: ${color};
     display: grid;
     place-items: center;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
     padding: 10px;
     border-radius: 50%;
     position: relative;
     margin: 0 0 0 auto;
   `
   const icon = css`
-    font-size: 4vw;
     text-align: center;
     color: #fff;
   `

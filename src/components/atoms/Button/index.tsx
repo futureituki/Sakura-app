@@ -6,7 +6,7 @@ import { colorTheme } from '@/config/color'
 type ButtonProps = {
   children: React.ReactNode
   label: string
-  color: string
+  color?: string
   background: string
   size?: string
   padding?: string
@@ -20,8 +20,8 @@ export const PrimaryButton = ({
   onClick,
   children,
   label,
-  color,
-  size = '1.8vw',
+  color = '#fff',
+  size = '1.2vw',
   padding = '.3vw',
   background,
   variant,
