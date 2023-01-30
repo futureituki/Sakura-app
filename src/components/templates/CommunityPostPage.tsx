@@ -1,10 +1,10 @@
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CloseIcon from '@mui/icons-material/Close'
 import { LoadingButton } from '@mui/lab'
-import { Box, CircularProgress, TextField } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { ChangeEvent, ReactNode, useCallback, useRef, useState } from 'react'
+import { ChangeEvent, ReactNode, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
@@ -16,6 +16,7 @@ import styles from '@/components/templates/Community.module.css'
 import { memberSrc } from '@/constant/memberSrc'
 import { useGetUser } from '@/lib/user'
 import { savePhoto } from '@/redux/communitySlice'
+import { SmallProgress } from '../atoms/Loading/progress'
 
 type SavePhotoProps = {
   uid: string
@@ -309,7 +310,7 @@ export const CommunityPostPage = () => {
                 background='#f2f2f2'
                 disabled={true}
               >
-                <CircularProgress style={{ width: '20px', height: '20px' }} />
+                <SmallProgress />
               </PrimaryButton>
             ) : (
               <PrimaryButton label='photo' variant='contained' color='#fff' background='#ff69b8'>

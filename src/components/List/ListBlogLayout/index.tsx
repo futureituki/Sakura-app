@@ -9,6 +9,7 @@ import { memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 
 export const ListBlogLayout = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
@@ -22,7 +23,7 @@ export const ListBlogLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
+  if (!data) return <LargeProgress />
 
   return (
     <Box

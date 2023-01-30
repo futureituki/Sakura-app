@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import { useRouter } from 'next/router'
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { InductionButtons } from '../molecules/InductionButtons'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'

@@ -1,6 +1,6 @@
 import { LoadingButton } from '@mui/lab'
 import { Box } from '@mui/material'
-import axios from 'axios'
+import { css } from '@emotion/react'
 import { collection, where, query, limit, orderBy, getDocs } from 'firebase/firestore'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
@@ -8,9 +8,12 @@ import { Heading } from '@/components/atoms/Heading'
 import { TitleBar } from '@/components/atoms/TitleBar'
 import { db } from '@/firebase/firebase'
 import { Community } from '@/types/community'
+import { LargeProgress } from '../atoms/Loading/progress'
+
 type Props = {
   tagName: string
 }
+
 export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
   const [posts, setPosts] = useState<Community[]>()
   const [loading, setLoading] = useState<boolean>(false)
@@ -29,7 +32,8 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
     }
     getData()
   }, [])
-  if (!posts) return <div>Loading...</div>
+  if (!posts) return <LargeProgress />
+
   const getPost = async (page: number) => {
     setLoading(true)
     const second = query(
@@ -43,54 +47,68 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
     setPosts(postData)
     setLoading(false)
   }
-
+  const none_text = css`
+    text-align: center;
+    margin: 20px 0;
+  `
   return (
     <Box>
       <TitleBar>{tagName}</TitleBar>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'start',
-          flexWrap: 'wrap',
-          gap: '20px',
-          margin: '50px 0',
-          '@media screen and (min-width:1200px)': {
-            justifyContent: 'center',
-          },
-        }}
-      >
-        {posts?.map((post: Community, index: number) => (
+      {posts?.length === 0 ? (
+        <p css={none_text}>投稿はありません</p>
+      ) : (
+        <>
           <Box
-            key={index}
             sx={{
-              width: '30vw',
-              maxWidth: '500px',
-              '@media screen and (min-width:640)': {},
+              display: 'flex',
+              justifyContent: 'start',
+              flexWrap: 'wrap',
+              gap: '20px',
+              margin: '50px 0',
+              '@media screen and (min-width:1200px)': {
+                justifyContent: 'center',
+              },
             }}
           >
-            <Image
-              src={post.url}
-              alt=''
-              width={300}
-              height={300}
-              style={{ width: '100%', height: '100%' }}
-            />
-            <Heading visualLevel='h5' style={{ color: '#000', fontSize: '3vw' }}>
-              {post.title}
-            </Heading>
+            {posts?.map((post: Community, index: number) => (
+              <Box
+                key={index}
+                sx={{
+                  width: '30vw',
+                  maxWidth: '350px',
+                  height: '100%',
+                  '@media screen and (min-width:640)': {},
+                }}
+              >
+                <Image
+                  src={post.url}
+                  alt=''
+                  width={300}
+                  height={300}
+                  style={{ width: '100%', height: '100%' }}
+                />
+                <Heading visualLevel='h5' style={{ color: '#000', fontSize: '2vw' }}>
+                  {post.title}
+                </Heading>
+              </Box>
+            ))}
           </Box>
-        ))}
-      </Box>
-      <Box
-        sx={{
-          display: 'grid',
-          placeItems: 'center',
-        }}
-      >
-        <LoadingButton onClick={() => getPost(page + LIMIT)} loading={loading} variant='contained'>
-          さらに見る
-        </LoadingButton>
-      </Box>
+          <Box
+            sx={{
+              display: 'grid',
+              placeItems: 'center',
+            }}
+          >
+            <LoadingButton
+              onClick={() => getPost(page + LIMIT)}
+              loading={loading}
+              variant='contained'
+            >
+              さらに見る
+            </LoadingButton>
+          </Box>
+        </>
+      )}
     </Box>
   )
 }

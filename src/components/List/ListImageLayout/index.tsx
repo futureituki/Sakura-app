@@ -14,6 +14,7 @@ import { useGetImg } from '@/lib/img'
 import { useGetUser } from '@/lib/user'
 import { favoriteImgDelete, favoriteImgSave } from '@/redux/imageSlice'
 import { GalleryObj } from '@/types/gallery'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 
 // 例 newsobjの型をweb searchにする
 
@@ -40,7 +41,8 @@ export const ListImageLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
+  if (!data) return <LargeProgress />
+
   const handleChange = (event: any) => {
     setName(event.target.value as string)
   }

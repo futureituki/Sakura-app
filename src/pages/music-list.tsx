@@ -43,49 +43,57 @@ const MusicList: NextPageWithLayout = ({
           </PrimaryButton>
         </Box>
       )}
-      <Link href='/music-list/single'>Single</Link>
       {loginData?.accessToken ? (
         <Box
           sx={{
-            margin: '60px 0',
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '40px',
+            width: '90%',
+            maxWidth: '1440px',
+            margin: '0 auto',
           }}
         >
-          {music_id.map((music: Music, index: number) => (
-            <Link href={`/music-list/single/${music.id}`} key={index}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  gap: '10px',
-                }}
-              >
-                <Image
-                  src={`/assets/${music.src}`}
-                  alt={music.title}
-                  width={400}
-                  height={400}
-                  style={{ width: '40vw', height: '100%', display: 'block' }}
-                />
+          <Link href='/music-list/single'>Single</Link>
+          <Box
+            sx={{
+              margin: '60px 0',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '40px',
+            }}
+          >
+            {music_id.map((music: Music, index: number) => (
+              <Link href={`/music-list/single/${music.id}`} key={index}>
                 <Box
                   sx={{
-                    border: '1px solid #f2f2f2',
-                    borderRadius: '2.5em',
-                    padding: '5px 15px',
-                    width: 'fit-Content',
-                    fontSize: '2vw',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    gap: '10px',
                   }}
                 >
-                  <span>{music.type}</span>
+                  <Image
+                    src={`/assets/${music.src}`}
+                    alt={music.title}
+                    width={400}
+                    height={400}
+                    style={{ width: '40vw', height: '100%', display: 'block' }}
+                  />
+                  <Box
+                    sx={{
+                      border: '1px solid #f2f2f2',
+                      borderRadius: '2.5em',
+                      padding: '5px 15px',
+                      width: 'fit-Content',
+                      fontSize: '2vw',
+                    }}
+                  >
+                    <span>{music.type}</span>
+                  </Box>
+                  <p style={{ fontSize: '3.4vw' }}>{music.title}</p>
                 </Box>
-                <p style={{ fontSize: '3.4vw' }}>{music.title}</p>
-              </Box>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </Box>
         </Box>
       ) : (
         ''

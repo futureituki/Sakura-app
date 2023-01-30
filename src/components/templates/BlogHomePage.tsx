@@ -10,6 +10,7 @@ import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 export const BlogHomePage = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   const [name, setName] = useState<string>('')
@@ -26,20 +27,17 @@ export const BlogHomePage = () => {
       refreshInterval: 300,
     },
   )
-  console.log(data)
   const handleChange = (event: any) => {
     setName(event.target.value)
   }
-  // const handleChange = (e) => {
-  //   setName(e.target.value)
-  // }
+
   if (error)
     return (
       <div>
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>loading...</div>
+  if (!data) return <LargeProgress />
   return (
     <Box
       sx={{

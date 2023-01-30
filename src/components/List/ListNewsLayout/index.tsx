@@ -22,23 +22,22 @@ export const ListNewsLayout = () => {
   const news_text = css`
     border-bottom: 1px solid #000;
     margin: 10px 0;
+    width: fit-content;
+  `
+  const container = css`
+    width: 95vw;
+    margin: 20px auto;
+    maxwidth: 1440px;
+  `
+  const content_box = css`
+    width: 90vw;
+    margin: 20px auto;
+    maxwidth: 1440px;
   `
   return (
-    <Box
-      sx={{
-        width: '95vw',
-        margin: '20px auto',
-        maxWidth: '1440px',
-      }}
-    >
+    <Box css={container}>
       <Heading style={{ color: '#000' }}>NEWS</Heading>
-      <Box
-        sx={{
-          width: '90vw',
-          margin: '20px auto',
-          maxWidth: '1440px',
-        }}
-      >
+      <Box css={content_box}>
         <ul>
           {news.map((list: SearchObj, index: number) => (
             <li key={index} css={news_text}>

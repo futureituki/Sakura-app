@@ -12,7 +12,6 @@ const Posts: NextPageWithLayout = ({
   community,
   postsCount,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const router = useRouter()
   sessionStorage.setItem('pages', postsCount._data.count)
   return (
     <>

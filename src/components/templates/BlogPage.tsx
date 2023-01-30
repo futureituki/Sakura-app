@@ -9,6 +9,7 @@ import { memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
+import { LargeProgress } from '../atoms/Loading/progress'
 export const BlogPage = ({ name }: { name: string }) => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   const url =
@@ -21,7 +22,7 @@ export const BlogPage = ({ name }: { name: string }) => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>Loading</div>
+  if (!data) return <LargeProgress />
   return (
     <Box
       sx={{
