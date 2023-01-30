@@ -12,7 +12,7 @@ import { useState } from 'react'
 import { auth, db, storage } from '@/firebase/firebase'
 import { Community } from '@/types/community'
 import { User } from '@/types/user'
-// export const getUser = (uid: string) => {
+// export const useGetUser = (uid: string) => {
 //   // 特定のユーザー取得処理
 // }
 export const signUp = async (username: string, email: string, password: string): Promise<any> => {

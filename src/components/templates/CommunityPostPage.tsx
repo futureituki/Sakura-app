@@ -14,7 +14,7 @@ import { CustomizedSelects } from '../form/select'
 import { GeneralModal } from '../modal/generalModal'
 import styles from '@/components/templates/Community.module.css'
 import { memberSrc } from '@/constant/memberSrc'
-import { GetUser } from '@/lib/user'
+import { useGetUser } from '@/lib/user'
 import { savePhoto } from '@/redux/communitySlice'
 
 type SavePhotoProps = {
@@ -31,13 +31,13 @@ type Post = {
 export const CommunityPostPage = () => {
   const refImage = useRef<AvatarEditor>(null)
   const dispatch = useDispatch<any>()
+  const user = useGetUser().user
   const router = useRouter()
   const [myFiles, setMyFiles] = useState<File>()
   const [open, setOpen] = useState<boolean>(false)
   const [tag, setTag] = useState<string>('')
   const [addedTag, setAddedTag] = useState<string[]>([])
   const [scale, setScale] = useState<number>(1.5)
-  const user = GetUser().user
   const [preview, setPreview] = useState<string>('')
 
   const handleChange = (event: { target: { value: string } }) => {

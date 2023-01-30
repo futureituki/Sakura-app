@@ -9,7 +9,7 @@ import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
 import { TitleBar } from '../atoms/TitleBar'
 import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
-import { GetUser } from '@/lib/user'
+import { useGetUser } from '@/lib/user'
 import { userLogout } from '@/redux/userSlice'
 import styles from '@/styles/Mypage.module.css'
 import { UserReducer } from '@/types/user'
@@ -29,13 +29,8 @@ type Favorite = {
 export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
-  const user: UserReducer = GetUser().user
-  console.log(user.first_favorite.src)
-  // useEffect(() => {
-  //   if (user.uid === '') {
-  //     router.push('/login')
-  //   }
-  // }, [])
+  const user: UserReducer = useGetUser().user
+
   const logoutCheck = async () => {
     await dispatch(userLogout())
     router.push('/logout')
@@ -92,8 +87,8 @@ export const MyPage = () => {
                   <div className={styles.member_information}>
                     <TextLabel color='#ff69b8'>推しメン</TextLabel>
                     <Typography fontSize={14}>{user.first_favorite.name}</Typography>
+                    <Link href={`/blog/${user.first_favorite.name}`}>ブログ</Link>
                   </div>
-                  <Link href={`/blog/${user.first_favorite.name}`}>Blog</Link>
                 </div>
               </Link>
             </SwiperSlide>
@@ -112,8 +107,12 @@ export const MyPage = () => {
                         <div className={styles.member_information}>
                           <TextLabel color='#ccc'>気になる</TextLabel>
                           <Typography fontSize={14}>{member.name}</Typography>
+                          {member.name === '未登録' ? (
+                            ''
+                          ) : (
+                            <Link href={`/blog/${member.name}`}>ブログ</Link>
+                          )}
                         </div>
-                        <Link href={`/blog/${member.name}`}>Blog</Link>
                       </div>
                     </Link>
                   </SwiperSlide>

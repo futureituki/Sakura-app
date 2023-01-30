@@ -1,9 +1,7 @@
-import { Box } from '@mui/material'
-import axios from 'axios'
-import Head from 'next/head'
+import { css } from '@emotion/react'
+import { Box, CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Loading } from '@/components/atoms/Loading'
-import { TweetObj } from '@/types/twitter'
 
 export const ListTweetLayout = () => {
   useEffect(() => {
@@ -23,12 +21,23 @@ export const ListTweetLayout = () => {
   //   }
   //   getTweet()
   // }, [])
+  const box = css`
+    margin: 60px 0;
+  `
+  const loading_box = css`
+    position: absolute;
+    left: 50%;
+    width: 100%;
+  `
   return (
     <Box>
       <a
         className='twitter-timeline'
         href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
-      ></a>
+        style={{ position: 'relative' }}
+      >
+        <CircularProgress style={{ width: '70px', height: '70px' }} />
+      </a>
     </Box>
   )
 }

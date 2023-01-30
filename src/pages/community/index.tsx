@@ -1,12 +1,10 @@
 import { css } from '@emotion/react'
 import { Box } from '@mui/material'
-import { NextPageWithLayout, InferGetServerSidePropsType, GetStaticProps } from 'next'
-import Head from 'next/head'
+import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { Heading } from '@/components/atoms/Heading'
 import { TitleBar } from '@/components/atoms/TitleBar'
-import { AdminDB } from '@/firebase/server'
 import { AppLayout } from '@/layout/AppLayout'
 const Community: NextPageWithLayout = () => {
   const router = useRouter()

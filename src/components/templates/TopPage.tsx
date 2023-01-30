@@ -9,7 +9,7 @@ import { DotSwiper } from '@/components/swiper/dotSwiper'
 import { TutorialSwiper } from '@/components/swiper/tutorialSwiper'
 import { BasicTabs } from '@/components/tab/TopTab'
 import { sliderVideoSrc } from '@/constant/sliderSrc'
-import { GetUser } from '@/lib/user'
+import { useGetUser } from '@/lib/user'
 import { userLogout } from '@/redux/userSlice'
 
 type SwiperProps = typeof sliderVideoSrc
@@ -22,8 +22,8 @@ export const TopPage = () => {
   const dispatch = useDispatch<any>()
   const [name, setName] = useState<string>()
 
-  const user = GetUser().user.first_favorite as Favorite
-  const users = GetUser().user
+  const user = useGetUser().user.first_favorite as Favorite
+  const users = useGetUser().user
   const router = useRouter()
 
   useEffect(() => {

@@ -3,14 +3,14 @@ import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import styles from '@/components/List/FavoriteImageLayout/index.module.css'
 import { LikedButton } from '@/components/atoms/Button/LikeButton'
-import { GetImg } from '@/lib/img'
-import { GetUser } from '@/lib/user'
+import { useGetImg } from '@/lib/img'
+import { useGetUser } from '@/lib/user'
 import { favoriteImgDelete, favoriteImgSave } from '@/redux/imageSlice'
 import { GalleryObj } from '@/types/gallery'
 export const FavoriteImageLayout = () => {
-  const srcs = GetImg().images.src
+  const srcs = useGetImg().images.src
   const dispatch = useDispatch<any>()
-  const uid = GetUser().user.uid
+  const uid = useGetUser().user.uid
 
   const save = async (uid: string, src: string) => {
     await dispatch(favoriteImgSave({ uid, src, srcs }))
