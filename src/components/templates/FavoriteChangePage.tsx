@@ -7,7 +7,7 @@ import { PrimaryButton } from '../atoms/Button'
 import { TitleBar } from '../atoms/TitleBar'
 import { SelectModal } from '@/components/modal/selectModal'
 import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
-import { GetUser } from '@/lib/user'
+import { useGetUser } from '@/lib/user'
 import { saveFavorite, saveFirstFavorite } from '@/redux/userSlice'
 
 type Favorite = {
@@ -23,7 +23,7 @@ export const FavoriteChangePage = () => {
     src: router.query.src as string,
   })
   const [open, setOpen] = useState<boolean>(false)
-  const user = GetUser().user
+  const user = useGetUser().user
   useEffect(() => {
     if (!router.query.name) {
       router.push('/change_oshimen')

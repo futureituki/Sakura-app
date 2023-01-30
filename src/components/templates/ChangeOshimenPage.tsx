@@ -2,14 +2,14 @@ import { Box } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { TitleBar } from '../atoms/TitleBar'
-import { GetUser } from '@/lib/user'
+import { useGetUser } from '@/lib/user'
 
 type Favorite = {
   name: string
   src: string
 }
 export const ChangeOshimenPage = () => {
-  const user = GetUser().user
+  const user = useGetUser().user
   return (
     <Box>
       <TitleBar>推しメン変更</TitleBar>

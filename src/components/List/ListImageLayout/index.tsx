@@ -1,4 +1,5 @@
-import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
+import { Box, InputLabel, MenuItem, FormControl, Select, CircularProgress } from '@mui/material'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -9,8 +10,8 @@ import { LikeButton, LikedButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
-import { GetImg } from '@/lib/img'
-import { GetUser } from '@/lib/user'
+import { useGetImg } from '@/lib/img'
+import { useGetUser } from '@/lib/user'
 import { favoriteImgDelete, favoriteImgSave } from '@/redux/imageSlice'
 import { GalleryObj } from '@/types/gallery'
 
@@ -21,10 +22,10 @@ type Favorite = {
   src: string
 }
 export const ListImageLayout = () => {
-  const user = GetUser().user
+  const user = useGetUser().user
   const unionFavorite = user.favorite.concat(user.first_favorite)
   const dispatch = useDispatch<any>()
-  const srcs = GetImg().images.src
+  const srcs = useGetImg().images.src
   const [name, setName] = useState<string>(user.first_favorite.name)
   const [offsetCount, setOffsetCount] = useState<number>(
     1 + Math.floor(Math.random() * Math.random()),
@@ -39,7 +40,7 @@ export const ListImageLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>loading...</div>
+  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
   const handleChange = (event: any) => {
     setName(event.target.value as string)
   }

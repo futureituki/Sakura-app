@@ -8,8 +8,8 @@ import { PrimaryButton } from '@/components/atoms/Button'
 import { Heading } from '@/components/atoms/Heading'
 import { SelectModal } from '@/components/modal/selectModal'
 import { favoriteMember, memberSrc } from '@/constant/memberSrc'
-import { GetImg } from '@/lib/img'
-import { GetUser } from '@/lib/user'
+import { useGetImg } from '@/lib/img'
+import { useGetUser } from '@/lib/user'
 import { setImages } from '@/redux/imageSlice'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
@@ -33,7 +33,7 @@ type Favorite = {
 export const FavoritePage = () => {
   const dispatch = useDispatch<any>()
   const [open, setOpen] = useState<boolean>(false)
-  const images = GetImg().images.src
+  const images = useGetImg().images.src
   const [selectedImg, setSelectedImg] = useState<SelectedProps>({ name: '', src: '' })
   const handleOpen = useCallback((e: any) => {
     const alt = e.target.alt
@@ -44,7 +44,7 @@ export const FavoritePage = () => {
     setOpen(true)
   }, [])
   const handleClose = () => setOpen(false)
-  const user: UserReducer = GetUser().user
+  const user: UserReducer = useGetUser().user
   const router = useRouter()
   useEffect(() => {
     if (router.query.sign) {

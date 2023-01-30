@@ -33,6 +33,17 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
         >
           写真を投稿する
         </PrimaryButton>
+        <PrimaryButton
+          label='photo'
+          size='1.2vw'
+          padding=''
+          variant='contained'
+          color='#fff'
+          onClick={() => router.push('/community/mypost')}
+          background='#0067c0'
+        >
+          自分の投稿を見る
+        </PrimaryButton>
       </Box>
       <Box
         sx={{

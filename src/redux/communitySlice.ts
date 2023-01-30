@@ -18,14 +18,12 @@ export const savePhoto = createAsyncThunk(
   },
 )
 
-const initialState: Community = {
-  id: '',
-  uid: '',
-  title: '',
-  created_at: null,
-  updated_at: null,
-  tag: [],
-  url: '',
+type State = {
+  community: Array<Community>
+}
+
+const initialState: State = {
+  community: [],
 }
 
 export const communitySlice = createSlice({
@@ -34,13 +32,7 @@ export const communitySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(savePhoto.fulfilled, (state, action: PayloadAction<Community>) => {
-      state.id = action.payload.id
-      state.uid = action.payload.uid
-      state.title = action.payload.title
-      state.created_at = action.payload.created_at
-      state.updated_at = action.payload.updated_at
-      state.tag = action.payload.tag
-      state.url = action.payload.url
+      state.community.push(action.payload)
     })
   },
 })

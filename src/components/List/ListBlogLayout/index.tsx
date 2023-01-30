@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -22,7 +22,7 @@ export const ListBlogLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>loading...</div>
+  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
 
   return (
     <Box
