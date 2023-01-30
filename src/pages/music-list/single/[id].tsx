@@ -1,17 +1,17 @@
+import { css } from '@emotion/react'
+import { LinkOff } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import axios from 'axios'
 import { NextPageWithLayout } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { TitleBar } from '@/components/atoms/TitleBar'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
 import { Album } from '@/types/spotify'
-import { LargeProgress } from '@/components/atoms/Loading/progress'
-import { css } from '@emotion/react'
-import Link from 'next/link'
-import { LinkOff } from '@mui/icons-material'
 const MusicDetail: NextPageWithLayout = () => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   const router = useRouter()

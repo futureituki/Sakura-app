@@ -1,9 +1,9 @@
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { FavoriteChangePage } from '@/components/templates/FavoriteChangePage'
 import { AppLayout } from '@/layout/AppLayout'
 import useLogin from '@/lib/hook/useLogin'
-import { LargeProgress } from '@/components/atoms/Loading/progress'
 const FavoriteChange: NextPageWithLayout = () => {
   const router = useRouter()
   const { data, error } = useLogin()

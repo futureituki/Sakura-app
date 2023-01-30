@@ -8,13 +8,13 @@ import styles from '@/components/List/ListImageLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { LikeButton, LikedButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { useGetImg } from '@/lib/img'
 import { useGetUser } from '@/lib/user'
 import { favoriteImgDelete, favoriteImgSave } from '@/redux/imageSlice'
 import { GalleryObj } from '@/types/gallery'
-import { LargeProgress } from '@/components/atoms/Loading/progress'
 
 // 例 newsobjの型をweb searchにする
 

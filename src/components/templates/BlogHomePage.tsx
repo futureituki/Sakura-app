@@ -5,12 +5,12 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { BlogObj } from '@/types/blog'
 import { MemberObj, MemberSrc } from '@/types/constant/member'
-import { LargeProgress } from '@/components/atoms/Loading/progress'
 export const BlogHomePage = () => {
   const [offsetCount, setOffsetCount] = useState<number>(0)
   const [name, setName] = useState<string>('')

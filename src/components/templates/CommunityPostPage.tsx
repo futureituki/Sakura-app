@@ -9,6 +9,7 @@ import AvatarEditor from 'react-avatar-editor'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
+import { SmallProgress } from '../atoms/Loading/progress'
 import { TitleBar } from '../atoms/TitleBar'
 import { CustomizedSelects } from '../form/select'
 import { GeneralModal } from '../modal/generalModal'
@@ -16,7 +17,6 @@ import styles from '@/components/templates/Community.module.css'
 import { memberSrc } from '@/constant/memberSrc'
 import { useGetUser } from '@/lib/user'
 import { savePhoto } from '@/redux/communitySlice'
-import { SmallProgress } from '../atoms/Loading/progress'
 
 type SavePhotoProps = {
   uid: string

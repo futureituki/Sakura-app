@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
+import { SmallProgress } from '../atoms/Loading/progress'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
-import { SmallProgress } from '../atoms/Loading/progress'
 interface LoginForm {
   username: string
   email: string

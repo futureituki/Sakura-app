@@ -2,10 +2,10 @@ import axios from 'axios'
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import PostsPagination from '@/components/pagination/post/list'
 import { CommunityPage } from '@/components/templates/CommunityPage'
 import { AppLayout } from '@/layout/AppLayout'
-import { LargeProgress } from '@/components/atoms/Loading/progress'
 
 const IndividualPage: NextPageWithLayout = () => {
   const router = useRouter()
