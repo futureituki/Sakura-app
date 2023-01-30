@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import useSWR from 'swr'
+import { LargeProgress } from '../atoms/Loading/progress'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { memberSrcMap } from '@/constant/memberSrc'
@@ -21,7 +22,7 @@ export const BlogPage = ({ name }: { name: string }) => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>Loading</div>
+  if (!data) return <LargeProgress />
   return (
     <Box
       sx={{

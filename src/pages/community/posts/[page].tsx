@@ -1,9 +1,8 @@
 import axios from 'axios'
 import { NextPageWithLayout } from 'next'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { setCookie } from 'nookies'
 import useSWR from 'swr'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import PostsPagination from '@/components/pagination/post/list'
 import { CommunityPage } from '@/components/templates/CommunityPage'
 import { AppLayout } from '@/layout/AppLayout'
@@ -21,7 +20,7 @@ const IndividualPage: NextPageWithLayout = () => {
   )
   console.log(data)
   if (error) return <div>情報を取得できませんでした。インターネット状況をお確かめください</div>
-  if (!data) return <div>Loading...</div>
+  if (!data) return <LargeProgress />
   const pageNum = sessionStorage.getItem('pages')
   return (
     <>

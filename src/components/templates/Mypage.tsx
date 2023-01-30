@@ -1,8 +1,8 @@
+import { css } from '@emotion/react'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { SwiperSlide } from 'swiper/react'
 import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
@@ -35,6 +35,14 @@ export const MyPage = () => {
     await dispatch(userLogout())
     router.push('/logout')
   }
+
+  const user_box = css`
+    border: 1px solid #000;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.4vw;
+  `
+
   return (
     <div>
       <TitleBar>MyPage</TitleBar>
@@ -64,9 +72,11 @@ export const MyPage = () => {
             height={400}
             style={{ width: '100%', height: '100%' }}
           />
+          <Box css={user_box}>
+            <p>ユーザーネーム：{user.username}さん</p>
+            <p>推しメン：{user.first_favorite.name}</p>
+          </Box>
         </Box>
-        <p>{user.first_favorite.name}</p>
-        <div className={styles.user_area}>{user.username}</div>
         <Box
           sx={{
             margin: '40px 0',

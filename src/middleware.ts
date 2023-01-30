@@ -2,9 +2,6 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export const middleware = (req: NextRequest) => {
-  if (req.nextUrl.pathname.startsWith('/music-list')) {
-    return NextResponse.next()
-  }
   if (req.nextUrl.pathname.startsWith('/')) {
     const authorizationHeader = req.headers.get('authorization')
 

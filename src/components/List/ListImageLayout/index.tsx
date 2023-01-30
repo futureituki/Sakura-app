@@ -8,6 +8,7 @@ import styles from '@/components/List/ListImageLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { LikeButton, LikedButton } from '@/components/atoms/Button/LikeButton'
 import { Heading } from '@/components/atoms/Heading'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
 import { useGetImg } from '@/lib/img'
@@ -40,7 +41,8 @@ export const ListImageLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
+  if (!data) return <LargeProgress />
+
   const handleChange = (event: any) => {
     setName(event.target.value as string)
   }

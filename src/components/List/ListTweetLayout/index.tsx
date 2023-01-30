@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { Box, CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Loading } from '@/components/atoms/Loading'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 
 export const ListTweetLayout = () => {
   useEffect(() => {
@@ -36,7 +37,7 @@ export const ListTweetLayout = () => {
         href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
         style={{ position: 'relative' }}
       >
-        <CircularProgress style={{ width: '70px', height: '70px' }} />
+        <LargeProgress />
       </a>
     </Box>
   )

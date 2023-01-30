@@ -5,6 +5,7 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
@@ -22,7 +23,7 @@ export const ListBlogLayout = () => {
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <CircularProgress style={{ width: '70px', height: '70px' }} />
+  if (!data) return <LargeProgress />
 
   return (
     <Box

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import styles from '@/components/List/ListBlogLayout/index.module.css'
 import { PrimaryButton } from '@/components/atoms/Button'
+import { LargeProgress } from '@/components/atoms/Loading/progress'
 import { memberSrc, memberSrcMap } from '@/constant/memberSrc'
 import { customSearchEndpoint } from '@/constant/url'
 import { Getfetcher } from '@/lib/bing-search'
@@ -26,20 +27,17 @@ export const BlogHomePage = () => {
       refreshInterval: 300,
     },
   )
-  console.log(data)
   const handleChange = (event: any) => {
     setName(event.target.value)
   }
-  // const handleChange = (e) => {
-  //   setName(e.target.value)
-  // }
+
   if (error)
     return (
       <div>
         今日のブログ配信は終了しました<br></br>また明日の16時にアクセスしてください。
       </div>
     )
-  if (!data) return <div>loading...</div>
+  if (!data) return <LargeProgress />
   return (
     <Box
       sx={{

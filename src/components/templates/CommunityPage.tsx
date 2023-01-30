@@ -6,7 +6,6 @@ import { FC } from 'react'
 import { PrimaryButton } from '../atoms/Button'
 import { TitleBar } from '../atoms/TitleBar'
 import { Heading } from '@/components/atoms/Heading'
-import Pagination from '@/components/pagination'
 import { Community } from '@/types/community'
 
 type Props = {

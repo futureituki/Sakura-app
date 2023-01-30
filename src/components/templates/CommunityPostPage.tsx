@@ -1,14 +1,15 @@
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CloseIcon from '@mui/icons-material/Close'
 import { LoadingButton } from '@mui/lab'
-import { Box, CircularProgress, TextField } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { ChangeEvent, ReactNode, useCallback, useRef, useState } from 'react'
+import { ChangeEvent, ReactNode, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { PrimaryButton } from '../atoms/Button'
+import { SmallProgress } from '../atoms/Loading/progress'
 import { TitleBar } from '../atoms/TitleBar'
 import { CustomizedSelects } from '../form/select'
 import { GeneralModal } from '../modal/generalModal'
@@ -309,7 +310,7 @@ export const CommunityPostPage = () => {
                 background='#f2f2f2'
                 disabled={true}
               >
-                <CircularProgress style={{ width: '20px', height: '20px' }} />
+                <SmallProgress />
               </PrimaryButton>
             ) : (
               <PrimaryButton label='photo' variant='contained' color='#fff' background='#ff69b8'>

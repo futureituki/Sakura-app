@@ -1,10 +1,11 @@
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
-import { Avatar, Box, CircularProgress, TextField } from '@mui/material'
+import { Avatar, Box, TextField } from '@mui/material'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
+import { SmallProgress } from '../atoms/Loading/progress'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
@@ -163,7 +164,7 @@ const SignUp: NextPage = () => {
             type='submit'
             disabled={loading}
           >
-            {loading ? <CircularProgress style={{ width: '30px', height: '30px' }} /> : '登録'}
+            {loading ? <SmallProgress /> : '登録'}
           </button>
         </form>
         <div className={styles.after_error} ref={ref}></div>
