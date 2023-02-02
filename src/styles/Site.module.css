@@ -365,10 +365,11 @@ transform: translate(0);
   transition:all 0.5s cubic-bezier(0, 1.05, 0.78, 0.44);
 }
 .rea_case {
-  position:relative;
-  color:#fff;
-  width:100%;
-  padding:0 20px;
+  position: relative;
+  color: #fff;
+  width: 90vw;
+  margin: 40px auto;
+  max-width:1400px;
 }
 .rea_in {
   padding:30px 0;

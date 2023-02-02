@@ -2,11 +2,19 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { deleteImg, saveImage, setImg } from '@/firebase/firestore'
 
+type Props = {
+  uid: string
+  sign?: boolean
+}
+type Img = {
+  src: Array<string>
+}
 type favoriteImg = {
   uid: string
   src: string
   srcs: Array<string>
 }
+
 export const favoriteImgSave = createAsyncThunk(
   'favoriteImg',
   async ({ uid, src, srcs }: favoriteImg): Promise<any> => {
@@ -14,6 +22,7 @@ export const favoriteImgSave = createAsyncThunk(
     return imgSrc
   },
 )
+
 export const favoriteImgDelete = createAsyncThunk(
   'favoriteImgDelete',
   async ({ uid, src, srcs }: favoriteImg): Promise<any> => {
@@ -21,17 +30,11 @@ export const favoriteImgDelete = createAsyncThunk(
     return imgSrc
   },
 )
-type Props = {
-  uid: string
-  sign?: boolean
-}
+
 export const setImages = createAsyncThunk('setImg', async ({ uid, sign }: Props): Promise<any> => {
   const images = await setImg(uid, sign)
   return images
 })
-type Img = {
-  src: Array<string>
-}
 
 const initialState: Img = {
   src: [],

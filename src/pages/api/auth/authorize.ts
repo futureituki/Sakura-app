@@ -34,7 +34,7 @@ const authorize = async (req: any, res: any) => {
     accessToken: response.data.access_token,
   })
   await req.session.save()
-  res.status(200).redirect('/music-list')
+  res.status(200).redirect('/spotify')
 }
 
 export default withSession(authorize)
