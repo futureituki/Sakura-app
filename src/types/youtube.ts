@@ -4,10 +4,14 @@ export type Youtube = {
       contentDetails: {
         videoPublishedAt: string
       }
+      id: {
+        videoId: String
+      }
       snippet: {
         description: string
         publishedAt: string
         title: string
+        publishTime: string
         thumbnails: {
           default: {
             url: string

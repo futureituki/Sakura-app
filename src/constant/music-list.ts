@@ -98,3 +98,21 @@ export const music_id = [
     type: 'single',
   },
 ]
+
+export const video_disc = [
+  { name: '桜月', src: '/assets/png/sakuratuki.png' },
+  { name: 'その日まで', src: '/assets/png/sonohimade.png' },
+  { name: '摩擦係数', src: '/assets/png/masatu.png' },
+  { name: '車間距離', src: '/assets/png/syakankyori.png' },
+  { name: '僕のジレンマ', src: '/assets/png/jirenma.png' },
+  { name: '五月雨よ', src: '/assets/png/samidareyo.png' },
+  { name: '無言の宇宙', src: '/assets/png/mugon.png' },
+  { name: 'Dead end', src: '/assets/png/dead.png' },
+  { name: '流れ弾', src: '/assets/png/nagaredama.png' },
+  { name: '思ったよりも寂しくない', src: '/assets/png/omotayorimosabisikunai.png' },
+  { name: '偶然の答え', src: '/assets/png/guuzen.png' },
+  { name: 'BAN', src: '/assets/png/ban.png' },
+  { name: 'Buddies', src: '/assets/png/buddies.png' },
+  { name: 'なぜ恋をしてこなかったんだろう', src: '/assets/png/nazekoi.png' },
+  { name: 'Nobodys` fault', src: '/assets/png/nobody.png' },
+]

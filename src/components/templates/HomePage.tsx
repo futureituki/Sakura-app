@@ -8,7 +8,6 @@ import { Section04Sounds } from '@/components/Site/Components/Section04-Sounds'
 import { Section05 } from '@/components/Site/Components/Section05'
 import { Section06 } from '@/components/Site/Components/Section06'
 import { SectionHarf02 } from '@/components/Site/Components/SectionHarf02'
-import { ClickPlayButton } from '@/components/atoms/ClickPlayButton'
 import { Heading } from '@/components/atoms/Heading'
 
 const DynamicSection = dynamic(
@@ -21,7 +20,7 @@ const DynamicSection = dynamic(
 )
 export const HomePage = () => {
   return (
-    <Box sx={{ maxWidth: '1440px' }}>
+    <Box>
       <main style={{ background: '#000', overflow: 'hidden' }}>
         <Section01 />
         <Box

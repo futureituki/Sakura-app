@@ -24,7 +24,13 @@ export const Section03 = () => {
         <PinningContainer parent_id='first-member' child_id='first'>
           {firstMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
-              <SectionImg src={member.src} alt_name={member.name} width={280} height={350} />
+              <SectionImg
+                src={member.src}
+                alt_name={member.name}
+                width={280}
+                height={350}
+                id={'img_' + member.src}
+              />
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
           ))}
@@ -39,7 +45,13 @@ export const Section03 = () => {
         <PinningContainer parent_id='second-member' child_id='second'>
           {secondMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
-              <SectionImg src={member.src} alt_name={member.name} width={280} height={350} />
+              <SectionImg
+                src={member.src}
+                alt_name={member.name}
+                width={280}
+                height={350}
+                id={'img_' + member.src}
+              />
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
           ))}
@@ -54,7 +66,13 @@ export const Section03 = () => {
         <PinningContainer parent_id='third-member' child_id='third'>
           {thirdMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
-              <SectionImg src={member.src} alt_name={member.name} width={280} height={350} />
+              <SectionImg
+                src={member.src}
+                alt_name={member.name}
+                width={280}
+                height={350}
+                id={'img_' + member.src}
+              />
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
           ))}

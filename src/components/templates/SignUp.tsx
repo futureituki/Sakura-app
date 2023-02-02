@@ -9,7 +9,8 @@ import { SmallProgress } from '../atoms/Loading/progress'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
-interface LoginForm {
+
+type LoginForm = {
   username: string
   email: string
   password: string

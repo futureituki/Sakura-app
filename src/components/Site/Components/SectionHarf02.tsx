@@ -8,8 +8,8 @@ export const SectionHarf02 = () => {
       <Box
         sx={{
           width: '90vw',
-          margin: '0 auto',
-          maxWidth: '1300px',
+          margin: '40px auto',
+          maxWidth: '1400px',
         }}
       >
         <Heading
@@ -25,7 +25,7 @@ export const SectionHarf02 = () => {
             alignItems: 'center',
           }}
         >
-          <blockquote style={{ color: '#fff', fontSize: '2vw', lineHeight: '1.75' }}>
+          <blockquote style={{ color: '#fff', fontSize: '1.6vw', lineHeight: '1.75' }}>
             <p>
               2015年8月に乃木坂46に続く「坂道シリーズ」第2弾グループとなる
               <span style={{ color: 'red' }}>欅坂46</span>として誕生。

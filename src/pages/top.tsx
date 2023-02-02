@@ -1,5 +1,7 @@
+import axios from 'axios'
 import { NextPageWithLayout } from 'next'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { TopPage } from '@/components/templates/TopPage'
 import { AppLayout } from '@/layout/AppLayout'
 
