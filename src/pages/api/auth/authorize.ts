@@ -2,17 +2,14 @@ import axios from 'axios'
 import withSession from '@/lib/middleware/session'
 type SpotifyAuthApiResponse = {
   access_token: string
-  token_type: string
-  scope: string
   expires_in: number
-  refresh_token: string
 }
 
 const authorize = async (req: any, res: any) => {
   const { code, state } = req.query
 
   const params = new URLSearchParams()
-  params.append('grant_type', 'authorization_code')
+  params.append('grant_type', 'client_credentials')
   params.append('code', code as string)
   params.append('redirect_uri', `${process.env.RETURN_TO}` as string)
 
@@ -21,7 +18,6 @@ const authorize = async (req: any, res: any) => {
     params,
     {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Basic ${Buffer.from(
           `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET_ID}`,
           'utf-8',
@@ -29,9 +25,8 @@ const authorize = async (req: any, res: any) => {
       },
     },
   )
-
   req.session.set('user', {
-    accessToken: response.data.access_token,
+    access_token: response.data.access_token,
   })
   await req.session.save()
   res.status(200).redirect('/spotify')

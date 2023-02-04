@@ -10,8 +10,8 @@ const Spotify: NextPageWithLayout = () => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   if (loginError) router.push('/music-list')
   if (!loginData) return <LargeProgress />
-  if (!loginData.accessToken) router.push('/music-list')
-  console.log(loginData)
+  if (!loginData.access_token) router.push('/music-list')
+  console.log(loginData.access_token)
   return (
     <>
       <SpotifyPage />

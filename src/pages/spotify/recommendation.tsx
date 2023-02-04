@@ -10,10 +10,10 @@ const Recommendation: NextPageWithLayout = () => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   if (loginError) router.push('/music-list')
   if (!loginData) return <LargeProgress />
-  if (!loginData.accessToken) router.push('/music-list')
+  if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifyRecommendationPage token={loginData.accessToken as string} />
+      <SpotifyRecommendationPage token={loginData.access_token as string} />
     </>
   )
 }

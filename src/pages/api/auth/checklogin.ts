@@ -5,50 +5,33 @@ import { ApiHandler } from '@/lib/type/handler'
 import executeRefreshToken from '@/lib/util/refreshToken'
 
 export interface ResponseBody {
-  accessToken?: string
+  access_token?: string
   message?: string
 }
 
 const checklogin: ApiHandler<{}, ResponseBody> = async (req, res) => {
   try {
-    const { accessToken, refreshToken, authedTs, expiresIn, userId } = req.session.get('user')
+    const { access_token, expiresIn } = req.session.get('user')
     const now = moment()
-    try {
-      await axios.get(`https://api.spotify.com/v1/me`, {
-        headers: { Authorization: `Bearer ${req.session.get('user').accessToken}` },
-      })
-    } catch {
-      if (refreshToken) {
-        const response = await executeRefreshToken(refreshToken)
-        req.session.set('user', {
-          accessToken: response.access_token,
-          userId,
-          authedTs: now.format('YYYY-MM-DD HH:mm:ss'),
-          expiresIn: response.expires_in,
-        })
-        await req.session.save()
-        res.status(200)
-        res.json({ accessToken: response.access_token })
-      } else {
-        res.status(401)
-        res.json({ message: 'unauthorized' })
-      }
+    if (!access_token) {
+      res.status(401)
+      res.json({ message: 'unauthorized' })
     }
     res.status(200)
-    res.json({ accessToken })
+    res.json({ access_token })
 
     // if (now.diff(moment(authedTs), 'seconds') < (expiresIn - 10 * 60)) {
     //     if (refreshToken) {
     //         const response = await executeRefreshToken(refreshToken);
     //         req.session.set('user', {
-    //             accessToken: response.access_token,
+    //             access_token: response.access_token,
     //             userId,
     //             authedTs: now.format('YYYY-MM-DD HH:mm:ss'),
     //             expiresIn: response.expires_in
     //         });
     //         await req.session.save();
     //         res.status(200);
-    //         res.json({ accessToken: response.access_token });
+    //         res.json({ access_token: response.access_token });
     //     } else {
     //         res.status(401)
     //         res.json({ message: 'unauthorized' });
@@ -56,7 +39,7 @@ const checklogin: ApiHandler<{}, ResponseBody> = async (req, res) => {
     // }
     // else {
     //     res.status(200);
-    //     res.json({ accessToken });
+    //     res.json({ access_token });
     // }
   } catch (e: any) {
     res.status(500).send(e.message)
