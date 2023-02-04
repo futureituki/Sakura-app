@@ -28,7 +28,7 @@ export const PinningContainer: FC<ContainerProps> = ({ children, parent_id, chil
         ease: 'none',
         scrollTrigger: {
           trigger: `#${parent_id}`,
-          start: 'top top',
+          start: 'top top+=100px',
           end: () => `+=${list_current.clientWidth - wrapper_current.clientWidth}`,
           scrub: true,
           pin: true,

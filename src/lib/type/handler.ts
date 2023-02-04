@@ -1,10 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 interface SessionContent {
-  userId: string
-  accessToken: string
-  refreshToken?: string
-  authedTs: string
+  access_token: string
   expiresIn: number
 }
 

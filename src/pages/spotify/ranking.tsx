@@ -10,10 +10,10 @@ const Ranking: NextPageWithLayout = () => {
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   if (loginError) router.push('/music-list')
   if (!loginData) return <LargeProgress />
-  if (!loginData.accessToken) router.push('/music-list')
+  if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifyRankingPage token={loginData.accessToken as string} />
+      <SpotifyRankingPage token={loginData.access_token as string} />
     </>
   )
 }

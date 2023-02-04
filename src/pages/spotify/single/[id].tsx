@@ -17,10 +17,10 @@ const MusicDetail: NextPageWithLayout = () => {
       </div>
     )
   if (!loginData) return <LargeProgress />
-  if (!loginData.accessToken) router.push('/music-list')
+  if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifySinglePage token={loginData.accessToken as string} />
+      <SpotifySinglePage token={loginData.access_token as string} />
     </>
   )
 }
