@@ -1,3 +1,5 @@
+import { css } from '@emotion/react'
+import { Box } from '@mui/material'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
@@ -5,7 +7,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import styles from '@/styles/Site.module.css'
 import '@/components/Site/Components/section.module.css'
-
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
   const textRef = useRef<HTMLHeadingElement>(null)
@@ -14,7 +15,6 @@ export const Section01 = () => {
 
   let jsText: HTMLHeadingElement
   useEffect(() => {
-    gsap.set('#glitch', { scale: 0 })
     if (textRef.current) {
       jsText = textRef.current
       let newText = ''
@@ -26,19 +26,25 @@ export const Section01 = () => {
       }
       jsText.innerHTML = newText
     }
-    tl.to(
-      '#opening-title span',
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: {
-          amount: 1,
-          from: 'start',
+    tl.to('#bg-sand', {
+      top: '100%',
+    })
+      .to('#bg-sand', {
+        opacity: 0,
+      })
+      .to(
+        '#opening-title span',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: {
+            amount: 1,
+            from: 'start',
+          },
         },
-      },
-      1,
-    )
+        1,
+      )
       .to(
         '#opening-sub',
         {
@@ -86,6 +92,9 @@ export const Section01 = () => {
         },
         5,
       )
+      .to('body', {
+        overflow: 'scroll',
+      })
     setupGsap()
   }, [])
   const setupGsap = () => {
@@ -122,23 +131,38 @@ export const Section01 = () => {
       },
     })
   }
+  const container = css`
+    overflow: hidden;
+  `
+  const bg_sand = css`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-image: url('/assets/sand_w.png');
+    background-size: cover;
+  `
   return (
-    <section className={styles.sec_mv} id='sec_mv'>
-      <div className={styles.mv_in}>
-        <div className={`fadeout ${styles.mv_case}`}>
-          <h1 ref={textRef} id='opening-title'>
-            櫻坂46
-          </h1>
-          <h2 className={styles.tx} style={{ opacity: 0 }} id='opening-sub'>
-            櫻坂46を応援する非公式アプリ
-          </h2>
-          <div className={styles.button_area} id='button_area'>
-            <Link href='/login'>ログイン</Link>
-            <Link href='/login'>会員登録</Link>
+    <Box css={container}>
+      <section className={styles.sec_mv} id='sec_mv'>
+        <div className={styles.mv_in}>
+          <div className={`fadeout ${styles.mv_case}`}>
+            <h1 ref={textRef} id='opening-title'>
+              櫻坂46
+            </h1>
+            <h2 className={styles.tx} style={{ opacity: 0 }} id='opening-sub'>
+              櫻坂46を応援する非公式アプリ
+            </h2>
+            <div className={styles.button_area} id='button_area'>
+              <Link href='/login'>ログイン</Link>
+              <Link href='/login'>会員登録</Link>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.button_container}>{/* <PrimaryButton></PrimaryButton> */}</div>
-    </section>
+        <div className={styles.button_container}>{/* <PrimaryButton></PrimaryButton> */}</div>
+      </section>
+      <Box css={bg_sand} id='bg-sand'></Box>
+    </Box>
   )
 }

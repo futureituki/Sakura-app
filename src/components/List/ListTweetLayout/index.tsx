@@ -3,7 +3,6 @@ import { Box, CircularProgress } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Loading } from '@/components/atoms/Loading'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
-
 export const ListTweetLayout = () => {
   useEffect(() => {
     // scriptを読み込み
@@ -22,23 +21,25 @@ export const ListTweetLayout = () => {
   //   }
   //   getTweet()
   // }, [])
-  const box = css`
-    margin: 60px 0;
-  `
-  const loading_box = css`
-    position: absolute;
-    left: 50%;
+  const twitter_box = css`
     width: 100%;
+    @media (min-width: 800px) {
+      width: 50%;
+    }
   `
   return (
     <Box>
-      <a
-        className='twitter-timeline'
-        href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
-        style={{ position: 'relative' }}
-      >
-        <LargeProgress />
-      </a>
+      <Box css={twitter_box}>
+        <a
+          className='twitter-timeline'
+          href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
+          data-width='100%'
+          data-height='700'
+          style={{ position: 'relative', pointerEvents: 'none' }}
+        >
+          <LargeProgress />
+        </a>
+      </Box>
     </Box>
   )
 }
