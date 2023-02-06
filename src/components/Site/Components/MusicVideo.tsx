@@ -426,7 +426,7 @@ export const MusicVideo = () => {
                 />
               ) : (
                 <Image
-                  src={video?.items[0].snippet.thumbnails.medium.url as string}
+                  src={video?.items[0].snippet.thumbnails.standard.url as string}
                   alt=''
                   width={300}
                   height={300}
