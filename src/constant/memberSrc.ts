@@ -1,29 +1,44 @@
 import { MemberDetailObj, MemberObj, MemberSrc } from '@/types/constant/member'
 
 // トップページサイトでの使用 //
-export const firstMemberSrc: MemberSrc[] = [
+export const firstMemberSrc = [
   {
     src: '/assets/member/uemura_main_visual.jpeg',
     name: '上村莉菜',
+    ruby: 'うえむらりな',
+    birthday: '1997年1月4日',
+    sign: 'やぎ座',
   },
   {
     src: '/assets/member/koike_main_visual.jpeg',
     name: '小池美波',
+    ruby: 'こいけみなみ',
+    birthday: '1998年11月14日',
+    sign: 'さそり座',
   },
   {
     src: '/assets/member/kobayashi_main_visual.jpeg',
     name: '小林由依',
+    ruby: 'こばやしゆい',
+    birthday: '1999年10月23日',
+    sign: 'てんびん座',
   },
   {
     src: '/assets/member/saito_main_visual.jpeg',
     name: '齋藤冬優花',
+    ruby: 'さいとうふゆか',
+    birthday: '1998年2月15日',
+    sign: 'みずがめ座',
   },
   {
     src: '/assets/member/habu_main_visual.jpeg',
     name: '土生瑞穂',
+    ruby: 'はぶみずほ',
+    birthday: '1997年7月7日',
+    sign: 'かに座',
   },
 ]
-export const secondMemberSrc: MemberSrc[] = [
+export const secondMemberSrc = [
   { src: '/assets/member/inoue_main_visual.jpeg', name: '井上梨名' },
   { src: '/assets/member/endo_main_visual.jpeg', name: '遠藤光莉' },
   { src: '/assets/member/ozno_main_visual.jpeg', name: '大園玲' },
@@ -39,7 +54,7 @@ export const secondMemberSrc: MemberSrc[] = [
   { src: '/assets/member/moriya_main_visual.jpeg', name: '守屋麗奈' },
   { src: '/assets/member/yamasaki_main_visual.jpeg', name: '山﨑天' },
 ]
-export const thirdMemberSrc: MemberSrc[] = [
+export const thirdMemberSrc = [
   { src: '/assets/member_list/matono.jpeg', name: '的野美青' },
   { src: '/assets/member_list/kojima.jpeg', name: '小島凪紗' },
   { src: '/assets/member_list/nakajima.jpeg', name: '中嶋優月' },
