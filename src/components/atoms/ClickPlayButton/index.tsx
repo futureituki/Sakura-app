@@ -33,10 +33,10 @@ export const ClickPlayButton: FC<Props> = ({ onClick }) => {
     background-position: center center;
   `
   return (
-    <Box css={container}>
+    <Box css={container} component="div">
       <button onClick={onClick}>
-        <Box css={y_playBg} />
-        <Box css={y_playMark} />
+        <Box css={y_playBg} component="div" />
+        <Box css={y_playMark} component="div" />
       </button>
     </Box>
   )
