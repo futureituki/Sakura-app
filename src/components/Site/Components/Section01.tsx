@@ -13,7 +13,7 @@ import { CircleProgress } from '@/components/atoms/Loading/progress/circle'
 import { PassEffects } from '@/components/three/effect/passEffect'
 import { Scene } from '@/components/three/scene'
 import styles from '@/styles/Site.module.css'
-import '@/components/Site/Components/section.module.css'
+
 extend({ GlitchPass, BloomPass })
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
