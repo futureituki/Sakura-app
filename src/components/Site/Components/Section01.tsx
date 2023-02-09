@@ -199,6 +199,7 @@ export const Section01 = () => {
           {/* <group position={[-50,-10,-20]}> */}
           <Effects>
             {/* <bloomPass attachArray="passes" /> */}
+            {/* @ts-ignore */}
             <glitchPass attachArray='passes' />
           </Effects>
           <Scene photo_url={'/assets/photo/art-copy2nd.jpeg'} video_url={'/assets/move/ban.mp4'} />
