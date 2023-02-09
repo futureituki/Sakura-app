@@ -51,6 +51,7 @@ export const TransitionsPopper: FC<Props> = ({ children }) => {
                 p: 1,
                 bgcolor: 'background.paper',
               }}
+              component='div'
             >
               {children}
               <button

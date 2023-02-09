@@ -38,7 +38,7 @@ export const GeneralModal: React.FC<Props> = ({ open, handleClose, children }) =
       }}
     >
       <Fade in={open}>
-        <Box sx={style}>
+        <Box sx={style} component='div'>
           <Close
             onClick={handleClose}
             sx={{

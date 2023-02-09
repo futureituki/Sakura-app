@@ -22,6 +22,7 @@ export const YoutubePopUp: FC<Props> = ({ id }) => {
         maxWidth: '960px',
         overflow: 'hidden',
       }}
+      component='div'
     >
       <Box
         sx={{
@@ -31,6 +32,7 @@ export const YoutubePopUp: FC<Props> = ({ id }) => {
           paddingBottom: '56.25%',
           overflow: 'hidden',
         }}
+        component='div'
       >
         <YouTube
           videoId={id}

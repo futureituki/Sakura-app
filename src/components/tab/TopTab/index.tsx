@@ -25,9 +25,9 @@ export const BasicTabs: React.FC<Props> = ({ name }) => {
   }
 
   return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
+    <Box sx={{ width: '100%', typography: 'body1' }} component='div'>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }} component='div'>
           <TabList onChange={handleChange} aria-label='lab API tabs example'>
             <Tab
               label={

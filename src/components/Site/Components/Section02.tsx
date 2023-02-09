@@ -149,7 +149,7 @@ export const Section02 = () => {
                 }}
                 component='div'
               >
-                <Box>
+                <Box component='div'>
                   <MusicNoteIcon />
                   <span style={{ fontSize: '2.6vw' }}>条件反射で泣けてくる</span>
                 </Box>
@@ -161,6 +161,7 @@ export const Section02 = () => {
                     zIndex: open ? 0 : 99999,
                     position: 'relative',
                   }}
+                  component='div'
                 >
                   <PlayCircleFilledWhiteIcon
                     sx={{

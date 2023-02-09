@@ -189,7 +189,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
             value={timePosition}
             onInput={handleChangeTimePosition}
           />
-          <Box sx={{ color: '#fff' }}>{`${timeRef.current} / ${time}`}</Box>
+          <Box sx={{ color: '#fff' }} component='div'>{`${timeRef.current} / ${time}`}</Box>
         </AudioBar>
       </Box>
     </>

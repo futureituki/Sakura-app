@@ -27,10 +27,10 @@ const Community: NextPageWithLayout = () => {
   return (
     <>
       <TitleBar>Community</TitleBar>
-      <Box css={container}>
+      <Box css={container} component='div'>
         <h1 css={title}>投稿しよう！</h1>
         <p css={text}>櫻坂46のお気に入り写真を投稿したり、櫻坂46愛をみんなで共有しよう！！</p>
-        <Box css={button_box}>
+        <Box css={button_box} component='div'>
           <PrimaryButton
             variant='contained'
             label='posts'
