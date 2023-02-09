@@ -10,12 +10,14 @@ export const AudioBar = ({ children }: { children: React.ReactNode }) => {
         height: '100%',
         background: '#000',
       }}
+      component='div'
     >
       <Box
         sx={{
           width: '90vw',
           margin: '0 auto',
         }}
+        component='div'
       >
         {children}
       </Box>

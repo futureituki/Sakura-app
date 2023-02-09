@@ -51,6 +51,7 @@ const SignUp: NextPage = () => {
           sx={{
             marginTop: '10px',
           }}
+          component='div'
         >
           <Avatar sx={{ m: 4, bgcolor: '#000' }}>
             <AssignmentIndIcon fontSize='large' />
@@ -122,6 +123,7 @@ const SignUp: NextPage = () => {
               display: 'flex',
               flexDirection: 'column',
             }}
+            component='div'
           >
             <label className={styles.label} htmlFor='password'>
               パスワード

@@ -54,6 +54,7 @@ export const TopPage = () => {
             placeItems: 'center',
             padding: '20px 0',
           }}
+          component='div'
         >
           <h2>Video</h2>
         </Box>

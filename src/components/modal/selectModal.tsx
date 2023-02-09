@@ -29,7 +29,9 @@ export const SelectModal: React.FC<Props> = ({ open, handleClose, children }) =>
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <Box sx={style}>{children}</Box>
+      <Box sx={style} component='div'>
+        {children}
+      </Box>
     </Modal>
   )
 }

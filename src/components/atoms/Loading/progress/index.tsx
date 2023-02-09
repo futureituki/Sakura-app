@@ -12,7 +12,7 @@ export const LargeProgress = () => {
     place-items: center;
   `
   return (
-    <Box css={circular_container}>
+    <Box css={circular_container} component='div'>
       <CircularProgress css={circular} />
     </Box>
   )

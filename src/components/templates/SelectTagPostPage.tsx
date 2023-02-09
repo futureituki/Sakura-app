@@ -52,7 +52,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
     margin: 20px 0;
   `
   return (
-    <Box>
+    <Box component='div'>
       <TitleBar>{tagName}</TitleBar>
       {posts?.length === 0 ? (
         <p css={none_text}>投稿はありません</p>
@@ -69,6 +69,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
                 justifyContent: 'center',
               },
             }}
+            component='div'
           >
             {posts?.map((post: Community, index: number) => (
               <Box
@@ -79,6 +80,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
                   height: '100%',
                   '@media screen and (min-width:640)': {},
                 }}
+                component='div'
               >
                 <Image
                   src={post.url}
@@ -98,6 +100,7 @@ export const SelectTagPostPage: FC<Props> = ({ tagName }) => {
               display: 'grid',
               placeItems: 'center',
             }}
+            component='div'
           >
             <LoadingButton
               onClick={() => getPost(page + LIMIT)}

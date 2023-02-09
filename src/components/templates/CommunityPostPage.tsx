@@ -105,6 +105,7 @@ export const CommunityPostPage = () => {
           margin: '0 auto',
           maxWidth: '1440px',
         }}
+        component='div'
       >
         <form onSubmit={handleSubmit(submit)}>
           <Box
@@ -117,6 +118,7 @@ export const CommunityPostPage = () => {
               margin: '40px auto',
               maxWidth: '900px',
             }}
+            component='div'
           >
             <AddPhotoAlternateIcon
               sx={{
@@ -145,12 +147,13 @@ export const CommunityPostPage = () => {
             />
           </Box>
           {errors.image && (
-            <Box className={styles.error_area} role='alert'>
+            <Box className={styles.error_area} role='alert' component='div'>
               <Box
                 sx={{
                   color: 'red',
                   fontSize: '1vw',
                 }}
+                component='div'
               >
                 {errors.image?.message as ReactNode}
               </Box>
@@ -188,7 +191,7 @@ export const CommunityPostPage = () => {
             )}
           </GeneralModal>
           {preview ? <button onClick={() => setPreview('')}>選び直す</button> : ''}
-          <Box>
+          <Box component='div'>
             <label className={styles.label} htmlFor='password'>
               タイトル
             </label>
@@ -205,12 +208,13 @@ export const CommunityPostPage = () => {
               type='title'
             />
             {errors.title && (
-              <Box className={styles.error_area} role='alert'>
+              <Box className={styles.error_area} role='alert' component='div'>
                 <Box
                   sx={{
                     color: 'red',
                     fontSize: '1vw',
                   }}
+                  component='div'
                 >
                   {errors.title?.message as ReactNode}
                 </Box>
@@ -226,6 +230,7 @@ export const CommunityPostPage = () => {
               alignItems: 'center',
               margin: '15px 0',
             }}
+            component='div'
           >
             <CustomizedSelects value={tag} handle={handleChange} title='タグ'>
               <option aria-label='None' value='' />
@@ -256,6 +261,7 @@ export const CommunityPostPage = () => {
               flexWrap: 'wrap',
               gap: '10px',
             }}
+            component='div'
           >
             {addedTag
               ? addedTag.map((tag: string, index: number) => (
@@ -268,6 +274,7 @@ export const CommunityPostPage = () => {
                       width: 'fit-content',
                       borderRadius: '10px',
                     }}
+                    component='div'
                   >
                     <Box
                       sx={{
@@ -275,9 +282,10 @@ export const CommunityPostPage = () => {
                         alignItems: 'center',
                         gap: '10px',
                       }}
+                      component='div'
                     >
                       <span>{tag}</span>
-                      <Box onClick={() => sliceTag(tag)}>
+                      <Box onClick={() => sliceTag(tag)} component='div'>
                         <CloseIcon />
                       </Box>
                     </Box>
@@ -292,6 +300,7 @@ export const CommunityPostPage = () => {
               justifyContent: 'center',
               gap: '15px',
             }}
+            component='div'
           >
             <PrimaryButton
               label='photo'

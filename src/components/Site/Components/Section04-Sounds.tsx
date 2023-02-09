@@ -225,11 +225,13 @@ export const Section04Sounds = () => {
           height: '50vh',
         },
       }}
+      component='div'
     >
       <Box
         sx={{
           padding: '0px 0 70px 0',
         }}
+        component='div'
       >
         <Heading style={{ fontSize: '5vw' }}>Sounds</Heading>
       </Box>
@@ -244,6 +246,7 @@ export const Section04Sounds = () => {
             height: '40vh',
           },
         }}
+        component='div'
       >
         {musicThumbnailList.map((music, index: number) => (
           <Box
@@ -252,6 +255,7 @@ export const Section04Sounds = () => {
               width: '80vw',
               margin: '0 auto',
             }}
+            component='div'
           >
             <Box
               ref={fruitRefs.current[index]}
@@ -266,6 +270,7 @@ export const Section04Sounds = () => {
                 zIndex: index !== 4 ? 9 : 10,
               }}
               onClick={(e) => gsapClick(e)}
+              component='div'
             >
               <Box
                 sx={{
@@ -273,6 +278,7 @@ export const Section04Sounds = () => {
                   top: '50%',
                   left: '50%',
                 }}
+                component='div'
               >
                 <MusicAudio src={music.music_src} />
               </Box>
@@ -293,6 +299,7 @@ export const Section04Sounds = () => {
                   top: '10%',
                 },
               }}
+              component='div'
             >
               <p>{music.title}</p>
             </Box>

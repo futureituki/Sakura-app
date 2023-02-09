@@ -19,6 +19,7 @@ export const TutorialSwiper = () => {
         position: 'relative',
         minHeight: '600px',
       }}
+      component='div'
     >
       <Swiper
         modules={[Navigation]}
@@ -35,6 +36,7 @@ export const TutorialSwiper = () => {
             sx={{
               padding: '40px 0',
             }}
+            component='div'
           >
             <h2 className={styles.title}>Welcome</h2>
             <Box
@@ -44,12 +46,14 @@ export const TutorialSwiper = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
+              component='div'
             >
               <Box
                 sx={{
                   display: 'flex',
                   gap: '10px',
                 }}
+                component='div'
               >
                 <Newspaper />
                 <h4>最新情報</h4>
@@ -59,6 +63,7 @@ export const TutorialSwiper = () => {
                   display: 'flex',
                   gap: '10px',
                 }}
+                component='div'
               >
                 <Favorite />
                 <h4>いいね機能</h4>

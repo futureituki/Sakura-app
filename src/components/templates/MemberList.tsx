@@ -21,6 +21,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
         width: '60vw',
         maxWidth: '1440px',
       }}
+      component='div'
     >
       {list.map((member: MemberSrc, index: number) => (
         <Link href={`member-list/${member.name}`} key={index}>
@@ -31,6 +32,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
               alignItems: 'start',
               gap: '10px',
             }}
+            component='div'
           >
             <Image src={member.src} alt={member.name} width={250} height={350} css={img} />
             <p>{member.name}</p>
@@ -105,19 +107,21 @@ export const MemberList = () => {
     width: 100%;
   `
   return (
-    <Box sx={{}}>
+    <Box sx={{}} component='div'>
       <TitleBar>MEMBER</TitleBar>
       <Box
         sx={{
           display: 'grid',
           placeItems: 'center',
         }}
+        component='div'
       >
         <FormControl
           sx={{
             width: '300px',
             margin: '20px auto',
           }}
+          component='form'
         >
           <InputLabel id='demo-simple-select-label'>並び替え</InputLabel>
           <Select
@@ -145,9 +149,10 @@ export const MemberList = () => {
           width: '80vw',
           maxWidth: '1440px',
         }}
+        component='div'
       >
         {value === 'syllabary' ? (
-          <Box>
+          <Box component='div'>
             <MemberBox list={memberArr} />
           </Box>
         ) : (
@@ -155,7 +160,11 @@ export const MemberList = () => {
         )}
         {value === 'sign'
           ? signMemberArr?.map((member: any, index: number) => (
-              <Box key={index} sx={{ width: '80vw', margin: '20px auto', maxWidth: '1440px' }}>
+              <Box
+                key={index}
+                sx={{ width: '80vw', margin: '20px auto', maxWidth: '1440px' }}
+                component='div'
+              >
                 {member.length !== undefined ? (
                   <Box
                     sx={{
@@ -164,6 +173,7 @@ export const MemberList = () => {
                       justifyContent: 'start',
                       gap: '20px',
                     }}
+                    component='div'
                   >
                     {member.map((m: MemberObj, index: number) => (
                       <Link href={`member-list/${m.name}`} key={index}>
@@ -172,12 +182,13 @@ export const MemberList = () => {
                             fontSize: '2vw',
                             margin: '20px 0',
                           }}
+                          component='div'
                         >
                           <p css={sign_text}>
                             {index === 0 ? m.sign : <span style={{ opacity: 0 }}>{m.sign}</span>}
                           </p>
                         </Box>
-                        <Box key={index} sx={{ maxWidth: '1440px' }}>
+                        <Box key={index} sx={{ maxWidth: '1440px' }} component='div'>
                           <Image src={m.src} alt='' width={250} height={350} unoptimized={false} />
                           <p css={name}>{m.name}</p>
                         </Box>
@@ -185,7 +196,11 @@ export const MemberList = () => {
                     ))}
                   </Box>
                 ) : (
-                  <Box sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }} key={index}>
+                  <Box
+                    sx={{ width: '80vw', margin: '0 auto', maxWidth: '1440px' }}
+                    key={index}
+                    component='div'
+                  >
                     <p css={sign_text}>{member.sign}</p>
                     <Link href={`member-list/${member.name}`}>
                       <Box
@@ -193,6 +208,7 @@ export const MemberList = () => {
                           fontSize: '2vw',
                           margin: '20px 0',
                         }}
+                        component='div'
                       ></Box>
                       <Image src={member.src} alt='' width={250} height={350} unoptimized={false} />
                       <p>{member.name}</p>
@@ -208,11 +224,13 @@ export const MemberList = () => {
               width: '80vw',
               margin: '0 0 0 auto',
             }}
+            component='div'
           >
             <Box
               sx={{
                 maxWidth: '1440px',
               }}
+              component='div'
             >
               <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                 一期生
@@ -223,6 +241,7 @@ export const MemberList = () => {
               sx={{
                 maxWidth: '1440px',
               }}
+              component='div'
             >
               <Heading visualLevel={2} level={3} style={{ color: '#000' }}>
                 二期生

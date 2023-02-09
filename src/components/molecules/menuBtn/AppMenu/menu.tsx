@@ -22,7 +22,7 @@ export const AppMenu = () => {
   }
 
   return (
-    <Box>
+    <Box component='div'>
       <Button
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
@@ -52,6 +52,7 @@ export const AppMenu = () => {
               alignItems: 'center',
               gap: '10px',
             }}
+            component='div'
           >
             <AssignmentIndIcon />
             <Link href='/mypage'>My Page</Link>
@@ -64,6 +65,7 @@ export const AppMenu = () => {
               alignItems: 'center',
               gap: '10px',
             }}
+            component='div'
           >
             <PeopleIcon />
             <Link href='/community'>Community</Link>
@@ -76,6 +78,7 @@ export const AppMenu = () => {
               alignItems: 'center',
               gap: '10px',
             }}
+            component='div'
           >
             <LibraryMusicIcon />
             <Link href='/music-list'>Music List</Link>
@@ -88,6 +91,7 @@ export const AppMenu = () => {
               alignItems: 'center',
               gap: '10px',
             }}
+            component='div'
           >
             <PeopleAltIcon />
             <Link href='/member-list'>Member List</Link>

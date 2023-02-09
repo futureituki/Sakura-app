@@ -12,6 +12,7 @@ export const TagListPage = () => {
         padding: '20px 0',
         margin: '40px 0',
       }}
+      component='div'
     >
       タグ一覧
       <Box
@@ -21,6 +22,7 @@ export const TagListPage = () => {
           gap: '20px',
           alignItems: 'center',
         }}
+        component='div'
       >
         {memberSrc.map((member: MemberObj, index: number) => (
           <Link href={`/community/tag/${member.name}`} key={index}>
@@ -35,6 +37,7 @@ export const TagListPage = () => {
                 width: 'fit-content',
                 borderRadius: '10px',
               }}
+              component='div'
             >
               <Image
                 src={`/assets/member/${memberSrcMap.get(member.name)?.src}`}
@@ -55,6 +58,7 @@ export const TagListPage = () => {
                   alignItems: 'center',
                   gap: '10px',
                 }}
+                component='div'
               >
                 <span>{member.name}</span>
               </Box>

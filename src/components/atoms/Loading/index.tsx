@@ -88,9 +88,11 @@ export const Loading = () => {
   `
 
   return (
-    <Box css={loading_wrapper}>
-      <Box css={loading_text}>LOADING</Box>
-      <Box css={loading_content}></Box>
+    <Box css={loading_wrapper} component='div'>
+      <Box css={loading_text} component='div'>
+        LOADING
+      </Box>
+      <Box css={loading_content} component='div'></Box>
     </Box>
   )
 }

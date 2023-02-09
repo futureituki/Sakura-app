@@ -36,6 +36,7 @@ export const PasswordResetPage = () => {
         flexDirection: 'column',
         alignItems: 'center',
       }}
+      component='div'
     >
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
@@ -82,6 +83,7 @@ export const PasswordResetPage = () => {
             justifyContent: 'space-around',
             alignItems: 'center',
           }}
+          component='div'
         >
           <PrimaryButton label='send_button' variant='contained' color='#fff' background='#ccc'>
             <Link href='/login'>

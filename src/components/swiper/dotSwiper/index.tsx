@@ -40,6 +40,7 @@ export const DotSwiper: FC<{ data: Props }> = ({ data }) => {
       sx={{
         margin: '40px 0',
       }}
+      component='div'
     >
       <Swiper
         spaceBetween={30}
@@ -56,6 +57,7 @@ export const DotSwiper: FC<{ data: Props }> = ({ data }) => {
               sx={{
                 maxWidth: '1440px',
               }}
+              component='div'
               onClick={() => handleOpen(slide.title)}
             >
               <GeneralModal open={name === slide.title} handleClose={() => handleOpen(slide.title)}>

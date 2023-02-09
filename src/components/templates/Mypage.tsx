@@ -53,6 +53,7 @@ export const MyPage = () => {
             margin: '40px auto',
           },
         }}
+        component='div'
       >
         <Box
           sx={{
@@ -62,6 +63,7 @@ export const MyPage = () => {
               margin: '40px auto',
             },
           }}
+          component='div'
         >
           <Image
             src={`/assets/member_list/${
@@ -72,7 +74,7 @@ export const MyPage = () => {
             height={400}
             style={{ width: '100%', height: '100%' }}
           />
-          <Box css={user_box}>
+          <Box css={user_box} component='div'>
             <p>ユーザーネーム：{user.username}さん</p>
             <p>推しメン：{user.first_favorite.name}</p>
           </Box>
@@ -82,6 +84,7 @@ export const MyPage = () => {
             margin: '40px 0',
             background: '#f2f2f2',
           }}
+          component='div'
         >
           <SwiperInfinitLoop>
             <SwiperSlide style={{ width: '56%' }}>

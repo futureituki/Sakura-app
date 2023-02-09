@@ -83,7 +83,7 @@ export const SpotifySinglePage: FC<Props> = (token) => {
   return (
     <>
       <TitleBar>{tracks.name}</TitleBar>
-      <Box css={main_box}>
+      <Box css={main_box} component='div'>
         <Image
           src={tracks.images[0].url}
           width={300}
@@ -93,10 +93,10 @@ export const SpotifySinglePage: FC<Props> = (token) => {
         />
         <p css={main_title}>{tracks.name}</p>
       </Box>
-      <Box css={music_list}>
+      <Box css={music_list} component='div'>
         {tracks.tracks.items.map((track: any, index: number) => (
-          <Box key={index} css={music_container}>
-            <Box css={music_box}>
+          <Box key={index} css={music_container} component='div'>
+            <Box css={music_box} component='div'>
               <Image
                 src={tracks.images[0].url}
                 width={50}

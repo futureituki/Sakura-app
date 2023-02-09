@@ -32,6 +32,7 @@ export const BlogPage = ({ name }: { name: string }) => {
           width: '94vw',
         },
       }}
+      component='div'
     >
       <p>{name}関連のブログが表示されます</p>
       <Box
@@ -42,6 +43,7 @@ export const BlogPage = ({ name }: { name: string }) => {
             gap: '20px',
           },
         }}
+        component='div'
       >
         {data?.map((blog: BlogObj, index: number) => (
           <>
@@ -59,6 +61,7 @@ export const BlogPage = ({ name }: { name: string }) => {
                     margin: '0',
                   },
                 }}
+                component='div'
               >
                 <Link href={blog.formattedUrl} target={'_blank'} className={styles.link}>
                   {blog.pagemap.hproduct[0].photo.indexOf('jpg') !== -1 ? (
@@ -81,6 +84,7 @@ export const BlogPage = ({ name }: { name: string }) => {
                       justifyContent: 'center',
                       margin: '3vw 0',
                     }}
+                    component='div'
                   >
                     {blog.pagemap.hproduct[0].photo ? (
                       <Image

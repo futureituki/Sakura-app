@@ -35,9 +35,9 @@ export const ListNewsLayout = () => {
     maxwidth: 1440px;
   `
   return (
-    <Box css={container}>
+    <Box css={container} component='div'>
       <Heading style={{ color: '#000' }}>NEWS</Heading>
-      <Box css={content_box}>
+      <Box css={content_box} component='div'>
         <ul>
           {news.map((list: SearchObj, index: number) => (
             <li key={index} css={news_text}>

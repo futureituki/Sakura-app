@@ -10,6 +10,7 @@ export const PostsPagination = ({ numberPages }: { numberPages: number }) => {
         justifyContent: 'center',
         gap: '15px',
       }}
+      component='div'
     >
       {Array.from({ length: pages }, (_, i) => (
         <Link key={i + 1} href={i === 0 ? `/community/posts` : `/community/posts/${i + 1}`}>
@@ -18,6 +19,7 @@ export const PostsPagination = ({ numberPages }: { numberPages: number }) => {
               border: '1px solid #000',
               padding: '5px',
             }}
+            component='div'
           >
             {i + 1}
           </Box>

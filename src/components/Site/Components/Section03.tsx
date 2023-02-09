@@ -51,6 +51,7 @@ export const Section03 = () => {
         sx={{
           maxWidth: '1200px',
         }}
+        component='div'
       >
         <Heading
           level={2}
@@ -62,7 +63,7 @@ export const Section03 = () => {
         <PinningContainer parent_id='first-member' child_id='first'>
           {firstMemberSrc.map((member, index: number) => (
             <PinningItemList key={index}>
-              <Box css={member_info}>
+              <Box css={member_info} component='div'>
                 <SectionImg
                   src={member.src}
                   alt_name={member.name}
@@ -70,8 +71,8 @@ export const Section03 = () => {
                   height={350}
                   id={'img_' + member.src}
                 />
-                <Box css={info_box}>
-                  <Box css={info}>
+                <Box css={info_box} component='div'>
+                  <Box css={info} component='div'>
                     <Typography css={info_text}>
                       {member.ruby}
                       <br></br>
@@ -96,7 +97,7 @@ export const Section03 = () => {
         <PinningContainer parent_id='second-member' child_id='second'>
           {secondMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
-              <Box css={member_info}>
+              <Box css={member_info} component='div'>
                 <SectionImg
                   src={member.src}
                   alt_name={member.name}
@@ -104,8 +105,8 @@ export const Section03 = () => {
                   height={350}
                   id={'img_' + member.src}
                 />
-                <Box css={info_box}>
-                  <Box css={info}>
+                <Box css={info_box} component='div'>
+                  <Box css={info} component='div'>
                     <Typography css={info_text}>テキスト</Typography>
                   </Box>
                 </Box>
@@ -124,7 +125,7 @@ export const Section03 = () => {
         <PinningContainer parent_id='third-member' child_id='third'>
           {thirdMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
-              <Box css={member_info}>
+              <Box css={member_info} component='div'>
                 <SectionImg
                   src={member.src}
                   alt_name={member.name}
@@ -132,8 +133,8 @@ export const Section03 = () => {
                   height={350}
                   id={'img_' + member.src}
                 />
-                <Box css={info_box}>
-                  <Box css={info}>
+                <Box css={info_box} component='div'>
+                  <Box css={info} component='div'>
                     <Typography css={info_text}>テキスト</Typography>
                   </Box>
                 </Box>

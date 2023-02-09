@@ -11,6 +11,7 @@ export const SectionHarf02 = () => {
           margin: '40px auto',
           maxWidth: '1400px',
         }}
+        component='div'
       >
         <Heading
           level={2}
@@ -24,6 +25,7 @@ export const SectionHarf02 = () => {
             display: 'flex',
             alignItems: 'center',
           }}
+          component='div'
         >
           <blockquote style={{ color: '#fff', fontSize: '1.6vw', lineHeight: '1.75' }}>
             <p>
