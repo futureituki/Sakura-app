@@ -1,5 +1,7 @@
 import { Box } from '@mui/system'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import { LoadingContainer } from '../Site/Components/LoadingContainer'
 import { MusicVideo } from '@/components/Site/Components/MusicVideo'
 import { Section01 } from '@/components/Site/Components/Section01'
 import { Section02 } from '@/components/Site/Components/Section02'
@@ -20,7 +22,7 @@ const DynamicSection = dynamic(
 )
 export const HomePage = () => {
   return (
-    <Box>
+    <Box component='div' style={{ overflow: 'hidden' }}>
       <main style={{ background: '#000', overflow: 'hidden' }}>
         <Section01 />
         <Box
@@ -28,6 +30,7 @@ export const HomePage = () => {
             maxWidth: '1300px',
             margin: '0 auto',
           }}
+          component='div'
         >
           <SectionHarf02 />
           <Section02 />
@@ -36,6 +39,7 @@ export const HomePage = () => {
               width: '80vw',
               margin: '0 auto',
             }}
+            component='div'
           >
             <Heading
               level={2}

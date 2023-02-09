@@ -6,7 +6,7 @@ import { MusicObj } from '@/types/constant/music'
 
 export const MusicListPage = () => {
   return (
-    <Box>
+    <Box component='div'>
       <TitleBar>Music List</TitleBar>
       <Box
         sx={{
@@ -16,6 +16,7 @@ export const MusicListPage = () => {
           justifyContent: 'center',
           gap: '15px',
         }}
+        component='div'
       >
         {musicList.map((music: MusicObj, index: number) => (
           <Box
@@ -23,6 +24,7 @@ export const MusicListPage = () => {
             sx={{
               maxWidth: '1400px',
             }}
+            component='div'
           >
             <Music
               src={music.src}

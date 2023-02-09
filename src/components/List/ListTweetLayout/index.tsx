@@ -28,18 +28,16 @@ export const ListTweetLayout = () => {
     }
   `
   return (
-    <Box>
-      <Box css={twitter_box}>
-        <a
-          className='twitter-timeline'
-          href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
-          data-width='100%'
-          data-height='700'
-          style={{ position: 'relative', pointerEvents: 'none' }}
-        >
-          <LargeProgress />
-        </a>
-      </Box>
+    <Box css={twitter_box} component='div'>
+      <a
+        className='twitter-timeline'
+        href='https://twitter.com/sakurazaka46?ref_src=twsrc%5Etfw'
+        data-width='100%'
+        data-height='700'
+        style={{ position: 'relative', pointerEvents: 'none' }}
+      >
+        <LargeProgress />
+      </a>
     </Box>
   )
 }

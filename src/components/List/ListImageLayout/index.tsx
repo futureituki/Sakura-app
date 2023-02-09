@@ -59,6 +59,7 @@ export const ListImageLayout = () => {
         width: '90vw',
         margin: '40px auto',
       }}
+      component='div'
     >
       <Heading style={{ color: '#000' }}>Gallery</Heading>
       <FormControl fullWidth>

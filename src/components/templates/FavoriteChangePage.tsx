@@ -55,9 +55,10 @@ export const FavoriteChangePage = () => {
     setFavorite(selectMember)
   }
   return (
-    <Box>
+    <Box component='div'>
       <TitleBar>推しメン変更画面</TitleBar>
       <Box
+        component='div'
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -69,12 +70,14 @@ export const FavoriteChangePage = () => {
         登録する枠をタップしてください
       </Box>
       <Box
+        component='div'
         sx={{
           background: '#f2f2f2',
           padding: '20px 0',
         }}
       >
         <Box
+          component='div'
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -109,6 +112,7 @@ export const FavoriteChangePage = () => {
           に選択するメンバーを決めてください
         </FormLabel>
         <Box
+          component='div'
           sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -124,6 +128,7 @@ export const FavoriteChangePage = () => {
               {memberSrc.map((member: Favorite, index: number) => (
                 <Box
                   key={index}
+                  component='div'
                   sx={{
                     maxWidth: '1440px',
                     width: '80vw',
@@ -166,6 +171,7 @@ export const FavoriteChangePage = () => {
                     }}
                   />
                   <Box
+                    component='div'
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -213,6 +219,7 @@ export const FavoriteChangePage = () => {
           </FormControl>
         </Box>
         <Box
+          component='div'
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -250,6 +257,7 @@ export const FavoriteChangePage = () => {
       </Box>
       <SelectModal open={open} handleClose={handleClose}>
         <Box
+          component='div'
           sx={{
             width: '60vw',
           }}
@@ -274,6 +282,7 @@ export const FavoriteChangePage = () => {
           />
           <p style={{ fontSize: '5vw' }}>{favorite.name}</p>
           <Box
+            component='div'
             sx={{
               display: 'flex',
               flexDirection: 'column',

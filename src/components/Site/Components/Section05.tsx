@@ -171,6 +171,7 @@ export const Section05 = () => {
               width: '70vw',
             },
           }}
+          component='div'
         >
           <Image
             src={photo.src}

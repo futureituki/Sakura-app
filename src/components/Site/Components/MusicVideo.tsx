@@ -402,21 +402,23 @@ export const MusicVideo = () => {
   `
   console.log(indexVideo)
   return (
-    <Box css={container}>
+    <Box css={container} component='div'>
       <Heading style={{ color: '#fff' }}>Music Video</Heading>
-      <Box css={box}>
-        <Box css={area}>
+      <Box css={box} component='div'>
+        <Box css={area} component='div'>
           <Box
             css={music_box}
             sx={{
               display: 'grid',
               placeItems: 'center',
             }}
+            component='div'
           >
             <Box
               sx={{
                 position: 'relative',
               }}
+              component='div'
             >
               {show ? (
                 <YouTube
@@ -434,12 +436,12 @@ export const MusicVideo = () => {
                   unoptimized
                 />
               )}
-              <Box css={button_box}>
+              <Box css={button_box} component='div'>
                 {loading ? <Loading /> : <></>}
                 {show ? <></> : <ClickPlayButton onClick={changeYoutube} />}
               </Box>
             </Box>
-            <Box>
+            <Box component='div'>
               <p css={video_title}>{video?.items[0].snippet.title}</p>
               <p css={video_title}>
                 {video?.items[0].contentDetails.videoPublishedAt.slice(
@@ -449,15 +451,15 @@ export const MusicVideo = () => {
               </p>
             </Box>
           </Box>
-          <Box css={action_box}>
-            <Box css={comment_box}>
+          <Box css={action_box} component='div'>
+            <Box css={comment_box} component='div'>
               <CommentButton
                 onClick={() =>
                   getVideoComment(video?.items[0].snippet.resourceId.videoId as string)
                 }
               />
             </Box>
-            <Box css={action_buttons}>
+            <Box css={action_buttons} component='div'>
               {video?.prevPageToken ? (
                 <Box
                   component='button'
@@ -489,33 +491,39 @@ export const MusicVideo = () => {
             </p>
           ))
         : ''}
-      <Box css={switch_box} id='tgl_box'>
-        <Box css={change_text} id='tgl_text'>
+      <Box css={switch_box} id='tgl_box' component='div'>
+        <Box css={change_text} id='tgl_text' component='div'>
           iNDEX
         </Box>
-        <Box css={hange_area} onClick={switchToggle}>
-          <Box css={hange_dot} id='tgl_dot'></Box>
+        <Box css={hange_area} onClick={switchToggle} component='div'>
+          <Box css={hange_dot} id='tgl_dot' component='div'></Box>
         </Box>
       </Box>
-      <Box css={bg_caten} id='bg_animation'>
+      <Box css={bg_caten} id='bg_animation' component='div'>
         <Loading />
       </Box>
-      <Box css={modal_box} id='modal'>
-        <Box css={disc_container} id='disc'>
+      <Box css={modal_box} id='modal' component='div'>
+        <Box css={disc_container} id='disc' component='div'>
           {video_disc.map((disc, index) => (
-            <Box key={index} css={disc_box} onClick={() => indexSelectYoutube(disc.name)}>
+            <Box
+              key={index}
+              css={disc_box}
+              onClick={() => indexSelectYoutube(disc.name)}
+              component='div'
+            >
               <Image src={disc.src} alt='' width={0} height={0} css={disc_img} />
               <Typography css={disc_text}>{disc.name}</Typography>
             </Box>
           ))}
         </Box>
-        <Box id='indexVideoContainer' css={s}>
+        <Box id='indexVideoContainer' css={s} component='div'>
           {indexVideo ? (
-            <Box css={selectIndexContainer}>
+            <Box css={selectIndexContainer} component='div'>
               <Box
                 sx={{
                   position: 'relative',
                 }}
+                component='div'
               >
                 {selectShow ? (
                   <YouTube
@@ -533,23 +541,23 @@ export const MusicVideo = () => {
                     unoptimized
                   />
                 )}
-                <Box css={button_box}>
+                <Box css={button_box} component='div'>
                   {loading ? <Loading /> : <></>}
                   {selectShow ? <></> : <ClickPlayButton onClick={changeYoutubeIndex} />}
                 </Box>
                 <Typography css={video_title}>{indexVideo?.items[0].snippet.title}</Typography>
-                <Box onClick={back}>
+                <Box onClick={back} component='div'>
                   <Button>BACK</Button>
                 </Box>
               </Box>
-              <Box>
+              {/* <Box>
                 {/* <Typography css={video_title}>
                 {indexVideo?.items[0].snippet.publishTime.slice(
                   0,
                   video?.items[0].snippet.publishTime.indexOf('T'),
                 )}
               </Typography> */}
-              </Box>
+              {/* </Box> */}
             </Box>
           ) : (
             ''

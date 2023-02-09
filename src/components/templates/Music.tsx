@@ -109,6 +109,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
           margin: '10px 0 0 0',
           width: '95vw',
         }}
+        component='div'
         onClick={handleTogglePlay}
       >
         <Image
@@ -127,6 +128,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
             width: '80%',
             padding: '20px 0',
           }}
+          component='div'
         >
           <p>{number}</p>
           <p>{name}</p>
@@ -146,6 +148,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
           bottom: `${count}px`,
           left: '0',
         }}
+        component='div'
         style={
           playState === 'play'
             ? { display: 'block', zIndex: 999 }
@@ -159,6 +162,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
               gap: '15px',
               alignItems: 'center',
             }}
+            component='div'
           >
             <Image
               src={img}
@@ -260,7 +264,7 @@ export const MusicAudio = ({ src }: { src: string }) => {
 
   return (
     <>
-      <Box>
+      <Box component='div'>
         <button type='button' onClick={handleTogglePlay}>
           {playState === 'stop' && (
             <Image src={'/assets/start.png'} alt='start-button' width={30} height={30} />

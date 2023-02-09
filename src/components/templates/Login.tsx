@@ -58,6 +58,7 @@ const LoginPage: NextPage = () => {
     <div className={styles.form}>
       <div className={styles.form_container}>
         <Box
+          component='div'
           sx={{
             marginTop: '10px',
           }}
@@ -68,6 +69,7 @@ const LoginPage: NextPage = () => {
         </Box>
         <form onSubmit={handleSubmit(isValid, isInValid)}>
           <Box
+            component='div'
             sx={{
               marginTop: '10px',
               display: 'flex',
@@ -109,6 +111,7 @@ const LoginPage: NextPage = () => {
             )}
           </Box>
           <Box
+            component='div'
             sx={{
               marginTop: '10px',
               display: 'flex',
@@ -152,6 +155,7 @@ const LoginPage: NextPage = () => {
             )}
           </Box>
           <Box
+            component='div'
             sx={{
               marginTop: '16px',
               fontSize: '10px',

@@ -63,7 +63,7 @@ export const Section06 = () => {
       <Heading visualLevel={2} level={2}>
         SNS
       </Heading>
-      <Box css={sns_container}>
+      <Box css={sns_container} component='div'>
         {socialMediaLinks.map((social, index) => (
           <Link href={social.link} css={sns_box} key={index} style={{ background: social.color }}>
             <span css={sns_icon}>{social.icon}</span>

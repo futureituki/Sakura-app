@@ -134,21 +134,21 @@ export const SpotifyRankingPage: FC<Props> = (token) => {
     margin: 60px 0;
   `
   return (
-    <Box css={container}>
-      <Box css={links_box}>
-        <Box>
+    <Box component='div' css={container}>
+      <Box component='div' css={links_box}>
+        <Box component='div'>
           <Link href='/spotify/single'>シングル</Link>
         </Box>
-        <Box>
+        <Box component='div'>
           <Link href='/spotify/ranking'>ランキング</Link>
         </Box>
       </Box>
       <Typography css={ranking_text}>{today}時点のランキング</Typography>
-      <Box>
-        <Box css={music_list}>
-          <Box css={top_container}>
+      <Box component='div'>
+        <Box component='div' css={music_list}>
+          <Box component='div' css={top_container}>
             {top_tracks.map((track: Ranking, index: number) => (
-              <Box css={top_music_box} key={index}>
+              <Box css={top_music_box} key={index} component='div'>
                 {index + 1 === 1 ? <Typography css={ranking_first}>１位</Typography> : ''}
                 {index + 1 === 2 ? <Typography css={ranking_second}>２位</Typography> : ''}
                 {index + 1 === 3 ? <Typography css={ranking_third}>３位</Typography> : ''}
@@ -160,7 +160,7 @@ export const SpotifyRankingPage: FC<Props> = (token) => {
                   css={ranking_top_img}
                   unoptimized
                 />
-                <Box css={top_music_information}>
+                <Box css={top_music_information} component='div'>
                   <Typography>{track.name}</Typography>
                   <Link href={track.uri}>
                     <LinkOff />
@@ -169,10 +169,10 @@ export const SpotifyRankingPage: FC<Props> = (token) => {
               </Box>
             ))}
           </Box>
-          <Box css={ranking_box}>
+          <Box css={ranking_box} component='div'>
             {tracks.tracks.map((track: Ranking, index: number) =>
               index + 1 >= 4 ? (
-                <Box css={music_box} key={index}>
+                <Box css={music_box} key={index} component='div'>
                   <Typography css={ranking_fourth}>{index + 1}</Typography>
                   <Image
                     src={track.album.images[0].url}

@@ -23,9 +23,10 @@ export const Member = ({ name }: { name: string }) => {
     place-items: center;
   `
   return (
-    <Box>
+    <Box component='div'>
       <TitleBar>MEMBER</TitleBar>
       <Box
+        component='div'
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -37,6 +38,7 @@ export const Member = ({ name }: { name: string }) => {
         <span>{name}</span>
       </Box>
       <Box
+        component='div'
         sx={{
           width: '85vw',
           margin: '40px auto',
@@ -44,6 +46,7 @@ export const Member = ({ name }: { name: string }) => {
         }}
       >
         <Box
+          component='div'
           sx={{
             maxWidth: '1440px',
           }}
@@ -57,12 +60,14 @@ export const Member = ({ name }: { name: string }) => {
           />
         </Box>
         <Box
+          component='div'
           sx={{
             width: '85vw',
             margin: '0 auto',
           }}
         >
           <Box
+            component='div'
             sx={{
               margin: '20px 0',
             }}
@@ -70,6 +75,7 @@ export const Member = ({ name }: { name: string }) => {
             <h1 className={styles.name}>{`${selectMember.name}`}</h1>
           </Box>
           <Box
+            component='div'
             sx={{
               margin: '20px 0',
               display: 'flex',
@@ -78,6 +84,7 @@ export const Member = ({ name }: { name: string }) => {
             }}
           >
             <Box
+              component='div'
               sx={{
                 display: 'flex',
                 gap: '15px',
@@ -88,6 +95,7 @@ export const Member = ({ name }: { name: string }) => {
               <span className={styles.information}>{`${selectMember.birthday}`}</span>
             </Box>
             <Box
+              component='div'
               sx={{
                 display: 'flex',
                 gap: '15px',
@@ -98,6 +106,7 @@ export const Member = ({ name }: { name: string }) => {
               <span className={styles.information}>{`${selectMember.sign}`}</span>
             </Box>
             <Box
+              component='div'
               sx={{
                 display: 'flex',
                 gap: '15px',
@@ -108,6 +117,7 @@ export const Member = ({ name }: { name: string }) => {
               <span className={styles.information}>{`${selectMember.birthplace}`}</span>
             </Box>
             <Box
+              component='div'
               sx={{
                 display: 'flex',
                 gap: '15px',
@@ -118,6 +128,7 @@ export const Member = ({ name }: { name: string }) => {
               <span className={styles.information}>{`${selectMember.height}`}</span>
             </Box>
             <Box
+              component='div'
               sx={{
                 display: 'flex',
                 gap: '15px',

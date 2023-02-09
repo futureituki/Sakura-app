@@ -47,6 +47,7 @@ export const BlogHomePage = () => {
           width: '94vw',
         },
       }}
+      component='div'
     >
       <FormControl
         sx={{
@@ -77,6 +78,7 @@ export const BlogHomePage = () => {
             gap: '20px',
           },
         }}
+        component='div'
       >
         {data?.map((blog: BlogObj, index: number) => (
           <>
@@ -94,6 +96,7 @@ export const BlogHomePage = () => {
                     margin: '0',
                   },
                 }}
+                component='div'
               >
                 <Link href={blog.formattedUrl} target={'_blank'} className={styles.link}>
                   {blog.pagemap.hproduct[0].photo.indexOf('jpg') !== -1 ? (
@@ -116,6 +119,7 @@ export const BlogHomePage = () => {
                       justifyContent: 'center',
                       margin: '3vw 0',
                     }}
+                    component='div'
                   >
                     {blog.pagemap.hproduct[0].photo ? (
                       <Image

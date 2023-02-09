@@ -11,19 +11,21 @@ type Favorite = {
 export const ChangeOshimenPage = () => {
   const user = useGetUser().user
   return (
-    <Box>
+    <Box component='div'>
       <TitleBar>推しメン変更</TitleBar>
       <Box
         sx={{
           display: 'grid',
           placeItems: 'center',
         }}
+        component='div'
       >
         <Box
           sx={{
             margin: '2vw 0',
             fontSize: '2.6vw',
           }}
+          component='div'
         >
           <h2>推しメンの登録とは</h2>
         </Box>
@@ -36,6 +38,7 @@ export const ChangeOshimenPage = () => {
             maxWidth: '1440px',
             textAlign: 'center',
           }}
+          component='div'
         >
           <p>
             1名の「推しメン」と3名の「気になる」メンバーを登録することが可能です。<br></br>
@@ -46,6 +49,7 @@ export const ChangeOshimenPage = () => {
           sx={{
             margin: '20px 0',
           }}
+          component='div'
         >
           <p>変更したいメンバーを選択してください</p>
         </Box>
@@ -61,6 +65,7 @@ export const ChangeOshimenPage = () => {
             margin: '40px auto',
           },
         }}
+        component='div'
       >
         <Box
           sx={{
@@ -76,6 +81,7 @@ export const ChangeOshimenPage = () => {
               margin: '40px auto',
             },
           }}
+          component='div'
         >
           推しメン
         </Box>
@@ -83,7 +89,7 @@ export const ChangeOshimenPage = () => {
           href={{ pathname: 'favorite_change', query: user.first_favorite }}
           as='favorite_change'
         >
-          <Box>
+          <Box component='div'>
             <Box
               sx={{
                 display: 'flex',
@@ -91,6 +97,7 @@ export const ChangeOshimenPage = () => {
                 justifyContent: 'center',
                 gap: '20px',
               }}
+              component='div'
             >
               <p style={{ width: '18vw', fontSize: '2.6vw' }}>{user.first_favorite.name}</p>
               <Image
@@ -125,6 +132,7 @@ export const ChangeOshimenPage = () => {
               margin: '40px auto',
             },
           }}
+          component='div'
         >
           気になる
         </Box>
@@ -135,6 +143,7 @@ export const ChangeOshimenPage = () => {
             alignItems: 'center',
             gap: '30px',
           }}
+          component='div'
         >
           {user.favorite.map((member: Favorite, index: number) => (
             <Link
@@ -142,7 +151,7 @@ export const ChangeOshimenPage = () => {
               as='favorite_change'
               key={index}
             >
-              <Box key={index}>
+              <Box key={index} component='div'>
                 <Box
                   sx={{
                     display: 'flex',
@@ -150,6 +159,7 @@ export const ChangeOshimenPage = () => {
                     justifyContent: 'center',
                     gap: '20px',
                   }}
+                  component='div'
                 >
                   <p style={{ width: '18vw', fontSize: '2.4vw' }}>{member.name}</p>
                   <Image

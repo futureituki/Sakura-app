@@ -20,6 +20,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
         sx={{
           margin: '20px 0',
         }}
+        component='div'
       >
         <PrimaryButton
           label='photo'
@@ -55,6 +56,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
             justifyContent: 'center',
           },
         }}
+        component='div'
       >
         {communitys.map((data: Community, index: number) => (
           <Box
@@ -64,6 +66,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
               maxWidth: '500px',
               '@media screen and (min-width:640)': {},
             }}
+            component='div'
           >
             <Image
               src={data.url}
@@ -84,6 +87,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
                 gap: '10px',
                 margin: '20px 0',
               }}
+              component='div'
             >
               {data.tag?.map((tagName: string, index: number) => (
                 <Link key={index} href={`/community/tag/${tagName}`}>
@@ -95,6 +99,7 @@ export const CommunityPage: FC<Props> = ({ communitys }) => {
                       width: 'fit-content',
                       borderRadius: '10px',
                     }}
+                    component='div'
                   >
                     <span>{tagName}</span>
                   </Box>

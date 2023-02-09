@@ -23,7 +23,7 @@ const MusicList: NextPageWithLayout = () => {
     <>
       <MusicListPage />
 
-      <Box sx={{}}>
+      <Box sx={{}} component='div'>
         <p style={{ fontSize: '4vw' }}>もっと聞きたい人はSPOTIFYにログインしてね</p>
         <p style={{ fontSize: '2vw' }}>※ログイン後この画面に再度リダイレクトされます</p>
         <PrimaryButton

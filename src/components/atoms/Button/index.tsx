@@ -38,6 +38,7 @@ export const PrimaryButton = ({
       sx={{
         width: 'fit-content',
       }}
+      component='button'
     >
       <span style={{ fontSize: size, padding: padding }}>{children}</span>
     </Button>

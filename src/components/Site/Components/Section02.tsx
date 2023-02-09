@@ -78,6 +78,7 @@ export const Section02 = () => {
             sx={{
               margin: '20px 0',
             }}
+            component='div'
           >
             <Box
               sx={{
@@ -85,6 +86,7 @@ export const Section02 = () => {
                 flexWrap: 'wrap',
                 gap: '10px',
               }}
+              component='div'
             >
               <Image
                 src='/assets/live-1.jpeg'
@@ -116,6 +118,7 @@ export const Section02 = () => {
             sx={{
               margin: '4vw 0',
             }}
+            component='div'
           >
             <h3 style={{ fontSize: '2vw' }}>
               興味が湧いてもらえたら、下のライブ映像を見てほしい
@@ -131,6 +134,7 @@ export const Section02 = () => {
                 borderBottom: '2px solid #fff',
                 padding: '20px 0',
               }}
+              component='div'
             >
               <GeneralModal open={open} handleClose={handleOpen}>
                 <YoutubePopUp id={'uxC0v1902dE'} />
@@ -143,6 +147,7 @@ export const Section02 = () => {
                   width: '90vw',
                   maxWidth: '1300px',
                 }}
+                component='div'
               >
                 <Box>
                   <MusicNoteIcon />
@@ -168,6 +173,7 @@ export const Section02 = () => {
                 sx={{
                   margin: '40px 0',
                 }}
+                component='div'
               >
                 <img
                   src={'/assets/slider/slider1.jpeg'}
@@ -183,6 +189,7 @@ export const Section02 = () => {
                   gap: '10px',
                   alignItems: 'center',
                 }}
+                component='div'
               ></Box>
             </Box>
           </Box>

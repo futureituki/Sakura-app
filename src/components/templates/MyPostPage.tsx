@@ -35,9 +35,9 @@ export const MyPostPage = () => {
   return (
     <>
       <TitleBar>My Post</TitleBar>
-      <Box css={box}>
+      <Box css={box} component='div'>
         {posts.map((post: Community, index: number) => (
-          <Box key={index} css={item_box}>
+          <Box key={index} css={item_box} component='div'>
             <Image
               src={post.url}
               alt=''

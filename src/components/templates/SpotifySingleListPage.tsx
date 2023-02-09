@@ -17,12 +17,12 @@ export const SpotifySinglePage = () => {
     margin: 0 auto;
   `
   return (
-    <Box css={container}>
-      <Box css={links_box}>
-        <Box>
+    <Box css={container} component='div'>
+      <Box css={links_box} component='div'>
+        <Box component='div'>
           <Link href='/spotify/single'>シングル</Link>
         </Box>
-        <Box>
+        <Box component='div'>
           <Link href='/spotify/ranking'>ランキング</Link>
         </Box>
       </Box>
@@ -34,6 +34,7 @@ export const SpotifySinglePage = () => {
           justifyContent: 'center',
           gap: '40px',
         }}
+        component='div'
       >
         {music_id.map((music: Music, index: number) =>
           music.type !== 'album' ? (
@@ -45,6 +46,7 @@ export const SpotifySinglePage = () => {
                   justifyContent: 'center',
                   gap: '10px',
                 }}
+                component='div'
               >
                 <Image
                   src={`/assets/${music.src}`}
@@ -61,6 +63,7 @@ export const SpotifySinglePage = () => {
                     width: 'fit-Content',
                     fontSize: '2vw',
                   }}
+                  component='div'
                 >
                   <span>{music.type}</span>
                 </Box>

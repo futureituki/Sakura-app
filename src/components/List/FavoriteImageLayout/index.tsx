@@ -19,7 +19,7 @@ export const FavoriteImageLayout = () => {
     await dispatch(favoriteImgDelete({ uid, src, srcs }))
   }
   return (
-    <Box>
+    <Box component='div'>
       <ul className={styles.ul}>
         {srcs.map((src: string, index: number) => (
           <li className={styles.li} key={index}>

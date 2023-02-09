@@ -47,19 +47,19 @@ export const SpotifyPage = () => {
     gap: 40px;
   `
   return (
-    <Box css={container}>
-      <Box css={links_box}>
-        <Box css={link}>
+    <Box css={container} component='div'>
+      <Box css={links_box} component='div'>
+        <Box css={link} component='div'>
           <Link href='/spotify/single'>シングル</Link>
         </Box>
-        <Box css={link}>
+        <Box css={link} component='div'>
           <Link href='/spotify/ranking'>ランキング</Link>
         </Box>
       </Box>
-      <Box css={music_area}>
+      <Box css={music_area} component='div'>
         {music_id.map((music: Music, index: number) => (
           <Link href={`/spotify/single/${music.id}`} key={index}>
-            <Box css={music_box}>
+            <Box css={music_box} component='div'>
               <Image
                 src={`/assets/${music.src}`}
                 alt={music.title}
@@ -67,7 +67,7 @@ export const SpotifyPage = () => {
                 height={400}
                 css={main_img}
               />
-              <Box css={type_text}>
+              <Box css={type_text} component='div'>
                 <Typography>{music.type}</Typography>
               </Box>
               <Typography css={title_text}>{music.title}</Typography>

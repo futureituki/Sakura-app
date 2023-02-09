@@ -27,6 +27,7 @@ export const ListBlogLayout = () => {
 
   return (
     <Box
+      component='div'
       sx={{
         width: '80vw',
         margin: '0 auto',
@@ -36,6 +37,7 @@ export const ListBlogLayout = () => {
       }}
     >
       <Box
+        component='div'
         sx={{
           '@media screen and (min-width:900px)': {
             display: 'flex',
@@ -48,6 +50,7 @@ export const ListBlogLayout = () => {
           <>
             {blog.pagemap.hproduct ? (
               <Box
+                component='div'
                 key={index}
                 sx={{
                   borderTop: '1px solid #ccc',
@@ -75,6 +78,7 @@ export const ListBlogLayout = () => {
                     ''
                   )}
                   <Box
+                    component='div'
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
