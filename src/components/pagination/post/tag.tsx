@@ -16,6 +16,7 @@ export const TagPagination = ({
         justifyContent: 'center',
         gap: '15px',
       }}
+      component='div'
     >
       {Array.from({ length: pages }, (_, i) => (
         <Link
@@ -27,6 +28,7 @@ export const TagPagination = ({
               border: '1px solid #000',
               padding: '5px',
             }}
+            component='div'
           >
             {i + 1}
           </Box>
