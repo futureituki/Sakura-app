@@ -25,7 +25,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/templates/Music.tsx",
-    "src/spotify/spotify.js"
+    "src/spotify/spotify.js",
+    "src/components/atoms/Loading/progress/circle/animated.js"
   ],
   "exclude": ["node_modules"]
 }

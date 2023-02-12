@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { LinkOff, OneKOutlined, ThreeKOutlined, TwoKOutlined } from '@mui/icons-material'
+import InsertLinkIcon from '@mui/icons-material/InsertLink'
 import { Box, Typography } from '@mui/material'
 import axios from 'axios'
 import moment from 'moment'
@@ -163,7 +163,7 @@ export const SpotifyRankingPage: FC<Props> = (token) => {
                 <Box css={top_music_information} component='div'>
                   <Typography>{track.name}</Typography>
                   <Link href={track.uri}>
-                    <LinkOff />
+                    <InsertLinkIcon />
                   </Link>
                 </Box>
               </Box>
@@ -184,7 +184,7 @@ export const SpotifyRankingPage: FC<Props> = (token) => {
                   />
                   <Typography>{track.name}</Typography>
                   <Link href={track.uri}>
-                    <LinkOff />
+                    <InsertLinkIcon />
                   </Link>
                 </Box>
               ) : (

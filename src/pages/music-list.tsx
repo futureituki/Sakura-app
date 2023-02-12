@@ -17,15 +17,13 @@ const MusicList: NextPageWithLayout = () => {
   const router = useRouter()
   const spotify_button = async () => {
     await axios.post('/api/auth/authorize')
-    router.push('/spotify')
+    router.push('/discography')
   }
   return (
     <>
       <MusicListPage />
 
       <Box sx={{}} component='div'>
-        <p style={{ fontSize: '4vw' }}>もっと聞きたい人はSPOTIFYにログインしてね</p>
-        <p style={{ fontSize: '2vw' }}>※ログイン後この画面に再度リダイレクトされます</p>
         <PrimaryButton
           variant='contained'
           label='login'

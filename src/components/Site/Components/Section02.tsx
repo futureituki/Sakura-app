@@ -149,8 +149,14 @@ export const Section02 = () => {
                 }}
                 component='div'
               >
-                <Box component='div'>
-                  <MusicNoteIcon />
+                <Box
+                  component='div'
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <MusicNoteIcon style={{ fontSize: '2.6vw' }} />
                   <span style={{ fontSize: '2.6vw' }}>条件反射で泣けてくる</span>
                 </Box>
                 <Box

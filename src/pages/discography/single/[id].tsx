@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { LinkOff, Router } from '@mui/icons-material'
+import { Link, Router } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'

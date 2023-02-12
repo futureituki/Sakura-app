@@ -59,7 +59,7 @@ export const Section06 = () => {
     }
   `
   return (
-    <section className={styles.sec_sn}>
+    <section className={styles.sec_sn} style={{ background: '#fff' }}>
       <Heading visualLevel={2} level={2}>
         SNS
       </Heading>
