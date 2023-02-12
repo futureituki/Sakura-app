@@ -25,6 +25,7 @@ export const ListTweetLayout = () => {
     width: 100%;
     @media (min-width: 800px) {
       width: 50%;
+      margin: 0 auto;
     }
   `
   return (

@@ -2,6 +2,8 @@ import { css } from '@emotion/react'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
+import { TitleBar } from '@/components/atoms/TitleBar'
+import { SpotifyLink } from '@/components/spotifylink'
 import { music_id } from '@/constant/music-list'
 import { Music } from '@/types/spotify'
 
@@ -9,13 +11,6 @@ export const SpotifyPage = () => {
   const container = css`
     max-width: 1400px;
     margin: 0 auto;
-  `
-  const link = css``
-  const links_box = css`
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    margin: 60px 0;
   `
   const main_img = css`
     width: 40vw;
@@ -48,17 +43,16 @@ export const SpotifyPage = () => {
   `
   return (
     <Box css={container} component='div'>
-      <Box css={links_box} component='div'>
-        <Box css={link} component='div'>
-          <Link href='/spotify/single'>シングル</Link>
-        </Box>
-        <Box css={link} component='div'>
-          <Link href='/spotify/ranking'>ランキング</Link>
-        </Box>
-      </Box>
+      <TitleBar>DISCOGRAPHY</TitleBar>
+      <SpotifyLink
+        links={[
+          { name: 'SINGLE', href: '/discography/single' },
+          { name: 'RANKING', href: '/discography/ranking' },
+        ]}
+      />
       <Box css={music_area} component='div'>
         {music_id.map((music: Music, index: number) => (
-          <Link href={`/spotify/single/${music.id}`} key={index}>
+          <Link href={`/discography/single/${music.id}`} key={index}>
             <Box css={music_box} component='div'>
               <Image
                 src={`/assets/${music.src}`}

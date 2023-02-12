@@ -13,6 +13,7 @@ export const ListNewsLayout = () => {
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&sort=date&dateRestrict=d6&q=ニュース`
   const fetcher = async (url: string) => {
     return await axios.get(url).then((data) => {
+      console.log(data.data.item)
       return data.data.items
     })
   }

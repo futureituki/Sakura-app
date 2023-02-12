@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { LinkOff } from '@mui/icons-material'
+import InsertLinkIcon from '@mui/icons-material/InsertLink'
 import { Box, Typography } from '@mui/material'
 import axios from 'axios'
 import Image from 'next/image'
@@ -80,9 +80,10 @@ export const SpotifySinglePage: FC<Props> = (token) => {
     flex-direction: column;
     maxwidth: 1440px;
   `
+  console.log(tracks)
   return (
     <>
-      <TitleBar>{tracks.name}</TitleBar>
+      <TitleBar>DISCOGRAPHY</TitleBar>
       <Box css={main_box} component='div'>
         <Image
           src={tracks.images[0].url}
@@ -92,6 +93,7 @@ export const SpotifySinglePage: FC<Props> = (token) => {
           css={main_img}
         />
         <p css={main_title}>{tracks.name}</p>
+        <p>{tracks.release_date}</p>
       </Box>
       <Box css={music_list} component='div'>
         {tracks.tracks.items.map((track: any, index: number) => (
@@ -106,11 +108,11 @@ export const SpotifySinglePage: FC<Props> = (token) => {
               />
               <p>{track.name}</p>
             </Box>
-            <video controls playsInline muted css={video}>
+            <video controls playsInline css={video}>
               <source src={track.preview_url} type='video/mp4' />
             </video>
             <Link href={track.external_urls.spotify}>
-              <LinkOff />
+              <InsertLinkIcon />
             </Link>
           </Box>
         ))}

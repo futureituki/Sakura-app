@@ -1,22 +1,24 @@
 import { css, keyframes } from '@emotion/react'
 import { Box } from '@mui/material'
-import { Effects } from '@react-three/drei'
-import { Canvas, extend } from '@react-three/fiber'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useRef } from 'react'
-import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass'
-import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass'
-import { CircleProgress } from '@/components/atoms/Loading/progress/circle'
-import { PassEffects } from '@/components/three/effect/passEffect'
-import { Scene } from '@/components/three/scene'
+import { useEffect, useRef, useState } from 'react'
+import { CircularProgressWithLabel } from '@/components/atoms/Loading/progress/circle'
 import styles from '@/styles/Site.module.css'
-
-extend({ GlitchPass, BloomPass })
 gsap.registerPlugin(ScrollTrigger)
 export const Section01 = () => {
+  const [progress, setProgress] = useState<number>(0)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => (prevProgress >= 100 ? 100 : prevProgress + 10))
+    }, 300)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
   const textRef = useRef<HTMLHeadingElement>(null)
   const router = useRouter()
   const tl = gsap.timeline()
@@ -38,7 +40,7 @@ export const Section01 = () => {
     })
       .to('#bg-sand', {
         top: '100%',
-        delay: 5,
+        delay: 4,
       })
       .to('#bg-sand', {
         opacity: 0,
@@ -166,83 +168,67 @@ export const Section01 = () => {
     transform:translateX(500%);
   }
   `
-  const canvas_box = css`
+  const video_area = css`
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.6;
+      z-index: 1;
+    }
+  `
+  const video = css`
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 177.77777778vh;
+    height: 56.25vw;
+    min-height: 100%;
+    min-width: 100%;
   `
   // animation:10s infinite ${transanimation};
   return (
     <Box css={container} component='div'>
-      <Box css={canvas_box} component='div'>
-        <Canvas
-          orthographic
-          // camera={{
-          //   position: [-10, 40, 80],
-          //   fov: 100,
-          //   aspect: 2800 / 1000,
-          //   near: 0.1,
-          //   far: 2000
-          // }}
-          shadows
+      <Box css={video_area} component='div'>
+        <video
+          id='video'
+          css={video}
+          poster='https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-3-1/img/movie.jpg'
+          webkit-playsinline
+          muted
+          autoPlay
+          loop
         >
-          {/* <group position={[600, -40, -10]}>
-          <Scene
-            photo_url={'/assets/photo/art-copy1st.jpeg'}
-            video_url={'/assets/move/nobody.mp4'}
-          />
-          <Effects>
-            {/* <bloomPass attachArray="passes" /> */}
-          {/* <glitchPass attachArray='passes' />
-          </Effects>
-          </group> */}
-          {/* <group position={[-50,-10,-20]}> */}
-          <Effects>
-            {/* <bloomPass attachArray="passes" /> */}
-            {/* @ts-ignore */}
-            <glitchPass attachArray='passes' />
-          </Effects>
-          <Scene photo_url={'/assets/photo/art-copy2nd.jpeg'} video_url={'/assets/move/ban.mp4'} />
-          {/* </group> */}
-        </Canvas>
+          <source src='/assets/move/ban.mp4' type='video/mp4' />
+        </video>
       </Box>
-      {/* <Box css={canvas_box} style={{ margin: '0 0 0 auto', right: '0%' }} component='div'>
-        <Canvas
-          orthographic
-          // camera={{
-          //   position: [-50, 40, 80],
-          //   fov: 50,
-          //   aspect: 2800 / 1000,
-          //   near: 0.1,
-          //   far: 2000
-          // }}
-        >
-          <Scene photo_url={'/assets/photo/art-copy2nd.jpeg'} video_url={'/assets/move/ban.mp4'} />
-          <Effects>
-            {/* <bloomPass attachArray="passes" /> */}
-      {/* <glitchPass attachArray='passes' />
-          </Effects>
-        </Canvas>
-      </Box> */}
       <section className={styles.sec_mv} id='sec_mv'>
         <div className={styles.mv_in}>
           <div className={`fadeout ${styles.mv_case}`}>
             <h1 ref={textRef} id='opening-title'>
               櫻坂46
             </h1>
-            {/* <h2 className={styles.tx} style={{ opacity: 0 }} id='opening-sub'>
-              櫻坂46を応援する非公式アプリ
-            </h2>
             <div className={styles.button_area} id='button_area'>
               <Link href='/login'>ログイン</Link>
               <Link href='/login'>会員登録</Link>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className={styles.button_container}>{/* <PrimaryButton></PrimaryButton> */}</div>
       </section>
       <Box css={bg_sand} id='bg-sand' component='div'>
-        <CircleProgress />
+        <CircularProgressWithLabel value={progress} />
       </Box>
     </Box>
   )

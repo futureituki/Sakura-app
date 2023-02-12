@@ -20,10 +20,10 @@ export const SpotifySinglePage = () => {
     <Box css={container} component='div'>
       <Box css={links_box} component='div'>
         <Box component='div'>
-          <Link href='/spotify/single'>シングル</Link>
+          <Link href='/discography/single'>SINGLE</Link>
         </Box>
         <Box component='div'>
-          <Link href='/spotify/ranking'>ランキング</Link>
+          <Link href='/discography/ranking'>RANKING</Link>
         </Box>
       </Box>
       <Box
@@ -38,7 +38,7 @@ export const SpotifySinglePage = () => {
       >
         {music_id.map((music: Music, index: number) =>
           music.type !== 'album' ? (
-            <Link href={`/spotify/single/${music.id}`} key={index}>
+            <Link href={`/discography/single/${music.id}`} key={index}>
               <Box
                 sx={{
                   display: 'flex',

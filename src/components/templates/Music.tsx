@@ -14,6 +14,8 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
   const [duration, setDuration] = useState<number>(0)
   const [timePosition, setTimePosition] = useState<number>(0)
   const [count, setCount] = useState<number>(0)
+  const [minutes, setMinute] = useState<number>(0)
+  const [second, setSecond] = useState<number>(timePosition)
   const [source, setSource] = useState<MediaElementAudioSourceNode>()
   const [analyserNode, setAnalyserNode] = useState<AnalyserNode>()
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -72,6 +74,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
 
   const handleEnded = () => {
     setTimePosition(0)
+    setMinute(0)
     setPlayState('stop')
   }
 
@@ -145,7 +148,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
       <Box
         sx={{
           position: 'fixed',
-          bottom: `${count}px`,
+          bottom: `0`,
           left: '0',
         }}
         component='div'
@@ -189,7 +192,7 @@ export const Music: FC<Props> = ({ src, name, img, number, time }) => {
             value={timePosition}
             onInput={handleChangeTimePosition}
           />
-          <Box sx={{ color: '#fff' }} component='div'>{`${timeRef.current} / ${time}`}</Box>
+          {/* <Box sx={{ color: '#fff' }} component='div'>{`${minutes !== 0 ? minutes : ''} / ${time}`}</Box> */}
         </AudioBar>
       </Box>
     </>

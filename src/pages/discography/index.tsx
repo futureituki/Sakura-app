@@ -11,7 +11,6 @@ const Spotify: NextPageWithLayout = () => {
   if (loginError) router.push('/music-list')
   if (!loginData) return <LargeProgress />
   if (!loginData.access_token) router.push('/music-list')
-  console.log(loginData.access_token)
   return (
     <>
       <SpotifyPage />

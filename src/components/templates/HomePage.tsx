@@ -1,7 +1,6 @@
 import { Box } from '@mui/system'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import { LoadingContainer } from '../Site/Components/LoadingContainer'
 import { MusicVideo } from '@/components/Site/Components/MusicVideo'
 import { Section01 } from '@/components/Site/Components/Section01'
 import { Section02 } from '@/components/Site/Components/Section02'
