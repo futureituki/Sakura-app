@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -15,7 +16,7 @@ export const BlogPage = ({ name }: { name: string }) => {
   const url =
     customSearchEndpoint +
     `?key=${process.env.NEXT_PUBLIC_CUSTOM_API_KEY}&cx=${process.env.NEXT_PUBLIC_CUSTOM_ID}&start=${offsetCount}&num=10&sort=date&q=${name}`
-  const { data, error }: { data: BlogObj[]; error: any } = useSWR(url, Getfetcher)
+  const { data, error } = useSWR(url, Getfetcher)
   if (error)
     return (
       <div>
@@ -23,6 +24,10 @@ export const BlogPage = ({ name }: { name: string }) => {
       </div>
     )
   if (!data) return <LargeProgress />
+  // console.log(data.items)
+  // const blogs = data?.find((blog:BlogObj) => 'pagemap.hproduct' in blog);
+  // if(blogs === undefined) setOffsetCount(offsetCount + 11)
+  // console.log(offsetCount)
   return (
     <Box
       sx={{
@@ -102,7 +107,7 @@ export const BlogPage = ({ name }: { name: string }) => {
                     ) : (
                       ''
                     )}
-                    {/* <p>{blog.}</p> */}
+                    <p>{blog.title}</p>
                     <p className={styles.name}>
                       {
                         memberSrcMap?.get(

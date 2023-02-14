@@ -51,8 +51,8 @@ export const HomePage = () => {
           <Section03 />
           <Section04Sounds />
           <MusicVideo />
-          <DynamicSection />
         </Box>
+        <DynamicSection />
         <Section05 />
         <Section06 />
       </main>

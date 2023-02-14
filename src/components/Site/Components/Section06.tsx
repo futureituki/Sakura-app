@@ -28,10 +28,16 @@ export const Section06 = () => {
       icon: <TikTokIcon />,
     },
   ]
-  const sns_container = css`
+  const box = css`
+    max-width: 1300px;
+    margin: 0 auto;
     width: 90%;
+  `
+  const sns_container = css`
+    width: 100%;
     height: 100%;
     margin: 20px auto;
+    max-width: 900px;
     @media (min-width: 768px) {
       display: flex;
       gap: 20px;
@@ -41,13 +47,13 @@ export const Section06 = () => {
   const sns_box = css`
     background-size: 200% 200%;
     animation: bg 9s ease infinite;
-    padding: 40% 0;
-    margin: 20px auto;
+    padding: 40%;
     position: relative;
     display: block;
+    margin: 20px 0;
     @media screen and (min-width: 768px) {
       width: 32%;
-      padding: 14% 0;
+      padding: 14% 0 12% 0;
     }
   `
   const sns_icon = css`
@@ -58,17 +64,24 @@ export const Section06 = () => {
       font-size: 7rem;
     }
   `
+  const section = css`
+    width: 100%;
+    position: relative;
+    padding: 40px 0px;
+  `
   return (
-    <section className={styles.sec_sn} style={{ background: '#fff' }}>
-      <Heading visualLevel={2} level={2}>
-        SNS
-      </Heading>
-      <Box css={sns_container} component='div'>
-        {socialMediaLinks.map((social, index) => (
-          <Link href={social.link} css={sns_box} key={index} style={{ background: social.color }}>
-            <span css={sns_icon}>{social.icon}</span>
-          </Link>
-        ))}
+    <section css={section} style={{ background: '#fff' }}>
+      <Box css={box}>
+        <Heading visualLevel={2} level={2} style={{ color: '#000' }}>
+          SNS
+        </Heading>
+        <Box css={sns_container} component='div'>
+          {socialMediaLinks.map((social, index) => (
+            <Link href={social.link} css={sns_box} key={index} style={{ background: social.color }}>
+              <span css={sns_icon}>{social.icon}</span>
+            </Link>
+          ))}
+        </Box>
       </Box>
     </section>
   )

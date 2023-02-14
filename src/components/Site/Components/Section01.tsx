@@ -182,7 +182,7 @@ export const Section01 = () => {
       width: 100%;
       height: 100%;
       background: #000;
-      opacity: 0.6;
+      opacity: 0.3;
       z-index: 1;
     }
   `
@@ -197,6 +197,18 @@ export const Section01 = () => {
     min-height: 100%;
     min-width: 100%;
   `
+  const login_button = css`
+    border-radius: 0.2em;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    background: #6ed688;
+  `
+  const register_button = css`
+    border-radius: 0.2em;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    background: orange;
+  `
   // animation:10s infinite ${transanimation};
   return (
     <Box css={container} component='div'>
@@ -210,7 +222,7 @@ export const Section01 = () => {
           autoPlay
           loop
         >
-          <source src='/assets/move/ban.mp4' type='video/mp4' />
+          <source src='/home.mp4' type='video/mp4' />
         </video>
       </Box>
       <section className={styles.sec_mv} id='sec_mv'>
@@ -220,8 +232,12 @@ export const Section01 = () => {
               櫻坂46
             </h1>
             <div className={styles.button_area} id='button_area'>
-              <Link href='/login'>ログイン</Link>
-              <Link href='/login'>会員登録</Link>
+              <Link href='/login' css={login_button}>
+                ログイン
+              </Link>
+              <Link href='/login' css={register_button}>
+                会員登録
+              </Link>
             </div>
           </div>
         </div>

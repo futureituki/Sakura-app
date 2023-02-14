@@ -215,6 +215,7 @@ export const MusicVideo = () => {
     margin: 100px auto;
     z-index: 40;
     max-width: 1300px;
+    overflow: hidden;
   `
   const box = css`
     position: relative;
@@ -361,10 +362,13 @@ export const MusicVideo = () => {
     width: 90%;
     display: flex;
     gap: 30px;
-    margin: 100px auto 0 auto;
+    margin: 60px auto 0 auto;
     flex-wrap: wrap;
+    max-height: 500px;
+    padding: 60px 0 80px 0;
     @media (min-width: 800px) {
       width: 70%;
+      max-height: 800px;
     }
   `
   const disc_box = css`
@@ -374,8 +378,12 @@ export const MusicVideo = () => {
     align-items: center;
     margin: 10px 0;
     width: 100px;
-    height: 100%;
     justify-content: center;
+    @media (min-width: 1300px) {
+      width: 156px;
+      height: 156px;
+      margin: 20px 0;
+    }
   `
   const disc_img = css`
     width: 100px;
@@ -385,12 +393,17 @@ export const MusicVideo = () => {
     &:hover {
       transform: scale(0.8);
     }
+    @media (min-width: 1300px) {
+      width: 128px;
+      height: 128px;
+    }
   `
   const disc_text = css`
     color: #fff;
     font-size: 1vw;
     text-align: center;
     feight: bold;
+    height: 20%;
   `
   const selectIndexContainer = css`
     display: grid;
@@ -399,6 +412,10 @@ export const MusicVideo = () => {
   `
   const s = css`
     opacity: 0;
+  `
+  const back_button = css`
+    display: flex;
+    justify-content: flex-end;
   `
   console.log(indexVideo)
   return (
@@ -533,7 +550,7 @@ export const MusicVideo = () => {
                   />
                 ) : (
                   <Image
-                    src={indexVideo?.items[0].snippet.thumbnails.medium.url as string}
+                    src={indexVideo?.items[0].snippet.thumbnails.high.url as string}
                     alt=''
                     width={300}
                     height={300}
@@ -545,8 +562,17 @@ export const MusicVideo = () => {
                   {loading ? <Loading /> : <></>}
                   {selectShow ? <></> : <ClickPlayButton onClick={changeYoutubeIndex} />}
                 </Box>
-                <Typography css={video_title}>{indexVideo?.items[0].snippet.title}</Typography>
-                <Box onClick={back} component='div'>
+                <Typography
+                  sx={{
+                    display: 'grid',
+                    placeItems: 'center',
+                    margin: '10px 0',
+                  }}
+                  css={video_title}
+                >
+                  {indexVideo?.items[0].snippet.title}
+                </Typography>
+                <Box onClick={back} component='div' css={back_button}>
                   <Button>BACK</Button>
                 </Box>
               </Box>
