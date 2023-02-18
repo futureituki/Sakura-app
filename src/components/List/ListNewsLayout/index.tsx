@@ -17,9 +17,10 @@ export const ListNewsLayout = () => {
       return data.data.items
     })
   }
-  const { data: news, error }: { data: SearchObj[]; error: any } = useSWR(url, fetcher)
-  if (error) return <div>Error News取得に失敗しました。</div>
-  if (!news) return <div>Loading...</div>
+  const news: SearchObj[] = []
+  // const { data: news, error }: { data: SearchObj[]; error: any } = useSWR(url, fetcher)
+  // if (error) return <div>Error News取得に失敗しました。</div>
+  // if (!news) return <div>Loading...</div>
   const news_text = css`
     border-bottom: 1px solid #000;
     margin: 10px 0;

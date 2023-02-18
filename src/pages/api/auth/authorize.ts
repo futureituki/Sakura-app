@@ -6,30 +6,35 @@ type SpotifyAuthApiResponse = {
 }
 
 const authorize = async (req: any, res: any) => {
-  const { code, state } = req.query
+  try {
+    const { code, state } = req.query
 
-  const params = new URLSearchParams()
-  params.append('grant_type', 'client_credentials')
-  params.append('code', code as string)
-  params.append('redirect_uri', `${process.env.RETURN_TO}` as string)
+    const params = new URLSearchParams()
+    params.append('grant_type', 'client_credentials')
+    params.append('code', code as string)
+    params.append('redirect_uri', `${process.env.RETURN_TO}` as string)
 
-  const response = await axios.post<SpotifyAuthApiResponse>(
-    'https://accounts.spotify.com/api/token',
-    params,
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET_ID}`,
-          'utf-8',
-        ).toString('base64')}`,
+    const response = await axios.post<SpotifyAuthApiResponse>(
+      'https://accounts.spotify.com/api/token',
+      params,
+      {
+        headers: {
+          Authorization: `Basic ${Buffer.from(
+            `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET_ID}`,
+            'utf-8',
+          ).toString('base64')}`,
+        },
       },
-    },
-  )
-  req.session.set('user', {
-    access_token: response.data.access_token,
-  })
-  await req.session.save()
-  res.status(200).redirect('/discography')
+    )
+    req.session.set('user', {
+      access_token: response.data.access_token,
+    })
+    await req.session.save()
+    res.status(200)
+    res.json({ name: 'aaa' })
+  } catch (e: any) {
+    res.status(500).send(e.message)
+  }
 }
 
 export default withSession(authorize)

@@ -47,11 +47,6 @@ export const MemberTestPage = () => {
   const TARGET_COLLECTION_NAME = 'questions'
   const COLORS = ['orange', 'pink', 'green', 'blue']
   useEffect(() => {
-    if (user.first_favorite) {
-      router.push('/top')
-    }
-  })
-  useEffect(() => {
     if (router.query.sign) {
       toast.success('会員登録に成功しました！')
     }
