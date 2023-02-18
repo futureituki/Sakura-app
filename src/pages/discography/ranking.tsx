@@ -1,7 +1,7 @@
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
-import { SpotifyRankingPage } from '@/components/templates/SpotifyRankingPage'
+import { DiscographyRankingPage } from '@/components/templates/DiscographyRankingPage'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
 
@@ -13,7 +13,7 @@ const Ranking: NextPageWithLayout = () => {
   if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifyRankingPage token={loginData.access_token as string} />
+      <DiscographyRankingPage token={loginData.access_token as string} />
     </>
   )
 }

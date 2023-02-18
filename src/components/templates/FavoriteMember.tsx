@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material'
+import { css } from '@emotion/react'
+import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
@@ -14,7 +15,6 @@ import { setImages } from '@/redux/imageSlice'
 import { userSaveBookmark } from '@/redux/userSlice'
 import styles from '@/styles/Favorite.module.css'
 import { UserReducer } from '@/types/user'
-
 type SelectedProps = {
   name: string
   src: string
@@ -33,7 +33,6 @@ type Favorite = {
 export const FavoritePage = () => {
   const dispatch = useDispatch<any>()
   const [open, setOpen] = useState<boolean>(false)
-  const images = useGetImg().images.src
   const [selectedImg, setSelectedImg] = useState<SelectedProps>({ name: '', src: '' })
   const handleOpen = useCallback((e: any) => {
     const alt = e.target.alt
@@ -60,6 +59,14 @@ export const FavoritePage = () => {
     await dispatch(setImages({ uid: userInfo.id, sign: true }))
     router.push({ pathname: '/top', query: { first_come: true } })
   }
+  const sindan_box = css`
+    display: grid;
+    place-items: center;
+    margin: 60px 0;
+  `
+  const sindan_text = css`
+    margin: 20px 0;
+  `
   return (
     <div>
       <div className={styles.favorite_container}>
@@ -106,6 +113,18 @@ export const FavoritePage = () => {
             </div>
           ))}
         </div>
+        <Box css={sindan_box} component='div'>
+          <Typography css={sindan_text}>診断で気になるメンバーを見つけよう！！</Typography>
+          <PrimaryButton
+            label='button'
+            background='orange'
+            onClick={() => router.push('/member-test')}
+            variant='contained'
+            color='#fff'
+          >
+            お気に入りメンバー診断
+          </PrimaryButton>
+        </Box>
       </div>
     </div>
   )

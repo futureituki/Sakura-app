@@ -26,7 +26,7 @@ export const HomePage = () => {
         <Section01 />
         <Box
           sx={{
-            maxWidth: '1300px',
+            maxWidth: '1400px',
             margin: '0 auto',
           }}
           component='div'
@@ -35,7 +35,7 @@ export const HomePage = () => {
           <Section02 />
           <Box
             sx={{
-              width: '80vw',
+              width: '90vw',
               margin: '0 auto',
             }}
             component='div'

@@ -1,11 +1,11 @@
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
-import { Avatar, Box, TextField } from '@mui/material'
+import { Avatar, Box, CircularProgress } from '@mui/material'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
-import { SmallProgress } from '../atoms/Loading/progress'
 import { userSignUp } from '@/redux/userSlice'
 import styles from '@/styles/Form.module.css'
 import { User } from '@/types/user'
@@ -22,7 +22,8 @@ const SignUp: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const user = useSelector((state: User) => state)
   const router = useRouter()
-  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
+  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm, e: any) => {
+    e?.preventDefault()
     const userInfo = {
       username: data.username,
       email: data.email,
@@ -128,16 +129,12 @@ const SignUp: NextPage = () => {
             <label className={styles.label} htmlFor='password'>
               パスワード
             </label>
-            <TextField
+            <input
               {...register('password', {
                 required: 'パスワードを入力してください',
                 minLength: { value: 8, message: '8文字以上入力してください' },
               })}
-              margin='normal'
-              required
-              fullWidth
               id='password'
-              label='パスワード'
               name='password'
               type='password'
               autoComplete='password'
@@ -160,6 +157,15 @@ const SignUp: NextPage = () => {
                 <div className={styles.error}>{errors.password.message}</div>
               </div>
             )}
+            <Box
+              component='div'
+              sx={{
+                marginTop: '16px',
+                fontSize: '10px',
+              }}
+            >
+              <Link href='/login'>会員の方はこちらから</Link>
+            </Box>
           </Box>
           <button
             className={styles.button}
@@ -167,7 +173,7 @@ const SignUp: NextPage = () => {
             type='submit'
             disabled={loading}
           >
-            {loading ? <SmallProgress /> : '登録'}
+            {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : '登録'}
           </button>
         </form>
         <div className={styles.after_error} ref={ref}></div>

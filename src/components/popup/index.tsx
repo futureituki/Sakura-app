@@ -28,7 +28,7 @@ export const TransitionsPopper: FC<Props> = ({ children }) => {
         style={{
           width: '100vw',
           maxWidth: '900px',
-          maxHeight: '900px',
+          maxHeight: '600px',
           top: '10%',
           position: 'absolute',
           zIndex: '9999',
@@ -46,7 +46,7 @@ export const TransitionsPopper: FC<Props> = ({ children }) => {
                 zIndex: '999',
                 position: 'relative',
                 height: '90vw',
-                maxHeight: '900px',
+                maxHeight: '600px',
                 border: 1,
                 p: 1,
                 bgcolor: 'background.paper',

@@ -5,6 +5,7 @@ import useSWR from 'swr'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
 import PostsPagination from '@/components/pagination/post/list'
 import { CommunityPage } from '@/components/templates/CommunityPage'
+import { TagListPage } from '@/components/templates/TagListPage'
 import { AppLayout } from '@/layout/AppLayout'
 
 const IndividualPage: NextPageWithLayout = () => {
@@ -26,6 +27,7 @@ const IndividualPage: NextPageWithLayout = () => {
     <>
       <CommunityPage communitys={data} />
       <PostsPagination numberPages={pageNum as unknown as number} />
+      <TagListPage />
     </>
   )
 }

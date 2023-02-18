@@ -1,14 +1,12 @@
 import { NextPageWithLayout } from 'next'
-import { SpotifySinglePage } from '@/components/templates/SpotifySingleListPage'
+import { DiscographyListPage } from '@/components/templates/DiscographyListPage'
+import { single_id } from '@/constant/music-list'
 import { AppLayout } from '@/layout/AppLayout'
-import useLoginApi from '@/lib/hook/useLoginApi'
 
 const SingleList: NextPageWithLayout = () => {
-  const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
-
   return (
     <>
-      <SpotifySinglePage />
+      <DiscographyListPage list={single_id} />
     </>
   )
 }

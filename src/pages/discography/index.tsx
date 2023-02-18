@@ -1,9 +1,8 @@
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
-import { SpotifyPage } from '@/components/templates/SpotifyPage'
+import { DiscographyPage } from '@/components/templates/DiscographyPage'
 import { AppLayout } from '@/layout/AppLayout'
-import useLogin from '@/lib/hook/useLogin'
 import useLoginApi from '@/lib/hook/useLoginApi'
 const Spotify: NextPageWithLayout = () => {
   const router = useRouter()
@@ -13,7 +12,7 @@ const Spotify: NextPageWithLayout = () => {
   if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifyPage />
+      <DiscographyPage />
     </>
   )
 }

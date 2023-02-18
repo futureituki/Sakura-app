@@ -4,7 +4,7 @@ import { Box } from '@mui/material'
 import { NextPageWithLayout } from 'next'
 import { useRouter } from 'next/router'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
-import { SpotifySinglePage } from '@/components/templates/SpotifySinglePage'
+import { DiscographySinglePage } from '@/components/templates/DiscographySinglePage'
 import { AppLayout } from '@/layout/AppLayout'
 import useLoginApi from '@/lib/hook/useLoginApi'
 const MusicDetail: NextPageWithLayout = () => {
@@ -20,7 +20,7 @@ const MusicDetail: NextPageWithLayout = () => {
   if (!loginData.access_token) router.push('/music-list')
   return (
     <>
-      <SpotifySinglePage token={loginData.access_token as string} />
+      <DiscographySinglePage token={loginData.access_token as string} />
     </>
   )
 }

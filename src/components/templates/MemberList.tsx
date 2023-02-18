@@ -45,7 +45,7 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
 
 export const MemberList = () => {
   const [value, setValue] = useState<string>('')
-  const [memberArr, setMemberArr] = useState<MemberObj[]>(memberSrc)
+  const [memberArr, setMemberArr] = useState<MemberObj[]>(JSON.parse(JSON.stringify(memberSrc)))
   const [signMemberArr, setSignMemberArr] = useState<any>([])
   const handleChange = (event: any) => {
     setValue(event.target.value)

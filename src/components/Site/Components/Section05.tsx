@@ -156,7 +156,7 @@ export const Section05 = () => {
   return (
     <section className={styles.sec_photo}>
       <Heading level={2} visualLevel={1}>
-        Photo
+        Arstist Photo
       </Heading>
       {photoSrc.map((photo, index) => (
         <Box

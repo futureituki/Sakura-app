@@ -42,7 +42,9 @@ export const BreadCrumb: NextPage = () => {
         return 'BAN'
       case '3Hv8KXFlfO3HzhTq9g2yci':
         return "Nobody's fault"
-      case 'first_come?=true':
+      case '2KHlwYK9HCfnK3b25R6dge':
+        return '桜月'
+      case 'top?first_come=true':
         return ''
       default:
         return link

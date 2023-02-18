@@ -8,13 +8,13 @@
 .prev {
   border:1px solid #ff69b8;
   color:#fff;
-  top:40%;
+  bottom:10%;
   width:16vw;
   height:8vw;
   background:#ff69b8;
   border-radius:5px;
-  max-width: 200px;
-  max-height: 100px;
+  max-width: 100px;
+  max-height: 50px;
 }
 .prev::after {
   content:""
@@ -22,20 +22,20 @@
 .next {
   border:1px solid #ff69b8;
   color:#fff;
-  top:40%;
+  bottom:10%;
   width:16vw;
   height:8vw;
   background:#ff69b8;
   border-radius:5px;
-  max-width: 200px;
-  max-height: 100px;
+  max-width: 100px;
+  max-height: 50px;
 }
 .next::after {
   content:""
 }
 .index {
   position:absolute;
-  top:40%;
+  bottom:10%;
   left:50%;
   transform:translate(-50%,-50%);
 }

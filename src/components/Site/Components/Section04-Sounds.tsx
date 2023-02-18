@@ -217,10 +217,10 @@ export const Section04Sounds = () => {
       sx={{
         position: 'relative',
         zIndex: 1000,
-        width: '70vw',
+        width: '90vw',
         margin: '0 auto',
         height: '90vh',
-        maxWidth: '1440px',
+        maxWidth: '1400px',
         '@media screen and (min-width:900px)': {
           height: '50vh',
         },

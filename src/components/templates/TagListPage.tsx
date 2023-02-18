@@ -14,57 +14,64 @@ export const TagListPage = () => {
       }}
       component='div'
     >
-      タグ一覧
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '20px',
-          alignItems: 'center',
+          width: '95%',
+          margin: '0 auto',
         }}
-        component='div'
       >
-        {memberSrc.map((member: MemberObj, index: number) => (
-          <Link href={`/community/tag/${member.name}`} key={index}>
-            <Box
-              key={index}
-              sx={{
-                display: 'grid',
-                placeItems: 'center',
-                gap: '10px',
-                margin: '20px 0',
-                padding: '5px 10px',
-                width: 'fit-content',
-                borderRadius: '10px',
-              }}
-              component='div'
-            >
-              <Image
-                src={`/assets/member/${memberSrcMap.get(member.name)?.src}`}
-                alt=''
-                width={200}
-                height={200}
-                style={{
-                  width: '100px',
-                  height: '100px',
-                  objectFit: 'cover',
-                  objectPosition: '0 0',
-                  borderRadius: '50%',
-                }}
-              />
+        タグ一覧
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '20px',
+            alignItems: 'center',
+          }}
+          component='div'
+        >
+          {memberSrc.map((member: MemberObj, index: number) => (
+            <Link href={`/community/tag/${member.name}`} key={index}>
               <Box
+                key={index}
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
+                  display: 'grid',
+                  placeItems: 'center',
                   gap: '10px',
+                  margin: '20px 0',
+                  padding: '5px 10px',
+                  width: 'fit-content',
+                  borderRadius: '10px',
                 }}
                 component='div'
               >
-                <span>{member.name}</span>
+                <Image
+                  src={`/assets/member/${memberSrcMap.get(member.name)?.src}`}
+                  alt=''
+                  width={200}
+                  height={200}
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                    objectPosition: '0 0',
+                    borderRadius: '50%',
+                  }}
+                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
+                  component='div'
+                >
+                  <span>{member.name}</span>
+                </Box>
               </Box>
-            </Box>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </Box>
       </Box>
     </Box>
   )

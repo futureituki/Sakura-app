@@ -1,4 +1,5 @@
-import { Favorite, Newspaper } from '@mui/icons-material'
+import { css } from '@emotion/react'
+import { Favorite, MusicNote, Newspaper } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import React, { useState } from 'react'
 // Import Swiper React components
@@ -13,11 +14,17 @@ import styles from '@/components/swiper/tutorialSwiper/index.module.css'
 
 export const TutorialSwiper = () => {
   const [currentIndex, setCurrentIndex] = useState<number>()
+  const text_box = css`
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+  `
   return (
     <Box
       sx={{
         position: 'relative',
-        minHeight: '600px',
+        maxHeight: '600px',
+        height: '100%',
       }}
       component='div'
     >
@@ -48,25 +55,21 @@ export const TutorialSwiper = () => {
               }}
               component='div'
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: '10px',
-                }}
-                component='div'
-              >
+              <Box css={text_box} component='div'>
                 <Newspaper />
-                <h4>最新情報</h4>
+                <h4>最新のニュースが見れる！</h4>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: '10px',
-                }}
-                component='div'
-              >
+              <Box css={text_box} component='div'>
                 <Favorite />
-                <h4>いいね機能</h4>
+                <h4>画像いいね機能</h4>
+              </Box>
+              <Box css={text_box} component='div'>
+                <Favorite />
+                <h4>最新のメンバーブログが見れる！</h4>
+              </Box>
+              <Box css={text_box} component='div'>
+                <MusicNote />
+                <h4>音楽が聴ける</h4>
               </Box>
             </Box>
           </Box>
@@ -74,13 +77,21 @@ export const TutorialSwiper = () => {
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
       </Swiper>
-      <div id='button_prev' className={`swiper-button-prev ${styles.prev}`}>
-        前へ
-      </div>
-      <div className={styles.index}>{currentIndex}/4</div>
-      <div id='button_next' className={`swiper-button-next ${styles.next}`}>
-        次へ
-      </div>
+      <Box
+        sx={{
+          margin: '100px 0 0 0',
+        }}
+      >
+        <div id='button_prev' className={`swiper-button-prev ${styles.prev}`}>
+          前へ
+        </div>
+        <div className={styles.index} style={{ bottom: '10%' }}>
+          {currentIndex}/3
+        </div>
+        <div id='button_next' className={`swiper-button-next ${styles.next}`}>
+          次へ
+        </div>
+      </Box>
     </Box>
   )
 }

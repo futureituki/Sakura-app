@@ -79,6 +79,53 @@ export const music_id = [
     type: 'album',
   },
   {
+    id: '2KHlwYK9HCfnK3b25R6dge',
+    src: 'disc/thum_sakuratuki.jpeg',
+    title: '桜月',
+    type: 'single',
+    overview:
+      '欅坂46の活動に幕を閉じ、2020年より新たに活動をスタートさせた櫻坂46の5th Single。2021年は精力的に活動し、リリース・ツアー・写真集・メンバー個人でのレギュラーやバラエティー等の露出により活躍の場を広げた。2022年は1stアルバムを発売し、全国6都市12公演のアルバムツアーを開催、ファイナルは東京ドーム公演を開催。メンバーの卒業を経験し、より結束の高まった櫻坂46は新たなステージを迎える。',
+  },
+  {
+    id: '3JRgpVojs3aIgGy835mvLH',
+    src: 'disc/thum_samidareyo.jpeg',
+    title: '五月雨よ',
+    type: 'single',
+    overview:
+      '櫻坂46の4th Single『五月雨よ』はグループ最年少で雑誌の専属モデルなども務める山﨑天が表題曲のセンターを務め、カップリングには今作で卒業を発表している渡邉理佐、高い表現力やダンスパフォーマンスを誇る森田ひかるがそれぞれセンターを務めます。Blu-ray付きのTYPE-A～Dの4種と通常盤の計5形態での発売',
+  },
+  {
+    id: '0HYpXXxzD45aBgoN84feHc',
+    src: 'disc/thum_nagaredama.jpeg',
+    title: '流れ弾',
+    type: 'single',
+    overview:
+      '櫻坂46の3rd Single『流れ弾』をリリース！<br>表題曲のセンターは二期生・田村保乃が務め、共通カップリングには森田ひかる、カップリングには渡邉理佐がそれぞれセンターを務めます。Blu-ray付きのTYPE-A～Dの4種と通常盤の計5形態での発売！ ',
+  },
+  {
+    id: '74oBBYbpxNZLcwprLNjUFB',
+    src: 'disc/thum_ban.jpeg',
+    title: 'BAN',
+    type: 'single',
+    overview:
+      "2020年10月より櫻坂46としての活動をスタートさせ、同年12月に1st Single「Nobody's fault」をリリース。オリコンシングルランキング・ウィークリー1位を獲得し、今もなおロングセールスを記録している。その実力・話題性共に評価を受けて第71回NHK紅白歌合戦に出場した。そして2021年4月、桜舞う春の季節に2nd Singleが発売決定！女性ならではの可憐さと力強さを兼ね備えたグループに成長している櫻坂46に注目！",
+  },
+  {
+    id: '3Hv8KXFlfO3HzhTq9g2yci',
+    src: 'disc/thum_nobodysfault.jpeg',
+    title: 'Nobody`s fault',
+    type: 'single',
+    overview: '待望の1stシングル。咲け、櫻坂46。',
+  },
+]
+export const single_id = [
+  {
+    id: '2KHlwYK9HCfnK3b25R6dge',
+    src: 'disc/thum_sakuratuki.jpeg',
+    title: '桜月',
+    type: 'single',
+  },
+  {
     id: '3JRgpVojs3aIgGy835mvLH',
     src: 'disc/thum_samidareyo.jpeg',
     title: '五月雨よ',
@@ -90,7 +137,12 @@ export const music_id = [
     title: '流れ弾',
     type: 'single',
   },
-  { id: '74oBBYbpxNZLcwprLNjUFB', src: 'disc/thum_ban.jpeg', title: 'BAN', type: 'single' },
+  {
+    id: '74oBBYbpxNZLcwprLNjUFB',
+    src: 'disc/thum_ban.jpeg',
+    title: 'BAN',
+    type: 'single',
+  },
   {
     id: '3Hv8KXFlfO3HzhTq9g2yci',
     src: 'disc/thum_nobodysfault.jpeg',
@@ -98,7 +150,16 @@ export const music_id = [
     type: 'single',
   },
 ]
-
+export const album_id = [
+  {
+    id: '0k4rYF9WBoCOoPjr0fEvER',
+    src: 'disc/thum_asyouknow.jpeg',
+    title: 'As you know?',
+    type: 'album',
+    overview:
+      '欅坂46の活動に幕を閉じ、2020年10月より新たに活動をスタートさせた櫻坂46の1st Album。再始動から約1年10ヶ月分、それぞれの想いを詰め込んだ1枚。',
+  },
+]
 export const video_disc = [
   { name: '桜月', src: '/assets/png/sakuratuki.png' },
   { name: 'その日まで', src: '/assets/png/sonohimade.png' },
