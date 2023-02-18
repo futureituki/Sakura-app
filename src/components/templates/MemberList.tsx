@@ -18,8 +18,6 @@ const MemberBox = ({ list }: { list: MemberSrc[] | MemberObj[] }) => {
         display: 'flex',
         flexWrap: 'wrap',
         gap: '20px',
-        width: '60vw',
-        maxWidth: '1440px',
       }}
       component='div'
     >
@@ -152,7 +150,7 @@ export const MemberList = () => {
         component='div'
       >
         {value === 'syllabary' ? (
-          <Box component='div'>
+          <Box sx={{ width: '80vw', margin: '20px auto', maxWidth: '1440px' }} component='div'>
             <MemberBox list={memberArr} />
           </Box>
         ) : (
