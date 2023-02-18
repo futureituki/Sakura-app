@@ -420,7 +420,7 @@ export const MusicVideo = () => {
   console.log(indexVideo)
   return (
     <Box css={container} component='div'>
-      <Heading style={{ color: '#fff' }}>Music Video</Heading>
+      <Heading style={{ color: '#fff', fontSize: '5vw' }}>Music Video</Heading>
       <Box css={box} component='div'>
         <Box css={area} component='div'>
           <Box

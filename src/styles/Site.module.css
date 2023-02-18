@@ -313,7 +313,6 @@ transform: translate(0);
   width:100%;
   text-align:center;
   transform-origin:top center;
-  z-index:11;
 }
 .mv_case {
   opacity: 1;
@@ -328,6 +327,11 @@ transform: translate(0);
   line-height: 1.3;
   letter-spacing: 0.08em;
   margin-bottom: 12px;
+}
+.tx {
+  letter-spacing:1.5px;
+  margin:10px 0;
+  line-height:1.75;
 }
 .mv_in .tx {
   font-size: 2.7rem;
@@ -384,6 +388,7 @@ transform: translate(0);
   font-size: 5vw;
   line-height: 1.4;
   margin-bottom: 16px;
+  letter-spacing:2px;
 }
 .sec_member {
   max-width:100%;
@@ -441,6 +446,7 @@ transform: translate(0);
   gap:15px;
   justify-content:center;
   opacity:0;
+  margin:20px 0;
 }
 .button_area button {
   border:1px solid #fff;

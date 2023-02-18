@@ -30,10 +30,10 @@ export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
   const user: UserReducer = useGetUser().user
-
+  if (!user.first_favorite) router.push('/favorite')
   const logoutCheck = async () => {
     await dispatch(userLogout())
-    router.push('/logout')
+    router.push('/login')
   }
 
   const user_box = css`

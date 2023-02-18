@@ -23,9 +23,6 @@ export const BlogHomePage = () => {
   const { data, error }: { data: BlogObj[]; error: any } = useSWR(
     name !== '' ? memberUrl : url,
     Getfetcher,
-    {
-      refreshInterval: 300,
-    },
   )
   const handleChange = (event: any) => {
     setName(event.target.value)

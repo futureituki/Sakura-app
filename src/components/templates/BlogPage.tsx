@@ -107,7 +107,6 @@ export const BlogPage = ({ name }: { name: string }) => {
                     ) : (
                       ''
                     )}
-                    <p>{blog.title}</p>
                     <p className={styles.name}>
                       {
                         memberSrcMap?.get(

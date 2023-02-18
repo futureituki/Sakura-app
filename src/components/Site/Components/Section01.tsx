@@ -176,15 +176,6 @@ export const Section01 = () => {
     left: 0;
     bottom: 0;
     overflow: hidden;
-    &:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0.3;
-      z-index: 1;
-    }
   `
   const video = css`
     position: absolute;
@@ -199,30 +190,20 @@ export const Section01 = () => {
   `
   const login_button = css`
     border-radius: 0.2em;
-    border: 1px solid #fff;
     padding: 5px 10px;
-    background: #6ed688;
+    background: #7f1083;
   `
   const register_button = css`
     border-radius: 0.2em;
-    border: 1px solid #fff;
     padding: 5px 10px;
-    background: orange;
+    background: #f29fb6;
   `
   // animation:10s infinite ${transanimation};
   return (
     <Box css={container} component='div'>
       <Box css={video_area} component='div'>
-        <video
-          id='video'
-          css={video}
-          poster='https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-3-1/img/movie.jpg'
-          webkit-playsinline
-          muted
-          autoPlay
-          loop
-        >
-          <source src='/home.mp4' type='video/mp4' />
+        <video id='video' css={video} webkit-playsinline muted autoPlay loop>
+          <source src='/mainvisual.mp4' type='video/mp4' />
         </video>
       </Box>
       <section className={styles.sec_mv} id='sec_mv'>
@@ -235,7 +216,7 @@ export const Section01 = () => {
               <Link href='/login' css={login_button}>
                 ログイン
               </Link>
-              <Link href='/login' css={register_button}>
+              <Link href='/sign' css={register_button}>
                 会員登録
               </Link>
             </div>

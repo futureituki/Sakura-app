@@ -1,21 +1,13 @@
-import { css, keyframes } from '@emotion/react'
+import { css } from '@emotion/react'
 import { Box, Typography } from '@mui/material'
 import { PinningContainer, PinningItemList } from '@/components/PinningScroll/Pinning-Side-Scroll'
 import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
 import { firstMemberSrc, secondMemberSrc, thirdMemberSrc } from '@/constant/memberSrc'
 import styles from '@/styles/Site.module.css'
-import { MemberSrc } from '@/types/constant/member'
+import { MemberObj, MemberSrc } from '@/types/constant/member'
 
 export const Section03 = () => {
-  const onOpacity = (target: HTMLDivElement) => {
-    console.log(target)
-    // target.style = '0'
-  }
-  const outOpacity = (target: HTMLDivElement) => {
-    console.log(target)
-    // target.style.opacity = '1'
-  }
   const info_box = css`
     height: 100%;
     width: 100%;
@@ -49,7 +41,7 @@ export const Section03 = () => {
     <section className={styles.sec_member}>
       <Box
         sx={{
-          maxWidth: '1200px',
+          maxWidth: '1400px',
         }}
         component='div'
       >
@@ -61,7 +53,7 @@ export const Section03 = () => {
           一期生
         </Heading>
         <PinningContainer parent_id='first-member' child_id='first'>
-          {firstMemberSrc.map((member, index: number) => (
+          {firstMemberSrc.map((member: MemberObj, index: number) => (
             <PinningItemList key={index}>
               <Box css={member_info} component='div'>
                 <SectionImg
@@ -95,7 +87,7 @@ export const Section03 = () => {
           二期生
         </Heading>
         <PinningContainer parent_id='second-member' child_id='second'>
-          {secondMemberSrc.map((member: MemberSrc, index: number) => (
+          {secondMemberSrc.map((member: MemberObj, index: number) => (
             <PinningItemList key={index}>
               <Box css={member_info} component='div'>
                 <SectionImg
@@ -107,7 +99,13 @@ export const Section03 = () => {
                 />
                 <Box css={info_box} component='div'>
                   <Box css={info} component='div'>
-                    <Typography css={info_text}>テキスト</Typography>
+                    <Typography css={info_text}>
+                      {member.ruby}
+                      <br></br>
+                      {member.birthday}
+                      <br></br>
+                      {member.sign}
+                    </Typography>
                   </Box>
                 </Box>
               </Box>
@@ -133,11 +131,6 @@ export const Section03 = () => {
                   height={350}
                   id={'img_' + member.src}
                 />
-                <Box css={info_box} component='div'>
-                  <Box css={info} component='div'>
-                    <Typography css={info_text}>テキスト</Typography>
-                  </Box>
-                </Box>
               </Box>
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>

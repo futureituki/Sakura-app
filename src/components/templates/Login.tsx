@@ -22,7 +22,8 @@ const LoginPage: NextPage = () => {
   const dispatch = useDispatch<any>()
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
-  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm) => {
+  const isValid: SubmitHandler<LoginForm> = async (data: LoginForm, e: any) => {
+    e?.preventDefault()
     setLoading(true)
     const userInfo = {
       email: data.email,
@@ -173,7 +174,7 @@ const LoginPage: NextPage = () => {
             type='submit'
             disabled={loading}
           >
-            {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : 'Login'}
+            {loading ? <CircularProgress style={{ width: '20px', height: '20px' }} /> : 'ログイン'}
           </button>
         </form>
         <div className={styles.after_error} ref={ref}></div>
