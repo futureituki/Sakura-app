@@ -42,8 +42,6 @@ export const MyPage = () => {
   if (history[0] === '/favorite_change') {
     toast.success('変更に成功しました')
   }
-  console.log(history)
-  console.log(history[0])
   const user_box = css`
     border: 1px solid #000;
     width: 100%;
@@ -142,7 +140,7 @@ export const MyPage = () => {
           </SwiperInfinitLoop>
         </Box>
       </Box>
-      <InductionButtons logoutHandle={logoutCheck} handle={() => console.log('push')} />
+      <InductionButtons logoutHandle={logoutCheck} handle={() => 'push'} />
     </div>
   )
 }

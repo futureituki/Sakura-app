@@ -20,9 +20,11 @@ export const Section01 = () => {
   }, [])
 
   const textRef = useRef<HTMLHeadingElement>(null)
+  const mainRef = useRef<HTMLHeadingElement>(null)
   const router = useRouter()
   const tl = gsap.timeline()
   let jsText: HTMLHeadingElement
+  let mainText: HTMLHeadingElement
   useEffect(() => {
     if (textRef.current) {
       jsText = textRef.current
@@ -35,15 +37,36 @@ export const Section01 = () => {
       }
       jsText.innerHTML = newText
     }
+    if (mainRef.current) {
+      mainText = mainRef.current
+      let newText = ''
+      const text = mainText.textContent
+      if (text == null) return
+      const result = text.split('')
+      for (let i = 0; i < result.length; i++) {
+        newText += `<span style='opacity:0'>` + result[i] + '</span>'
+      }
+      mainText.innerHTML = newText
+    }
     tl.to('body', {
       overflow: 'hidden',
     })
-      .to('#bg-sand', {
-        top: '100%',
-        delay: 4,
-      })
+      .to(
+        '#main_text span',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.4,
+          stagger: {
+            amount: 1,
+            from: 'start',
+          },
+        },
+        1,
+      )
       .to('#bg-sand', {
         opacity: 0,
+        display: 'none',
       })
       .to('body', {
         overflow: 'auto',
@@ -99,8 +122,8 @@ export const Section01 = () => {
       .to(
         '#bottom_curtain',
         {
-          y: 1000,
-          opacity: 0,
+          // y: 1000,
+          // opacity: 0,
           stagger: {
             amount: 1,
             from: 'start',
@@ -156,9 +179,10 @@ export const Section01 = () => {
     position: fixed;
     top: 0%;
     left: 0%;
-    background-image: url('/assets/sand_w.png');
+    background: #000;
     background-size: cover;
     overflow: hidden;
+    pointer-events: none;
   `
   const transanimation = keyframes`
   0% {
@@ -176,6 +200,14 @@ export const Section01 = () => {
     left: 0;
     bottom: 0;
     overflow: hidden;
+    &:after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background: #000;
+      opacity: 0.3;
+    }
   `
   const video = css`
     position: absolute;
@@ -198,6 +230,16 @@ export const Section01 = () => {
     padding: 5px 10px;
     background: #f29fb6;
   `
+  const first_box = css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `
+  const first_text = css`
+    font-size: 3rem;
+    color: #fff;
+  `
   // animation:10s infinite ${transanimation};
   return (
     <Box css={container} component='div'>
@@ -209,9 +251,8 @@ export const Section01 = () => {
       <section className={styles.sec_mv} id='sec_mv'>
         <div className={styles.mv_in}>
           <div className={`fadeout ${styles.mv_case}`}>
-            <h1 ref={textRef} id='opening-title'>
-              櫻坂46
-            </h1>
+            <h1>櫻坂46</h1>
+            <h2>非公式応援アプリ</h2>
             <div className={styles.button_area} id='button_area'>
               <Link href='/login' css={login_button}>
                 ログイン
@@ -225,7 +266,12 @@ export const Section01 = () => {
         <div className={styles.button_container}>{/* <PrimaryButton></PrimaryButton> */}</div>
       </section>
       <Box css={bg_sand} id='bg-sand' component='div'>
-        <CircularProgressWithLabel value={progress} />
+        <Box css={first_box}>
+          <h2 ref={mainRef} id='main_text' css={first_text}>
+            きっと櫻坂が好きになる
+          </h2>
+        </Box>
+        {/* <CircularProgressWithLabel value={progress} /> */}
       </Box>
     </Box>
   )

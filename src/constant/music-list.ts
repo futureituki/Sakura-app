@@ -161,6 +161,7 @@ export const album_id = [
   },
 ]
 export const video_disc = [
+  { name: 'Cool', src: '/assets/png/cool.png' },
   { name: '桜月', src: '/assets/png/sakuratuki.png' },
   { name: 'その日まで', src: '/assets/png/sonohimade.png' },
   { name: '摩擦係数', src: '/assets/png/masatu.png' },

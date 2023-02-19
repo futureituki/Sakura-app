@@ -40,7 +40,6 @@ export const DiscographySinglePage: FC<Props> = (token) => {
   const overview = music_id.find(
     (music) => music.title === tracks.name.slice(0, tracks.name.indexOf('(') - 1),
   )?.overview
-  console.log(overview)
   const video = css`
     width: 300px;
     height: 50px;

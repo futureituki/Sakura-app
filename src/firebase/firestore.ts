@@ -80,7 +80,7 @@ export const usePasswordReset = () => {
         }, 2000)
       })
       .catch((err) => {
-        console.log(err.message)
+        err.message
         setError(err.message)
       })
   }

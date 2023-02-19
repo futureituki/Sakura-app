@@ -43,8 +43,7 @@ const LoginPage: NextPage = () => {
     router.push('/top')
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
-    toast.error('ログインに失敗しました。')
-    console.log('Fail Login')
+    toast.error('ログインに失敗しました。')('Fail Login')
   }
   const {
     register,

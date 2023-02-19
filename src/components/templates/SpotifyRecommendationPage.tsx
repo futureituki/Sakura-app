@@ -10,6 +10,5 @@ export const SpotifyRecommendationPage: FC<Props> = (token) => {
   const url = ''
   const fetcher = (url: string) => axios.get(url).then((data) => data.data)
   const { data: tracks, error } = useSWR(url, fetcher)
-  console.log(tracks)
   return <Box component='div'>おすすめページです</Box>
 }
