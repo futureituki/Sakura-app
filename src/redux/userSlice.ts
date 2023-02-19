@@ -73,7 +73,6 @@ export const userSaveBookmark = createAsyncThunk(
   },
 )
 export const userLogout = createAsyncThunk('logout', async () => {
-  ;('aa')
   await logout()
 })
 export const saveFirstFavorite = createAsyncThunk(
