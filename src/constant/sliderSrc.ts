@@ -12,7 +12,7 @@ export const sliderVideoSrc = [
     id: '5XC1rzAdM_0',
   },
   {
-    src: '/assets/slider/top-slider2.jpeg',
+    src: '/assets/slider/top-slider2.webp',
     title: '櫻坂46『夏の近道』',
     id: 'nV1DHIWSdEo',
   },

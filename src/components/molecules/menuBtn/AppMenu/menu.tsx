@@ -1,3 +1,4 @@
+import { MenuOutlined } from '@mui/icons-material'
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
@@ -22,7 +23,12 @@ export const AppMenu = () => {
   }
 
   return (
-    <Box component='div'>
+    <Box
+      component='div'
+      sx={{
+        margin: '25px',
+      }}
+    >
       <Button
         id='fade-button'
         aria-controls={open ? 'fade-menu' : undefined}
@@ -30,7 +36,7 @@ export const AppMenu = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MenuOutlined fontSize='large' />
       </Button>
       <Menu
         id='fade-menu'
