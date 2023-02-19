@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
 import { PrimaryButton } from '@/components/atoms/Button'
 import { LargeProgress } from '@/components/atoms/Loading/progress'
@@ -25,11 +26,11 @@ export const TopPage = () => {
   const dispatch = useDispatch<any>()
   const [name, setName] = useState<string>()
   const user = useGetUser().user.first_favorite as Favorite
-  const users = useGetUser().user
   const router = useRouter()
-  if (user.name === '') router.push('/favorite')
-  console.log(user)
   useEffect(() => {
+    if (user.name === '') {
+      router.push('/login')
+    }
     if (user) {
       setName(user.name)
     }
@@ -89,7 +90,6 @@ export const TopPage = () => {
         >
           with Discography
         </PrimaryButton>
-        {/* )} */}
       </Box>
       <Box
         sx={{

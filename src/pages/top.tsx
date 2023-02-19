@@ -1,11 +1,17 @@
 import axios from 'axios'
 import { NextPageWithLayout } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { TopPage } from '@/components/templates/TopPage'
 import { AppLayout } from '@/layout/AppLayout'
+import { HistoryContext } from '@/redux/context/history'
 
 const Top: NextPageWithLayout = () => {
+  const history = useContext(HistoryContext)
+  if (history[1] === '/login') {
+    toast.success('ログインに成功しました')
+  }
   return (
     <>
       <Head>

@@ -38,12 +38,9 @@ const LoginPage: NextPage = () => {
       }
       return
     }
-    toast.success('ログインに成功しました。')
     const uid = user.payload.uid as string
     await dispatch(setImages({ uid: uid, sign: false }))
-    setTimeout(() => {
-      router.push('/top')
-    }, 2000)
+    router.push('/top')
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     toast.error('ログインに失敗しました。')

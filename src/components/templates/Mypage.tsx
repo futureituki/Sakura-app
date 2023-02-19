@@ -3,13 +3,16 @@ import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { SwiperSlide } from 'swiper/react'
 import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
 import { TitleBar } from '../atoms/TitleBar'
 import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { useGetUser } from '@/lib/user'
+import { HistoryContext } from '@/redux/context/history'
 import { userLogout } from '@/redux/userSlice'
 import styles from '@/styles/Mypage.module.css'
 import { UserReducer } from '@/types/user'
@@ -30,12 +33,17 @@ export const MyPage = () => {
   const router = useRouter()
   const dispatch = useDispatch<any>()
   const user: UserReducer = useGetUser().user
+  const history = useContext(HistoryContext)
   if (!user.first_favorite) router.push('/favorite')
   const logoutCheck = async () => {
     await dispatch(userLogout())
     router.push('/login')
   }
-
+  if (history[0] === '/favorite_change') {
+    toast.success('変更に成功しました')
+  }
+  console.log(history)
+  console.log(history[0])
   const user_box = css`
     border: 1px solid #000;
     width: 100%;
