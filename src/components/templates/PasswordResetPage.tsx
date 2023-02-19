@@ -19,7 +19,6 @@ export const PasswordResetPage = () => {
     passwordReset(data.email)
   }
   const isInValid: SubmitErrorHandler<SendForm> = (errors: any) => {
-    console.log(errors)
     console.log('Fail Login')
   }
   const {

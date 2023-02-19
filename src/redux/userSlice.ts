@@ -73,7 +73,6 @@ export const userSaveBookmark = createAsyncThunk(
   },
 )
 export const userLogout = createAsyncThunk('logout', async () => {
-  console.log('aa')
   await logout()
 })
 export const saveFirstFavorite = createAsyncThunk(
@@ -92,7 +91,6 @@ export const saveFavorite = createAsyncThunk(
       userInfo.selectData,
       userInfo.favorite,
     )
-    console.log(data)
     return data
   },
 )

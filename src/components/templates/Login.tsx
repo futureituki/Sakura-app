@@ -44,7 +44,6 @@ const LoginPage: NextPage = () => {
   }
   const isInValid: SubmitErrorHandler<LoginForm> = (errors: any) => {
     toast.error('ログインに失敗しました。')
-    console.log('Fail Login')
   }
   const {
     register,

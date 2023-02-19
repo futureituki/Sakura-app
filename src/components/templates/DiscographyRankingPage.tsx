@@ -40,7 +40,6 @@ export const DiscographyRankingPage: FC<Props> = (token) => {
     )
   if (!tracks) return <LargeProgress />
   const top_tracks = tracks.tracks.filter((track: Ranking, index: number) => index < 3)
-  console.log(top_tracks)
   const container = css`
     max-width: 1400px;
     margin: 0 auto;

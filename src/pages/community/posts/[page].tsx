@@ -19,7 +19,6 @@ const IndividualPage: NextPageWithLayout = () => {
     router.query.page ? `/api/post/${router.query.page}` : '',
     fetcher,
   )
-  console.log(data)
   if (error) return <div>情報を取得できませんでした。インターネット状況をお確かめください</div>
   if (!data) return <LargeProgress />
   const pageNum = sessionStorage.getItem('pages')

@@ -7,9 +7,6 @@ import { MemberTestPage } from '@/components/templates/MemberTestPage'
 import { Layout } from '@/layout/Layout'
 
 const MemberTest: NextPageWithLayout = () => {
-  // const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
-  const router = useRouter()
-
   return (
     <>
       <MemberTestPage />

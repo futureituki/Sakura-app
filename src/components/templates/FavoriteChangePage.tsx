@@ -47,7 +47,6 @@ export const FavoriteChangePage = () => {
       router.push('/mypage')
     }
   }
-  console.log(router.query)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target.value
     const selectMember: Favorite = memberSrcMap.get(target) as Favorite

@@ -46,7 +46,6 @@ export const MemberTestPage = () => {
   const [displayAnswer, setDisplayAnswer] = useState<Answer[]>([])
   const TARGET_COLLECTION_NAME = 'questions'
   const COLORS = ['orange', 'pink', 'green', 'blue']
-
   // interest, mystery, cute, cool , expression の数で判定//
   const getQuestion = async (num: number) => {
     const docRef = doc(db, TARGET_COLLECTION_NAME, `${num}`)
@@ -91,19 +90,23 @@ export const MemberTestPage = () => {
         }
       })
       setQuestion([])
-      setQuestionNumber(1)
       setAnswer(answerMember)
     }
   }
   const nextQuestion = (text: string) => {
     const num = questionNumber + 1
     setQuestionNumber(num)
+    setQuestionNumber(num)
     setQuestionAnswers([...questionAnswers, text[1]])
     getQuestion(num)
   }
+  const reset = () => {
+    setAnswer([])
+    setQuestionNumber(1)
+    setDisplayAnswer([])
+  }
   const result = () => {
     setDisplayAnswer(answer)
-    setAnswer([])
   }
   const handleOpen = useCallback((e: any) => {
     const alt = e.target.alt
@@ -225,6 +228,19 @@ export const MemberTestPage = () => {
         ) : (
           ''
         )}
+        {answer.length !== 0 && question.length === 0 ? (
+          <PrimaryButton
+            label='button'
+            background='orange'
+            onClick={reset}
+            variant='contained'
+            color='#fff'
+          >
+            もう一度
+          </PrimaryButton>
+        ) : (
+          ''
+        )}
         {question.length !== 0 ? (
           <Box css={question_container}>
             <Typography css={qnum_text}>Q.{questionNumber}</Typography>
@@ -239,7 +255,7 @@ export const MemberTestPage = () => {
         ) : (
           ''
         )}
-        {answer.length !== 0 ? (
+        {answer.length !== 0 && questionNumber === 5 ? (
           <PrimaryButton
             label='button'
             background='orange'
@@ -249,6 +265,11 @@ export const MemberTestPage = () => {
           >
             結果
           </PrimaryButton>
+        ) : (
+          ''
+        )}
+        {answer.length === 0 && questionNumber === 5 ? (
+          <Typography>結果が出ませんでした。もう一度お試しください</Typography>
         ) : (
           ''
         )}

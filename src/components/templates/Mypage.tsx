@@ -7,9 +7,9 @@ import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { SwiperSlide } from 'swiper/react'
+import { PrimaryButton } from '../atoms/Button'
 import { TextLabel } from '../atoms/Label/TextLabel/TextLabel'
 import { TitleBar } from '../atoms/TitleBar'
-import { InductionButtons } from '../molecules/InductionButtons'
 import { SwiperInfinitLoop } from '../swiper/infinitloopSwiper/SwiperInfinitLoop'
 import { useGetUser } from '@/lib/user'
 import { HistoryContext } from '@/redux/context/history'
@@ -42,8 +42,6 @@ export const MyPage = () => {
   if (history[0] === '/favorite_change') {
     toast.success('変更に成功しました')
   }
-  console.log(history)
-  console.log(history[0])
   const user_box = css`
     border: 1px solid #000;
     width: 100%;
@@ -142,7 +140,17 @@ export const MyPage = () => {
           </SwiperInfinitLoop>
         </Box>
       </Box>
-      <InductionButtons logoutHandle={logoutCheck} handle={() => console.log('push')} />
+      <Box sx={{ textAlign: 'center' }}>
+        <PrimaryButton
+          label='logout'
+          variant='contained'
+          color='#fff'
+          background='#E60012'
+          onClick={logoutCheck}
+        >
+          ログアウト
+        </PrimaryButton>
+      </Box>
     </div>
   )
 }

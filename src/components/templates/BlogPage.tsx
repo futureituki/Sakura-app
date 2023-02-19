@@ -24,10 +24,6 @@ export const BlogPage = ({ name }: { name: string }) => {
       </div>
     )
   if (!data) return <LargeProgress />
-  // console.log(data.items)
-  // const blogs = data?.find((blog:BlogObj) => 'pagemap.hproduct' in blog);
-  // if(blogs === undefined) setOffsetCount(offsetCount + 11)
-  // console.log(offsetCount)
   return (
     <Box
       sx={{

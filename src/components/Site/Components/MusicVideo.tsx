@@ -78,7 +78,7 @@ export const MusicVideo = () => {
     setComment([])
     setShow(false)
   }
-  console.log(video)
+  video
   const getVideoComment = async (videoId: string) => {
     // videoのコメントを取得
     // https://www.googleapis.com/youtube/v3/comments
@@ -135,7 +135,6 @@ export const MusicVideo = () => {
   const loaderBg = () => {
     bgTL
       .to('#bg_animation', {
-        x: '100%',
         opacity: 1,
       })
       .to('#bg_animation', {
@@ -210,12 +209,15 @@ export const MusicVideo = () => {
   // style //
   const container = css`
     position: relative;
-    width: 90vw;
+    width: 100%;
     height: 100%;
-    margin: 100px auto;
     z-index: 40;
-    max-width: 1300px;
     overflow: hidden;
+  `
+  const inner = css`
+    width: 90vw;
+    max-width: 1300px;
+    margin: 100px auto;
   `
   const box = css`
     position: relative;
@@ -284,12 +286,11 @@ export const MusicVideo = () => {
   `
   const bg_caten = css`
     position: absolute;
-    opacity: 1;
+    opacity: 0;
     top: 0;
-    left: -100%;
-    width: 100%;
+    width: 100vw;
+    background: #000;
     height: 100%;
-    background-color: #000;
     z-index: 100;
     display: grid;
     place-items: center;
@@ -352,8 +353,7 @@ export const MusicVideo = () => {
     z-index: 100;
     overflow: scroll;
     background: #000;
-    top: 10%;
-    left: -5%;
+    top: 20%;
     opacity: 0;
     pointer-events: none;
     max-width: 1400px;
@@ -412,112 +412,125 @@ export const MusicVideo = () => {
   `
   const s = css`
     opacity: 0;
+    margin: 100px 0 0 0;
   `
   const back_button = css`
     display: flex;
     justify-content: flex-end;
   `
-  console.log(indexVideo)
+  const text_box = css`
+    color: #fff;
+    margin: 20px 0;
+  `
+  const text = css`
+    margin: 10px 0;
+    letter-spacing: 1px;
+  `
   return (
     <Box css={container} component='div'>
-      <Heading style={{ color: '#fff', fontSize: '5vw' }}>Music Video</Heading>
-      <Box css={box} component='div'>
-        <Box css={area} component='div'>
-          <Box
-            css={music_box}
-            sx={{
-              display: 'grid',
-              placeItems: 'center',
-            }}
-            component='div'
-          >
+      <Box css={inner} component='div'>
+        <Heading style={{ color: '#fff', fontSize: '5vw' }}>Music Video</Heading>
+        <Box css={box} component='div'>
+          <Box css={text_box}>
+            <Typography css={text}>櫻坂46はミュージックビデオも魅力的です</Typography>
+            <Typography css={text}>毎回惹きつけられるMVになっています</Typography>
+            <Typography css={text}>ぜひ見てほしいです</Typography>
+            <Typography css={text}>おすすめは摩擦係数とCoolです</Typography>
+          </Box>
+          <Box css={area} component='div'>
             <Box
+              css={music_box}
               sx={{
-                position: 'relative',
+                display: 'grid',
+                placeItems: 'center',
               }}
               component='div'
             >
-              {show ? (
-                <YouTube
-                  videoId={video?.items[0].snippet.resourceId.videoId}
-                  css={youtube_area}
-                  onReady={play}
-                />
-              ) : (
-                <Image
-                  src={video?.items[0].snippet.thumbnails.standard.url as string}
-                  alt=''
-                  width={300}
-                  height={300}
-                  css={thumnail_img}
-                  unoptimized
-                />
-              )}
-              <Box css={button_box} component='div'>
-                {loading ? <Loading /> : <></>}
-                {show ? <></> : <ClickPlayButton onClick={changeYoutube} />}
+              <Box
+                sx={{
+                  position: 'relative',
+                }}
+                component='div'
+              >
+                {show ? (
+                  <YouTube
+                    videoId={video?.items[0].snippet.resourceId.videoId}
+                    css={youtube_area}
+                    onReady={play}
+                  />
+                ) : (
+                  <Image
+                    src={video?.items[0].snippet.thumbnails.maxres.url as string}
+                    alt=''
+                    width={300}
+                    height={300}
+                    css={thumnail_img}
+                    unoptimized
+                  />
+                )}
+                <Box css={button_box} component='div'>
+                  {loading ? <Loading /> : <></>}
+                  {show ? <></> : <ClickPlayButton onClick={changeYoutube} />}
+                </Box>
+              </Box>
+              <Box component='div' sx={{ margin: '20px 0' }}>
+                <p css={video_title}>{video?.items[0].snippet.title}</p>
+                <p css={video_title}>
+                  {video?.items[0].contentDetails.videoPublishedAt.slice(
+                    0,
+                    video?.items[0].contentDetails.videoPublishedAt.indexOf('T'),
+                  )}
+                </p>
               </Box>
             </Box>
-            <Box component='div'>
-              <p css={video_title}>{video?.items[0].snippet.title}</p>
-              <p css={video_title}>
-                {video?.items[0].contentDetails.videoPublishedAt.slice(
-                  0,
-                  video?.items[0].contentDetails.videoPublishedAt.indexOf('T'),
+            <Box css={action_box} component='div'>
+              <Box css={comment_box} component='div'>
+                <CommentButton
+                  onClick={() =>
+                    getVideoComment(video?.items[0].snippet.resourceId.videoId as string)
+                  }
+                />
+              </Box>
+              <Box css={action_buttons} component='div'>
+                {video?.prevPageToken ? (
+                  <Box
+                    component='button'
+                    css={action_button}
+                    id='button_prev'
+                    onClick={() => getPrevVideo(video?.prevPageToken)}
+                  >
+                    <span>prev</span>
+                  </Box>
+                ) : (
+                  ''
                 )}
-              </p>
-            </Box>
-          </Box>
-          <Box css={action_box} component='div'>
-            <Box css={comment_box} component='div'>
-              <CommentButton
-                onClick={() =>
-                  getVideoComment(video?.items[0].snippet.resourceId.videoId as string)
-                }
-              />
-            </Box>
-            <Box css={action_buttons} component='div'>
-              {video?.prevPageToken ? (
                 <Box
                   component='button'
                   css={action_button}
-                  id='button_prev'
-                  onClick={() => getPrevVideo(video?.prevPageToken)}
+                  onClick={() => getNextVideo(video?.nextPageToken as string)}
+                  id='button_next'
                 >
-                  <span>prev</span>
+                  <span>next</span>
                 </Box>
-              ) : (
-                ''
-              )}
-              <Box
-                component='button'
-                css={action_button}
-                onClick={() => getNextVideo(video?.nextPageToken as string)}
-                id='button_next'
-              >
-                <span>next</span>
               </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
-      {comments
-        ? comments.map((comment: YoutubeComment, index: number) => (
-            <p style={{ color: '#fff' }} key={index}>
-              {comment.snippet.topLevelComment.snippet.textOriginal}
-            </p>
-          ))
-        : ''}
-      <Box css={switch_box} id='tgl_box' component='div'>
-        <Box css={change_text} id='tgl_text' component='div'>
-          iNDEX
+        {comments
+          ? comments.map((comment: YoutubeComment, index: number) => (
+              <p style={{ color: '#fff' }} key={index}>
+                {comment.snippet.topLevelComment.snippet.textOriginal}
+              </p>
+            ))
+          : ''}
+        <Box css={switch_box} id='tgl_box' component='div'>
+          <Box css={change_text} id='tgl_text' component='div'>
+            iNDEX
+          </Box>
+          <Box css={hange_area} onClick={switchToggle} component='div'>
+            <Box css={hange_dot} id='tgl_dot' component='div'></Box>
+          </Box>
         </Box>
-        <Box css={hange_area} onClick={switchToggle} component='div'>
-          <Box css={hange_dot} id='tgl_dot' component='div'></Box>
-        </Box>
-      </Box>
-      <Box css={bg_caten} id='bg_animation' component='div'>
-        <Loading />
       </Box>
       <Box css={modal_box} id='modal' component='div'>
         <Box css={disc_container} id='disc' component='div'>
@@ -550,7 +563,7 @@ export const MusicVideo = () => {
                   />
                 ) : (
                   <Image
-                    src={indexVideo?.items[0].snippet.thumbnails.high.url as string}
+                    src={indexVideo?.items[0].snippet.thumbnails.medium.url as string}
                     alt=''
                     width={300}
                     height={300}
@@ -572,8 +585,21 @@ export const MusicVideo = () => {
                 >
                   {indexVideo?.items[0].snippet.title}
                 </Typography>
-                <Box onClick={back} component='div' css={back_button}>
-                  <Button>BACK</Button>
+                <Box
+                  sx={{
+                    width: '100%',
+                    textAlign: 'right',
+                  }}
+                >
+                  <Box
+                    component='button'
+                    css={action_button}
+                    onClick={back}
+                    id='button_next'
+                    style={{}}
+                  >
+                    <span>back</span>
+                  </Box>
                 </Box>
               </Box>
               {/* <Box>
@@ -589,6 +615,9 @@ export const MusicVideo = () => {
             ''
           )}
         </Box>
+      </Box>
+      <Box css={bg_caten} id='bg_animation' component='div'>
+        <Loading />
       </Box>
     </Box>
   )
