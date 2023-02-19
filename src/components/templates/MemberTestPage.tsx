@@ -229,15 +229,17 @@ export const MemberTestPage = () => {
           ''
         )}
         {answer.length !== 0 && question.length === 0 ? (
-          <PrimaryButton
-            label='button'
-            background='orange'
-            onClick={reset}
-            variant='contained'
-            color='#fff'
-          >
-            もう一度
-          </PrimaryButton>
+          <Box sx={{ margin: '20px 0' }}>
+            <PrimaryButton
+              label='button'
+              background='orange'
+              onClick={reset}
+              variant='contained'
+              color='#fff'
+            >
+              もう一度
+            </PrimaryButton>
+          </Box>
         ) : (
           ''
         )}

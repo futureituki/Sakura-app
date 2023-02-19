@@ -30,6 +30,8 @@ export const TopPage = () => {
   const uid = useGetUser().user.uid as string
   const router = useRouter()
   const history = useContext(HistoryContext)
+  const [open, setOpen] = useState<boolean>(true)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   useEffect(() => {
     if (history[1] === '/login') {
       toast.success('ログインに成功しました')
@@ -54,8 +56,18 @@ export const TopPage = () => {
   return (
     <div>
       {router.query.first_come ? (
-        <TransitionsPopper>
-          <TutorialSwiper />
+        <TransitionsPopper
+          setOpen={setOpen}
+          previousOpen={open}
+          anchorEl={anchorEl}
+          setAnchorEl={setAnchorEl}
+        >
+          <TutorialSwiper
+            anchorEl={anchorEl}
+            previousOpen={open}
+            setOpen={setOpen}
+            setAnchorEl={setAnchorEl}
+          />
         </TransitionsPopper>
       ) : (
         ''

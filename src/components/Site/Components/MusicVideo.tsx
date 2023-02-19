@@ -1,5 +1,5 @@
 import { css, keyframes } from '@emotion/react'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import axios from 'axios'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
@@ -432,10 +432,10 @@ export const MusicVideo = () => {
         <Heading style={{ color: '#fff', fontSize: '5vw' }}>Music Video</Heading>
         <Box css={box} component='div'>
           <Box css={text_box}>
-            <Typography css={text}>櫻坂46はミュージックビデオも魅力的です</Typography>
-            <Typography css={text}>毎回惹きつけられるMVになっています</Typography>
-            <Typography css={text}>ぜひ見てほしいです</Typography>
-            <Typography css={text}>おすすめは摩擦係数とCoolです</Typography>
+            <p css={text}>櫻坂46はミュージックビデオも魅力的です</p>
+            <p css={text}>毎回惹きつけられるMVになっています</p>
+            <p css={text}>ぜひ見てほしいです</p>
+            <p css={text}>おすすめは摩擦係数とCoolです</p>
           </Box>
           <Box css={area} component='div'>
             <Box
@@ -542,7 +542,7 @@ export const MusicVideo = () => {
               component='div'
             >
               <Image src={disc.src} alt='' width={0} height={0} css={disc_img} />
-              <Typography css={disc_text}>{disc.name}</Typography>
+              <p css={disc_text}>{disc.name}</p>
             </Box>
           ))}
         </Box>
@@ -575,8 +575,8 @@ export const MusicVideo = () => {
                   {loading ? <Loading /> : <></>}
                   {selectShow ? <></> : <ClickPlayButton onClick={changeYoutubeIndex} />}
                 </Box>
-                <Typography
-                  sx={{
+                <p
+                  style={{
                     display: 'grid',
                     placeItems: 'center',
                     margin: '10px 0',
@@ -584,7 +584,7 @@ export const MusicVideo = () => {
                   css={video_title}
                 >
                   {indexVideo?.items[0].snippet.title}
-                </Typography>
+                </p>
                 <Box
                   sx={{
                     width: '100%',
@@ -603,12 +603,12 @@ export const MusicVideo = () => {
                 </Box>
               </Box>
               {/* <Box>
-                {/* <Typography css={video_title}>
+                {/* <p css={video_title}>
                 {indexVideo?.items[0].snippet.publishTime.slice(
                   0,
                   video?.items[0].snippet.publishTime.indexOf('T'),
                 )}
-              </Typography> */}
+              </p> */}
               {/* </Box> */}
             </Box>
           ) : (

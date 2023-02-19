@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { PinningContainer, PinningItemList } from '@/components/PinningScroll/Pinning-Side-Scroll'
 import { SectionImg } from '@/components/Site/Components/Section-Img'
 import { Heading } from '@/components/atoms/Heading'
@@ -65,13 +65,13 @@ export const Section03 = () => {
                 />
                 <Box css={info_box} component='div'>
                   <Box css={info} component='div'>
-                    <Typography css={info_text}>
+                    <p css={info_text}>
                       {member.ruby}
                       <br></br>
                       {member.birthday}
                       <br></br>
                       {member.sign}
-                    </Typography>
+                    </p>
                   </Box>
                 </Box>
               </Box>
@@ -99,13 +99,13 @@ export const Section03 = () => {
                 />
                 <Box css={info_box} component='div'>
                   <Box css={info} component='div'>
-                    <Typography css={info_text}>
+                    <p css={info_text}>
                       {member.ruby}
                       <br></br>
                       {member.birthday}
                       <br></br>
                       {member.sign}
-                    </Typography>
+                    </p>
                   </Box>
                 </Box>
               </Box>

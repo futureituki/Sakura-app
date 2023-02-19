@@ -1,34 +1,41 @@
 import Box from '@mui/material/Box'
 import Fade from '@mui/material/Fade'
 import Popper from '@mui/material/Popper'
-import { FC, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 
 type Props = {
   children: React.ReactNode
+  setOpen: Dispatch<SetStateAction<boolean>>
+  previousOpen: boolean
+  anchorEl: null | HTMLElement
+  setAnchorEl: Dispatch<SetStateAction<null | HTMLElement>>
 }
-export const TransitionsPopper: FC<Props> = ({ children }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [open, setOpen] = useState<boolean>(true)
-
+export const TransitionsPopper: FC<Props> = ({
+  children,
+  setOpen,
+  previousOpen,
+  anchorEl,
+  setAnchorEl,
+}) => {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
-    setOpen((previousOpen) => !previousOpen)
+    setOpen((previousOpen: boolean) => !previousOpen)
   }
 
-  const canBeOpen = open && Boolean(anchorEl)
+  const canBeOpen = previousOpen && Boolean(anchorEl)
   const id = canBeOpen ? 'transition-popper' : undefined
 
   return (
     <div>
       <Popper
         id={id}
-        open={open}
+        open={previousOpen}
         anchorEl={anchorEl}
         transition
         style={{
           width: '100vw',
           maxWidth: '900px',
-          maxHeight: '600px',
+          maxHeight: '800px',
           top: '10%',
           position: 'absolute',
           zIndex: '9999',
@@ -46,7 +53,7 @@ export const TransitionsPopper: FC<Props> = ({ children }) => {
                 zIndex: '999',
                 position: 'relative',
                 height: '90vw',
-                maxHeight: '600px',
+                maxHeight: '800px',
                 border: 1,
                 p: 1,
                 bgcolor: 'background.paper',
