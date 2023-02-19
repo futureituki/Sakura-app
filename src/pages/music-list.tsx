@@ -12,7 +12,6 @@ import { music_id } from '@/constant/music-list'
 import { AppLayout } from '@/layout/AppLayout'
 
 const MusicList: NextPageWithLayout = () => {
-  // const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   return (
     <>
       <MusicListPage />
