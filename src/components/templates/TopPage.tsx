@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { ListNewsLayout } from '@/components/List/ListNewsLayout'
@@ -15,6 +15,7 @@ import { BasicTabs } from '@/components/tab/TopTab'
 import { sliderVideoSrc } from '@/constant/sliderSrc'
 import useLoginApi from '@/lib/hook/useLoginApi'
 import { useGetUser } from '@/lib/user'
+import { HistoryContext } from '@/redux/context/history'
 import { userLogout } from '@/redux/userSlice'
 type SwiperProps = typeof sliderVideoSrc
 
@@ -27,14 +28,16 @@ export const TopPage = () => {
   const [name, setName] = useState<string>()
   const user = useGetUser().user.first_favorite as Favorite
   const router = useRouter()
+  const history = useContext(HistoryContext)
   useEffect(() => {
-    if (user.name === '') {
-      router.push('/login')
+    if (history[1] === '/login') {
+      toast.success('ログインに成功しました')
     }
     if (user) {
       setName(user.name)
     }
   }, [])
+  if (user.name === '') router.push('/favorite')
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   if (!loginData) return <LargeProgress />
   const spotify_button = async () => {

@@ -46,11 +46,7 @@ export const MemberTestPage = () => {
   const [displayAnswer, setDisplayAnswer] = useState<Answer[]>([])
   const TARGET_COLLECTION_NAME = 'questions'
   const COLORS = ['orange', 'pink', 'green', 'blue']
-  useEffect(() => {
-    if (router.query.sign) {
-      toast.success('会員登録に成功しました！')
-    }
-  }, [])
+
   // interest, mystery, cute, cool , expression の数で判定//
   const getQuestion = async (num: number) => {
     const docRef = doc(db, TARGET_COLLECTION_NAME, `${num}`)
@@ -99,7 +95,6 @@ export const MemberTestPage = () => {
       setAnswer(answerMember)
     }
   }
-  console.log(user)
   const nextQuestion = (text: string) => {
     const num = questionNumber + 1
     setQuestionNumber(num)
