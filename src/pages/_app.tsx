@@ -1,10 +1,13 @@
 import '@/styles/globals.scss'
 import '@/components/atoms/Heading/index.css'
 import type { AppPropsWithLayout } from 'next/app'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { Provider } from 'react-redux'
 import { ToastContainer, Zoom } from 'react-toastify'
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
+import { HistoryContext } from '@/redux/context/history'
 import { store } from '@/redux/store'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -18,7 +21,13 @@ const contextClass = {
   dark: 'bg-white text-gray-600',
 }
 
-export default function App({ Component, pageProps, router }: AppPropsWithLayout) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const router = useRouter()
+  const [history, setHistory] = useState([router.asPath, ''])
+
+  useEffect(() => {
+    setHistory([router.asPath, history[0]])
+  }, [router.asPath])
   let home = false
   if (router.pathname == '/') home = true
   const getLayout = Component.getLayout ?? ((page) => page)
@@ -27,27 +36,23 @@ export default function App({ Component, pageProps, router }: AppPropsWithLayout
     : getLayout(
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <ToastContainer
-              position='top-left'
-              autoClose={3000}
-              hideProgressBar={true}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              transition={Zoom}
-              style={{ color: '#000' }}
-              closeButton={false}
-              toastClassName={() =>
-                // contextClass[(theme == 'light'? 'default': 'info')] +
-                contextClass['info'] +
-                ' relative flex p-1 min-h-10 rounded-md justify-between m-2 cursor-pointer'
-              }
-              bodyClassName={() => ' flex  text-sm font-md block p-3'}
-            />
-            <Component {...pageProps} />
+            <HistoryContext.Provider value={history}>
+              <ToastContainer
+                position='top-right'
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                transition={Zoom}
+                style={{ color: '#000' }}
+                closeButton={false}
+              />
+              <Component {...pageProps} />
+            </HistoryContext.Provider>
           </PersistGate>
         </Provider>,
       )

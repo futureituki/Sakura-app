@@ -238,7 +238,14 @@ export const FavoriteChangePage = () => {
             variant='contained'
             onClick={() => setOpen(!open)}
           >
-            <span style={{ width: '20vw', display: 'inline-block', textAlign: 'center' }}>
+            <span
+              style={{
+                width: '20vw',
+                maxWidth: '80px',
+                display: 'inline-block',
+                textAlign: 'center',
+              }}
+            >
               登録確認
             </span>
           </PrimaryButton>
@@ -249,7 +256,14 @@ export const FavoriteChangePage = () => {
             variant='contained'
             onClick={() => router.push('/change_oshimen')}
           >
-            <span style={{ width: '20vw', display: 'inline-block', textAlign: 'center' }}>
+            <span
+              style={{
+                width: '20vw',
+                maxWidth: '80px',
+                display: 'inline-block',
+                textAlign: 'center',
+              }}
+            >
               閉じる
             </span>
           </PrimaryButton>
@@ -298,7 +312,7 @@ export const FavoriteChangePage = () => {
               variant='contained'
               onClick={handleSubmit}
             >
-              <span style={{ width: '20vw', display: 'inline-block' }}>登録</span>
+              <span style={{ width: '20vw', maxWidth: '80px', display: 'inline-block' }}>登録</span>
             </PrimaryButton>
             <PrimaryButton
               label='sign'
@@ -307,7 +321,9 @@ export const FavoriteChangePage = () => {
               variant='contained'
               onClick={handleClose}
             >
-              <span style={{ width: '20vw', display: 'inline-block' }}>閉じる</span>
+              <span style={{ width: '20vw', maxWidth: '80px', display: 'inline-block' }}>
+                閉じる
+              </span>
             </PrimaryButton>
           </Box>
         </Box>
