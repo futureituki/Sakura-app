@@ -27,17 +27,20 @@ export const TopPage = () => {
   const dispatch = useDispatch<any>()
   const [name, setName] = useState<string>()
   const user = useGetUser().user.first_favorite as Favorite
+  const uid = useGetUser().user.uid as string
   const router = useRouter()
   const history = useContext(HistoryContext)
   useEffect(() => {
     if (history[1] === '/login') {
       toast.success('ログインに成功しました')
     }
+  }, [history])
+  useEffect(() => {
     if (user) {
       setName(user.name)
     }
   }, [])
-  if (user.name === '') router.push('/favorite')
+  if (uid === '') router.push('/login')
   const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
   if (!loginData) return <LargeProgress />
   const spotify_button = async () => {
