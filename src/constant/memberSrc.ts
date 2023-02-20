@@ -148,8 +148,8 @@ export const thirdMemberSrc = [
   { src: '/assets/member_list/ishimori.jpeg', name: '石森璃花' },
   { src: '/assets/member_list/taniguti.jpeg', name: '谷口愛李' },
   { src: '/assets/member_list/murayama.jpeg', name: '村山美羽' },
-  { src: '/assets/member/seki_main_visual.jpeg', name: 'Coming soon' },
-  { src: '/assets/member/takemoto_main_visual.jpeg', name: 'Coming soon' },
+  { src: '', name: 'Coming soon' },
+  { src: '', name: 'Coming soon' },
 ]
 // お気に入りメンバー決める //
 export const favoriteMember: MemberSrc[] = [
