@@ -7,7 +7,6 @@ export default function Document() {
         <link href='https://fonts.googleapis.com/css?family=Sawarabi+Mincho' rel='stylesheet' />
       </Head>
       <body>
-        <script></script>
         <Main />
         <NextScript />
       </body>

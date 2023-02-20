@@ -206,7 +206,7 @@ export const Section01 = () => {
       height: 100%;
       content: '';
       background: #000;
-      opacity: 0.3;
+      opacity: 0.1;
     }
   `
   const video = css`
