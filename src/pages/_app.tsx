@@ -1,5 +1,6 @@
 import '@/styles/globals.scss'
 import '@/components/atoms/Heading/index.css'
+import { Analytics } from '@vercel/analytics/react'
 import type { AppPropsWithLayout } from 'next/app'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -32,7 +33,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   if (router.pathname == '/') home = true
   const getLayout = Component.getLayout ?? ((page) => page)
   return home
-    ? getLayout(<Component {...pageProps} />)
+    ? getLayout(
+        <>
+          <Component {...pageProps} />
+          <Analytics />
+        </>,
+      )
     : getLayout(
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
@@ -52,6 +58,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 closeButton={false}
               />
               <Component {...pageProps} />
+              <Analytics />
             </HistoryContext.Provider>
           </PersistGate>
         </Provider>,
