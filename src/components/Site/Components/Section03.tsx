@@ -124,13 +124,17 @@ export const Section03 = () => {
           {thirdMemberSrc.map((member: MemberSrc, index: number) => (
             <PinningItemList key={index}>
               <Box css={member_info} component='div'>
-                <SectionImg
-                  src={member.src}
-                  alt_name={member.name}
-                  width={280}
-                  height={350}
-                  id={'img_' + member.src}
-                />
+                {member.src === '' ? (
+                  <Box sx={{ width: '280px', height: '350px', border: '1px solid #fff' }}></Box>
+                ) : (
+                  <SectionImg
+                    src={member.src}
+                    alt_name={member.name}
+                    width={280}
+                    height={350}
+                    id={'img_' + member.src}
+                  />
+                )}
               </Box>
               <p style={{ color: '#fff', marginTop: '20px', fontSize: '1.6rem' }}>{member.name}</p>
             </PinningItemList>
