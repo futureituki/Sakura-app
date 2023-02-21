@@ -94,7 +94,7 @@ export const CommunityPostPage = () => {
       tag: addedTag,
     }
     await dispatch(savePhoto(props))
-    router.push('/community/posts')
+    router.push('/community')
   }
   return (
     <>

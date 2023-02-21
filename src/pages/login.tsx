@@ -10,7 +10,7 @@ const Login: NextPageWithLayout = () => {
   const router = useRouter()
   const history = useContext(HistoryContext)
   const user = useGetUser().user
-  if (user.uid !== '') router.push('/top')
+  // if (user.uid !== '') router.push('/top')
   if (history[1] === '/top' || history[1] === '/top?first_come=true' || history[1] === '/mypage') {
     toast.success('ログアウトに成功しました')
     history[1] = ''

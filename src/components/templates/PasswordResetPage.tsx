@@ -34,6 +34,8 @@ export const PasswordResetPage = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        height: '85vh',
       }}
       component='div'
     >
