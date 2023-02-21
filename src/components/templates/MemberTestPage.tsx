@@ -228,21 +228,6 @@ export const MemberTestPage = () => {
         ) : (
           ''
         )}
-        {answer.length !== 0 && question.length === 0 ? (
-          <Box sx={{ margin: '20px 0' }}>
-            <PrimaryButton
-              label='button'
-              background='orange'
-              onClick={reset}
-              variant='contained'
-              color='#fff'
-            >
-              もう一度
-            </PrimaryButton>
-          </Box>
-        ) : (
-          ''
-        )}
         {question.length !== 0 ? (
           <Box css={question_container}>
             <Typography css={qnum_text}>Q.{questionNumber}</Typography>
@@ -258,20 +243,46 @@ export const MemberTestPage = () => {
           ''
         )}
         {answer.length !== 0 && questionNumber === 5 ? (
-          <PrimaryButton
-            label='button'
-            background='orange'
-            onClick={result}
-            variant='contained'
-            color='#fff'
-          >
-            結果
-          </PrimaryButton>
+          <Box>
+            <Box sx={{ margin: '20px 0' }}>
+              <PrimaryButton
+                label='button'
+                background='orange'
+                onClick={reset}
+                variant='contained'
+                color='#fff'
+              >
+                もう一度
+              </PrimaryButton>
+            </Box>
+            <PrimaryButton
+              label='button'
+              background='orange'
+              onClick={result}
+              variant='contained'
+              color='#fff'
+            >
+              結果
+            </PrimaryButton>
+          </Box>
         ) : (
           ''
         )}
         {answer.length === 0 && questionNumber === 5 ? (
-          <Typography>結果が出ませんでした。もう一度お試しください</Typography>
+          <Box>
+            <Box sx={{ margin: '20px 0' }}>
+              <PrimaryButton
+                label='button'
+                background='orange'
+                onClick={reset}
+                variant='contained'
+                color='#fff'
+              >
+                もう一度
+              </PrimaryButton>
+            </Box>
+            <Typography>結果が出ませんでした。もう一度お試しください</Typography>
+          </Box>
         ) : (
           ''
         )}

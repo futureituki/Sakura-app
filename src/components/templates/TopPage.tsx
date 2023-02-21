@@ -43,8 +43,7 @@ export const TopPage = () => {
     }
   }, [])
   if (uid === '') router.push('/login')
-  const { data: loginData, error: loginError, mutate: loginMutate } = useLoginApi()
-  if (!loginData) return <LargeProgress />
+
   const spotify_button = async () => {
     await axios.post('/api/auth/authorize')
     router.push('/discography')

@@ -1,6 +1,6 @@
 import { NextPageWithLayout } from 'next'
 import { PasswordResetPage } from '@/components/templates/PasswordResetPage'
-import { AppLayout } from '@/layout/AppLayout'
+import { Layout } from '@/layout/Layout'
 const Reset: NextPageWithLayout = () => {
   return (
     <>
@@ -8,6 +8,6 @@ const Reset: NextPageWithLayout = () => {
     </>
   )
 }
-Reset.getLayout = (page) => <AppLayout>{page}</AppLayout>
+Reset.getLayout = (page) => <Layout>{page}</Layout>
 
 export default Reset

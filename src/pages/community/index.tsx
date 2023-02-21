@@ -17,8 +17,11 @@ const Community: NextPageWithLayout = () => {
     gap: 15px;
   `
   const container = css`
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
     margin: 40px 0;
   `
   const text = css`
